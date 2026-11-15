@@ -58,7 +58,7 @@ Requisitos: GNOME Shell 51 (testado no Fedora 45, Wayland).
 2. Clone e instale:
 
    ```bash
-   git clone https://github.com/viniciusbispo19/luma-menu.git
+   git clone https://github.com/viniciusbispo19/aero-menu-global.git
    cd aero-menu-global
    ./scripts/install.sh
    ```

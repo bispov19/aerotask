@@ -17,7 +17,9 @@ Fluxo de teste: `./scripts/nested-restart.sh && ./scripts/nested-test.sh 10`.
 `~/.local/share/aero-menu-global/` (o `storage.js` renomeia a pasta antiga UMA vez:
 `LEGACY_DATA_DIR = 'luma-menu'` é a única referência ao nome antigo no código).
 "Luma" que DEVE ficar: Luma Dock (outra extensão do usuário). O repositório no GitHub
-ainda se chama `luma-menu` (renomear só com confirmação do usuário).
+foi renomeado para `aero-menu-global` em 2026-11-15 (o GitHub redireciona o nome antigo).
+Instalada e ativa na sessão REAL em 2026-11-15 (a Luma Menu foi desativada e removida;
+configurações copiadas com `dconf dump … | dconf load …`).
 Se o Registrar já existir no processo (ex.: a extensão antiga ainda ativa), a extensão
 segue sem a camada B em vez de falhar.
 

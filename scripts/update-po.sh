@@ -32,7 +32,7 @@ xgettext \
     --add-comments=Translators \
     --package-name="Aero Menu Global" \
     --package-version="$VERSION" \
-    --msgid-bugs-address="https://github.com/viniciusbispo19/luma-menu/issues" \
+    --msgid-bugs-address="https://github.com/viniciusbispo19/aero-menu-global/issues" \
     --output="po/$DOMAIN.pot" \
     "${SOURCES[@]}"
 

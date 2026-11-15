@@ -5,7 +5,7 @@
   "shell-version": [
     "51"
   ],
-  "url": "https://github.com/viniciusbispo19/luma-menu",
+  "url": "https://github.com/viniciusbispo19/aero-menu-global",
   "gettext-domain": "aero-menu-global",
   "settings-schema": "org.gnome.shell.extensions.aero-menu-global",
   "session-modes": [

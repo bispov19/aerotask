@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Aero Menu Global 0.1.0\n"
-"Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/luma-menu/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/aero-menu-global/issues\n"
 "POT-Creation-Date: 2026-11-14 21:45-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"

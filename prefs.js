@@ -23,7 +23,7 @@ import {
 
 import {SYSTEM_ICONS} from './lib/icons.js';
 
-const GITHUB_URL = 'https://github.com/viniciusbispo19/luma-menu';
+const GITHUB_URL = 'https://github.com/viniciusbispo19/aero-menu-global';
 /** Páginas do pop-up do relógio, na ordem em que aparecem. */
 const CLOCK_PAGES = ['calendar', 'notifications', 'shelf', 'focus', 'reminders'];
 /** Quantas cidades mostrar na busca (o resto: digite mais). */
