@@ -291,6 +291,22 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   (`GLib.timeout_add` de 30 ms percorrendo um caminho de passos pequenos); saltos grandes via
   vários Evals não iniciam o arraste do GTK. O ponteiro do aninhado parado em (0,0) "passa"
   sobre o logo e troca o menu aberto para o menu do sistema.
+- **Missão 1 (2026-11-14)**: alertas (brilho, bateria, Caps Lock, Bluetooth, rede, foco,
+  eventos) agora usam o POP-UP PADRÃO (um `LumaMenu` anclado no relógio, alinhamento 1.0,
+  `clock.alignToEdge(menu)`), aberto SEM o menuManager (sem grab: não prende teclado/mouse).
+  A forma do Isle saiu dos alertas (`IslandSurface` só resta na opção `island-menus`).
+  Desligar `menu._onKeyPress` (o PopupMenu liga Espaço/Enter/↓ no ator de origem = relógio).
+  Abrir no meio da animação de fechar interrompe o `menu-closed` → zerar `_closing` no `_open`.
+  Nível substituindo mensagem: fechar sem animação e reabrir (o Blur my Shell mede o desfoque
+  ao abrir; trocar o conteúdo aberto deixa uma "sobra" desfocada).
+- **St: widget com `reactive: false` fica `:insensitive`** (a propriedade é `pseudo_class`, não
+  `style_pseudo_class`); o Blur my Shell pinta `.popup-menu-item:insensitive` com branco 50% e o
+  GNOME põe `popup-inactive-menu-item` em item sem `activate`. Item informativo: `reactive: true,
+  activate: false, hover: false` + `track_hover = false` + tirar `popup-inactive-menu-item`.
+- `Main.messageTray.visible` só é true com um BANNER na tela (`_updateState`); `notify::visible`
+  avisa. Os alertas esperam o banner (mesmo canto); o nível vai para o OSD do GNOME.
+- Tema WhiteSur: `.slider` (barra do centro de controle), `.button`, `.icon-button` existem soltas;
+  `.popup-menu-item { color: #afafaf }`; no BMS escuro os itens ficam `rgba(255,255,255,.9)`.
 - `prefs.js` pode importar `pgettext` de `extensions/prefs.js` (contexto para "Automática" vs
   "Automático").
 - **Cliques/teclas na sessão aninhada**: no Eval, `global.stage.context.get_backend()
