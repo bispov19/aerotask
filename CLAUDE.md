@@ -448,7 +448,8 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   para cada logo da Fase 8.
 
 ### Extensões do usuário
-- Ativas: blur-my-shell, caffeine, appindicatorsupport, compiz-windows-effect,
+- Caffeine DESINSTALADA em 2026-11-15 (pedido do usuário): substituída por "Manter Tela Ligada".
+- Ativas (lista antiga): blur-my-shell, appindicatorsupport, compiz-windows-effect,
   just-perfection, slider-percentages, gnome-mosaic, copyous, user-theme,
   launchpad-search, dynamic-calendar-and-clocks-icons-reborn, luma-dock,
   hiragana-clock.
