@@ -187,6 +187,8 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         bar.add(clockRow);
         page.add(bar);
 
+        page.add(this._trayGroup());
+
         const keys = new Adw.PreferencesGroup({title: _('Keyboard Shortcuts')});
         keys.add(this._shortcut('focus-bar-shortcut', _('Focus the menu bar'),
             _('Opens the app menu; use the arrow keys to navigate')));
@@ -200,6 +202,80 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         }));
         page.add(monitors);
         return page;
+    }
+
+    /**
+     * Grupo "Ícones de programas": a bandeja (AppIndicator/StatusNotifierItem).
+     */
+    _trayGroup() {
+        const group = new Adw.PreferencesGroup({
+            title: _('Program Icons'),
+            description: _('Tray icons of programs such as Discord, Steam and Telegram (AppIndicator and StatusNotifierItem), with the menu of each program. Monochrome uses the symbolic icon when the theme has one; otherwise, grayscale.'),
+        });
+
+        // A extensão AppIndicator, se ativa, tem prioridade (as duas não
+        // podem oferecer o mesmo serviço ao mesmo tempo).
+        const shell = new Gio.Settings({schema_id: 'org.gnome.shell'});
+        const conflict = new Adw.ActionRow({
+            title: _('The “AppIndicator and KStatusNotifierItem Support” extension is active'),
+            subtitle: _('It takes priority. Disable it in the Extensions app to use the icons of Aero Menu Global.'),
+            css_classes: ['warning'],
+        });
+        conflict.add_prefix(new Gtk.Image({icon_name: 'dialog-warning-symbolic'}));
+        const syncConflict = () => {
+            const enabled = shell.get_strv('enabled-extensions').includes('appindicatorsupport@rgcjonas.gmail.com');
+            const disabled = shell.get_boolean('disable-user-extensions');
+            conflict.visible = enabled && !disabled;
+        };
+        syncConflict();
+        shell.connect('changed::enabled-extensions', syncConflict);
+        group.add(conflict);
+
+        group.add(this._switch('tray-icons-enabled', _('Show program icons in the bar')));
+        const style = this._combo('tray-icon-style', _('Icon style'), [
+            ['monochrome', _('Monochrome (like macOS)')],
+            ['original', _('Original colors')],
+        ]);
+        this._settings.bind('tray-icons-enabled', style, 'sensitive', Gio.SettingsBindFlags.GET);
+        group.add(style);
+
+        // Os programas já vistos, cada um com "mostrar".
+        const programs = new Adw.ExpanderRow({
+            title: _('Programs'),
+            subtitle: _('Choose which icons appear; programs show up here after they run once'),
+        });
+        this._settings.bind('tray-icons-enabled', programs, 'sensitive', Gio.SettingsBindFlags.GET);
+        let rows = [];
+        const syncPrograms = () => {
+            rows.forEach(row => programs.remove(row));
+            rows = [];
+            const hidden = this._settings.get_strv('tray-hidden-items');
+            const known = this._settings.get_strv('tray-known-items');
+            if (known.length === 0) {
+                const empty = new Adw.ActionRow({title: _('No program seen yet')});
+                rows.push(empty);
+                programs.add_row(empty);
+                return;
+            }
+            for (const entry of known) {
+                const [key, title] = entry.split('\t');
+                const row = new Adw.SwitchRow({
+                    title: title || key,
+                    subtitle: key,
+                    active: !hidden.includes(key),
+                });
+                row.connect('notify::active', () => {
+                    const current = this._settings.get_strv('tray-hidden-items').filter(k => k !== key);
+                    this._settings.set_strv('tray-hidden-items', row.active ? current : [...current, key]);
+                });
+                rows.push(row);
+                programs.add_row(row);
+            }
+        };
+        syncPrograms();
+        this._settings.connect('changed::tray-known-items', syncPrograms);
+        group.add(programs);
+        return group;
     }
 
     /**

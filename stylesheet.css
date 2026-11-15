@@ -959,3 +959,12 @@
 .aero-volume-hud-over {
     color: #ed5f5d;
 }
+
+/* ---------- Ícones de bandeja (AppIndicator / StatusNotifierItem) ----------
+ * Mesmo tamanho dos outros ícones da barra (system-status-icon) e o mesmo
+ * destaque arredondado ao passar o mouse (o do tema nos botões da barra). */
+#panel .panel-button.aero-tray-button {
+    -natural-hpadding: 7px;
+    -minimum-hpadding: 4px;
+    border-radius: 6px;
+}

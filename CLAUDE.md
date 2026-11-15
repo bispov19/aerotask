@@ -331,6 +331,25 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   `maximized_vertically` (meia tela também). Sinais: `global.window_manager` size-changed/
   minimize/unminimize/map/destroy/switch-workspace, `active-workspace-changed`, `restacked`,
   overview — agrupados num `laters` BEFORE_REDRAW.
+- **Missão 5 (2026-11-15)**: ícones de bandeja nativos. `lib/tray/watcher.js`
+  (`org.kde.StatusNotifierWatcher` em `/StatusNotifierWatcher`; registro por NOME → caminho
+  `/StatusNotifierItem`, ou por CAMINHO → nome = quem chamou (libayatana); `bus_watch_name`
+  tira o ícone quando o programa sai) vive na EXTENSÃO (sobrevive ao bloqueio: ao desbloquear os
+  ícones voltam sem re-registro). `lib/tray/trayButton.js` (PanelMenu.Button + AeroMenu; menu =
+  `DBusMenuSource.getRootNodes()`; ícone: `-symbolic` do tema via `new St.IconTheme().
+  lookup_icon(nome, 16, 0)` = "template"; senão `Clutter.DesaturateEffect` (estilo
+  monochrome); IconPixmap ARGB32 big-endian → `St.ImageContent` (é um Gio.Icon) com
+  `Cogl.PixelFormat.ARGB_8888`; `ClickGesture.get_button()` diferencia botões; Scroll via
+  `Clutter.ScrollController`). `lib/tray/trayIcons.js` põe os botões ANTES do quickSettings.
+  Conflito: extensão `appindicatorsupport@rgcjonas.gmail.com` ativa ou ACTIVATING → não
+  criamos o watcher (o GNOME muda para ACTIVATING ANTES de chamar o enable() dela: cedemos a
+  tempo; `extension-state-changed`). Hoje ela NÃO está instalada no sistema do usuário.
+  Teste: `dev/test-apps/sni-test.js` (GJS: SNI + DBusMenu; `--pixmap` para ícone em pixels).
+  Na resposta de método com `wrapJSObject`, devolver valores comuns (só os "v" como Variant).
+  Limitação do GNOME: a caixa da direita da barra fica limitada a METADE da largura
+  (`Panel.vfunc_allocate`); com muitos ícones numa tela estreita, os itens se espremem.
+- Maximizar uma janela NO MEIO da animação de abertura dela pode deixá-la com opacidade 0
+  (visto no app de preferências na sessão aninhada) — esperar a janela assentar nos testes.
 - **ShaderEffect + desfoque estático do BMS**: o fundo do BMS no panelBox é o papel de parede do
   MONITOR inteiro (recortado só ao desenhar) → a textura do efeito fica do tamanho da tela e a
   máscara some com tudo. `panelBox.clip_to_allocation = true` enquanto a máscara existe resolve.

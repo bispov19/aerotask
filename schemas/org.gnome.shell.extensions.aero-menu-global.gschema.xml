@@ -22,6 +22,10 @@
     <value nick="text" value="0"/>
     <value nick="symbols" value="1"/>
   </enum>
+  <enum id="org.gnome.shell.extensions.aero-menu-global.TrayIconStyle">
+    <value nick="monochrome" value="0"/>
+    <value nick="original" value="1"/>
+  </enum>
   <enum id="org.gnome.shell.extensions.aero-menu-global.TemperatureUnit">
     <value nick="celsius" value="0"/>
     <value nick="fahrenheit" value="1"/>
@@ -288,10 +292,28 @@
       <summary>Record how long each app is in use (stored only on this computer)</summary>
     </key>
 
+    <!-- Ícones de bandeja: AppIndicator / StatusNotifierItem (Missão 5) -->
+    <key name="tray-icons-enabled" type="b">
+      <default>true</default>
+      <summary>Show the tray icons of programs (AppIndicator / StatusNotifierItem) in the top bar</summary>
+    </key>
+    <key name="tray-icon-style" enum="org.gnome.shell.extensions.aero-menu-global.TrayIconStyle">
+      <default>'monochrome'</default>
+      <summary>Tray icons: monochrome (symbolic or grayscale, like macOS) or the program’s original colors</summary>
+    </key>
+    <key name="tray-hidden-items" type="as">
+      <default>[]</default>
+      <summary>Ids of programs whose tray icon is hidden</summary>
+    </key>
+
     <!-- ===================== Estado interno ===================== -->
     <key name="weather-cache" type="s">
       <default>''</default>
       <summary>Last weather reading (internal, JSON), shown while offline</summary>
+    </key>
+    <key name="tray-known-items" type="as">
+      <default>[]</default>
+      <summary>Programs with a tray icon seen so far (internal: "id&lt;TAB&gt;title"), listed in the preferences</summary>
     </key>
     <key name="recent-apps" type="as">
       <default>[]</default>

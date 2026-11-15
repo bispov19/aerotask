@@ -50,6 +50,10 @@ BEFORE=$(wc -l < "$LOG")
     mascaraBarra: !!Main.layoutManager.panelBox.get_effect('aero-menu-floating-mask'),
     estiloPanelBox: Main.layoutManager.panelBox.style ?? null,
     barraTransformada: Main.panel.translation_y !== 0 || Main.panel.scale_x !== 1,
+    // Ícones de bandeja (rodar com um programa de bandeja aberto, ex.:
+    // dev/test-apps/sni-test.js): ao desativar, nenhum botão sobra.
+    iconesBandeja: Main.panel._rightBox.get_children()
+      .filter(c => c.get_first_child()?.constructor.name === 'AeroMenuTrayButton').length,
     bandejas: global.get_window_actors().filter(a => a.meta_window.get_wm_class() === 'io.github.viniciusbispo19.AeroMenuGlobal.Tray').length,
   });
   // Conta, no palco inteiro, os atores ESTRUTURAIS das nossas classes
@@ -140,6 +144,9 @@ checks = {
     "desativar tira a máscara da barra": not data["desativada"]["mascaraBarra"],
     "desativar devolve o estilo do panelBox": data["desativada"]["estiloPanelBox"] is None,
     "desativar devolve a barra sem deslocamento": not data["desativada"]["barraTransformada"],
+    "ícones de bandeja não duplicam nos ciclos": d["iconesBandeja"] == a["iconesBandeja"],
+    "desativar remove os ícones de bandeja": data["desativada"]["iconesBandeja"] == 0,
+    "desbloquear traz os ícones de bandeja de volta": data["desbloqueada"]["iconesBandeja"] == a["iconesBandeja"],
 }
 for name, ok in checks.items():
     print(("  ✓ " if ok else "  ✗ ") + name)

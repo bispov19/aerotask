@@ -17,6 +17,7 @@
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
+import {ExtensionState} from 'resource:///org/gnome/shell/misc/extensionUtils.js';
 
 import {BarLook} from './lib/island/barLook.js';
 import {BatteryIndicator} from './lib/island/batteryIcon.js';
@@ -31,10 +32,15 @@ import {MenuBar} from './lib/menuBar.js';
 import {OsdOverride} from './lib/osdOverride.js';
 import {PanelLayout} from './lib/panelLayout.js';
 import {Registrar} from './lib/sources/registrar.js';
+import {TrayIcons} from './lib/tray/trayIcons.js';
+import {StatusNotifierWatcher} from './lib/tray/watcher.js';
 import {VolumeHud} from './lib/volumeHud.js';
 import {logError, setDebug} from './lib/util.js';
 
-export default class AeroMenuExtension extends Extension {
+/** A extensão "AppIndicator and KStatusNotifierItem Support". */
+const APPINDICATOR_UUID = 'appindicatorsupport@rgcjonas.gmail.com';
+
+export default class AeroMenuGlobalExtension extends Extension {
     enable() {
         this._settings = this.getSettings();
         setDebug(this._settings.get_boolean('debug'));
@@ -55,6 +61,18 @@ export default class AeroMenuExtension extends Extension {
 
         this._registrar = null;
         this._syncRegistrar();
+
+        // Ícones de bandeja (AppIndicator/StatusNotifierItem). O serviço vive
+        // aqui (sobrevive ao bloqueio); os botões são da interface. Se a
+        // extensão AppIndicator estiver ativa, ela é quem cuida: cedemos a
+        // vez — e assumimos quando ela for desativada.
+        this._trayWatcher = null;
+        this._settings.connectObject('changed::tray-icons-enabled', () => this._syncTrayWatcher(), this);
+        Main.extensionManager.connectObject('extension-state-changed', (_m, extension) => {
+            if (extension.uuid === APPINDICATOR_UUID)
+                this._syncTrayWatcher();
+        }, this);
+        this._syncTrayWatcher();
 
         // Timer de foco e lembretes vivem AQUI (e não no relógio): a interface
         // da barra é destruída ao bloquear a tela, mas o Pomodoro continua
@@ -78,6 +96,9 @@ export default class AeroMenuExtension extends Extension {
         this._destroyUi();
         this._registrar?.destroy();
         this._registrar = null;
+        Main.extensionManager.disconnectObject(this);
+        this._trayWatcher?.destroy();
+        this._trayWatcher = null;
         this._focusTimer?.destroy();
         this._focusTimer = null;
         this._reminders?.destroy();
@@ -91,6 +112,34 @@ export default class AeroMenuExtension extends Extension {
         this._settings?.disconnectObject(this);
         this._settings = null;
         setDebug(false);
+    }
+
+    /**
+     * A extensão AppIndicator está ligada (ou ligando)? O GNOME avisa
+     * "ligando" ANTES de chamar o enable() dela: desligamos o nosso serviço a
+     * tempo de ela pegar o nome no barramento sem erro.
+     */
+    get _appIndicatorActive() {
+        const state = Main.extensionManager.lookup(APPINDICATOR_UUID)?.state;
+        return state === ExtensionState.ACTIVE || state === ExtensionState.ACTIVATING;
+    }
+
+    _syncTrayWatcher() {
+        const wanted = this._settings.get_boolean('tray-icons-enabled') && !this._appIndicatorActive;
+        if (wanted && !this._trayWatcher) {
+            try {
+                this._trayWatcher = new StatusNotifierWatcher();
+            } catch (e) {
+                logError(e, 'ícones de bandeja indisponíveis (outro programa já oferece o serviço)');
+                this._trayWatcher = null;
+            }
+        } else if (!wanted && this._trayWatcher) {
+            this._trayWatcher.destroy();
+            this._trayWatcher = null;
+        } else {
+            return;
+        }
+        this._tray?.setWatcher(this._trayWatcher);
     }
 
     /** Liga/desliga o Registrar (camada B) conforme a preferência, ao vivo. */
@@ -147,6 +196,13 @@ export default class AeroMenuExtension extends Extension {
 
         // Barra flutuante (cantos arredondados; encosta com janela maximizada).
         this._floatingPanel = new FloatingPanel(this._settings);
+
+        // Ícones de bandeja na barra (os do serviço que já está rodando).
+        this._tray = new TrayIcons(this._settings, {
+            getAppearance: () => this._menuBar.getAppearance(),
+            getMenuOptions: () => this._menuBar.getMenuOptions(),
+        });
+        this._tray.setWatcher(this._trayWatcher);
 
         // O OSD do GNOME (volume/brilho) passa por um ponto só: o volume vai
         // para o HUD no centro da tela (estilo macOS); o brilho, para os
@@ -205,6 +261,8 @@ export default class AeroMenuExtension extends Extension {
         this._osd?.destroy();
         this._osd = null;
 
+        this._tray?.destroy();
+        this._tray = null;
         this._floatingPanel?.destroy();
         this._floatingPanel = null;
         this._battery?.destroy();
