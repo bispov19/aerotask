@@ -35,6 +35,7 @@ import {Registrar} from './lib/sources/registrar.js';
 import {TrayIcons} from './lib/tray/trayIcons.js';
 import {StatusNotifierWatcher} from './lib/tray/watcher.js';
 import {VolumeHud} from './lib/volumeHud.js';
+import {KeepAwake, KeepAwakeIndicator} from './lib/keepAwake.js';
 import {logError, setDebug} from './lib/util.js';
 
 /** A extensão "AppIndicator and KStatusNotifierItem Support". */
@@ -78,6 +79,9 @@ export default class AeroMenuGlobalExtension extends Extension {
         // da barra é destruída ao bloquear a tela, mas o Pomodoro continua
         // contando e a lista continua a mesma.
         this._focusTimer = new FocusTimer(this._settings);
+        // "Manter Tela Ligada" (como o Caffeine): também vive na extensão —
+        // bloquear a tela não pode desligar a função.
+        this._keepAwake = new KeepAwake(this.uuid);
         this._reminders = new ReminderStore();
         // Pelo mesmo motivo: o histórico da área de transferência, a bandeja
         // de arquivos e o tempo de uso de apps (este só se ligado).
@@ -101,6 +105,8 @@ export default class AeroMenuGlobalExtension extends Extension {
         this._trayWatcher = null;
         this._focusTimer?.destroy();
         this._focusTimer = null;
+        this._keepAwake?.destroy();
+        this._keepAwake = null;
         this._reminders?.destroy();
         this._reminders = null;
         this._clipboard?.destroy();
@@ -209,6 +215,11 @@ export default class AeroMenuGlobalExtension extends Extension {
         // alertas do relógio (que se registra ao ser criado).
         this._osd = new OsdOverride();
         this._volumeHud = new VolumeHud(this._settings);
+
+        // Botão "Manter Tela Ligada" nas Configurações Rápidas (+ aviso no
+        // centro da tela ao ligar/desligar).
+        this._keepAwakeIndicator = new KeepAwakeIndicator(this._keepAwake,
+            this._settings, this.dir.get_child('icons'));
         this._osd.setHandler('volume', osd => this._volumeHud.handleOsd(osd));
 
         // A ilha (notch) no lugar do relógio, se ligada nas preferências.
@@ -258,6 +269,8 @@ export default class AeroMenuGlobalExtension extends Extension {
         // O OSD por último: devolve os métodos originais do GNOME.
         this._volumeHud?.destroy();
         this._volumeHud = null;
+        this._keepAwakeIndicator?.destroy();
+        this._keepAwakeIndicator = null;
         this._osd?.destroy();
         this._osd = null;
 

@@ -919,8 +919,9 @@
 }
 
 
-/* ---------- HUD de volume (centro da tela, estilo macOS) ---------- */
-.aero-volume-hud {
+/* ---------- HUDs no centro da tela, estilo macOS ----------
+ * .aero-hud = a caixa comum (lib/centerHud.js): volume e "tela ligada". */
+.aero-hud {
     min-width: 200px;
     padding: 28px 22px 20px;
     spacing: 18px;
@@ -930,8 +931,18 @@
     color: #ffffff;
 }
 
-.aero-volume-hud-icon {
+.aero-volume-hud-icon,
+.aero-awake-hud-icon {
     icon-size: 80px;
+}
+
+/* HUD de "tela ligada": ícone + uma linha de texto. */
+.aero-awake-hud {
+    min-width: 200px;
+}
+
+.aero-awake-hud-label {
+    font-weight: bold;
 }
 
 .aero-volume-hud-bar {

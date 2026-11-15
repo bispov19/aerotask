@@ -561,6 +561,15 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         volume.add(volumePercent);
         page.add(volume);
 
+        // "Manter Tela Ligada" (Configurações Rápidas): também no centro.
+        const keepAwake = new Adw.PreferencesGroup({
+            title: _('Keep Screen On'),
+            description: _('The Quick Settings button that keeps the screen on, like the Caffeine extension'),
+        });
+        keepAwake.add(this._switch('alert-keep-awake', _('Show a notice in the center of the screen'),
+            _('When the function is turned on or off')));
+        page.add(keepAwake);
+
         const brightness = new Adw.PreferencesGroup({
             title: _('Brightness'),
             description: _('Shown below the clock in place of GNOME’s pop-up (in full screen, GNOME’s pop-up is used)'),

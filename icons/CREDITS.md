@@ -26,3 +26,9 @@ cor oficial da marca na versão colorida).
 | `nixos-symbolic.svg`, `nixos.svg` | NixOS — Simple Icons 16.37.0 `icons/nixos.svg` (só o `path`; cor da marca `#5277C3` na versão colorida). Fonte original: <https://brand.nixos.org/logos/nixos-logomark-black-flat-minimal.svg> | **CC-BY-4.0** (atribuição: NixOS) | NixOS é marca de seu dono. Diretrizes: <https://brand.nixos.org/documents/nixos-branding-guide.pdf> |
 | `zorin-symbolic.svg`, `zorin.svg` | Zorin — Simple Icons 16.37.0 `icons/zorin.svg` (só o `path`; cor da marca `#15A6F0` na versão colorida). Fonte original: <https://zorin.com/press> | Simple Icons: CC0-1.0 (sem licença específica registrada para o logo) | Zorin é marca de seu dono. Diretrizes: <https://zorin.com/press> |
 | `elementary-symbolic.svg`, `elementary.svg` | elementary — Simple Icons 16.37.0 `icons/elementary.svg` (só o `path`; cor da marca `#64BAFF` na versão colorida). Fonte original: <https://elementary.io/brand> | Simple Icons: CC0-1.0 (sem licença específica registrada para o logo) | elementary é marca de seu dono. Diretrizes: <https://elementary.io/brand> |
+
+## Outros ícones
+
+| Arquivos | Origem | Licença |
+|---|---|---|
+| `keep-awake-symbolic.svg`, `keep-awake-off-symbolic.svg` | Xícara (com e sem fumaça) desenhada para o Aero Menu Global — usada em "Manter Tela Ligada" | GPL-3.0-or-later (a mesma do projeto) |

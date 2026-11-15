@@ -333,6 +333,28 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   `maximized_vertically` (meia tela também). Sinais: `global.window_manager` size-changed/
   minimize/unminimize/map/destroy/switch-workspace, `active-workspace-changed`, `restacked`,
   overview — agrupados num `laters` BEFORE_REDRAW.
+- **Correção (2026-11-15)**: a margem da barra flutuante saiu do `padding` do panelBox para
+  `margin` no CSS do `Main.panel` (St zera `margin_top` do ator a cada mudança de estilo). O BMS
+  põe o grupo do desfoque DENTRO do panelBox e supõe que ele fica em (0, 0); com padding o
+  grupo andava junto → desfoque deslocado 6 px para baixo/8 px à direita (faixa clara no topo).
+  `Main.panel.style` é dividido (barra preta, margem, raio do BMS): `lib/panelStyle.js`. Nunca
+  tirar o `;` final do resto — o BMS acha a regra dele por texto exato e a DUPLICA.
+  `get_allocation_box()` de ator esperando layout força o layout do palco (no `enable()` gerou
+  CRITICAL no HUD de volume fora do palco): checar `has_allocation()` antes.
+  **O GNOME sobrescreve `Main.panel.style` INTEIRO** (`ui/overview.js`): no login
+  (`'transition-duration: 0ms;'` → `null`) e a cada vez que a Visão Geral fecha (`null`). Quem
+  põe declaração ali vigia `notify::style` e repõe (`watchPanelStyle` em `lib/panelStyle.js`).
+  `Main.overview.show()/hide()` via Eval no aninhado NÃO reproduziu: simular com `Main.panel.style = null`.
+- **Manter Tela Ligada (2026-11-15)**: `lib/keepAwake.js` — `KeepAwake` (serviço, vive na EXTENSÃO,
+  sobrevive ao bloqueio) chama `org.gnome.SessionManager.Inhibit(app_id, 0, motivo, 8)` (8 = IDLE;
+  a flag 4 SUSPEND bloquearia até fechar a tampa) e `Uninhibit(cookie)`; laço `_sync` evita
+  inibidor "perdido" com cliques rápidos. `KeepAwakeIndicator` = `SystemIndicator` + `QuickToggle`
+  via `quickSettings.addExternalIndicator()`. HUD no centro (chave `alert-keep-awake`) com o
+  `CenterHud` (`lib/centerHud.js`, também usado pelo HUD de volume). Ícones próprios
+  `icons/keep-awake{,-off}-symbolic.svg`. A sessão aninhada NÃO tem gnome-session: testar com
+  `dev/test-apps/fake-session-manager.js` no barramento dela. Bloqueio REAL (`screenShield.lock`) no
+  aninhado trava o Eval (pede senha): usar `pushMode('unlock-dialog')` dentro de UM Eval assíncrono
+  (a devtools é desativada no bloqueio e o Eval para de responder até o fim).
 - **Missão 5 (2026-11-15)**: ícones de bandeja nativos. `lib/tray/watcher.js`
   (`org.kde.StatusNotifierWatcher` em `/StatusNotifierWatcher`; registro por NOME → caminho
   `/StatusNotifierItem`, ou por CAMINHO → nome = quem chamou (libayatana); `bus_watch_name`

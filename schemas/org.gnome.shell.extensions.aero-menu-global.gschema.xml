@@ -213,6 +213,10 @@
       <default>true</default>
       <summary>Show volume changes in a macOS-style HUD in the center of the screen instead of GNOME’s pop-up</summary>
     </key>
+    <key name="alert-keep-awake" type="b">
+      <default>true</default>
+      <summary>Show a HUD in the center of the screen when “Keep Screen On” is turned on or off</summary>
+    </key>
     <key name="volume-hud-show-percentage" type="b">
       <default>true</default>
       <summary>Show the percentage number in the volume HUD</summary>
