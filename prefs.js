@@ -536,8 +536,8 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
     }
 
     /**
-     * Página "Alertas": o que sai do relógio (volume, brilho, bateria, Caps
-     * Lock…) e o ícone da bateria.
+     * Página "Alertas": o HUD do centro da tela (volume, brilho, Caps Lock…),
+     * as mensagens que saem do relógio (bateria, rede…) e o ícone da bateria.
      */
     _alertsPage() {
         const page = new Adw.PreferencesPage({
@@ -550,35 +550,21 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             page.add(group);
         };
 
-        // O HUD de volume fica no centro da tela: não depende do relógio.
-        const volume = new Adw.PreferencesGroup({
-            title: _('Volume'),
-            description: _('A macOS-style HUD in the center of the screen, for any volume change (keys, the top bar control, apps…), in place of GNOME’s pop-up'),
+        // O HUD fica no centro da tela: não depende do relógio. Um só padrão
+        // para todos os avisos (o do macOS).
+        const hud = new Adw.PreferencesGroup({
+            title: _('Center of the Screen'),
+            description: _('A macOS-style HUD in place of GNOME’s pop-up. Volume and brightness show for any change (keys, the Quick Settings controls, apps…)'),
         });
-        volume.add(this._switch('alert-volume', _('Volume HUD')));
-        const volumePercent = this._switch('volume-hud-show-percentage', _('Show the percentage in the HUD'));
-        this._settings.bind('alert-volume', volumePercent, 'sensitive', Gio.SettingsBindFlags.GET);
-        volume.add(volumePercent);
-        page.add(volume);
-
-        // "Manter Tela Ligada" (Configurações Rápidas): também no centro.
-        const keepAwake = new Adw.PreferencesGroup({
-            title: _('Keep Screen On'),
-            description: _('The Quick Settings button that keeps the screen on, like the Caffeine extension'),
-        });
-        keepAwake.add(this._switch('alert-keep-awake', _('Show a notice in the center of the screen'),
-            _('When the function is turned on or off')));
-        page.add(keepAwake);
-
-        const brightness = new Adw.PreferencesGroup({
-            title: _('Brightness'),
-            description: _('Shown below the clock in place of GNOME’s pop-up (in full screen, GNOME’s pop-up is used)'),
-        });
-        brightness.add(this._switch('alert-brightness', _('Brightness'),
+        hud.add(this._switch('alert-volume', _('Volume')));
+        hud.add(this._switch('alert-brightness', _('Brightness'),
             _('Screen and keyboard backlight')));
-        brightness.add(this._switch('osd-show-percentage', _('Show the percentage'),
-            _('“65%” beside the bar')));
-        needsClock(brightness);
+        hud.add(this._switch('alert-caps-lock', _('Caps Lock')));
+        hud.add(this._switch('alert-keep-awake', _('Keep Screen On'),
+            _('When the Quick Settings button is turned on or off')));
+        hud.add(this._switch('volume-hud-show-percentage', _('Show the percentage'),
+            _('“65%” below the volume and brightness bar')));
+        page.add(hud);
 
         // O ícone da bateria NÃO depende do relógio do Aero.
         const battery = new Adw.PreferencesGroup({title: _('Battery')});
@@ -599,7 +585,6 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             title: _('Other Alerts'),
             description: _('Only important alerts: they wait for full screen to end and are held back in Do Not Disturb'),
         });
-        other.add(this._switch('alert-caps-lock', _('Caps Lock')));
         other.add(this._switch('alert-bluetooth', _('Bluetooth devices'),
             _('When a device connects or disconnects')));
         other.add(this._switch('alert-network', _('No internet connection'),

@@ -34,7 +34,7 @@ import {PanelLayout} from './lib/panelLayout.js';
 import {Registrar} from './lib/sources/registrar.js';
 import {TrayIcons} from './lib/tray/trayIcons.js';
 import {StatusNotifierWatcher} from './lib/tray/watcher.js';
-import {VolumeHud} from './lib/volumeHud.js';
+import {OsdHud} from './lib/osdHud.js';
 import {KeepAwake, KeepAwakeIndicator} from './lib/keepAwake.js';
 import {logError, setDebug} from './lib/util.js';
 
@@ -210,17 +210,17 @@ export default class AeroMenuGlobalExtension extends Extension {
         });
         this._tray.setWatcher(this._trayWatcher);
 
-        // O OSD do GNOME (volume/brilho) passa por um ponto só: o volume vai
-        // para o HUD no centro da tela (estilo macOS); o brilho, para os
-        // alertas do relógio (que se registra ao ser criado).
+        // O OSD do GNOME passa por um ponto só, e TODOS os avisos (volume,
+        // brilho, luz do teclado, Caps Lock, microfone…) saem no mesmo HUD no
+        // centro da tela, no padrão do macOS.
+        const iconsDir = this.dir.get_child('icons');
         this._osd = new OsdOverride();
-        this._volumeHud = new VolumeHud(this._settings);
+        this._hud = new OsdHud(this._settings, this._osd, iconsDir);
 
-        // Botão "Manter Tela Ligada" nas Configurações Rápidas (+ aviso no
-        // centro da tela ao ligar/desligar).
+        // Botão "Manter Tela Ligada" nas Configurações Rápidas (o aviso ao
+        // ligar/desligar sai no mesmo HUD).
         this._keepAwakeIndicator = new KeepAwakeIndicator(this._keepAwake,
-            this._settings, this.dir.get_child('icons'));
-        this._osd.setHandler('volume', osd => this._volumeHud.handleOsd(osd));
+            this._settings, iconsDir, this._hud);
 
         // A ilha (notch) no lugar do relógio, se ligada nas preferências.
         this._island = null;
@@ -238,7 +238,6 @@ export default class AeroMenuGlobalExtension extends Extension {
                     clipboard: this._clipboard,
                     fileTray: this._fileTray,
                     usage: this._usage,
-                    osd: this._osd,
                 });
         } else if (!wanted && this._island) {
             this._island.destroy();
@@ -267,10 +266,10 @@ export default class AeroMenuGlobalExtension extends Extension {
         this._island = null;
 
         // O OSD por último: devolve os métodos originais do GNOME.
-        this._volumeHud?.destroy();
-        this._volumeHud = null;
         this._keepAwakeIndicator?.destroy();
         this._keepAwakeIndicator = null;
+        this._hud?.destroy();
+        this._hud = null;
         this._osd?.destroy();
         this._osd = null;
 

@@ -211,7 +211,7 @@
     <!-- Volume, brilho e bateria (Fase 2) -->
     <key name="alert-volume" type="b">
       <default>true</default>
-      <summary>Show volume changes in a macOS-style HUD in the center of the screen instead of GNOME’s pop-up</summary>
+      <summary>Show volume changes in the macOS-style HUD in the center of the screen instead of GNOME’s pop-up</summary>
     </key>
     <key name="alert-keep-awake" type="b">
       <default>true</default>
@@ -219,15 +219,11 @@
     </key>
     <key name="volume-hud-show-percentage" type="b">
       <default>true</default>
-      <summary>Show the percentage number in the volume HUD</summary>
+      <summary>Show the percentage number in the HUD in the center of the screen (volume and brightness)</summary>
     </key>
     <key name="alert-brightness" type="b">
       <default>true</default>
-      <summary>Show brightness changes in the top-right alert instead of GNOME’s pop-up</summary>
-    </key>
-    <key name="osd-show-percentage" type="b">
-      <default>true</default>
-      <summary>Show the percentage number in brightness alerts</summary>
+      <summary>Show screen and keyboard backlight changes in the HUD in the center of the screen instead of GNOME’s pop-up</summary>
     </key>
     <key name="battery-icon-enabled" type="b">
       <default>true</default>
@@ -241,7 +237,7 @@
     <!-- Alertas (Fase 2) -->
     <key name="alert-battery-low" type="b"><default>true</default><summary>Alert when the battery drops to 20% and 10%</summary></key>
     <key name="alert-battery-full" type="b"><default>false</default><summary>Alert when the battery is fully charged</summary></key>
-    <key name="alert-caps-lock" type="b"><default>true</default><summary>Alert when Caps Lock is turned on or off</summary></key>
+    <key name="alert-caps-lock" type="b"><default>true</default><summary>Show in the HUD in the center of the screen when Caps Lock is turned on or off</summary></key>
     <key name="alert-bluetooth" type="b"><default>true</default><summary>Alert when a Bluetooth device connects or disconnects</summary></key>
     <key name="alert-network" type="b"><default>true</default><summary>Alert when the computer goes offline</summary></key>
     <key name="alert-events" type="b"><default>true</default><summary>Alert before calendar events</summary></key>

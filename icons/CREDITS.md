@@ -32,3 +32,4 @@ cor oficial da marca na versão colorida).
 | Arquivos | Origem | Licença |
 |---|---|---|
 | `keep-awake-symbolic.svg`, `keep-awake-off-symbolic.svg` | Xícara (com e sem fumaça) desenhada para o Aero Menu Global — usada em "Manter Tela Ligada" | GPL-3.0-or-later (a mesma do projeto) |
+| `caps-lock-symbolic.svg`, `caps-lock-on-symbolic.svg` | Símbolo ⇪ (contorno = desligado, cheio = ligado) desenhado para o Aero Menu Global — usado no aviso do Caps Lock | GPL-3.0-or-later (a mesma do projeto) |

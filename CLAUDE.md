@@ -355,6 +355,19 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   `dev/test-apps/fake-session-manager.js` no barramento dela. Bloqueio REAL (`screenShield.lock`) no
   aninhado trava o Eval (pede senha): usar `pushMode('unlock-dialog')` dentro de UM Eval assíncrono
   (a devtools é desativada no bloqueio e o Eval para de responder até o fim).
+- **HUD único no centro (2026-11-15, pedido do usuário: "tudo padronizado")**: `lib/osdHud.js`
+  (`OsdHud`, substitui o `volumeHud.js`) mostra TODOS os avisos no mesmo HUD/tamanho (caixa
+  fixa, conteúdo centralizado): volume (mixer), brilho da tela e luz do teclado (o GNOME 51 chama
+  `osdWindowManager.show` em QUALQUER mudança de brilho — teclas e o controle das Configurações
+  Rápidas, `brightnessManager._sync` → `_showOSD`), Caps Lock (keymap `state-changed`; sem
+  barra/porcentagem — pedido do usuário), Manter Tela Ligada e qualquer outro OSD (kind 'other'
+  no `osdOverride.js`, inclusive sem nível). Os alertas de NÍVEL saíram do relógio
+  (`AlertPresenter.showLevel` removido; Caps Lock saiu do `systemAlerts.js`). Chave
+  `osd-show-percentage` removida; `volume-hud-show-percentage` vale para volume e brilho.
+  Ícones próprios `icons/caps-lock{,-on}-symbolic.svg`. Preferências › Alertas › "Centro da Tela".
+- **Aninhado sem quadros**: se a janela do mutter-devkit fica escondida, NENHUMA animação avança
+  (transição "tocando" com elapsed 0, inclusive `Main.panel.ease`). Para capturas, desligar
+  `org.gnome.desktop.interface enable-animations` DENTRO do aninhado (banco isolado).
 - **Missão 5 (2026-11-15)**: ícones de bandeja nativos. `lib/tray/watcher.js`
   (`org.kde.StatusNotifierWatcher` em `/StatusNotifierWatcher`; registro por NOME → caminho
   `/StatusNotifierItem`, ou por CAMINHO → nome = quem chamou (libayatana); `bus_watch_name`

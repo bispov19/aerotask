@@ -560,26 +560,6 @@
     color: rgba(150, 150, 150, 1);
 }
 
-/* A barra do centro de controle (classe "slider" do tema), mais fina. */
-.aero-alert-level {
-    min-width: 170px;
-    height: 8px;
-    -barlevel-height: 8px;
-    -barlevel-active-background-color: -st-accent-color;
-}
-
-/* Número com largura fixa: "9%" → "100%" sem o pop-up tremer. */
-.aero-alert-value {
-    min-width: 3.4em;
-    text-align: right;
-    font-feature-settings: "tnum";
-}
-
-/* Acima de 100% (volume amplificado): a cor de "overdrive" do GNOME. */
-.aero-alert-over {
-    color: #ed5f5d;
-}
-
 .aero-alert-close {
     padding: 4px;
     border-radius: 99px;
@@ -919,55 +899,56 @@
 }
 
 
-/* ---------- HUDs no centro da tela, estilo macOS ----------
- * .aero-hud = a caixa comum (lib/centerHud.js): volume e "tela ligada". */
+/* ---------- HUD no centro da tela, estilo macOS (lib/osdHud.js) ----------
+ * Um só para tudo: volume, brilho, luz do teclado, Caps Lock, Manter Tela
+ * Ligada e os outros avisos do GNOME. .aero-hud = a caixa (lib/centerHud.js). */
 .aero-hud {
+    /* Mesmo tamanho para todos os avisos (o do aviso com barra). */
     min-width: 200px;
+    min-height: 142px;
     padding: 28px 22px 20px;
-    spacing: 18px;
     border-radius: 24px;
     background-color: rgba(30, 30, 33, 0.86);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: #ffffff;
 }
 
-.aero-volume-hud-icon,
-.aero-awake-hud-icon {
+.aero-osd-hud-content {
+    spacing: 18px;
+}
+
+.aero-osd-hud-icon {
     icon-size: 80px;
 }
 
-/* HUD de "tela ligada": ícone + uma linha de texto. */
-.aero-awake-hud {
-    min-width: 200px;
-}
-
-.aero-awake-hud-label {
+/* Texto embaixo do ícone: "Caps Lock ativado", "Tela sempre ligada"… */
+.aero-osd-hud-caption {
     font-weight: bold;
 }
 
-.aero-volume-hud-bar {
+.aero-osd-hud-bar {
     spacing: 2px;
 }
 
 /* Os 16 quadradinhos: apagados; cheios (":checked") em branco. */
-.aero-volume-hud-segment {
+.aero-osd-hud-segment {
     width: 8px;
     height: 7px;
     border-radius: 1px;
     background-color: rgba(255, 255, 255, 0.18);
 }
 
-.aero-volume-hud-segment:checked {
+.aero-osd-hud-segment:checked {
     background-color: #ffffff;
 }
 
-.aero-volume-hud-value {
+.aero-osd-hud-value {
     font-weight: bold;
     font-feature-settings: "tnum";
 }
 
-/* Acima de 100%: a cor de "overdrive" do GNOME. */
-.aero-volume-hud-over {
+/* Acima de 100% (volume amplificado): a cor de "overdrive" do GNOME. */
+.aero-osd-hud-over {
     color: #ed5f5d;
 }
 
