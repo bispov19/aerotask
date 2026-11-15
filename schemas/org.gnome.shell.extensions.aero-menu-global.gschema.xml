@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Configurações do Luma Menu (GSettings).
+  Configurações do Aero Menu Global (GSettings).
 
   Por que GSettings e não um arquivo JSON? Porque o GSettings avisa na hora
   (sinal "changed::chave") quando uma opção muda — é isso que permite que a
@@ -9,29 +9,29 @@
   O texto de <summary> aparece em ferramentas como o dconf-editor; a interface
   da extensão usa os seus próprios textos traduzidos.
 -->
-<schemalist gettext-domain="luma-menu">
-  <enum id="org.gnome.shell.extensions.luma-menu.ClockPosition">
+<schemalist gettext-domain="aero-menu-global">
+  <enum id="org.gnome.shell.extensions.aero-menu-global.ClockPosition">
     <value nick="center" value="0"/>
     <value nick="right" value="1"/>
   </enum>
-  <enum id="org.gnome.shell.extensions.luma-menu.IconStyle">
+  <enum id="org.gnome.shell.extensions.aero-menu-global.IconStyle">
     <value nick="symbolic" value="0"/>
     <value nick="color" value="1"/>
   </enum>
-  <enum id="org.gnome.shell.extensions.luma-menu.ShortcutStyle">
+  <enum id="org.gnome.shell.extensions.aero-menu-global.ShortcutStyle">
     <value nick="text" value="0"/>
     <value nick="symbols" value="1"/>
   </enum>
-  <enum id="org.gnome.shell.extensions.luma-menu.TemperatureUnit">
+  <enum id="org.gnome.shell.extensions.aero-menu-global.TemperatureUnit">
     <value nick="celsius" value="0"/>
     <value nick="fahrenheit" value="1"/>
   </enum>
-  <enum id="org.gnome.shell.extensions.luma-menu.WeatherLocationMode">
+  <enum id="org.gnome.shell.extensions.aero-menu-global.WeatherLocationMode">
     <value nick="auto" value="0"/>
     <value nick="manual" value="1"/>
   </enum>
 
-  <schema id="org.gnome.shell.extensions.luma-menu" path="/org/gnome/shell/extensions/luma-menu/">
+  <schema id="org.gnome.shell.extensions.aero-menu-global" path="/org/gnome/shell/extensions/aero-menu-global/">
 
     <!-- ===================== Geral ===================== -->
     <key name="show-fallback-menus" type="b">
@@ -42,7 +42,7 @@
       <default>true</default>
       <summary>Hide the Activities button</summary>
     </key>
-    <key name="clock-position" enum="org.gnome.shell.extensions.luma-menu.ClockPosition">
+    <key name="clock-position" enum="org.gnome.shell.extensions.aero-menu-global.ClockPosition">
       <!-- Padrão "right": como no macOS, e libera o painel inteiro para os menus. -->
       <default>'right'</default>
       <summary>Clock position in the top bar</summary>
@@ -86,11 +86,11 @@
       <default>16</default>
       <summary>System icon size in logical pixels</summary>
     </key>
-    <key name="icon-style" enum="org.gnome.shell.extensions.luma-menu.IconStyle">
+    <key name="icon-style" enum="org.gnome.shell.extensions.aero-menu-global.IconStyle">
       <default>'symbolic'</default>
       <summary>Symbolic (monochrome) or colored system icon</summary>
     </key>
-    <key name="shortcut-style" enum="org.gnome.shell.extensions.luma-menu.ShortcutStyle">
+    <key name="shortcut-style" enum="org.gnome.shell.extensions.aero-menu-global.ShortcutStyle">
       <default>'text'</default>
       <summary>Show shortcuts as text (Ctrl+C) or Mac-style symbols (⌃C)</summary>
     </key>
@@ -161,7 +161,7 @@
          existem para o prefs e o código usarem sempre os mesmos nomes. -->
     <key name="island-enabled" type="b">
       <default>true</default>
-      <summary>Replace the GNOME clock with the Luma clock (right corner) and its Isle-style panel</summary>
+      <summary>Replace the GNOME clock with the Aero Menu Global clock (right corner) and its Isle-style panel</summary>
     </key>
     <key name="island-show-date" type="b">
       <default>true</default>
@@ -183,11 +183,11 @@
       <default>true</default>
       <summary>Show the current temperature beside the clock</summary>
     </key>
-    <key name="weather-unit" enum="org.gnome.shell.extensions.luma-menu.TemperatureUnit">
+    <key name="weather-unit" enum="org.gnome.shell.extensions.aero-menu-global.TemperatureUnit">
       <default>'celsius'</default>
       <summary>Temperature unit</summary>
     </key>
-    <key name="weather-location-mode" enum="org.gnome.shell.extensions.luma-menu.WeatherLocationMode">
+    <key name="weather-location-mode" enum="org.gnome.shell.extensions.aero-menu-global.WeatherLocationMode">
       <default>'auto'</default>
       <summary>Weather location: automatic (GNOME weather settings) or a chosen city</summary>
     </key>
@@ -259,7 +259,7 @@
     </key>
     <key name="clipboard-save-history" type="b">
       <default>true</default>
-      <summary>Keep the clipboard history between sessions (saved in ~/.local/share/luma-menu)</summary>
+      <summary>Keep the clipboard history between sessions (saved in ~/.local/share/aero-menu-global)</summary>
     </key>
     <key name="clipboard-paste-on-select" type="b">
       <default>true</default>

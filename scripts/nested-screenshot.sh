@@ -3,11 +3,11 @@
 #
 # Uso:
 #   ./scripts/nested-screenshot.sh [arquivo.png]
-# Padrão: ~/.local/state/luma-menu/nested-screenshot.png
+# Padrão: ~/.local/state/aero-menu-global/nested-screenshot.png
 
 set -euo pipefail
 
-STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/luma-menu"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/aero-menu-global"
 BUS_FILE="$STATE_DIR/nested-bus"
 OUT="$(realpath -m "${1:-$STATE_DIR/nested-screenshot.png}")"
 [ -s "$BUS_FILE" ] || { echo "Sessão aninhada não está rodando (rode scripts/dev-nested.sh)." >&2; exit 1; }

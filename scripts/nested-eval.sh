@@ -9,7 +9,7 @@
 
 set -euo pipefail
 
-BUS_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/luma-menu/nested-bus"
+BUS_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/aero-menu-global/nested-bus"
 [ -s "$BUS_FILE" ] || { echo "Sessão aninhada não está rodando (rode scripts/dev-nested.sh)." >&2; exit 1; }
 
 DBUS_SESSION_BUS_ADDRESS="$(cut -d"#" -f1 "$BUS_FILE")" gdbus call --session \

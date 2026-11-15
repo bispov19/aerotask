@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later
- * Luma Menu — estilos.
+ * Aero Menu Global — estilos.
  *
- * Toda classe começa com "luma-" para nunca colidir com o tema (WhiteSur)
+ * Toda classe começa com "aero-" para nunca colidir com o tema (WhiteSur)
  * nem com outras extensões.
  *
  * Sobre especificidade: o tema estiliza os botões com "#panel .panel-button"
  * (1 id + 1 classe). Para o nosso valor ganhar, o seletor precisa ser mais
- * específico: "#panel .panel-button.luma-…" (1 id + 2 classes).
+ * específico: "#panel .panel-button.aero-…" (1 id + 2 classes).
  *
  * Cores: usamos cinzas semitransparentes, que funcionam tanto em tema escuro
  * quanto claro, e a cor de destaque do sistema (-st-accent-color, a mesma
@@ -16,20 +16,20 @@
 
 /* ============================== Barra ============================== */
 
-.luma-menu-bar {
+.aero-menu-bar {
     spacing: 0;
 }
 
 /* Espaçamento lateral dos títulos (sobrescrito ao vivo pela preferência
  * "Espaçamento"). -natural-hpadding / -minimum-hpadding são propriedades do
  * GNOME Shell lidas pelo PanelMenu.ButtonBox (não são CSS padrão da web). */
-#panel .panel-button.luma-menu-title {
+#panel .panel-button.aero-menu-title {
     -natural-hpadding: 6px;
     -minimum-hpadding: 3px;
     font-weight: normal;
 }
 
-#panel .panel-button.luma-menu-system-button {
+#panel .panel-button.aero-menu-system-button {
     -natural-hpadding: 12px;
     -minimum-hpadding: 8px;
 }
@@ -37,7 +37,7 @@
 /* Nome do app em negrito (preferência "Nome do app em negrito").
  * Precisa ser MAIS específico que a regra acima (que deixa os títulos em peso
  * normal): 1 id + 3 classes vence 1 id + 2 classes. */
-#panel .luma-menu-bold-app .panel-button.luma-menu-app-title {
+#panel .aero-menu-bold-app .panel-button.aero-menu-app-title {
     font-weight: bold;
 }
 
@@ -45,21 +45,21 @@
  * nome nunca some por completo. Atenção: a regra vai no RÓTULO, não no botão
  * — o PanelMenu.ButtonBox calcula a própria largura em JS e ignora
  * min-width/max-width aplicados a ele. */
-.luma-menu-app-label {
+.aero-menu-app-label {
     max-width: 240px;
     min-width: 64px;
 }
 
 /* Tamanho do logo em pixels LÓGICOS: com escala 1,5× o Shell desenha o SVG a
  * 24 px físicos — por isso ele fica nítido em qualquer escala. */
-.luma-menu-system-icon {
+.aero-menu-system-icon {
     icon-size: 16px;
 }
 
 /* ========================== Menus suspensos ========================== */
 
 /* Sem "setinha" apontando para o título, como no macOS. */
-.luma-menu-boxpointer {
+.aero-menu-boxpointer {
     -arrow-rise: 0px;
     -arrow-base: 0px;
     -arrow-border-radius: 10px;
@@ -71,7 +71,7 @@
 
 /* Visual do Isle: o menu "sai" da barra, então encosta nela (sem vão). O
  * fundo é a forma de vidro fumê desenhada atrás (lib/island/surface.js). */
-.luma-menu-boxpointer.luma-menu-island-look {
+.aero-menu-boxpointer.aero-menu-island-look {
     -boxpointer-gap: 0px;
 }
 
@@ -82,8 +82,8 @@
  * (medida no menu de status: 8 px abaixo da barra, 12 px das bordas da
  * tela), para todos os pop-ups ficarem padronizados. Seletor com duas
  * classes para vencer o ".popup-menu-content" do tema. */
-.popup-menu-content.luma-menu-content,
-.luma-menu-content {
+.popup-menu-content.aero-menu-content,
+.aero-menu-content {
     min-width: 200px;
     padding: 5px;
     margin: 8px 12px 0 12px;
@@ -92,7 +92,7 @@
     box-shadow: none;
 }
 
-.luma-menu-item {
+.aero-menu-item {
     padding: 3px 10px 3px 4px;
     margin: 0;
     border-radius: 5px;
@@ -101,150 +101,150 @@
 }
 
 /* Item sob o mouse / foco do teclado: destaque com a cor do sistema. */
-.luma-menu-item:selected,
-.luma-menu-item:checked {
+.aero-menu-item:selected,
+.aero-menu-item:checked {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
 /* Item desabilitado (cinza), como no macOS. */
-.luma-menu-item:insensitive {
+.aero-menu-item:insensitive {
     color: rgba(128, 128, 128, 0.85);
 }
 
 /* Coluna do ✓ (sempre ocupa espaço, para alinhar os rótulos). */
-.luma-menu-check {
+.aero-menu-check {
     min-width: 14px;
     text-align: center;
 }
 
-.luma-menu-item-icon {
+.aero-menu-item-icon {
     icon-size: 16px;
 }
 
 /* Atalho à direita, em cinza. */
-.luma-menu-accel {
+.aero-menu-accel {
     padding-left: 24px;
     color: rgba(150, 150, 150, 1);
 }
 
-.luma-menu-item:selected .luma-menu-accel {
+.aero-menu-item:selected .aero-menu-accel {
     color: inherit;
 }
 
-.luma-menu-arrow {
+.aero-menu-arrow {
     padding-left: 24px;
     font-weight: bold;
 }
 
 /* Títulos de seção ("Aplicativos", "Documentos"): pequenos e cinza. */
-.luma-menu-header {
+.aero-menu-header {
     font-size: 0.85em;
     font-weight: bold;
     color: rgba(140, 140, 140, 1);
 }
 
 /* Separador fino. */
-.luma-menu-separator {
+.aero-menu-separator {
     padding: 4px 8px;
 }
 
-.luma-menu-separator .popup-separator-menu-item-separator {
+.aero-menu-separator .popup-separator-menu-item-separator {
     height: 1px;
     background-color: rgba(128, 128, 128, 0.32);
 }
 
 /* ===================== Busca do menu Ajuda ===================== */
 
-.luma-menu-search-item {
+.aero-menu-search-item {
     padding: 4px 6px 6px;
 }
 
-.luma-menu-search-entry {
+.aero-menu-search-entry {
     min-width: 260px;
     padding: 4px 8px;
     border-radius: 6px;
 }
 
-.luma-menu-search-icon {
+.aero-menu-search-icon {
     icon-size: 14px;
     padding-right: 6px;
 }
 
 /* ======================= Sobre Este Computador ======================= */
 
-.luma-about-box {
+.aero-about-box {
     spacing: 6px;
     padding: 12px 24px 4px;
     min-width: 380px;
 }
 
-.luma-about-logo {
+.aero-about-logo {
     margin-bottom: 8px;
 }
 
-.luma-about-title {
+.aero-about-title {
     font-size: 1.6em;
     font-weight: bold;
 }
 
-.luma-about-version {
+.aero-about-version {
     color: rgba(150, 150, 150, 1);
     margin-bottom: 14px;
 }
 
-.luma-about-grid {
+.aero-about-grid {
     spacing-rows: 6px;
     spacing-columns: 12px;
 }
 
-.luma-about-key {
+.aero-about-key {
     color: rgba(150, 150, 150, 1);
 }
 
-.luma-about-value {
+.aero-about-value {
     max-width: 300px;
 }
 
 /* ======================= Forçar Encerramento ======================= */
 
-.luma-force-quit-box {
+.aero-force-quit-box {
     spacing: 10px;
     min-width: 420px;
 }
 
-.luma-force-quit-title {
+.aero-force-quit-title {
     font-size: 1.2em;
     font-weight: bold;
 }
 
-.luma-force-quit-hint {
+.aero-force-quit-hint {
     color: rgba(150, 150, 150, 1);
 }
 
-.luma-force-quit-scroll {
+.aero-force-quit-scroll {
     max-height: 320px;
     border-radius: 8px;
     border: 1px solid rgba(128, 128, 128, 0.28);
     padding: 4px;
 }
 
-.luma-force-quit-row {
+.aero-force-quit-row {
     padding: 4px 8px;
     border-radius: 6px;
 }
 
-.luma-force-quit-row:hover {
+.aero-force-quit-row:hover {
     background-color: rgba(128, 128, 128, 0.18);
 }
 
-.luma-force-quit-row:checked,
-.luma-force-quit-row:focus:checked {
+.aero-force-quit-row:checked,
+.aero-force-quit-row:focus:checked {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.luma-force-quit-row-box {
+.aero-force-quit-row-box {
     spacing: 10px;
 }
 
@@ -256,146 +256,146 @@
 
 /* Mesmo peso dos títulos "Arquivo", "Editar"… (o tema põe negrito nos
  * botões do painel; no macOS o relógio tem peso normal). */
-#panel .panel-button.luma-island-clock {
+#panel .panel-button.aero-island-clock {
     -natural-hpadding: 10px;
     -minimum-hpadding: 6px;
     font-weight: normal;
 }
 
-.luma-island-clock-box,
-.luma-island-activities {
+.aero-island-clock-box,
+.aero-island-activities {
     spacing: 7px;
 }
 
-.luma-island-time,
-.luma-island-date {
+.aero-island-time,
+.aero-island-date {
     font-feature-settings: "tnum";
 }
 
 /* ---------- Pop-up do relógio (abas do Isle) ----------
- * O pop-up é um menu do Luma (.luma-menu-content: mesma cor, opacidade e
+ * O pop-up é um menu do Aero (.aero-menu-content: mesma cor, opacidade e
  * cantos dos outros menus). O conteúdo inteiro é um único item, sem destaque
  * nem recuo. */
-.luma-island-panel {
+.aero-island-panel {
     padding: 0;
     margin: 0;
 }
 
-.luma-island-content {
+.aero-island-content {
     min-width: 540px;
     padding: 4px 6px 6px;
     spacing: 10px;
 }
 
-.luma-island-header {
+.aero-island-header {
     spacing: 8px;
 }
 
-.luma-island-tabs {
+.aero-island-tabs {
     spacing: 4px;
 }
 
 /* Abas: como os itens dos menus — cinza no hover, cor de destaque na ativa. */
-.luma-island-tab {
+.aero-island-tab {
     padding: 3px 10px;
     border-radius: 99px;
     color: inherit;
 }
 
-.luma-island-tab:hover {
+.aero-island-tab:hover {
     background-color: rgba(128, 128, 128, 0.18);
 }
 
-.luma-island-tab:checked {
+.aero-island-tab:checked {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.luma-island-page {
+.aero-island-page {
     padding: 4px 8px 6px;
 }
 
-.luma-island-calendar {
+.aero-island-calendar {
     spacing: 18px;
 }
 
-.luma-island-events {
+.aero-island-events {
     spacing: 8px;
     min-width: 230px;
 }
 
-.luma-island-events-title {
+.aero-island-events-title {
     font-weight: bold;
 }
 
-.luma-island-events-scroll {
+.aero-island-events-scroll {
     max-height: 190px;
 }
 
-.luma-island-events-list {
+.aero-island-events-list {
     spacing: 6px;
 }
 
-.luma-island-event {
+.aero-island-event {
     spacing: 10px;
     padding: 5px 8px;
     border-radius: 6px;
     background-color: rgba(128, 128, 128, 0.12);
 }
 
-.luma-island-event-time {
+.aero-island-event-time {
     color: rgba(150, 150, 150, 1);
     font-feature-settings: "tnum";
 }
 
-.luma-island-placeholder {
+.aero-island-placeholder {
     color: rgba(150, 150, 150, 1);
     padding: 4px 0;
 }
 
-.luma-island-world-clocks {
+.aero-island-world-clocks {
     margin-top: 4px;
 }
 
 /* ---------- Temperatura ao lado do relógio ---------- */
-.luma-island-weather {
+.aero-island-weather {
     spacing: 4px;
 }
 
-.luma-island-weather-icon {
+.aero-island-weather-icon {
     icon-size: 16px;
 }
 
 /* Largura mínima + dígitos tabulares: "9°" → "10°" não empurra o relógio. */
-.luma-island-weather-temp {
+.aero-island-weather-temp {
     min-width: 2.2em;
     font-feature-settings: "tnum";
 }
 
-.luma-island-weather-condition {
+.aero-island-weather-condition {
     color: rgba(150, 150, 150, 1);
 }
 
 /* ---------- Bateria estilo MacBook ---------- */
-.luma-battery {
+.aero-battery {
     spacing: 5px;
     padding: 0 2px;
 }
 
 /* Proporção ~2:1, altura alinhada aos outros ícones (16 px). */
-.luma-battery-icon {
+.aero-battery-icon {
     width: 26px;
     height: 12px;
 }
 
-.luma-battery-label {
+.aero-battery-label {
     font-feature-settings: "tnum";
     min-width: 2.6em;
     text-align: right;
 }
 
-/* Dica ao passar o ponteiro: como os menus do Luma (vidro escuro). */
-.luma-battery-tooltip {
+/* Dica ao passar o ponteiro: como os menus do Aero (vidro escuro). */
+.aero-battery-tooltip {
     background-color: rgba(20, 20, 22, 0.94);
     color: #ffffff;
     border-radius: 8px;
@@ -404,7 +404,7 @@
 }
 
 /* ---------- Banners de notificação no canto direito ----------
- * O relógio do Luma alinha os banners pela direita (embaixo dele). O tema
+ * O relógio do Aero alinha os banners pela direita (embaixo dele). O tema
  * (WhiteSur) dá 8 px de margem; os pop-ups usam 12 px da borda, como o
  * centro de controle: a margem direita igual deixa notificação, relógio e
  * calendário na mesma linha. (Duas classes para vencer a do tema.) */
@@ -413,54 +413,54 @@
 }
 
 /* ---------- Página Notificações ---------- */
-.luma-island-unseen {
+.aero-island-unseen {
     icon-size: 16px;
 }
 
-.luma-notifications {
+.aero-notifications {
     spacing: 8px;
     min-width: 420px;
 }
 
-.luma-notifications-bar {
+.aero-notifications-bar {
     spacing: 8px;
 }
 
 /* Botões em "pílula" (Não Perturbe, Limpar, ações): cinza translúcido, como
  * os botões das notificações do GNOME. Ligado = cor de destaque. */
-.luma-island-pill {
+.aero-island-pill {
     padding: 4px 12px;
     border-radius: 99px;
     background-color: rgba(128, 128, 128, 0.18);
     color: inherit;
 }
 
-.luma-island-pill:hover {
+.aero-island-pill:hover {
     background-color: rgba(128, 128, 128, 0.28);
 }
 
-.luma-island-pill:checked {
+.aero-island-pill:checked {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.luma-island-pill-box {
+.aero-island-pill-box {
     spacing: 6px;
 }
 
-.luma-island-pill-icon {
+.aero-island-pill-icon {
     icon-size: 14px;
 }
 
-.luma-notifications-scroll {
+.aero-notifications-scroll {
     max-height: 320px;
 }
 
-.luma-notifications-list {
+.aero-notifications-list {
     spacing: 6px;
 }
 
-.luma-notification {
+.aero-notification {
     padding: 8px 10px;
     border-radius: 10px;
     background-color: rgba(128, 128, 128, 0.12);
@@ -468,65 +468,65 @@
     text-align: left;
 }
 
-.luma-notification:hover {
+.aero-notification:hover {
     background-color: rgba(128, 128, 128, 0.2);
 }
 
-.luma-notification-box {
+.aero-notification-box {
     spacing: 4px;
 }
 
-.luma-notification-header {
+.aero-notification-header {
     spacing: 6px;
 }
 
-.luma-notification-app-icon {
+.aero-notification-app-icon {
     icon-size: 16px;
 }
 
-.luma-notification-meta {
+.aero-notification-meta {
     font-size: 0.9em;
     color: rgba(150, 150, 150, 1);
 }
 
-.luma-notification-close {
+.aero-notification-close {
     padding: 2px;
     border-radius: 99px;
     color: rgba(150, 150, 150, 1);
 }
 
-.luma-notification-close:hover {
+.aero-notification-close:hover {
     background-color: rgba(128, 128, 128, 0.25);
     color: inherit;
 }
 
-.luma-notification-close StIcon {
+.aero-notification-close StIcon {
     icon-size: 12px;
 }
 
-.luma-notification-content {
+.aero-notification-content {
     spacing: 10px;
 }
 
-.luma-notification-image {
+.aero-notification-image {
     icon-size: 32px;
 }
 
-.luma-notification-title {
+.aero-notification-title {
     font-weight: bold;
 }
 
-.luma-notification-actions {
+.aero-notification-actions {
     spacing: 6px;
     padding-top: 4px;
 }
 
-.luma-notifications-empty {
+.aero-notifications-empty {
     spacing: 6px;
     padding: 30px 0;
 }
 
-.luma-notifications-empty-icon {
+.aero-notifications-empty-icon {
     icon-size: 32px;
     color: rgba(150, 150, 150, 1);
 }
@@ -534,34 +534,34 @@
 /* ---------- Alertas (brilho, bateria, Caps Lock, rede, foco, eventos) ----------
  * O pop-up é o mesmo dos menus (classes do GNOME: popup-menu, popup-menu-item,
  * slider, button, icon-button). Aqui só o arranjo interno da linha. */
-.luma-alert {
+.aero-alert {
     min-width: 260px;
 }
 
-.luma-alert-row {
+.aero-alert-row {
     spacing: 12px;
 }
 
-.luma-alert-icon {
+.aero-alert-icon {
     icon-size: 20px;
 }
 
-.luma-alert-text {
+.aero-alert-text {
     spacing: 6px;
 }
 
-.luma-alert-title {
+.aero-alert-title {
     font-weight: bold;
 }
 
 /* Cinza dos atalhos dos menus. */
-.luma-alert-subtitle {
+.aero-alert-subtitle {
     font-size: 0.9em;
     color: rgba(150, 150, 150, 1);
 }
 
 /* A barra do centro de controle (classe "slider" do tema), mais fina. */
-.luma-alert-level {
+.aero-alert-level {
     min-width: 170px;
     height: 8px;
     -barlevel-height: 8px;
@@ -569,144 +569,144 @@
 }
 
 /* Número com largura fixa: "9%" → "100%" sem o pop-up tremer. */
-.luma-alert-value {
+.aero-alert-value {
     min-width: 3.4em;
     text-align: right;
     font-feature-settings: "tnum";
 }
 
 /* Acima de 100% (volume amplificado): a cor de "overdrive" do GNOME. */
-.luma-alert-over {
+.aero-alert-over {
     color: #ed5f5d;
 }
 
-.luma-alert-close {
+.aero-alert-close {
     padding: 4px;
     border-radius: 99px;
     color: rgba(150, 150, 150, 1);
 }
 
-.luma-alert-close:hover {
+.aero-alert-close:hover {
     background-color: rgba(128, 128, 128, 0.2);
     color: inherit;
 }
 
-.luma-alert-close StIcon {
+.aero-alert-close StIcon {
     icon-size: 12px;
 }
 
 /* ---------- Timer de foco ao lado do relógio ---------- */
-.luma-island-focus-activity {
+.aero-island-focus-activity {
     spacing: 4px;
 }
 
-.luma-island-focus-icon {
+.aero-island-focus-icon {
     icon-size: 14px;
 }
 
-.luma-island-focus-time {
+.aero-island-focus-time {
     font-feature-settings: "tnum";
 }
 
 /* Na pausa, o tom da cor de destaque (como o Isle pinta a pausa de outra cor). */
-.luma-island-focus-break {
+.aero-island-focus-break {
     color: -st-accent-color;
 }
 
 /* ---------- Página Foco ---------- */
-.luma-focus {
+.aero-focus {
     spacing: 24px;
     padding: 6px 4px;
 }
 
-.luma-focus-ring {
+.aero-focus-ring {
     width: 150px;
     height: 150px;
-    -luma-ring-color: -st-accent-color;
+    -aero-ring-color: -st-accent-color;
 }
 
-.luma-focus-time {
+.aero-focus-time {
     font-size: 2em;
     font-weight: bold;
     font-feature-settings: "tnum";
 }
 
-.luma-focus-phase {
+.aero-focus-phase {
     color: rgba(150, 150, 150, 1);
 }
 
-.luma-focus-side {
+.aero-focus-side {
     spacing: 10px;
     min-width: 230px;
 }
 
-.luma-focus-stepper {
+.aero-focus-stepper {
     spacing: 8px;
 }
 
-.luma-focus-step {
+.aero-focus-step {
     padding: 4px;
     border-radius: 99px;
     background-color: rgba(128, 128, 128, 0.18);
     color: inherit;
 }
 
-.luma-focus-step:hover {
+.aero-focus-step:hover {
     background-color: rgba(128, 128, 128, 0.28);
 }
 
-.luma-focus-step StIcon {
+.aero-focus-step StIcon {
     icon-size: 12px;
 }
 
-.luma-focus-step-value {
+.aero-focus-step-value {
     min-width: 4.5em;
     text-align: center;
     font-feature-settings: "tnum";
 }
 
-.luma-focus-buttons {
+.aero-focus-buttons {
     spacing: 8px;
     padding-top: 6px;
 }
 
-.luma-focus-main {
+.aero-focus-main {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
     font-weight: bold;
 }
 
 /* ---------- Página Lembretes ---------- */
-.luma-reminders {
+.aero-reminders {
     spacing: 8px;
     min-width: 420px;
 }
 
-.luma-reminders-entry {
+.aero-reminders-entry {
     border-radius: 8px;
     padding: 6px 10px;
 }
 
-.luma-reminders-scroll {
+.aero-reminders-scroll {
     max-height: 300px;
 }
 
-.luma-reminders-list {
+.aero-reminders-list {
     spacing: 2px;
 }
 
-.luma-reminder {
+.aero-reminder {
     spacing: 10px;
     padding: 3px 4px;
     border-radius: 8px;
 }
 
-.luma-reminder:hover {
+.aero-reminder:hover {
     background-color: rgba(128, 128, 128, 0.12);
 }
 
 /* O círculo de "feito". */
-.luma-reminder-check {
+.aero-reminder-check {
     width: 18px;
     height: 18px;
     border-radius: 99px;
@@ -714,138 +714,138 @@
     padding: 0;
 }
 
-.luma-reminder-check:checked {
+.aero-reminder-check:checked {
     background-color: -st-accent-color;
     border-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.luma-reminder-check StIcon {
+.aero-reminder-check StIcon {
     icon-size: 12px;
 }
 
-.luma-reminder-text {
+.aero-reminder-text {
     color: inherit;
     padding: 4px 2px;
     text-align: left;
 }
 
 /* O St não passa text-decoration do botão para o rótulo: vai no rótulo. */
-.luma-reminder-done .luma-reminder-text,
-.luma-reminder-done .luma-reminder-text StLabel {
+.aero-reminder-done .aero-reminder-text,
+.aero-reminder-done .aero-reminder-text StLabel {
     text-decoration: line-through;
     color: rgba(150, 150, 150, 1);
 }
 
-.luma-reminders-empty {
+.aero-reminders-empty {
     padding: 24px 0;
 }
 
 /* ---------- Página Prateleira (área de transferência) ---------- */
-.luma-shelf {
+.aero-shelf {
     spacing: 8px;
     min-width: 440px;
 }
 
-.luma-shelf-top {
+.aero-shelf-top {
     spacing: 6px;
 }
 
-.luma-shelf-search-icon {
+.aero-shelf-search-icon {
     icon-size: 14px;
     color: rgba(150, 150, 150, 1);
     padding-right: 4px;
 }
 
-.luma-shelf-icon-button {
+.aero-shelf-icon-button {
     padding: 5px;
     border-radius: 99px;
     color: inherit;
 }
 
-.luma-shelf-icon-button:hover,
-.luma-shelf-icon-button:focus {
+.aero-shelf-icon-button:hover,
+.aero-shelf-icon-button:focus {
     background-color: rgba(128, 128, 128, 0.18);
 }
 
-.luma-shelf-icon-button StIcon {
+.aero-shelf-icon-button StIcon {
     icon-size: 14px;
 }
 
-.luma-shelf-note {
+.aero-shelf-note {
     color: rgba(150, 150, 150, 1);
     font-size: 0.9em;
 }
 
-.luma-shelf-scroll {
+.aero-shelf-scroll {
     max-height: 320px;
 }
 
-.luma-shelf-list {
+.aero-shelf-list {
     spacing: 2px;
 }
 
-.luma-shelf-row {
+.aero-shelf-row {
     spacing: 2px;
     border-radius: 8px;
 }
 
-.luma-shelf-row:hover {
+.aero-shelf-row:hover {
     background-color: rgba(128, 128, 128, 0.12);
 }
 
 /* Os botões de fixar/apagar só aparecem fortes no item sob o mouse. */
-.luma-shelf-row .luma-shelf-icon-button {
+.aero-shelf-row .aero-shelf-icon-button {
     color: rgba(150, 150, 150, 0.6);
 }
 
-.luma-shelf-row:hover .luma-shelf-icon-button {
+.aero-shelf-row:hover .aero-shelf-icon-button {
     color: inherit;
 }
 
-.luma-shelf-row .luma-shelf-pin:checked {
+.aero-shelf-row .aero-shelf-pin:checked {
     color: -st-accent-color;
 }
 
-.luma-shelf-item {
+.aero-shelf-item {
     padding: 4px 6px;
     border-radius: 8px;
     color: inherit;
     text-align: left;
 }
 
-.luma-shelf-item:focus {
+.aero-shelf-item:focus {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.luma-shelf-item > StBoxLayout {
+.aero-shelf-item > StBoxLayout {
     spacing: 10px;
 }
 
-.luma-shelf-item-icon {
+.aero-shelf-item-icon {
     icon-size: 16px;
 }
 
-.luma-shelf-item-title {
+.aero-shelf-item-title {
     max-width: 300px;
 }
 
-.luma-shelf-item-subtitle {
+.aero-shelf-item-subtitle {
     font-size: 0.85em;
     color: rgba(150, 150, 150, 1);
 }
 
-.luma-shelf-item:focus .luma-shelf-item-subtitle {
+.aero-shelf-item:focus .aero-shelf-item-subtitle {
     color: inherit;
 }
 
-.luma-shelf-thumb {
+.aero-shelf-thumb {
     border-radius: 6px;
 }
 
 /* Atalho para a bandeja de arquivos, no rodapé. */
-.luma-shelf-tray {
+.aero-shelf-tray {
     padding: 8px 10px;
     border-radius: 10px;
     background-color: rgba(128, 128, 128, 0.12);
@@ -853,67 +853,67 @@
     text-align: left;
 }
 
-.luma-shelf-tray:hover,
-.luma-shelf-tray:focus {
+.aero-shelf-tray:hover,
+.aero-shelf-tray:focus {
     background-color: rgba(128, 128, 128, 0.22);
 }
 
-.luma-shelf-tray > StBoxLayout {
+.aero-shelf-tray > StBoxLayout {
     spacing: 10px;
 }
 
-.luma-shelf-tray-icon {
+.aero-shelf-tray-icon {
     icon-size: 20px;
 }
 
-.luma-shelf-tray-title {
+.aero-shelf-tray-title {
     font-weight: bold;
 }
 
-.luma-shelf-tray-hint {
+.aero-shelf-tray-hint {
     font-size: 0.85em;
     color: rgba(150, 150, 150, 1);
 }
 
 /* ---------- Página Uso de apps ---------- */
-.luma-usage {
+.aero-usage {
     spacing: 10px;
     min-width: 440px;
 }
 
-.luma-usage-top {
+.aero-usage-top {
     spacing: 4px;
 }
 
-.luma-usage-total {
+.aero-usage-total {
     color: rgba(150, 150, 150, 1);
     font-feature-settings: "tnum";
 }
 
-.luma-usage-list {
+.aero-usage-list {
     spacing: 8px;
 }
 
-.luma-usage-row {
+.aero-usage-row {
     spacing: 10px;
 }
 
-.luma-usage-name {
+.aero-usage-name {
     width: 130px;
 }
 
-.luma-usage-track {
+.aero-usage-track {
     height: 6px;
     border-radius: 99px;
     background-color: rgba(128, 128, 128, 0.18);
 }
 
-.luma-usage-bar {
+.aero-usage-bar {
     border-radius: 99px;
     background-color: -st-accent-color;
 }
 
-.luma-usage-time {
+.aero-usage-time {
     color: rgba(150, 150, 150, 1);
     font-feature-settings: "tnum";
 }

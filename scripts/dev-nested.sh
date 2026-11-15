@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Abre um GNOME Shell 51 "aninhado" (dentro de uma janela) usando o mutter-devkit,
-# já com o Luma Menu instalado e ativado.
+# já com o Aero Menu Global instalado e ativado.
 #
 # Por que isso existe: no Wayland não dá para reiniciar o Shell da sua sessão
 # (Alt+F2 → r só funcionava no X11). Para testar mudanças na extensão sem
@@ -12,10 +12,10 @@
 #
 # Isolamento de configurações (dconf):
 #   O GNOME guarda as configurações em ~/.config/dconf/user. Se o Shell aninhado
-#   usasse esse arquivo, ativar o Luma Menu lá dentro o ativaria também na sua
-#   sessão real. Então copiamos o arquivo para ~/.config/dconf/luma_menu_dev e
+#   usasse esse arquivo, ativar o Aero Menu Global lá dentro o ativaria também na sua
+#   sessão real. Então copiamos o arquivo para ~/.config/dconf/aero_menu_global_dev e
 #   apontamos o Shell aninhado para a cópia (variável DCONF_PROFILE). Resultado:
-#   mesmo tema e mesmas extensões (ótimo para testar compatibilidade com Luma
+#   mesmo tema e mesmas extensões (ótimo para testar compatibilidade com Aero
 #   Dock, Blur my Shell…), mas nada do que muda lá dentro vaza para cá.
 #   A cópia é refeita a cada execução.
 
@@ -23,11 +23,11 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 SIZE="${1:-1600x1000}"
-UUID=luma-menu@viniciusbispo19
-DEVTOOLS_UUID=luma-menu-devtools@viniciusbispo19
-DEV_DB=luma_menu_dev  # sem hífen: o nome vira parte de um caminho D-Bus (/ca/desrt/dconf/Writer/<nome>)
+UUID=aero-menu-global@viniciusbispo19
+DEVTOOLS_UUID=aero-menu-global-devtools@viniciusbispo19
+DEV_DB=aero_menu_global_dev  # sem hífen: o nome vira parte de um caminho D-Bus (/ca/desrt/dconf/Writer/<nome>)
 
-STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/luma-menu"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/aero-menu-global"
 mkdir -p "$STATE_DIR"
 LOG="$STATE_DIR/nested-$(date +%Y%m%d-%H%M%S).log"
 BUS_FILE="$STATE_DIR/nested-bus"   # endereço do D-Bus da sessão aninhada
@@ -48,8 +48,8 @@ gnome-extensions install --force "build/$DEVTOOLS_UUID.shell-extension.zip"
 printf 'user-db:%s\n' "$DEV_DB" > "$STATE_DIR/dconf-profile"
 export DCONF_PROFILE="$STATE_DIR/dconf-profile"
 export DCONF_DIR DEV_DB UUID DEVTOOLS_UUID
-# LUMA_MENU_DEV=1: avisa a extensão auxiliar que ela pode ligar o modo inseguro.
-export LUMA_MENU_DEV=1
+# AERO_MENU_DEV=1: avisa a extensão auxiliar que ela pode ligar o modo inseguro.
+export AERO_MENU_DEV=1
 # SHELL_DEBUG=backtrace-warnings: cada aviso/CRITICAL no log vem acompanhado
 # da pilha de chamadas JavaScript — mostra QUAL código causou o problema.
 export SHELL_DEBUG=backtrace-warnings

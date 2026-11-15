@@ -1,14 +1,14 @@
-# Portuguese translations for Luma Menu package
-# Traduções em português brasileiro para o pacote Luma Menu.
+# Portuguese translations for Aero Menu Global package
+# Traduções em português brasileiro para o pacote Aero Menu Global.
 # Copyright (C) 2026 Vinicius Bispo
-# This file is distributed under the same license as the Luma Menu package.
+# This file is distributed under the same license as the Aero Menu Global package.
 # Vinicius Bispo, 2026.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Luma Menu 0.1.0\n"
+"Project-Id-Version: Aero Menu Global 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/luma-menu/issues\n"
-"POT-Creation-Date: 2026-11-11 18:46-0300\n"
+"POT-Creation-Date: 2026-11-14 21:28-0300\n"
 "PO-Revision-Date: 2026-11-10 15:56-0300\n"
 "Last-Translator: Vinicius Bispo\n"
 "Language-Team: none\n"
@@ -853,8 +853,8 @@ msgstr ""
 "notificações, os itens copiados, o foco e os lembretes"
 
 #: prefs.js:217
-msgid "Use the Luma clock"
-msgstr "Usar o relógio do Luma"
+msgid "Use the Aero Menu Global clock"
+msgstr "Usar o relógio do Aero Menu Global"
 
 #: prefs.js:218
 msgid "Replaces the GNOME clock"

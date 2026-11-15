@@ -1,6 +1,6 @@
 # Créditos dos ícones
 
-Marcas registradas e logotipos pertencem aos seus respectivos donos. O Luma Menu
+Marcas registradas e logotipos pertencem aos seus respectivos donos. O Aero Menu Global
 usa os logos apenas para identificar a distribuição em uso, sem sugerir
 endosso ou afiliação.
 

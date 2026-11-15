@@ -13,7 +13,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-UUID=luma-menu@viniciusbispo19
+UUID=aero-menu-global@viniciusbispo19
 
 ./scripts/build.sh
 gnome-extensions install --force "build/$UUID.shell-extension.zip"

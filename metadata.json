@@ -1,13 +1,13 @@
 {
-  "uuid": "luma-menu@viniciusbispo19",
-  "name": "Luma Menu",
+  "uuid": "aero-menu-global@viniciusbispo19",
+  "name": "Aero Menu Global",
   "description": "Barra de menus global no estilo do macOS: ícone do sistema, nome do aplicativo em negrito e os menus Arquivo, Editar, Visualizar, Janela e Ajuda.",
   "shell-version": [
     "51"
   ],
   "url": "https://github.com/viniciusbispo19/luma-menu",
-  "gettext-domain": "luma-menu",
-  "settings-schema": "org.gnome.shell.extensions.luma-menu",
+  "gettext-domain": "aero-menu-global",
+  "settings-schema": "org.gnome.shell.extensions.aero-menu-global",
   "session-modes": [
     "user",
     "unlock-dialog"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Extrai as strings traduzíveis do código e atualiza as traduções.
 #
-#   1. xgettext varre os .js procurando _('...') e gera po/luma-menu.pot
+#   1. xgettext varre os .js procurando _('...') e gera po/aero-menu-global.pot
 #      (o "modelo" com todas as strings em inglês, sem tradução);
 #   2. msgmerge atualiza cada po/*.po com as strings novas/alteradas,
 #      sem perder o que já foi traduzido.
@@ -12,7 +12,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-DOMAIN=luma-menu
+DOMAIN=aero-menu-global
 VERSION=$(python3 -I -c 'import json; print(json.load(open("metadata.json"))["version-name"])')
 
 # Todos os .js da extensão (fora ferramentas de desenvolvimento).
@@ -30,7 +30,7 @@ xgettext \
     --keyword=_ --keyword=N_ \
     --keyword=ngettext:1,2 --keyword=pgettext:1c,2 \
     --add-comments=Translators \
-    --package-name="Luma Menu" \
+    --package-name="Aero Menu Global" \
     --package-version="$VERSION" \
     --msgid-bugs-address="https://github.com/viniciusbispo19/luma-menu/issues" \
     --output="po/$DOMAIN.pot" \

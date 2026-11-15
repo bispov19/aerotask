@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Luma Menu — ponto de entrada da extensão.
+// Aero Menu Global — ponto de entrada da extensão.
 //
 // O GNOME Shell importa este arquivo e cria UMA instância da classe exportada
 // como `default`. Depois ele chama enable() e disable() quantas vezes quiser.
@@ -29,9 +29,9 @@ import {ReminderStore} from './lib/island/services/reminders.js';
 import {MenuBar} from './lib/menuBar.js';
 import {PanelLayout} from './lib/panelLayout.js';
 import {Registrar} from './lib/sources/registrar.js';
-import {setDebug} from './lib/util.js';
+import {logError, setDebug} from './lib/util.js';
 
-export default class LumaMenuExtension extends Extension {
+export default class AeroMenuExtension extends Extension {
     enable() {
         this._settings = this.getSettings();
         setDebug(this._settings.get_boolean('debug'));
@@ -94,7 +94,15 @@ export default class LumaMenuExtension extends Extension {
     _syncRegistrar() {
         const wanted = this._settings.get_boolean('enable-registrar');
         if (wanted && !this._registrar) {
-            this._registrar = new Registrar();
+            // Outro programa (ou uma cópia antiga desta extensão, ainda ativa)
+            // já oferece o Registrar neste processo: seguimos sem a camada B
+            // em vez de deixar a extensão inteira falhar.
+            try {
+                this._registrar = new Registrar();
+            } catch (e) {
+                logError(e, 'Registrar indisponível (outro programa já o oferece); menus de apps Qt/Electron desligados');
+                this._registrar = null;
+            }
         } else if (!wanted && this._registrar) {
             this._registrar.destroy();
             this._registrar = null;

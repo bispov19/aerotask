@@ -3,7 +3,7 @@
 
 Uso interno do scripts/dev-nested.sh: roda DENTRO do barramento da sessão
 aninhada, antes do Shell subir. Também desliga a Global Menu for GNOME, para
-não haver conflito com o Luma Menu.
+não haver conflito com o Aero Menu Global.
 
 Uso: dconf-enable-extensions.py UUID [UUID...]
 """

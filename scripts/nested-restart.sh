@@ -3,12 +3,12 @@
 # termina quando o Shell NOVO responder pelo D-Bus. Útil no ciclo
 # "editar → testar": ./scripts/nested-restart.sh && ./scripts/nested-test.sh
 #
-# A saída do dev-nested.sh vai para ~/.local/state/luma-menu/nested-run.out
+# A saída do dev-nested.sh vai para ~/.local/state/aero-menu-global/nested-run.out
 
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/luma-menu"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/aero-menu-global"
 mkdir -p "$STATE_DIR"
 
 ./scripts/nested-stop.sh

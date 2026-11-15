@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Luma Menu package.
+# This file is distributed under the same license as the Aero Menu Global package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Luma Menu 0.1.0\n"
+"Project-Id-Version: Aero Menu Global 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/luma-menu/issues\n"
-"POT-Creation-Date: 2026-11-11 18:46-0300\n"
+"POT-Creation-Date: 2026-11-14 21:28-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -843,7 +843,7 @@ msgid ""
 msgstr ""
 
 #: prefs.js:217
-msgid "Use the Luma clock"
+msgid "Use the Aero Menu Global clock"
 msgstr ""
 
 #: prefs.js:218

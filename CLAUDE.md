@@ -1,4 +1,4 @@
-# Luma Menu — contexto do projeto
+# Aero Menu Global — contexto do projeto
 
 > Este arquivo é carregado automaticamente pelo Claude Code em toda sessão.
 > A seção "Achados verificados" é mantida atualizada a cada fase; abaixo dela
@@ -9,6 +9,17 @@
 Fases 0–9 concluídas em 2026-11-10 (ver `git log`). Testado e aprovado pelo usuário na
 sessão REAL. Pendências: Firefox não testado, envio ao extensions.gnome.org.
 Fluxo de teste: `./scripts/nested-restart.sh && ./scripts/nested-test.sh 10`.
+
+**Renomeado em 2026-11-14 (Missão 2): Luma Menu → Aero Menu Global.** UUID
+`aero-menu-global@viniciusbispo19`, schema `org.gnome.shell.extensions.aero-menu-global`
+(caminho `/org/gnome/shell/extensions/aero-menu-global/`), domínio gettext
+`aero-menu-global`, classes CSS `aero-*`, GTypes `AeroMenu*`, dados em
+`~/.local/share/aero-menu-global/` (o `storage.js` renomeia a pasta antiga UMA vez:
+`LEGACY_DATA_DIR = 'luma-menu'` é a única referência ao nome antigo no código).
+"Luma" que DEVE ficar: Luma Dock (outra extensão do usuário). O repositório no GitHub
+ainda se chama `luma-menu` (renomear só com confirmação do usuário).
+Se o Registrar já existir no processo (ex.: a extensão antiga ainda ativa), a extensão
+segue sem a camada B em vez de falhar.
 
 ## Achados verificados no sistema (atualizar a cada fase)
 
@@ -104,7 +115,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   sobrescreve `vfunc_allocate` para transbordar até o 1º item visível do centro/direita
   (`clip_to_allocation` evita desenhar por cima dos ícones).
 - `PanelMenu.ButtonBox` calcula a largura em JS: `min-width`/`max-width` no BOTÃO são
-  ignorados — aplicar no rótulo (`.luma-menu-app-label`).
+  ignorados — aplicar no rótulo (`.aero-menu-app-label`).
 - Just Perfection move o relógio ao iniciar (e tem guarda `child-added` nas caixas);
   o PanelLayout reaplica (máx. 3 em 10 s) e confere de novo após 3 s.
 - Ao desbloquear, o painel mostra o botão Atividades de novo: re-esconder em `notify::visible`.
@@ -126,7 +137,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   `dontCreateMenu=true` o menu é um `PopupDummyMenu` (não registrar no menuManager).
 - `PopupMenuManager.addMenu()` remove o menu sozinho no `destroy` dele.
 - Padding dos botões: propriedades CSS `-natural-hpadding` / `-minimum-hpadding`.
-  O tema usa `#panel .panel-button`; para vencer: `#panel .panel-button.luma-menu-…`.
+  O tema usa `#panel .panel-button`; para vencer: `#panel .panel-button.aero-menu-…`.
 - St recolore como simbólico arquivos que terminam em `-symbolic.svg` (confirmado no libst).
 - `ExtensionBase` chama `initTranslations()` no construtor (usa `gettext-domain` do
   metadata.json e a pasta `locale/`). `gettext` importado de `extension.js` acha a
@@ -140,24 +151,24 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 ### Sessão aninhada (mutter-devkit) — fluxo de desenvolvimento
 - `./scripts/dev-nested.sh`: empacota, instala, cria dconf isolado e abre o Shell aninhado.
   Comando base: `dbus-run-session -- gnome-shell --devkit --wayland --devkit-args="--monitor-size=1600x1000"`.
-- dconf isolado: copia `~/.config/dconf/user` → `~/.config/dconf/luma_menu_dev` e usa
-  `DCONF_PROFILE` (arquivo com `user-db:luma_menu_dev`). O nome do banco **não pode ter
+- dconf isolado: copia `~/.config/dconf/user` → `~/.config/dconf/aero_menu_global_dev` e usa
+  `DCONF_PROFILE` (arquivo com `user-db:aero_menu_global_dev`). O nome do banco **não pode ter
   hífen** (vira caminho D-Bus `/ca/desrt/dconf/Writer/<nome>`; com hífen o `gsettings set` trava).
-- `dev/luma-menu-devtools@viniciusbispo19`: liga `global.context.unsafe_mode` só com
-  `LUMA_MENU_DEV=1`. Isso libera `org.gnome.Shell.Eval` e `org.gnome.Shell.Screenshot`.
+- `dev/aero-menu-global-devtools@viniciusbispo19`: liga `global.context.unsafe_mode` só com
+  `AERO_MENU_DEV=1`. Isso libera `org.gnome.Shell.Eval` e `org.gnome.Shell.Screenshot`.
 - `./scripts/nested-eval.sh '<js>'` e `./scripts/nested-screenshot.sh [png]` falam com o
-  Shell aninhado pelo endereço salvo em `~/.local/state/luma-menu/nested-bus`.
+  Shell aninhado pelo endereço salvo em `~/.local/state/aero-menu-global/nested-bus`.
   No escopo do Eval existem `Main`, `global`, `Shell`, `Meta`, mas NÃO `Clutter` nem `St`
   (para criar um ator: `new (Main.panel._centerBox.constructor)({...})` = St.BoxLayout).
 - `./scripts/nested-test.sh [ciclos]`: ativa/desativa N vezes + bloqueio simulado e
-  só acusa avisos cuja pilha JS passa pelo `luma-menu@` (usa `SHELL_DEBUG=backtrace-warnings`).
+  só acusa avisos cuja pilha JS passa pelo `aero-menu-global@` (usa `SHELL_DEBUG=backtrace-warnings`).
 - `./scripts/nested-stop.sh`: encerra só o Shell aninhado. NUNCA usar
   `pkill -f 'gnome-shell --devkit'` (o padrão casa com o próprio shell e o mata).
 - dconf: cada barramento tem seu `dconf-service` com o banco em memória; por isso a
   cópia e as escritas no banco isolado são feitas DENTRO do barramento aninhado.
-- Logs da sessão aninhada: `~/.local/state/luma-menu/nested-*.log`.
+- Logs da sessão aninhada: `~/.local/state/aero-menu-global/nested-*.log`.
 - `MUTTER_DEBUG_DUMMY_MODE_SPECS` **não existe mais** no Mutter 51 (tutoriais antigos).
-- Ruído pré-existente no log (não é culpa do Luma Menu): `copyous@boerdereinar.dev` falha
+- Ruído pré-existente no log (não é culpa do Aero Menu Global): `copyous@boerdereinar.dev` falha
   ao importar `highlight.min.js` e gera `No object to track signals`; `dynamic-calendar…`
   gera `setSourceSurface … Not an object`; `hiragana-clock` gera
   `meta_workspace_get_work_area_for_monitor` CRITICAL; Luma Dock gera
@@ -165,17 +176,17 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 
 ### Funções do Isle na barra do macOS (projeto 2 — plano em ~/.claude/plans/playful-purring-abelson.md)
 - **ATUAL (2026-11-11, decisão final do usuário)**: menus da barra E relógio abrem o
-  POP-UP padrão do GNOME (balão, `LumaMenu`; o relógio usa `alignment 1.0`), com o desfoque
+  POP-UP padrão do GNOME (balão, `AeroMenu`; o relógio usa `alignment 1.0`), com o desfoque
   do Blur my Shell. `island-menus` agora é `false` por padrão (código da forma ainda existe
   como opção). A forma do Isle (`IslandSurface`) continua só nos ALERTAS. Abaixo, histórico.
 - **Integração com o Blur my Shell nos pop-ups**: o BMS escreve na caixa do menu
   (`set_style`) um `border-radius` igual ao do vidro dele (`menu-corner-radius` 20) e pinta o
-  fundo pela classe (`rgba(30,30,33,.5) !important`). `LumaMenu._applyAppearance` NÃO toca
+  fundo pela classe (`rgba(30,30,33,.5) !important`). `AeroMenu._applyAppearance` NÃO toca
   no estilo de caixas com `bms-popup-blurred` (antes apagava o raio e cobria o vidro).
   Sem sombra e sem a margem do WhiteSur (`.popup-menu-content` margin 4/12/17px) — viravam
   uma "moldura" escura. `-boxpointer-gap: 0` (encostado na barra).
 - Margem dos pop-ups = a do centro de controle (medida: caixa `.quick-settings` com margin
-  8/12/17/12 → 8 px abaixo da barra, 12 px da borda): `.luma-menu-content { margin: 8px 12px 0 12px }`.
+  8/12/17/12 → 8 px abaixo da barra, 12 px da borda): `.aero-menu-content { margin: 8px 12px 0 12px }`.
 - Pop-up do relógio no canto direito: `boxPointer.setSourceAlignment(1.0)` (o balão mirava o
   CENTRO do botão). Perto da borda o `_reposition` puxa o balão de volta até a "mira" (borda
   direita do CONTEÚDO do relógio, 3 px antes da tela): `translation_x = borda − mira`,
@@ -184,8 +195,8 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 - Bateria MONOCROMÁTICA (pedido do usuário): raio recortado no preenchimento.
 - **Layout decidido pelo usuário (2026-11-11)**: NADA no centro da barra. **Barra preta
   sólida** (chave `black-bar`, padrão ligado; `PanelLayout` acrescenta só a sua declaração
-  ao `Main.panel.style` e a tira no destroy). Relógio do Luma no CANTO DIREITO (último
-  item de `_rightBox`, `addToStatusArea('luma-menu-clock')`, peso normal). **Clique**
+  ao `Main.panel.style` e a tira no destroy). Relógio do Aero no CANTO DIREITO (último
+  item de `_rightBox`, `addToStatusArea('aero-menu-clock')`, peso normal). **Clique**
   faz a forma PRETA do Isle sair de baixo do relógio (`islandShape.js`: chrome desenhado
   com Cairo — corpo, cantos 28 px, ombros côncavos na borda de baixo da barra —, mola,
   borda direita presa ao relógio, cresce para baixo/esquerda). Cabeçalho na altura da
@@ -211,7 +222,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   do BMS para outras extensões: classe `bms-popup-blur-target`.
 - O BMS reescreve `Main.panel.style` (tira o `;` final): remover a nossa regra por regex.
 - `get_transformed_position()` de ator sem alocação devolve NaN; menu aberto antes do título
-  ter alocação faz o BoxPointer alocar NaN → `LumaMenu.open` recusa sem `has_allocation()`.
+  ter alocação faz o BoxPointer alocar NaN → `AeroMenu.open` recusa sem `has_allocation()`.
 - **Fase 2a concluída (2026-11-11)**: `alerts.js` (AlertPresenter: IslandSurface que sai do
   relógio; reaproveita `BarLevel` de `ui/barLevel.js`, com `overdrive` acima de 100%),
   `services/osdOverride.js` (InjectionManager em `Main.osdWindowManager.show/showAll/showOne`;
@@ -285,14 +296,14 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 - Em `St.Widget` com `Clutter.BinLayout`, o filho fica CENTRALIZADO mesmo com
   `x_align: START`: para barra de progresso use `St.BoxLayout`.
 - `Intl.RelativeTimeFormat(undefined, {numeric: 'auto'})` já sai em pt-BR ("há 5 minutos").
-- **Sessão aninhada usa o MESMO `$HOME`**: testes gravam em `~/.local/share/luma-menu/`
+- **Sessão aninhada usa o MESMO `$HOME`**: testes gravam em `~/.local/share/aero-menu-global/`
   (clipboard.json, usage.json, tray.json…) — apagar depois de testar (com o aninhado parado).
 - Arrastar com o mouse virtual: mandar os movimentos de DENTRO do Shell
   (`GLib.timeout_add` de 30 ms percorrendo um caminho de passos pequenos); saltos grandes via
   vários Evals não iniciam o arraste do GTK. O ponteiro do aninhado parado em (0,0) "passa"
   sobre o logo e troca o menu aberto para o menu do sistema.
 - **Missão 1 (2026-11-14)**: alertas (brilho, bateria, Caps Lock, Bluetooth, rede, foco,
-  eventos) agora usam o POP-UP PADRÃO (um `LumaMenu` anclado no relógio, alinhamento 1.0,
+  eventos) agora usam o POP-UP PADRÃO (um `AeroMenu` anclado no relógio, alinhamento 1.0,
   `clock.alignToEdge(menu)`), aberto SEM o menuManager (sem grab: não prende teclado/mouse).
   A forma do Isle saiu dos alertas (`IslandSurface` só resta na opção `island-menus`).
   Desligar `menu._onKeyPress` (o PopupMenu liga Espaço/Enter/↓ no ator de origem = relógio).
@@ -318,7 +329,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 - **Fase 2c concluída (2026-11-11)**: Foco (`services/focus.js` FocusTimer: guarda a HORA do
   fim e agenda UM timeout; Não Perturbe só no foco rodando e só desliga o que ligou; som
   `get_sound_player().play_from_theme('complete')`), Lembretes (`services/reminders.js` +
-  `services/storage.js`: JSON atômico em `~/.local/share/luma-menu/`), lembrete de eventos
+  `services/storage.js`: JSON atômico em `~/.local/share/aero-menu-global/`), lembrete de eventos
   (`services/eventReminders.js`: `Calendar.DBusEventSource` PRÓPRIA — tem `destroy()` — e
   ECal sob demanda via `await import('gi://ECal?version=2.0')`; id do CalendarServer =
   `agenda\nevento\nrecorrência`; testado em execução: conecta na agenda e devolve "objeto não
@@ -410,7 +421,7 @@ Você é um desenvolvedor sênior de extensões do GNOME Shell (GJS, ES Modules,
 
 ## 2. Objetivo
 
-Criar do zero a extensão **Luma Menu** (UUID `luma-menu@viniciusbispo19`, schema `org.gnome.shell.extensions.luma-menu`, licença GPL-3.0), que transforma o lado esquerdo do painel superior do GNOME em uma **barra de menus global praticamente idêntica à do macOS**, com:
+Criar do zero a extensão **Aero Menu Global** (UUID `aero-menu-global@viniciusbispo19`, schema `org.gnome.shell.extensions.aero-menu-global`, licença GPL-3.0), que transforma o lado esquerdo do painel superior do GNOME em uma **barra de menus global praticamente idêntica à do macOS**, com:
 
 1. Um **ícone de sistema Linux** no lugar da maçã (logo do Fedora por padrão, configurável).
 2. O **nome do app ativo em negrito**, com o menu do aplicativo.
@@ -423,7 +434,7 @@ Criar do zero a extensão **Luma Menu** (UUID `luma-menu@viniciusbispo19`, schem
 - Notebook Lenovo Yoga Slim 6i, tela 14" de alta resolução (escala fracionária possível — a barra tem que ficar nítida em qualquer escala).
 - Tema GTK + Shell: **WhiteSur-Dark** (via extensão User Themes).
 - Extensões que precisam continuar funcionando junto: **Luma Dock** (meu fork do Dhruva), Blur my Shell, Just Perfection, AppIndicator and KStatusNotifierItem Support, Caffeine, Astra Monitor.
-- Tenho a extensão **Global Menu for GNOME** instalada: o Luma Menu vai substituí-la. No início, me mostre como desativá-la para não haver conflito.
+- Tenho a extensão **Global Menu for GNOME** instalada: o Aero Menu Global vai substituí-la. No início, me mostre como desativá-la para não haver conflito.
 
 ## 4. Realidade técnica (leia antes de projetar)
 
@@ -568,18 +579,18 @@ Páginas organizadas, tudo em pt-BR:
 - **Compatibilidade**: ativar o Registrar DBusMenu (camada B), lista de apps ignorados (por `app_id`/`WM_CLASS`), modo de depuração com logs.
 - **Sobre**: versão, autor, link do GitHub (`github.com/viniciusbispo19`), licença.
 
-Todas as opções salvas em GSettings (`schemas/org.gnome.shell.extensions.luma-menu.gschema.xml`) e aplicadas **ao vivo**, sem precisar reiniciar a sessão.
+Todas as opções salvas em GSettings (`schemas/org.gnome.shell.extensions.aero-menu-global.gschema.xml`) e aplicadas **ao vivo**, sem precisar reiniciar a sessão.
 
 ## 10. Tradução
 
-- Todas as strings visíveis com `gettext` (`_()`), domínio `luma-menu`.
-- Arquivo `po/pt_BR.po` completo + `po/luma-menu.pot`.
+- Todas as strings visíveis com `gettext` (`_()`), domínio `aero-menu-global`.
+- Arquivo `po/pt_BR.po` completo + `po/aero-menu-global.pot`.
 - Script para compilar as traduções e empacotar com `gnome-extensions pack`.
 
 ## 11. Estrutura de arquivos esperada
 
 ```
-luma-menu/
+aero-menu-global/
 ├── metadata.json            # shell-version: ["51"] (e "50" se for compatível de verdade)
 ├── extension.js             # enable()/disable(), monta a barra
 ├── prefs.js                 # janela de preferências (Adw)

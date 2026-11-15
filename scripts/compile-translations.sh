@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Compila as traduções (po/*.po → locale/<idioma>/LC_MESSAGES/luma-menu.mo).
+# Compila as traduções (po/*.po → locale/<idioma>/LC_MESSAGES/aero-menu-global.mo).
 #
 # Normalmente você NÃO precisa rodar isto: o scripts/build.sh usa
 # `gnome-extensions pack --podir=po`, que já compila tudo dentro do pacote.
@@ -9,7 +9,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-DOMAIN=luma-menu
+DOMAIN=aero-menu-global
 for po in po/*.po; do
     lang=$(basename "$po" .po)
     mkdir -p "locale/$lang/LC_MESSAGES"

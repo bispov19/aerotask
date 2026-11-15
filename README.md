@@ -1,4 +1,4 @@
-# Luma Menu
+# Aero Menu Global
 
 Barra de menus global no estilo do macOS para o **GNOME Shell 51**: o logo da sua
 distro no lugar da maçã, o nome do aplicativo em negrito e os menus **Arquivo,
@@ -59,7 +59,7 @@ Requisitos: GNOME Shell 51 (testado no Fedora 45, Wayland).
 
    ```bash
    git clone https://github.com/viniciusbispo19/luma-menu.git
-   cd luma-menu
+   cd aero-menu-global
    ./scripts/install.sh
    ```
 
@@ -67,21 +67,21 @@ Requisitos: GNOME Shell 51 (testado no Fedora 45, Wayland).
    sessão, entre de novo e ative:
 
    ```bash
-   gnome-extensions enable luma-menu@viniciusbispo19
+   gnome-extensions enable aero-menu-global@viniciusbispo19
    ```
 
 4. Abra as preferências:
 
    ```bash
-   gnome-extensions prefs luma-menu@viniciusbispo19
+   gnome-extensions prefs aero-menu-global@viniciusbispo19
    ```
 
 ## Como funciona: as quatro camadas
 
 No macOS todo app entrega o seu menu ao sistema. No Linux não existe um padrão
-único, então o Luma Menu escolhe, para cada janela, a melhor fonte disponível:
+único, então o Aero Menu Global escolhe, para cada janela, a melhor fonte disponível:
 
-| Camada | Fonte | Quem usa | Como o Luma Menu lê |
+| Camada | Fonte | Quem usa | Como o Aero Menu Global lê |
 |---|---|---|---|
 | **A** | Menus GTK exportados (`org.gtk.Menus` + `org.gtk.Actions`) | Apps GTK com `GtkApplication` e barra de menus (ex.: LibreOffice) | O Mutter informa o nome D-Bus e os caminhos de cada janela; `Gio.DBusMenuModel` e `Gio.DBusActionGroup` leem o menu e as ações |
 | **B** | DBusMenu (`com.canonical.dbusmenu`) registrado em `com.canonical.AppMenu.Registrar` | Apps Qt, Electron/Chromium — **via XWayland** | A extensão oferece o serviço Registrar; o app registra a janela (pelo id X11) e a extensão lê o menu |
@@ -124,7 +124,7 @@ Sem promessas falsas — o que **não** dá (ou ainda não dá) para fazer:
 
 - **Wayland nativo × XWayland**: Qt e Electron só exportam menus DBusMenu no X11.
   Em Wayland nativo, esses apps ficam com os menus padrão.
-- **Apps já abertos**: apps Qt/Electron registram o menu quando abrem. Se o Luma
+- **Apps já abertos**: apps Qt/Electron registram o menu quando abrem. Se o Aero
   Menu (ou a opção "Ler menus de apps Qt, Electron…") for ativado com eles abertos,
   reabra-os. Bloquear a tela não perde os menus (veja abaixo); desativar e reativar
   a extensão perde.
@@ -133,7 +133,7 @@ Sem promessas falsas — o que **não** dá (ou ainda não dá) para fazer:
   atalhos de teclado simulados — funcionam na grande maioria dos apps, mas cada
   app escolhe seus atalhos.
 - **"Metade esquerda/direita da tela"**: o GNOME 51 não oferece API pública de
-  "lado a lado"; o Luma Menu aciona o seu atalho configurado
+  "lado a lado"; o Aero Menu Global aciona o seu atalho configurado
   (`Super+←`/`Super+→` por padrão).
 - **Vários monitores**: o GNOME tem uma única barra superior, no monitor
   principal. A barra de menus aparece só nela.
@@ -143,7 +143,7 @@ Sem promessas falsas — o que **não** dá (ou ainda não dá) para fazer:
   há como saber o gênero do nome de cada app ("Sobre o Calculadora").
 - **Mnemônicos** (letras sublinhadas) não são exibidos.
 - **Just Perfection**: se ela estiver controlando a posição do relógio, escolha a
-  posição em um lugar só (o Luma Menu reaplica a dele poucas vezes, para não
+  posição em um lugar só (o Aero Menu Global reaplica a dele poucas vezes, para não
   "brigar").
 
 ### Por que a extensão continua ativa na tela de bloqueio
@@ -173,7 +173,7 @@ Tudo é aplicado na hora, sem reiniciar a sessão.
 ## Desenvolvimento
 
 ```
-luma-menu/
+aero-menu-global/
 ├── extension.js            enable()/disable() e ciclo de vida (bloqueio de tela)
 ├── prefs.js                preferências (GTK 4 + libadwaita, outro processo)
 ├── stylesheet.css
@@ -215,8 +215,8 @@ Com a sessão aninhada aberta, em outro terminal:
 ./scripts/nested-stop.sh
 ```
 
-A extensão auxiliar `dev/luma-menu-devtools@…` liga o "modo inseguro" do Shell
-(necessário para Eval e prints) **somente** quando `LUMA_MENU_DEV=1`, variável que
+A extensão auxiliar `dev/aero-menu-devtools@…` liga o "modo inseguro" do Shell
+(necessário para Eval e prints) **somente** quando `AERO_MENU_DEV=1`, variável que
 só o `dev-nested.sh` define.
 
 ### Outras tarefas
@@ -226,7 +226,7 @@ npm install                        # ESLint (uma vez)
 npm run lint
 ./scripts/update-po.sh             # extrai strings novas para po/
 ./scripts/compile-translations.sh  # confere e compila as traduções
-./scripts/build.sh                 # gera build/luma-menu@viniciusbispo19.shell-extension.zip
+./scripts/build.sh                 # gera build/aero-menu-global@viniciusbispo19.shell-extension.zip
 ```
 
 ### Checklist para publicar no extensions.gnome.org
@@ -259,13 +259,13 @@ npm run lint
   só à camada D. Não lê menus reais, os itens nunca ficam cinza e parte do código
   usa D-Bus síncrono.
 
-O Luma Menu junta as duas ideias: menus reais quando existem (A/B/C), menus padrão
+O Aero Menu Global junta as duas ideias: menus reais quando existem (A/B/C), menus padrão
 como rede de segurança (D), tudo assíncrono e dentro do próprio Shell. Nenhum
 código desses projetos foi copiado.
 
 ## Licença e créditos
 
-Luma Menu é software livre, sob a [GNU GPL versão 3 ou posterior](LICENSE).
+Aero Menu Global é software livre, sob a [GNU GPL versão 3 ou posterior](LICENSE).
 
 Os logos vêm do [Simple Icons](https://simpleicons.org); origem, licença e
 diretrizes de marca de cada um estão em [icons/CREDITS.md](icons/CREDITS.md).

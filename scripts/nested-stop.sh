@@ -6,7 +6,7 @@
 # Aqui procuramos só processos chamados exatamente "gnome-shell" que tenham
 # --devkit nos argumentos — nunca o Shell da sua sessão (--mode=user).
 
-BUS_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/luma-menu/nested-bus"
+BUS_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/aero-menu-global/nested-bus"
 
 for pid in $(pgrep -x gnome-shell); do
     if tr '\0' ' ' < "/proc/$pid/cmdline" | grep -q -- '--devkit'; then

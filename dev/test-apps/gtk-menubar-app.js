@@ -1,6 +1,6 @@
 #!/usr/bin/env -S gjs -m
 // SPDX-License-Identifier: GPL-3.0-or-later
-// App de TESTE (desenvolvimento) para a camada A do Luma Menu.
+// App de TESTE (desenvolvimento) para a camada A do Aero Menu Global.
 //
 // Um app GTK4 mínimo com GtkApplication + barra de menus (GMenu). O GTK
 // exporta essa barra pelo D-Bus (org.gtk.Menus) e informa o caminho ao
@@ -15,7 +15,7 @@ import GLib from 'gi://GLib';
 import Gtk from 'gi://Gtk?version=4.0';
 
 const app = new Gtk.Application({
-    application_id: 'io.github.viniciusbispo19.LumaMenuTest',
+    application_id: 'io.github.viniciusbispo19.AeroMenuTest',
     flags: Gio.ApplicationFlags.NON_UNIQUE,
 });
 
@@ -24,7 +24,7 @@ let lastAction = '(nenhuma)';
 let window = null;
 const log = name => {
     lastAction = name;
-    window?.set_title(`Luma Test — ${name}`);
+    window?.set_title(`Aero Test — ${name}`);
     print(`ACTIVATED ${name}`);
 };
 
@@ -96,7 +96,7 @@ app.connect('startup', () => {
     menubar.append_submenu('_View', view);
 
     const help = new Gio.Menu();
-    help.append('_About Luma Test', 'app.about');
+    help.append('_About Aero Test', 'app.about');
     help.append('_Preferences', 'app.preferences');
     menubar.append_submenu('_Help', help);
 
@@ -106,7 +106,7 @@ app.connect('startup', () => {
 app.connect('activate', () => {
     window = new Gtk.ApplicationWindow({
         application: app,
-        title: 'Luma Test',
+        title: 'Aero Test',
         default_width: 480,
         default_height: 300,
         show_menubar: true,
@@ -116,7 +116,7 @@ app.connect('activate', () => {
     addAction(window, 'open-doc');
     addAction(window, 'recent-one');
     addAction(window, 'recent-two');
-    window.set_child(new Gtk.Label({label: 'Janela de teste do Luma Menu'}));
+    window.set_child(new Gtk.Label({label: 'Janela de teste do Aero Menu Global'}));
     window.present();
 });
 
