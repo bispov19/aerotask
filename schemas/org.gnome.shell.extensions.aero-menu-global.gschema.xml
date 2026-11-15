@@ -213,9 +213,9 @@
       <default>true</default>
       <summary>Show volume changes in the macOS-style HUD in the center of the screen instead of GNOME’s pop-up</summary>
     </key>
-    <key name="alert-keep-awake" type="b">
+    <key name="alert-quick-settings" type="b">
       <default>true</default>
-      <summary>Show a HUD in the center of the screen when “Keep Screen On” is turned on or off</summary>
+      <summary>Show the HUD in the center of the screen when a Quick Settings button is used (Wi-Fi, Bluetooth, Power Mode, Keep Screen On…)</summary>
     </key>
     <key name="volume-hud-show-percentage" type="b">
       <default>true</default>

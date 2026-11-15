@@ -560,8 +560,8 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         hud.add(this._switch('alert-brightness', _('Brightness'),
             _('Screen and keyboard backlight')));
         hud.add(this._switch('alert-caps-lock', _('Caps Lock')));
-        hud.add(this._switch('alert-keep-awake', _('Keep Screen On'),
-            _('When the Quick Settings button is turned on or off')));
+        hud.add(this._switch('alert-quick-settings', _('Quick Settings Buttons'),
+            _('Wi-Fi, Bluetooth, Power Mode, Night Light, Keep Screen On…')));
         hud.add(this._switch('volume-hud-show-percentage', _('Show the percentage'),
             _('“65%” below the volume and brightness bar')));
         page.add(hud);

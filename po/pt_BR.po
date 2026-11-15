@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Aero Menu Global 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/aero-menu-global/"
 "issues\n"
-"POT-Creation-Date: 2026-11-15 10:18-0300\n"
+"POT-Creation-Date: 2026-11-15 10:46-0300\n"
 "PO-Revision-Date: 2026-11-10 15:56-0300\n"
 "Last-Translator: Vinicius Bispo\n"
 "Language-Team: none\n"
@@ -429,216 +429,220 @@ msgstr "Bateria fraca"
 msgid "Battery Charged"
 msgstr "Bateria carregada"
 
-#: lib/island/strings.js:128
-msgid "Caps Lock On"
-msgstr "Caps Lock ativado"
+#: lib/island/strings.js:128 prefs.js:562
+msgid "Caps Lock"
+msgstr "Caps Lock"
 
-#: lib/island/strings.js:131
-msgid "Caps Lock Off"
-msgstr "Caps Lock desativado"
+#: lib/island/strings.js:132
+msgid "Turned on"
+msgstr "Ativado"
 
-#: lib/island/strings.js:134
+#: lib/island/strings.js:135
+msgid "Turned off"
+msgstr "Desativado"
+
+#: lib/island/strings.js:138
 msgid "Connected"
 msgstr "Conectado"
 
-#: lib/island/strings.js:137
+#: lib/island/strings.js:141
 msgid "Disconnected"
 msgstr "Desconectado"
 
-#: lib/island/strings.js:140
+#: lib/island/strings.js:144
 msgid "Offline"
 msgstr "Sem conexão"
 
-#: lib/island/strings.js:143
+#: lib/island/strings.js:147
 msgid "The network connection was lost"
 msgstr "A conexão de rede caiu"
 
-#: lib/island/strings.js:146
+#: lib/island/strings.js:150
 msgid "Back Online"
 msgstr "Conectado de novo"
 
-#: lib/island/strings.js:149
+#: lib/island/strings.js:153
 msgid "Join"
 msgstr "Entrar"
 
-#: lib/island/strings.js:154
+#: lib/island/strings.js:158
 msgid "Muted"
 msgstr "Mudo"
 
-#: lib/island/strings.js:159 prefs.js:570
+#: lib/island/strings.js:163 prefs.js:570
 msgid "Battery"
 msgstr "Bateria"
 
-#: lib/island/strings.js:162
+#: lib/island/strings.js:166
 msgid "Charging"
 msgstr "Carregando"
 
-#: lib/island/strings.js:165
+#: lib/island/strings.js:169
 msgid "Charged"
 msgstr "Carregada"
 
-#: lib/island/strings.js:168
+#: lib/island/strings.js:172
 msgid "Plugged In"
 msgstr "Na tomada"
 
-#: lib/island/strings.js:171
+#: lib/island/strings.js:175
 msgid "Power Saver"
 msgstr "Modo de economia"
 
-#: lib/island/strings.js:176 prefs.js:326 prefs.js:364
+#: lib/island/strings.js:180 prefs.js:326 prefs.js:364
 msgid "Shelf"
 msgstr "Prateleira"
 
-#: lib/island/strings.js:179
+#: lib/island/strings.js:183
 msgid "Search copied items…"
 msgstr "Buscar nos itens copiados…"
 
-#: lib/island/strings.js:182
+#: lib/island/strings.js:186
 msgid "Pause history"
 msgstr "Pausar o histórico"
 
-#: lib/island/strings.js:185
+#: lib/island/strings.js:189
 msgid "Resume history"
 msgstr "Retomar o histórico"
 
-#: lib/island/strings.js:188
+#: lib/island/strings.js:192
 msgid "Paused: nothing new is saved"
 msgstr "Pausado: nada novo é guardado"
 
-#: lib/island/strings.js:191
+#: lib/island/strings.js:195
 msgid "Clear (keeps pinned items)"
 msgstr "Limpar (os fixados ficam)"
 
-#: lib/island/strings.js:194
+#: lib/island/strings.js:198
 msgid "Nothing copied yet"
 msgstr "Nada copiado ainda"
 
-#: lib/island/strings.js:197
+#: lib/island/strings.js:201
 msgid "Nothing found"
 msgstr "Nada encontrado"
 
-#: lib/island/strings.js:200
+#: lib/island/strings.js:204
 msgid "Pin"
 msgstr "Fixar"
 
-#: lib/island/strings.js:203
+#: lib/island/strings.js:207
 msgid "Unpin"
 msgstr "Desafixar"
 
-#: lib/island/strings.js:206 prefs.js:799
+#: lib/island/strings.js:210 prefs.js:799
 msgid "Remove"
 msgstr "Remover"
 
-#: lib/island/strings.js:209
+#: lib/island/strings.js:213
 msgid "Image"
 msgstr "Imagem"
 
-#: lib/island/strings.js:212
+#: lib/island/strings.js:216
 msgid "Link"
 msgstr "Link"
 
-#: lib/island/strings.js:215 tray/tray.js:71
+#: lib/island/strings.js:219 tray/tray.js:71
 msgid "File Tray"
 msgstr "Bandeja de Arquivos"
 
-#: lib/island/strings.js:218
+#: lib/island/strings.js:222
 msgid "Drag files onto the clock to keep them at hand"
 msgstr "Arraste arquivos até o relógio para deixá-los à mão"
 
-#: lib/island/strings.js:223
+#: lib/island/strings.js:227
 msgid "Usage"
 msgstr "Uso"
 
-#: lib/island/strings.js:226
+#: lib/island/strings.js:230
 msgid "7 days"
 msgstr "7 dias"
 
-#: lib/island/strings.js:229
+#: lib/island/strings.js:233
 msgid "Nothing recorded yet"
 msgstr "Nada registrado ainda"
 
-#: lib/island/strings.js:232
+#: lib/island/strings.js:236
 msgid "Clear history"
 msgstr "Apagar histórico"
 
 #. Translators: {time} is a duration, e.g. "5 h 12 min".
-#: lib/island/strings.js:236
+#: lib/island/strings.js:240
 msgid "Total: {time}"
 msgstr "Total: {time}"
 
 #. Translators: date in the top bar clock, e.g. "Wed, Nov 11". Uses
 #. * GLib.DateTime.format() codes: %a weekday, %-d day, %b month.
-#: lib/island/strings.js:252
+#: lib/island/strings.js:256
 msgid "%a, %b %-d"
 msgstr "%a, %-d de %b"
 
 #. Translators: time with seconds, 24-hour format (GLib.DateTime.format codes).
-#: lib/island/strings.js:266
+#: lib/island/strings.js:270
 msgctxt "time format"
 msgid "%H:%M:%S"
 msgstr "%H:%M:%S"
 
 #. Translators: time with seconds, 12-hour format (GLib.DateTime.format codes).
-#: lib/island/strings.js:268
+#: lib/island/strings.js:272
 msgctxt "time format"
 msgid "%-l:%M:%S %p"
 msgstr "%-l:%M:%S %p"
 
 #. Translators: time in 24-hour format (GLib.DateTime.format codes).
-#: lib/island/strings.js:272
+#: lib/island/strings.js:276
 msgctxt "time format"
 msgid "%H:%M"
 msgstr "%H:%M"
 
 #. Translators: time in 12-hour format (GLib.DateTime.format codes).
-#: lib/island/strings.js:274
+#: lib/island/strings.js:278
 msgctxt "time format"
 msgid "%-l:%M %p"
 msgstr "%-l:%M %p"
 
 #. Translators: a full date with year, e.g. "Wed, Nov 11, 2027".
-#: lib/island/strings.js:299
+#: lib/island/strings.js:303
 msgid "%a, %b %-d, %Y"
 msgstr "%a, %-d de %b de %Y"
 
 #. Translators: a duration; {h} = hours, {m} = minutes (two digits).
-#: lib/island/strings.js:342
+#: lib/island/strings.js:346
 msgid "{h} h {m} min"
 msgstr "{h} h {m} min"
 
 #. Translators: a duration in minutes.
 #. Translators: a duration in minutes, e.g. "25 min".
-#: lib/island/strings.js:345 lib/island/strings.js:397
+#: lib/island/strings.js:349 lib/island/strings.js:401
 msgid "{m} min"
 msgstr "{m} min"
 
 #. Translators: battery, e.g. "1 h 05 min until full".
-#: lib/island/strings.js:361
+#: lib/island/strings.js:365
 msgid "{time} until full"
 msgstr "{time} até completar"
 
 #. Translators: battery, e.g. "3 h 20 min left".
-#: lib/island/strings.js:369
+#: lib/island/strings.js:373
 msgid "{time} left"
 msgstr "{time} restantes"
 
 #. Translators: low battery alert, {p} = "20%".
-#: lib/island/strings.js:422
+#: lib/island/strings.js:426
 msgid "{p} left · plug in the charger"
 msgstr "{p} restantes · conecte o carregador"
 
 #. Translators: an event starting now, {title} = its name.
-#: lib/island/strings.js:435
+#: lib/island/strings.js:439
 msgid "{title} is starting"
 msgstr "{title} está começando"
 
 #. Translators: an event about to start, e.g. "Weekly sync in 5 min".
-#: lib/island/strings.js:438
+#: lib/island/strings.js:442
 msgid "{title} in {n} min"
 msgstr "{title} em {n} min"
 
 #. Translators: number of files copied, e.g. "3 files".
-#: lib/island/strings.js:449
+#: lib/island/strings.js:453
 msgid "{n} file"
 msgid_plural "{n} files"
 msgstr[0] "{n} arquivo"
@@ -648,17 +652,9 @@ msgstr[1] "{n} arquivos"
 msgid "Keeping the screen on"
 msgstr "Mantendo a tela ligada"
 
-#: lib/keepAwake.js:158 prefs.js:563
+#: lib/keepAwake.js:158
 msgid "Keep Screen On"
 msgstr "Manter Tela Ligada"
-
-#: lib/keepAwake.js:212
-msgid "Screen stays on"
-msgstr "Tela sempre ligada"
-
-#: lib/keepAwake.js:212
-msgid "Screen can turn off"
-msgstr "A tela pode desligar"
 
 #: lib/menuBar.js:285 lib/menuBar.js:294 prefs.js:737
 msgid "Help"
@@ -1150,13 +1146,13 @@ msgstr "Brilho"
 msgid "Screen and keyboard backlight"
 msgstr "Da tela e da luz do teclado"
 
-#: prefs.js:562
-msgid "Caps Lock"
-msgstr "Caps Lock"
+#: prefs.js:563
+msgid "Quick Settings Buttons"
+msgstr "Botões das Configurações Rápidas"
 
 #: prefs.js:564
-msgid "When the Quick Settings button is turned on or off"
-msgstr "Quando o botão das Configurações Rápidas é ligado ou desligado"
+msgid "Wi-Fi, Bluetooth, Power Mode, Night Light, Keep Screen On…"
+msgstr "Wi-Fi, Bluetooth, Modo de energia, Luz noturna, Manter Tela Ligada…"
 
 #: prefs.js:565
 msgid "Show the percentage"
@@ -1433,6 +1429,21 @@ msgstr "Eles ficam aqui até você arrastá-los para outro lugar"
 #: tray/tray.js:237
 msgid "Remove from the tray"
 msgstr "Tirar da bandeja"
+
+#~ msgid "Caps Lock On"
+#~ msgstr "Caps Lock ativado"
+
+#~ msgid "Caps Lock Off"
+#~ msgstr "Caps Lock desativado"
+
+#~ msgid "Screen stays on"
+#~ msgstr "Tela sempre ligada"
+
+#~ msgid "Screen can turn off"
+#~ msgstr "A tela pode desligar"
+
+#~ msgid "When the Quick Settings button is turned on or off"
+#~ msgstr "Quando o botão das Configurações Rápidas é ligado ou desligado"
 
 #~ msgid "Keyboard Brightness"
 #~ msgstr "Brilho do teclado"

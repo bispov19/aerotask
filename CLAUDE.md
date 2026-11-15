@@ -365,6 +365,19 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   (`AlertPresenter.showLevel` removido; Caps Lock saiu do `systemAlerts.js`). Chave
   `osd-show-percentage` removida; `volume-hud-show-percentage` vale para volume e brilho.
   Ícones próprios `icons/caps-lock{,-on}-symbolic.svg`. Preferências › Alertas › "Centro da Tela".
+- **Botões das Configurações Rápidas no HUD (2026-11-15)**: `lib/quickSettingsHud.js` vigia a
+  grade `Main.panel.statusArea.quickSettings.menu._grid` (`child-added/removed`) e todo
+  `QuickToggle`/`QuickMenuToggle` (inclusive de outras extensões, ex.: Mosaic). Só mostra mudança
+  ARMADA por uso (`clicked` ou `menu 'activate'`, 3 s): toggle_mode inverte `checked` ANTES do
+  `clicked`, por isso a conferência é adiada 120 ms. Estado = subtítulo novo (QuickMenuToggle,
+  ex.: Modo de energia → "Desempenho") ou "Ativado"/"Desativado". Teclado: nível do submenu
+  (`_sliderItem`/`_discreteItem` `notify::value`, só com o submenu aberto). Formato único do HUD:
+  ícone + nome (negrito) + estado (`detail`); Caps Lock também. Chave `alert-quick-settings`
+  (substitui `alert-keep-awake`). **St não aceita margem negativa**: `margin-top: -12px` num
+  StLabel deu altura preferida 2³² (a caixa "estourou").
+  CUIDADO nos testes: Wi-Fi, Bluetooth e Modo de energia usam o barramento de SISTEMA real
+  (desconectaria a rede do usuário) — testar com um `QuickMenuToggle` falso
+  (`Object.getPrototypeOf(PowerProfilesToggle)`) adicionado com `menu.addItem()`.
 - **Aninhado sem quadros**: se a janela do mutter-devkit fica escondida, NENHUMA animação avança
   (transição "tocando" com elapsed 0, inclusive `Main.panel.ease`). Para capturas, desligar
   `org.gnome.desktop.interface enable-animations` DENTRO do aninhado (banco isolado).

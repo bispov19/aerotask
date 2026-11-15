@@ -36,6 +36,7 @@ import {TrayIcons} from './lib/tray/trayIcons.js';
 import {StatusNotifierWatcher} from './lib/tray/watcher.js';
 import {OsdHud} from './lib/osdHud.js';
 import {KeepAwake, KeepAwakeIndicator} from './lib/keepAwake.js';
+import {QuickSettingsHud} from './lib/quickSettingsHud.js';
 import {logError, setDebug} from './lib/util.js';
 
 /** A extensão "AppIndicator and KStatusNotifierItem Support". */
@@ -217,10 +218,10 @@ export default class AeroMenuGlobalExtension extends Extension {
         this._osd = new OsdOverride();
         this._hud = new OsdHud(this._settings, this._osd, iconsDir);
 
-        // Botão "Manter Tela Ligada" nas Configurações Rápidas (o aviso ao
-        // ligar/desligar sai no mesmo HUD).
-        this._keepAwakeIndicator = new KeepAwakeIndicator(this._keepAwake,
-            this._settings, iconsDir, this._hud);
+        // Botão "Manter Tela Ligada" nas Configurações Rápidas.
+        this._keepAwakeIndicator = new KeepAwakeIndicator(this._keepAwake, iconsDir);
+        // Usar QUALQUER botão das Configurações Rápidas também mostra o HUD.
+        this._quickSettingsHud = new QuickSettingsHud(this._settings, this._hud);
 
         // A ilha (notch) no lugar do relógio, se ligada nas preferências.
         this._island = null;
@@ -266,6 +267,8 @@ export default class AeroMenuGlobalExtension extends Extension {
         this._island = null;
 
         // O OSD por último: devolve os métodos originais do GNOME.
+        this._quickSettingsHud?.destroy();
+        this._quickSettingsHud = null;
         this._keepAwakeIndicator?.destroy();
         this._keepAwakeIndicator = null;
         this._hud?.destroy();

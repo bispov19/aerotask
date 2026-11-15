@@ -926,6 +926,16 @@
     font-weight: bold;
 }
 
+/* Nome + estado, colados (o espaço maior fica entre ícone, texto e barra). */
+.aero-osd-hud-text {
+    spacing: 2px;
+}
+
+/* Estado embaixo do nome: "Ativado", "Desempenho"… */
+.aero-osd-hud-detail {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .aero-osd-hud-bar {
     spacing: 2px;
 }
