@@ -310,6 +310,18 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   Abrir no meio da animação de fechar interrompe o `menu-closed` → zerar `_closing` no `_open`.
   Nível substituindo mensagem: fechar sem animação e reabrir (o Blur my Shell mede o desfoque
   ao abrir; trocar o conteúdo aberto deixa uma "sobra" desfocada).
+- **Missão 3 (2026-11-14)**: HUD de volume no centro (`lib/volumeHud.js`): escuta o mixer
+  (`getMixerControl()` de `ui/status/volume.js`; `default-sink-changed`/`state-changed`; na saída
+  padrão `notify::volume`/`notify::is-muted`; `push_volume()`/`change_is_muted()` para testar —
+  CUIDADO: a sessão aninhada mexe no áudio REAL, sempre devolver o valor). Teclas no máximo/mínimo
+  não mudam o mixer: vêm pelo OSD. Animação = a do BoxPointer (`POPUP_ANIMATION_TIME` 150 ms,
+  escala 0,96 + fade); some após 1,5 s (`HIDE_TIMEOUT` do OSD). Chaves: `alert-volume` (= HUD
+  ligado) e `volume-hud-show-percentage`.
+- `lib/osdOverride.js` é o ÚNICO remendo em `Main.osdWindowManager.show/showAll/showOne`
+  (vive na extensão; `setHandler(kind, fn)`): 'volume' → HUD; 'brightness'/'keyboard' → alertas
+  do relógio (registra/desregistra no Island). Dois remendos no mesmo método desfeitos em ordem
+  diferente deixam um wrapper "órfão" — visto quando a extensão ANTIGA (luma) e a nova rodaram
+  juntas na sessão aninhada (o dconf copiado ainda tem a antiga ativa: desativá-la no teste).
 - **St: widget com `reactive: false` fica `:insensitive`** (a propriedade é `pseudo_class`, não
   `style_pseudo_class`); o Blur my Shell pinta `.popup-menu-item:insensitive` com branco 50% e o
   GNOME põe `popup-inactive-menu-item` em item sem `activate`. Item informativo: `reactive: true,

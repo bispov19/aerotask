@@ -472,16 +472,26 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             page.add(group);
         };
 
-        const levels = new Adw.PreferencesGroup({
-            title: _('Volume and Brightness'),
+        // O HUD de volume fica no centro da tela: não depende do relógio.
+        const volume = new Adw.PreferencesGroup({
+            title: _('Volume'),
+            description: _('A macOS-style HUD in the center of the screen, for any volume change (keys, the top bar control, apps…), in place of GNOME’s pop-up'),
+        });
+        volume.add(this._switch('alert-volume', _('Volume HUD')));
+        const volumePercent = this._switch('volume-hud-show-percentage', _('Show the percentage in the HUD'));
+        this._settings.bind('alert-volume', volumePercent, 'sensitive', Gio.SettingsBindFlags.GET);
+        volume.add(volumePercent);
+        page.add(volume);
+
+        const brightness = new Adw.PreferencesGroup({
+            title: _('Brightness'),
             description: _('Shown below the clock in place of GNOME’s pop-up (in full screen, GNOME’s pop-up is used)'),
         });
-        levels.add(this._switch('alert-volume', _('Volume')));
-        levels.add(this._switch('alert-brightness', _('Brightness'),
+        brightness.add(this._switch('alert-brightness', _('Brightness'),
             _('Screen and keyboard backlight')));
-        levels.add(this._switch('osd-show-percentage', _('Show the percentage'),
+        brightness.add(this._switch('osd-show-percentage', _('Show the percentage'),
             _('“65%” beside the bar')));
-        needsClock(levels);
+        needsClock(brightness);
 
         // O ícone da bateria NÃO depende do relógio do Aero.
         const battery = new Adw.PreferencesGroup({title: _('Battery')});

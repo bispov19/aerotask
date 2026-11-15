@@ -27,8 +27,10 @@ import {FileTray} from './lib/island/services/fileTray.js';
 import {FocusTimer} from './lib/island/services/focus.js';
 import {ReminderStore} from './lib/island/services/reminders.js';
 import {MenuBar} from './lib/menuBar.js';
+import {OsdOverride} from './lib/osdOverride.js';
 import {PanelLayout} from './lib/panelLayout.js';
 import {Registrar} from './lib/sources/registrar.js';
+import {VolumeHud} from './lib/volumeHud.js';
 import {logError, setDebug} from './lib/util.js';
 
 export default class AeroMenuExtension extends Extension {
@@ -142,6 +144,13 @@ export default class AeroMenuExtension extends Extension {
         // Bateria no estilo do MacBook, no lugar do ícone do GNOME.
         this._battery = new BatteryIndicator(this._settings);
 
+        // O OSD do GNOME (volume/brilho) passa por um ponto só: o volume vai
+        // para o HUD no centro da tela (estilo macOS); o brilho, para os
+        // alertas do relógio (que se registra ao ser criado).
+        this._osd = new OsdOverride();
+        this._volumeHud = new VolumeHud(this._settings);
+        this._osd.setHandler('volume', osd => this._volumeHud.handleOsd(osd));
+
         // A ilha (notch) no lugar do relógio, se ligada nas preferências.
         this._island = null;
         this._syncIsland();
@@ -158,6 +167,7 @@ export default class AeroMenuExtension extends Extension {
                     clipboard: this._clipboard,
                     fileTray: this._fileTray,
                     usage: this._usage,
+                    osd: this._osd,
                 });
         } else if (!wanted && this._island) {
             this._island.destroy();
@@ -184,6 +194,12 @@ export default class AeroMenuExtension extends Extension {
         // o PanelLayout restaurar a posição dele.
         this._island?.destroy();
         this._island = null;
+
+        // O OSD por último: devolve os métodos originais do GNOME.
+        this._volumeHud?.destroy();
+        this._volumeHud = null;
+        this._osd?.destroy();
+        this._osd = null;
 
         this._battery?.destroy();
         this._battery = null;

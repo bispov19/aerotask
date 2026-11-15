@@ -203,7 +203,11 @@
     <!-- Volume, brilho e bateria (Fase 2) -->
     <key name="alert-volume" type="b">
       <default>true</default>
-      <summary>Show volume changes in the top-right alert instead of GNOME’s pop-up</summary>
+      <summary>Show volume changes in a macOS-style HUD in the center of the screen instead of GNOME’s pop-up</summary>
+    </key>
+    <key name="volume-hud-show-percentage" type="b">
+      <default>true</default>
+      <summary>Show the percentage number in the volume HUD</summary>
     </key>
     <key name="alert-brightness" type="b">
       <default>true</default>
@@ -211,7 +215,7 @@
     </key>
     <key name="osd-show-percentage" type="b">
       <default>true</default>
-      <summary>Show the percentage number in volume and brightness alerts</summary>
+      <summary>Show the percentage number in brightness alerts</summary>
     </key>
     <key name="battery-icon-enabled" type="b">
       <default>true</default>
