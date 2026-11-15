@@ -166,6 +166,8 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         bar.add(this._switch('show-fallback-menus', _('Standard menus'),
             _('Show File, Edit, View and Window when the app has no menus of its own')));
         bar.add(this._switch('hide-activities', _('Hide the Activities button')));
+        bar.add(this._switch('floating-panel', _('Floating bar'),
+            _('Rounded corners and a small margin from the screen edges; it touches the edges while a window is maximized')));
         bar.add(this._switch('black-bar', _('Black bar'),
             _('Like Isle: the bar, the menus and the clock panel look like one piece')));
         const opacityRow = this._spin('black-bar-opacity', _('Black bar opacity (%)'),

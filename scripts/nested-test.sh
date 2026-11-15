@@ -46,6 +46,10 @@ BEFORE=$(wc -l < "$LOG")
     // bandeja de arquivos (janela GTK) fecha junto com a extensão.
     // (removeKeybinding não apaga a entrada: deixa o modo em NONE = 0.)
     atalhoPrateleira: (Main.wm._allowedKeybindings['clipboard-shortcut'] ?? 0) !== 0,
+    // Barra flutuante: ao desativar, nada de máscara/estilo/deslocamento sobrando.
+    mascaraBarra: !!Main.layoutManager.panelBox.get_effect('aero-menu-floating-mask'),
+    estiloPanelBox: Main.layoutManager.panelBox.style ?? null,
+    barraTransformada: Main.panel.translation_y !== 0 || Main.panel.scale_x !== 1,
     bandejas: global.get_window_actors().filter(a => a.meta_window.get_wm_class() === 'io.github.viniciusbispo19.AeroMenuGlobal.Tray').length,
   });
   // Conta, no palco inteiro, os atores ESTRUTURAIS das nossas classes
@@ -132,6 +136,10 @@ checks = {
     "desativar remove o atalho da Prateleira": not data["desativada"]["atalhoPrateleira"],
     "a bandeja de arquivos abre": data["comBandeja"]["bandejas"] == 1,
     "desativar fecha a bandeja de arquivos": data["desativada"]["bandejas"] == 0,
+    "barra flutuante conforme a preferência (sem janelas: máscara)": d["mascaraBarra"],
+    "desativar tira a máscara da barra": not data["desativada"]["mascaraBarra"],
+    "desativar devolve o estilo do panelBox": data["desativada"]["estiloPanelBox"] is None,
+    "desativar devolve a barra sem deslocamento": not data["desativada"]["barraTransformada"],
 }
 for name, ok in checks.items():
     print(("  ✓ " if ok else "  ✗ ") + name)

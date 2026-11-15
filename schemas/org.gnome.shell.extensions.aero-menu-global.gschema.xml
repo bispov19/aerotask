@@ -47,6 +47,10 @@
       <default>'right'</default>
       <summary>Clock position in the top bar</summary>
     </key>
+    <key name="floating-panel" type="b">
+      <default>true</default>
+      <summary>Floating top bar with rounded corners; it touches the screen edges while a window is maximized</summary>
+    </key>
     <key name="black-bar" type="b">
       <!-- O visual do Isle: barra preta sólida, unida à forma do relógio. -->
       <default>true</default>

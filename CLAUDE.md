@@ -322,6 +322,19 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   do relógio (registra/desregistra no Island). Dois remendos no mesmo método desfeitos em ordem
   diferente deixam um wrapper "órfão" — visto quando a extensão ANTIGA (luma) e a nova rodaram
   juntas na sessão aninhada (o dconf copiado ainda tem a antiga ativa: desativá-la no teste).
+- **Missão 4 (2026-11-14)**: barra flutuante (`lib/floatingPanel.js`, chave `floating-panel`):
+  `padding` no `Main.layoutManager.panelBox` (struts acompanham; muda UMA vez por troca) +
+  máscara GLSL de retângulo arredondado no panelBox (recorta barra E desfoque do BMS; o BMS
+  reescreve o `border-radius` da barra). Transição visual com `Clutter.Timeline` (máscara +
+  `translation_y`/`scale_x` da barra, pivô no centro de cima), 150 ms; encostada e parada =
+  sem máscara. Encosta se há janela NORMAL visível no monitor primário, área atual, com
+  `maximized_vertically` (meia tela também). Sinais: `global.window_manager` size-changed/
+  minimize/unminimize/map/destroy/switch-workspace, `active-workspace-changed`, `restacked`,
+  overview — agrupados num `laters` BEFORE_REDRAW.
+- **ShaderEffect + desfoque estático do BMS**: o fundo do BMS no panelBox é o papel de parede do
+  MONITOR inteiro (recortado só ao desenhar) → a textura do efeito fica do tamanho da tela e a
+  máscara some com tudo. `panelBox.clip_to_allocation = true` enquanto a máscara existe resolve.
+  Uniforms `vec4` também foram trocados por floats soltos (padrão que funciona no projeto).
 - **St: widget com `reactive: false` fica `:insensitive`** (a propriedade é `pseudo_class`, não
   `style_pseudo_class`); o Blur my Shell pinta `.popup-menu-item:insensitive` com branco 50% e o
   GNOME põe `popup-inactive-menu-item` em item sem `activate`. Item informativo: `reactive: true,

@@ -26,6 +26,7 @@ import {ClipboardHistory} from './lib/island/services/clipboard.js';
 import {FileTray} from './lib/island/services/fileTray.js';
 import {FocusTimer} from './lib/island/services/focus.js';
 import {ReminderStore} from './lib/island/services/reminders.js';
+import {FloatingPanel} from './lib/floatingPanel.js';
 import {MenuBar} from './lib/menuBar.js';
 import {OsdOverride} from './lib/osdOverride.js';
 import {PanelLayout} from './lib/panelLayout.js';
@@ -144,6 +145,9 @@ export default class AeroMenuExtension extends Extension {
         // Bateria no estilo do MacBook, no lugar do ícone do GNOME.
         this._battery = new BatteryIndicator(this._settings);
 
+        // Barra flutuante (cantos arredondados; encosta com janela maximizada).
+        this._floatingPanel = new FloatingPanel(this._settings);
+
         // O OSD do GNOME (volume/brilho) passa por um ponto só: o volume vai
         // para o HUD no centro da tela (estilo macOS); o brilho, para os
         // alertas do relógio (que se registra ao ser criado).
@@ -201,6 +205,8 @@ export default class AeroMenuExtension extends Extension {
         this._osd?.destroy();
         this._osd = null;
 
+        this._floatingPanel?.destroy();
+        this._floatingPanel = null;
         this._battery?.destroy();
         this._battery = null;
         this._panelLayout?.destroy();
