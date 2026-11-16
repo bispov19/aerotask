@@ -19,14 +19,14 @@ import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 import {ExtensionState} from 'resource:///org/gnome/shell/misc/extensionUtils.js';
 
-import {BarLook} from './lib/island/barLook.js';
-import {BatteryIndicator} from './lib/island/batteryIcon.js';
-import {Island} from './lib/island/island.js';
-import {AppUsage} from './lib/island/services/appUsage.js';
-import {ClipboardHistory} from './lib/island/services/clipboard.js';
-import {FileTray} from './lib/island/services/fileTray.js';
-import {FocusTimer} from './lib/island/services/focus.js';
-import {ReminderStore} from './lib/island/services/reminders.js';
+import {BarLook} from './lib/farol/barLook.js';
+import {BatteryIndicator} from './lib/farol/batteryIcon.js';
+import {Farol} from './lib/farol/farol.js';
+import {AppUsage} from './lib/farol/services/appUsage.js';
+import {ClipboardHistory} from './lib/farol/services/clipboard.js';
+import {FileTray} from './lib/farol/services/fileTray.js';
+import {FocusTimer} from './lib/farol/services/focus.js';
+import {ReminderStore} from './lib/farol/services/reminders.js';
 import {FloatingPanel} from './lib/floatingPanel.js';
 import {MenuBar} from './lib/menuBar.js';
 import {OsdOverride} from './lib/osdOverride.js';
@@ -37,6 +37,7 @@ import {StatusNotifierWatcher} from './lib/tray/watcher.js';
 import {OsdHud} from './lib/osdHud.js';
 import {KeepAwake, KeepAwakeIndicator} from './lib/keepAwake.js';
 import {QuickSettingsHud} from './lib/quickSettingsHud.js';
+import {ControlCenter} from './lib/controlCenter/controlCenter.js';
 import {logError, setDebug} from './lib/util.js';
 
 /** A extensão "AppIndicator and KStatusNotifierItem Support". */
@@ -49,11 +50,11 @@ export default class AeroMenuGlobalExtension extends Extension {
         this._settings.connectObject(
             'changed::debug', () => setDebug(this._settings.get_boolean('debug')),
             'changed::enable-registrar', () => this._syncRegistrar(),
-            'changed::island-enabled', () => this._syncIsland(),
+            'changed::farol-enabled', () => this._syncFarol(),
             'changed::app-usage-enabled', () => this._syncUsage(),
             // O visual dos menus é decidido quando eles são criados (por causa
             // do Blur my Shell): ligar/desligar recria a barra.
-            'changed::island-menus', () => {
+            'changed::farol-menus', () => {
                 if (this._menuBar) {
                     this._destroyUi();
                     this._createUi();
@@ -222,17 +223,19 @@ export default class AeroMenuGlobalExtension extends Extension {
         this._keepAwakeIndicator = new KeepAwakeIndicator(this._keepAwake, iconsDir);
         // Usar QUALQUER botão das Configurações Rápidas também mostra o HUD.
         this._quickSettingsHud = new QuickSettingsHud(this._settings, this._hud);
+        // O menu de Configurações Rápidas no layout do centro de controle do macOS.
+        this._controlCenter = new ControlCenter(this._settings);
 
-        // A ilha (notch) no lugar do relógio, se ligada nas preferências.
-        this._island = null;
-        this._syncIsland();
+        // O Farol (relógio + painel) no lugar do relógio, se ligado nas preferências.
+        this._farol = null;
+        this._syncFarol();
     }
 
-    /** Liga/desliga a ilha ao vivo (só enquanto a interface existe). */
-    _syncIsland() {
-        const wanted = Boolean(this._menuBar) && this._settings.get_boolean('island-enabled');
-        if (wanted && !this._island) {
-            this._island = new Island(this._settings, this._barLook,
+    /** Liga/desliga o Farol ao vivo (só enquanto a interface existe). */
+    _syncFarol() {
+        const wanted = Boolean(this._menuBar) && this._settings.get_boolean('farol-enabled');
+        if (wanted && !this._farol) {
+            this._farol = new Farol(this._settings, this._barLook,
                 () => this._menuBar.getAppearance(), {
                     focus: this._focusTimer,
                     reminders: this._reminders,
@@ -240,9 +243,9 @@ export default class AeroMenuGlobalExtension extends Extension {
                     fileTray: this._fileTray,
                     usage: this._usage,
                 });
-        } else if (!wanted && this._island) {
-            this._island.destroy();
-            this._island = null;
+        } else if (!wanted && this._farol) {
+            this._farol.destroy();
+            this._farol = null;
         }
     }
 
@@ -257,16 +260,18 @@ export default class AeroMenuGlobalExtension extends Extension {
         } else {
             return;
         }
-        this._island?.setUsage(this._usage);
+        this._farol?.setUsage(this._usage);
     }
 
     _destroyUi() {
-        // A ilha primeiro: ela devolve o relógio do GNOME ao painel antes de
+        // O Farol primeiro: ele devolve o relógio do GNOME ao painel antes de
         // o PanelLayout restaurar a posição dele.
-        this._island?.destroy();
-        this._island = null;
+        this._farol?.destroy();
+        this._farol = null;
 
         // O OSD por último: devolve os métodos originais do GNOME.
+        this._controlCenter?.destroy();
+        this._controlCenter = null;
         this._quickSettingsHud?.destroy();
         this._quickSettingsHud = null;
         this._keepAwakeIndicator?.destroy();

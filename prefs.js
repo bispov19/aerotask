@@ -166,15 +166,17 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         bar.add(this._switch('show-fallback-menus', _('Standard menus'),
             _('Show File, Edit, View and Window when the app has no menus of its own')));
         bar.add(this._switch('hide-activities', _('Hide the Activities button')));
+        bar.add(this._switch('macos-control-center', _('macOS-style Control Center'),
+            _('Quick Settings in blocks: connectivity, Focus, Display, Sound and Now Playing')));
         bar.add(this._switch('floating-panel', _('Floating bar'),
             _('Rounded corners and a small margin from the screen edges; it touches the edges while a window is maximized')));
         bar.add(this._switch('black-bar', _('Black bar'),
-            _('Like Isle: the bar, the menus and the clock panel look like one piece')));
+            _('The bar, the menus and the clock panel look like one piece')));
         const opacityRow = this._spin('black-bar-opacity', _('Black bar opacity (%)'),
             _('Below 100, the Blur my Shell blur shows through'), 50, 100, 5);
         this._settings.bind('black-bar', opacityRow, 'sensitive', Gio.SettingsBindFlags.GET);
         bar.add(opacityRow);
-        bar.add(this._switch('island-menus', _('Isle-style menus'),
+        bar.add(this._switch('farol-menus', _('Farol-style menus'),
             _('Menus come out of the bar as smoked glass, with a spring animation')));
         const clockRow = this._combo('clock-position', _('Clock position'), [
             ['center', _('Center')],
@@ -182,7 +184,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         ], _('Used with the GNOME clock'));
         // Com o relógio do Aero ligado, ele fica sempre no canto direito
         // (como no macOS): a opção fica cinza.
-        this._settings.bind('island-enabled', clockRow, 'sensitive',
+        this._settings.bind('farol-enabled', clockRow, 'sensitive',
             Gio.SettingsBindFlags.GET | Gio.SettingsBindFlags.INVERT_BOOLEAN);
         bar.add(clockRow);
         page.add(bar);
@@ -292,7 +294,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             title: _('Clock'),
             description: _('A macOS-style clock in the right corner; click it for the calendar, notifications, copied items, focus and reminders'),
         });
-        clock.add(this._switch('island-enabled', _('Use the Aero Menu Global clock'),
+        clock.add(this._switch('farol-enabled', _('Use the Aero Menu Global clock'),
             _('Replaces the GNOME clock')));
 
         // Formato da hora: é a MESMA chave das Configurações do GNOME
@@ -305,12 +307,12 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         const seconds = new Adw.SwitchRow({title: _('Show seconds')});
         iface.bind('clock-show-seconds', seconds, 'active', Gio.SettingsBindFlags.DEFAULT);
         clock.add(seconds);
-        clock.add(this._switch('island-show-date', _('Show the date beside the time')));
+        clock.add(this._switch('farol-show-date', _('Show the date beside the time')));
         page.add(clock);
 
         // O resto só existe com o relógio do Aero ligado.
         const needsClock = group => {
-            this._settings.bind('island-enabled', group, 'sensitive', Gio.SettingsBindFlags.GET);
+            this._settings.bind('farol-enabled', group, 'sensitive', Gio.SettingsBindFlags.GET);
             page.add(group);
         };
 
@@ -319,7 +321,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             description: _('What appears when you click the clock'),
         });
         pages.add(this._pageSwitch('calendar', _('Calendar')));
-        const worldClocks = this._switch('island-world-clocks', _('World clocks on the Calendar page'),
+        const worldClocks = this._switch('farol-world-clocks', _('World clocks on the Calendar page'),
             _('The cities from the Clocks app'));
         pages.add(worldClocks);
         pages.add(this._pageSwitch('notifications', _('Notifications')));
@@ -329,10 +331,10 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         pages.add(this._switch('app-usage-enabled', _('App usage'),
             _('Records how long each app is in use; stored only on this computer')));
         const syncWorldClocks = () => {
-            worldClocks.sensitive = this._settings.get_strv('island-pages').includes('calendar');
+            worldClocks.sensitive = this._settings.get_strv('farol-pages').includes('calendar');
         };
         syncWorldClocks();
-        this._settings.connect('changed::island-pages', syncWorldClocks);
+        this._settings.connect('changed::farol-pages', syncWorldClocks);
         needsClock(pages);
 
         const weather = new Adw.PreferencesGroup({
@@ -386,26 +388,26 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
     }
 
     /**
-     * Interruptor de uma página do pop-up do relógio. A lista "island-pages"
+     * Interruptor de uma página do pop-up do relógio. A lista "farol-pages"
      * fica sempre na ordem de CLOCK_PAGES. A última página ligada não pode ser
      * desligada (senão o clique no relógio abriria um balão vazio).
      */
     _pageSwitch(id, title, subtitle = '') {
         const row = new Adw.SwitchRow({title, subtitle});
         const sync = () => {
-            const pages = this._settings.get_strv('island-pages');
+            const pages = this._settings.get_strv('farol-pages');
             row.active = pages.includes(id);
             row.sensitive = !(row.active && pages.length === 1);
         };
         row.connect('notify::active', () => {
-            const pages = this._settings.get_strv('island-pages');
+            const pages = this._settings.get_strv('farol-pages');
             if (row.active === pages.includes(id))
                 return;
-            this._settings.set_strv('island-pages',
+            this._settings.set_strv('farol-pages',
                 CLOCK_PAGES.filter(p => (p === id ? row.active : pages.includes(p))));
         });
         sync();
-        this._settings.connect('changed::island-pages', sync);
+        this._settings.connect('changed::farol-pages', sync);
         return row;
     }
 
@@ -546,7 +548,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         });
         // Os alertas saem do relógio do Aero: sem ele, ficam cinza.
         const needsClock = group => {
-            this._settings.bind('island-enabled', group, 'sensitive', Gio.SettingsBindFlags.GET);
+            this._settings.bind('farol-enabled', group, 'sensitive', Gio.SettingsBindFlags.GET);
             page.add(group);
         };
 

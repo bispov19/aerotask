@@ -6,8 +6,7 @@
 // No Wayland, arrastar e soltar acontece entre APPS: o Shell só fica sabendo
 // que tem algo sendo arrastado por cima dele, mas não recebe os arquivos — e
 // também não consegue "entregar" um arquivo arrastado para um app. Uma janela
-// GTK 4 consegue as duas coisas. (O Isle faz igual, com um programa em Rust;
-// aqui é GJS, sem compilar nada.)
+// GTK 4 consegue as duas coisas (em GJS, sem compilar nada).
 //
 // Não é um serviço em segundo plano: a extensão abre esta janela quando você
 // arrasta um arquivo até o relógio (ou pelo botão da prateleira) e ela fecha

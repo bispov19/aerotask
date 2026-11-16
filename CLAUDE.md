@@ -176,11 +176,15 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   `meta_workspace_get_work_area_for_monitor` CRITICAL; Luma Dock gera
   `LumaBackground … needs an allocation`; milhares de `Overwriting existing binding of keysym`.
 
-### Funções do Isle na barra do macOS (projeto 2 — plano em ~/.claude/plans/playful-purring-abelson.md)
+### Farol: relógio + painel na barra do macOS (projeto 2)
+- **Nome (2026-11-16, pedido do usuário)**: o relógio + painel e as formas de vidro se chamam **Farol**
+  (`lib/farol/`, `Farol`, `FarolSurface`, `AeroMenuFarol*`, CSS `aero-farol-*`, chaves `farol-*`).
+  O usuário quer o projeto com identidade própria: NÃO citar o projeto que inspirou o visual
+  (nem em código, comentários, textos, README ou commits novos).
 - **ATUAL (2026-11-11, decisão final do usuário)**: menus da barra E relógio abrem o
   POP-UP padrão do GNOME (balão, `AeroMenu`; o relógio usa `alignment 1.0`), com o desfoque
-  do Blur my Shell. `island-menus` agora é `false` por padrão (código da forma ainda existe
-  como opção). A forma do Isle (`IslandSurface`) continua só nos ALERTAS. Abaixo, histórico.
+  do Blur my Shell. `farol-menus` agora é `false` por padrão (código da forma ainda existe
+  como opção). A forma de vidro (`FarolSurface`) continua só nos ALERTAS. Abaixo, histórico.
 - **Integração com o Blur my Shell nos pop-ups**: o BMS escreve na caixa do menu
   (`set_style`) um `border-radius` igual ao do vidro dele (`menu-corner-radius` 20) e pinta o
   fundo pela classe (`rgba(30,30,33,.5) !important`). `AeroMenu._applyAppearance` NÃO toca
@@ -199,7 +203,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   sólida** (chave `black-bar`, padrão ligado; `PanelLayout` acrescenta só a sua declaração
   ao `Main.panel.style` e a tira no destroy). Relógio do Aero no CANTO DIREITO (último
   item de `_rightBox`, `addToStatusArea('aero-menu-clock')`, peso normal). **Clique**
-  faz a forma PRETA do Isle sair de baixo do relógio (`islandShape.js`: chrome desenhado
+  faz a forma PRETA do Farol sair de baixo do relógio (`farolShape.js`: chrome desenhado
   com Cairo — corpo, cantos 28 px, ombros côncavos na borda de baixo da barra —, mola,
   borda direita presa ao relógio, cresce para baixo/esquerda). Cabeçalho na altura da
   barra: abas à esquerda + cópia da data/hora no mesmo lugar do relógio. Esc/clique
@@ -207,8 +211,8 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   (Fase 2) saem do mesmo lugar, mesma forma. Sem hover.
 - **Visual atualizado (2026-11-11, pedido do usuário)**: barra = preto FUMÊ (`black-bar-opacity`,
   padrão 85%) para o desfoque do Blur my Shell aparecer; forma do relógio E menus da barra
-  (`island-menus`) saem da barra como vidro fumê. Peça comum: `lib/island/surface.js`
-  (`IslandSurface`): desfoque ESTÁTICO (cópia do papel de parede via
+  (`farol-menus`) saem da barra como vidro fumê. Peça comum: `lib/farol/surface.js`
+  (`FarolSurface`): desfoque ESTÁTICO (cópia do papel de parede via
   `Background.BackgroundManager` + `Shell.BlurEffect` radius 60·escala, brilho 0,6 — igual ao
   BMS do painel), recortado por máscara GLSL (`shapeMask.js`, `Clutter.ShaderEffect` +
   `vfunc_get_static_snippet`), tinta por cima (Cairo), faixa da barra NÃO pintada. Cor:
@@ -225,7 +229,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 - O BMS reescreve `Main.panel.style` (tira o `;` final): remover a nossa regra por regex.
 - `get_transformed_position()` de ator sem alocação devolve NaN; menu aberto antes do título
   ter alocação faz o BoxPointer alocar NaN → `AeroMenu.open` recusa sem `has_allocation()`.
-- **Fase 2a concluída (2026-11-11)**: `alerts.js` (AlertPresenter: IslandSurface que sai do
+- **Fase 2a concluída (2026-11-11)**: `alerts.js` (AlertPresenter: FarolSurface que sai do
   relógio; reaproveita `BarLevel` de `ui/barLevel.js`, com `overdrive` acima de 100%),
   `services/osdOverride.js` (InjectionManager em `Main.osdWindowManager.show/showAll/showOne`;
   ícones `audio-volume*`, `display-brightness*`, `keyboard-brightness*`; o resto e tela
@@ -307,7 +311,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 - **Missão 1 (2026-11-14)**: alertas (brilho, bateria, Caps Lock, Bluetooth, rede, foco,
   eventos) agora usam o POP-UP PADRÃO (um `AeroMenu` anclado no relógio, alinhamento 1.0,
   `clock.alignToEdge(menu)`), aberto SEM o menuManager (sem grab: não prende teclado/mouse).
-  A forma do Isle saiu dos alertas (`IslandSurface` só resta na opção `island-menus`).
+  A forma de vidro saiu dos alertas (`FarolSurface` só resta na opção `farol-menus`).
   Desligar `menu._onKeyPress` (o PopupMenu liga Espaço/Enter/↓ no ator de origem = relógio).
   Abrir no meio da animação de fechar interrompe o `menu-closed` → zerar `_closing` no `_open`.
   Nível substituindo mensagem: fechar sem animação e reabrir (o Blur my Shell mede o desfoque
@@ -321,7 +325,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   ligado) e `volume-hud-show-percentage`.
 - `lib/osdOverride.js` é o ÚNICO remendo em `Main.osdWindowManager.show/showAll/showOne`
   (vive na extensão; `setHandler(kind, fn)`): 'volume' → HUD; 'brightness'/'keyboard' → alertas
-  do relógio (registra/desregistra no Island). Dois remendos no mesmo método desfeitos em ordem
+  do relógio (registra/desregistra no Farol). Dois remendos no mesmo método desfeitos em ordem
   diferente deixam um wrapper "órfão" — visto quando a extensão ANTIGA (luma) e a nova rodaram
   juntas na sessão aninhada (o dconf copiado ainda tem a antiga ativa: desativá-la no teste).
 - **Missão 4 (2026-11-14)**: barra flutuante (`lib/floatingPanel.js`, chave `floating-panel`):
@@ -378,6 +382,31 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   CUIDADO nos testes: Wi-Fi, Bluetooth e Modo de energia usam o barramento de SISTEMA real
   (desconectaria a rede do usuário) — testar com um `QuickMenuToggle` falso
   (`Object.getPrototypeOf(PowerProfilesToggle)`) adicionado com `menu.addItem()`.
+- **Centro de controle no estilo do macOS (2026-11-16)**: `lib/controlCenter/` (chave
+  `macos-control-center`). Troca SÓ o layout da grade `quickSettings.menu._grid` por uma
+  SUBCLASSE do `QuickSettingsLayout` do GNOME (classe pega em tempo de execução por
+  `grid.layout_manager.constructor`, registrada 1×; herda espaçamento e o `column-span`). Os botões
+  continuam filhos diretos da grade: o submenu é preso por `BindConstraint` à posição do botão
+  RELATIVA AO PAI — reparentar quebraria os submenus. Com submenu aberto, o que está abaixo desce
+  a altura do overlay (por coluna). Ao trocar o layout, as metas (column-span) se perdem: copiar
+  do antigo para o novo e de volta no revert. Fundos dos blocos/títulos/"Tocando agora" são filhos
+  da grade com `_aeroCcRole`; fundos mantidos por baixo (`set_child_below_sibling(bg, null)`) a
+  cada `child-added`. **Fundo dos botões em estilo EM LINHA**: o tema/St deu prioridade a regras
+  do tema mesmo contra nossas regras com `!important` (só 4 classes + !important venceu num teste);
+  inline sempre vence (aceita `inherit` e `-st-accent-color`). **`St.DrawingArea` (a barra do
+  slider) NÃO desenha filhos**: ícone "dentro" da barra = caixa `BinLayout` [barra + camada
+  `BoxLayout` com o botão à esquerda] no lugar da barra dentro do `sliderBin`; o `x_align` de
+  filho no BinLayout foi ignorado. MPRIS próprio (`media.js`): o `MprisSource` do Shell não tem
+  destroy. Testes: `dev/test-apps/mpris-test.js` (player falso). CSS da barra:
+  `-barlevel-height`, `-barlevel-(active-)background-color`, `-slider-handle-radius`, `color`.
+- **Sombra do centro de controle**: vinha do TEMA (Brisa: `.popup-menu-content { box-shadow }`);
+  neutralizada só em `.popup-menu-content.quick-settings`.
+- **Bateria sumindo no login (causa)**: `_setupIndicators` (panel.js:336) cria `qs._system` e só
+  o põe na barra na linha 377; no meio insere outros indicadores → nosso `child-added` via
+  `_system` sem pai → `box is null` e o sinal já desconectado (nunca mais tentava). Agora espera
+  `_system.get_parent()`. Ícone fixo com estado neutro; só some se UPower diz "sem bateria" E o
+  chassi (hostnamed `Chassis`, aqui "laptop") não é portátil; proxy do UPower com nova tentativa
+  (2 s → 30 s) e `notify::g-name-owner`.
 - **Aninhado sem quadros**: se a janela do mutter-devkit fica escondida, NENHUMA animação avança
   (transição "tocando" com elapsed 0, inclusive `Main.panel.ease`). Para capturas, desligar
   `org.gnome.desktop.interface enable-animations` DENTRO do aninhado (banco isolado).
@@ -465,7 +494,6 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   with detached actors") — vale para a caixinha de alertas.
 - Extensões do usuário que tocam no relógio/música: `hiragana-clock` (esconde
   `dateMenu.container`) e `wavebar-music` (dele, GPL-3.0-or-later; MPRIS + LRCLIB).
-- Isle clonado em `/tmp/isle-ref` (GPL-3.0) só como referência: NÃO copiar código.
 
 ### Ícones
 - Fedora: Simple Icons 16.37.0 (`path` copiado por script, nunca à mão). O Simple Icons

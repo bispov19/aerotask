@@ -69,9 +69,9 @@
     -boxpointer-gap: 0px;
 }
 
-/* Visual do Isle: o menu "sai" da barra, então encosta nela (sem vão). O
- * fundo é a forma de vidro fumê desenhada atrás (lib/island/surface.js). */
-.aero-menu-boxpointer.aero-menu-island-look {
+/* Vidro fumê: o menu "sai" da barra, então encosta nela (sem vão). O
+ * fundo é a forma de vidro fumê desenhada atrás (lib/farol/surface.js). */
+.aero-menu-boxpointer.aero-menu-farol-look {
     -boxpointer-gap: 0px;
 }
 
@@ -248,7 +248,7 @@
     spacing: 10px;
 }
 
-/* ================== Relógio + forma do Isle ================== *
+/* ================== Relógio + forma do Farol ================== *
  * O relógio é um botão comum do painel: a fonte e a cor vêm do tema, como
  * nos outros itens da barra.
  * "tnum" = dígitos tabulares (todos com a mesma largura): o relógio não
@@ -256,123 +256,123 @@
 
 /* Mesmo peso dos títulos "Arquivo", "Editar"… (o tema põe negrito nos
  * botões do painel; no macOS o relógio tem peso normal). */
-#panel .panel-button.aero-island-clock {
+#panel .panel-button.aero-farol-clock {
     -natural-hpadding: 10px;
     -minimum-hpadding: 6px;
     font-weight: normal;
 }
 
-.aero-island-clock-box,
-.aero-island-activities {
+.aero-farol-clock-box,
+.aero-farol-activities {
     spacing: 7px;
 }
 
-.aero-island-time,
-.aero-island-date {
+.aero-farol-time,
+.aero-farol-date {
     font-feature-settings: "tnum";
 }
 
-/* ---------- Pop-up do relógio (abas do Isle) ----------
+/* ---------- Pop-up do relógio (abas do Farol) ----------
  * O pop-up é um menu do Aero (.aero-menu-content: mesma cor, opacidade e
  * cantos dos outros menus). O conteúdo inteiro é um único item, sem destaque
  * nem recuo. */
-.aero-island-panel {
+.aero-farol-panel {
     padding: 0;
     margin: 0;
 }
 
-.aero-island-content {
+.aero-farol-content {
     min-width: 540px;
     padding: 4px 6px 6px;
     spacing: 10px;
 }
 
-.aero-island-header {
+.aero-farol-header {
     spacing: 8px;
 }
 
-.aero-island-tabs {
+.aero-farol-tabs {
     spacing: 4px;
 }
 
 /* Abas: como os itens dos menus — cinza no hover, cor de destaque na ativa. */
-.aero-island-tab {
+.aero-farol-tab {
     padding: 3px 10px;
     border-radius: 99px;
     color: inherit;
 }
 
-.aero-island-tab:hover {
+.aero-farol-tab:hover {
     background-color: rgba(128, 128, 128, 0.18);
 }
 
-.aero-island-tab:checked {
+.aero-farol-tab:checked {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.aero-island-page {
+.aero-farol-page {
     padding: 4px 8px 6px;
 }
 
-.aero-island-calendar {
+.aero-farol-calendar {
     spacing: 18px;
 }
 
-.aero-island-events {
+.aero-farol-events {
     spacing: 8px;
     min-width: 230px;
 }
 
-.aero-island-events-title {
+.aero-farol-events-title {
     font-weight: bold;
 }
 
-.aero-island-events-scroll {
+.aero-farol-events-scroll {
     max-height: 190px;
 }
 
-.aero-island-events-list {
+.aero-farol-events-list {
     spacing: 6px;
 }
 
-.aero-island-event {
+.aero-farol-event {
     spacing: 10px;
     padding: 5px 8px;
     border-radius: 6px;
     background-color: rgba(128, 128, 128, 0.12);
 }
 
-.aero-island-event-time {
+.aero-farol-event-time {
     color: rgba(150, 150, 150, 1);
     font-feature-settings: "tnum";
 }
 
-.aero-island-placeholder {
+.aero-farol-placeholder {
     color: rgba(150, 150, 150, 1);
     padding: 4px 0;
 }
 
-.aero-island-world-clocks {
+.aero-farol-world-clocks {
     margin-top: 4px;
 }
 
 /* ---------- Temperatura ao lado do relógio ---------- */
-.aero-island-weather {
+.aero-farol-weather {
     spacing: 4px;
 }
 
-.aero-island-weather-icon {
+.aero-farol-weather-icon {
     icon-size: 16px;
 }
 
 /* Largura mínima + dígitos tabulares: "9°" → "10°" não empurra o relógio. */
-.aero-island-weather-temp {
+.aero-farol-weather-temp {
     min-width: 2.2em;
     font-feature-settings: "tnum";
 }
 
-.aero-island-weather-condition {
+.aero-farol-weather-condition {
     color: rgba(150, 150, 150, 1);
 }
 
@@ -413,7 +413,7 @@
 }
 
 /* ---------- Página Notificações ---------- */
-.aero-island-unseen {
+.aero-farol-unseen {
     icon-size: 16px;
 }
 
@@ -428,27 +428,27 @@
 
 /* Botões em "pílula" (Não Perturbe, Limpar, ações): cinza translúcido, como
  * os botões das notificações do GNOME. Ligado = cor de destaque. */
-.aero-island-pill {
+.aero-farol-pill {
     padding: 4px 12px;
     border-radius: 99px;
     background-color: rgba(128, 128, 128, 0.18);
     color: inherit;
 }
 
-.aero-island-pill:hover {
+.aero-farol-pill:hover {
     background-color: rgba(128, 128, 128, 0.28);
 }
 
-.aero-island-pill:checked {
+.aero-farol-pill:checked {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.aero-island-pill-box {
+.aero-farol-pill-box {
     spacing: 6px;
 }
 
-.aero-island-pill-icon {
+.aero-farol-pill-icon {
     icon-size: 14px;
 }
 
@@ -576,20 +576,20 @@
 }
 
 /* ---------- Timer de foco ao lado do relógio ---------- */
-.aero-island-focus-activity {
+.aero-farol-focus-activity {
     spacing: 4px;
 }
 
-.aero-island-focus-icon {
+.aero-farol-focus-icon {
     icon-size: 14px;
 }
 
-.aero-island-focus-time {
+.aero-farol-focus-time {
     font-feature-settings: "tnum";
 }
 
-/* Na pausa, o tom da cor de destaque (como o Isle pinta a pausa de outra cor). */
-.aero-island-focus-break {
+/* Na pausa, o tom da cor de destaque. */
+.aero-farol-focus-break {
     color: -st-accent-color;
 }
 
@@ -969,4 +969,129 @@
     -natural-hpadding: 7px;
     -minimum-hpadding: 4px;
     border-radius: 6px;
+}
+
+/* ---------- Centro de controle (Configurações Rápidas) ----------
+ * SEM SOMBRA: o tema (ex.: Brisa) põe "box-shadow" em todo .popup-menu-content,
+ * e a caixa do centro de controle também tem essa classe. Só aqui: os outros
+ * menus do sistema ficam como o tema quer. */
+.popup-menu-content.quick-settings {
+    box-shadow: none;
+}
+
+/* ----- Estilo do macOS (lib/controlCenter/, opção "macos-control-center") -----
+ * Cores neutras translúcidas (cinza a 16–35%): funcionam no modo claro e no
+ * escuro, por cima do desfoque do Blur my Shell. */
+.aero-control-center .aero-cc-block {
+    background-color: rgba(128, 128, 128, 0.16);
+    border-radius: 18px;
+}
+
+.aero-control-center .aero-cc-block-title {
+    font-weight: bold;
+    padding: 2px 6px 4px;
+}
+
+/* Botões: o FUNDO (telha, linha da conectividade, seta, separador) vai em
+ * estilo em linha, pelo JS (lib/controlCenter/controlCenter.js): cada tema
+ * pinta o botão ligado com seletores fortes e só o estilo em linha vence
+ * sempre. Aqui fica o que não briga com o tema. */
+
+/* O círculo do ícone: neutro desligado, cor de destaque ligado (com
+ * transição suave). */
+.aero-control-center .aero-cc-toggle .quick-toggle-icon {
+    icon-size: 16px;
+    padding: 8px;
+    border-radius: 99px;
+    background-color: rgba(128, 128, 128, 0.32);
+    color: inherit;
+    transition-duration: 200ms;
+}
+
+.aero-control-center .aero-cc-toggle:checked .quick-toggle-icon {
+    background-color: -st-accent-color !important;
+    color: -st-accent-fg-color !important;
+}
+
+.aero-control-center .aero-cc-toggle .quick-toggle-title {
+    font-weight: bold;
+}
+
+/* Controles deslizantes grossos e arredondados, com o ícone dentro. */
+.aero-control-center .aero-cc-slider,
+.aero-control-center .aero-cc-slider:hover {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.aero-control-center .aero-cc-slider .slider {
+    height: 26px;
+    -barlevel-height: 26px;
+    -slider-handle-radius: 12px;
+    -barlevel-background-color: rgba(128, 128, 128, 0.35);
+    -barlevel-active-background-color: rgba(255, 255, 255, 0.92);
+    -barlevel-overdrive-color: #ed5f5d;
+    /* A "bolinha" na ponta do preenchimento. */
+    color: #ffffff;
+}
+
+.aero-control-center .aero-cc-slider-icon-button {
+    padding: 0;
+    /* No meio da "tampa" redonda da esquerda: (26 - 14) / 2. */
+    margin-left: 6px;
+}
+
+/* Cinza escuro: legível por cima do preenchimento claro (como no macOS). */
+.aero-control-center .aero-cc-slider-icon {
+    icon-size: 14px;
+    color: rgba(0, 0, 0, 0.62);
+}
+
+/* Tocando agora. */
+.aero-control-center .aero-cc-media {
+    background-color: rgba(128, 128, 128, 0.16);
+    border-radius: 18px;
+    padding: 10px 12px;
+    spacing: 12px;
+}
+
+.aero-control-center .aero-cc-media-cover {
+    icon-size: 44px;
+    border-radius: 8px;
+}
+
+/* Sem capa: um ícone de música menor, num quadrado neutro. */
+.aero-control-center .aero-cc-media-cover-empty {
+    icon-size: 22px;
+    padding: 11px;
+    background-color: rgba(128, 128, 128, 0.3);
+}
+
+.aero-control-center .aero-cc-media-text {
+    spacing: 1px;
+}
+
+.aero-control-center .aero-cc-media-title {
+    font-weight: bold;
+}
+
+.aero-control-center .aero-cc-media-artist {
+    color: rgba(150, 150, 150, 1);
+}
+
+.aero-control-center .aero-cc-media-button {
+    padding: 8px;
+    border-radius: 99px;
+}
+
+.aero-control-center .aero-cc-media-icon {
+    icon-size: 18px;
+}
+
+.aero-control-center .aero-cc-media-button:hover {
+    background-color: rgba(128, 128, 128, 0.22);
+}
+
+.aero-control-center .aero-cc-media-button:insensitive {
+    color: rgba(150, 150, 150, 0.6);
 }

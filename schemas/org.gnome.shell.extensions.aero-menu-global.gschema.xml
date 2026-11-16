@@ -51,12 +51,16 @@
       <default>'right'</default>
       <summary>Clock position in the top bar</summary>
     </key>
+    <key name="macos-control-center" type="b">
+      <default>true</default>
+      <summary>Quick Settings with the macOS Control Center layout (connectivity block, Focus, Display and Sound sliders, Now Playing)</summary>
+    </key>
     <key name="floating-panel" type="b">
       <default>true</default>
       <summary>Floating top bar with rounded corners; it touches the screen edges while a window is maximized</summary>
     </key>
     <key name="black-bar" type="b">
-      <!-- O visual do Isle: barra preta sólida, unida à forma do relógio. -->
+      <!-- Barra preta sólida, unida à forma do relógio. -->
       <default>true</default>
       <summary>Smoked black top bar</summary>
     </key>
@@ -66,10 +70,10 @@
       <default>85</default>
       <summary>Opacity of the black bar (percent; 100 = solid)</summary>
     </key>
-    <key name="island-menus" type="b">
+    <key name="farol-menus" type="b">
       <!-- Desligado: menus e relógio abrem o pop-up ("balão") do GNOME. -->
       <default>false</default>
-      <summary>Menus come out of the bar with the Isle look (smoked glass, spring animation)</summary>
+      <summary>Menus come out of the bar with the Farol look (smoked glass, spring animation)</summary>
     </key>
     <key name="focus-bar-shortcut" type="as">
       <default><![CDATA[['F10']]]></default>
@@ -164,24 +168,24 @@
       <summary>Write debug messages to the journal</summary>
     </key>
 
-    <!-- ===================== Relógio + painel do Isle =====================
+    <!-- ===================== Relógio + painel (Farol) =====================
          Algumas chaves só passam a ter efeito nas Fases 2 e 3; elas já
          existem para o prefs e o código usarem sempre os mesmos nomes. -->
-    <key name="island-enabled" type="b">
+    <key name="farol-enabled" type="b">
       <default>true</default>
-      <summary>Replace the GNOME clock with the Aero Menu Global clock (right corner) and its Isle-style panel</summary>
+      <summary>Replace the GNOME clock with the Aero Menu Global clock (right corner) and its Farol panel</summary>
     </key>
-    <key name="island-show-date" type="b">
+    <key name="farol-show-date" type="b">
       <default>true</default>
       <summary>Show the date beside the time in the clock</summary>
     </key>
-    <key name="island-pages" type="as">
+    <key name="farol-pages" type="as">
       <!-- Sem "música": o wavebar-music do usuário já cuida disso. A página
            "uso" não entra aqui: ela aparece quando app-usage-enabled liga. -->
       <default>['calendar', 'notifications', 'shelf', 'focus', 'reminders']</default>
       <summary>Clock panel pages, in order (calendar, notifications, shelf, focus, reminders)</summary>
     </key>
-    <key name="island-world-clocks" type="b">
+    <key name="farol-world-clocks" type="b">
       <default>true</default>
       <summary>Show world clocks on the Calendar page</summary>
     </key>

@@ -28,18 +28,18 @@ BEFORE=$(wc -l < "$LOG")
     menusNoGerenciador: Main.panel.menuManager._menus.length,
     atoresNoUiGroup: Main.layoutManager.uiGroup.get_n_children(),
     atoresAeroNoPalco: countOurs(global.stage),
-    // Relógio do Aero (painel do Isle): quantos existem, se o relógio do GNOME está visível, se o
+    // Relógio do Aero (Farol): quantos existem, se o relógio do GNOME está visível, se o
     // calendário dele está em casa e se o Super+V voltou ao original.
-    ilhas: Main.panel._rightBox.get_children().filter(c => c.get_first_child()?.constructor.name === 'AeroMenuIslandClock').length,
+    farois: Main.panel._rightBox.get_children().filter(c => c.get_first_child()?.constructor.name === 'AeroMenuFarolClock').length,
     relogioVisivel: Main.panel.statusArea.dateMenu.container.visible,
-    calendarioEmCasa: !Main.panel.statusArea.dateMenu._calendar.get_parent()?.has_style_class_name?.('aero-island-calendar-month'),
+    calendarioEmCasa: !Main.panel.statusArea.dateMenu._calendar.get_parent()?.has_style_class_name?.('aero-farol-calendar-month'),
     barraPreta: (Main.panel.style ?? '').includes('rgba(0, 0, 0,'),
     barraPretaPref: m.lookup(uuid).stateObj?._settings?.get_boolean('black-bar') ?? null,
     // Bateria: o ícone do GNOME volta ao desativar; o OSD volta ao original.
     bateriaGnomeVisivel: Main.panel.statusArea.quickSettings._system?.visible ?? true,
     osdOriginal: !Object.prototype.hasOwnProperty.call(Main.osdWindowManager, 'showAll') ||
       Main.osdWindowManager.showAll === Object.getPrototypeOf(Main.osdWindowManager).showAll,
-    superficies: Main.layoutManager.uiGroup.get_children().filter(c => c.constructor.name === 'AeroMenuIslandSurface').length,
+    superficies: Main.layoutManager.uiGroup.get_children().filter(c => c.constructor.name === 'AeroMenuFarolSurface').length,
     superVOriginal: !Object.prototype.hasOwnProperty.call(Main.panel, 'toggleCalendar') ||
       Main.panel.toggleCalendar === Object.getPrototypeOf(Main.panel).toggleCalendar,
     // Prateleira: o atalho Super+Shift+V só existe com o relógio do Aero; a
@@ -81,9 +81,9 @@ BEFORE=$(wc -l < "$LOG")
     // emprestado precisa voltar para o relógio do GNOME.
     // Um alerta de volume no meio do ciclo (a forma do alerta precisa sumir).
     Main.osdWindowManager.showAll(new (imports.gi.Gio.ThemedIcon)({name: 'audio-volume-medium-symbolic'}), null, 0.5, 1);
-    if (i % 4 === 0) { m.lookup(uuid).stateObj._island.toggle('shelf', true); await wait(150); }
+    if (i % 4 === 0) { m.lookup(uuid).stateObj._farol.toggle('shelf', true); await wait(150); }
     else if (i % 2 === 0) { Main.panel.toggleCalendar(); await wait(150); }
-    // E com um menu da barra aberto (a forma do Isle atrás dele).
+    // E com um menu da barra aberto (a forma de vidro atrás dele).
     else {
       const bar = Main.panel._leftBox.get_children().find(c => c.name === 'aeroMenuBar');
       bar?._menuButtons[1]?.menu.open(); await wait(150);
@@ -123,19 +123,19 @@ checks = {
     "bloquear remove a barra (só o Registrar fica)": data["bloqueada"]["barras"] == 0
         and data["bloqueada"]["atoresAeroNoPalco"] == 0,
     "desbloquear recria 1 barra": data["desbloqueada"]["barras"] == 1,
-    "exatamente 1 relógio do Aero após os ciclos": d["ilhas"] == 1,
+    "exatamente 1 relógio do Aero após os ciclos": d["farois"] == 1,
     "relógio do Aero esconde o do GNOME": not d["relogioVisivel"],
-    "desativar remove o relógio do Aero": data["desativada"]["ilhas"] == 0,
+    "desativar remove o relógio do Aero": data["desativada"]["farois"] == 0,
     "desativar mostra o relógio do GNOME": data["desativada"]["relogioVisivel"],
     "desativar devolve o calendário ao relógio": data["desativada"]["calendarioEmCasa"],
     "desativar restaura o Super+V": data["desativada"]["superVOriginal"],
     "barra preta conforme a preferência": d["barraPreta"] == bool(d["barraPretaPref"]),
     "desativar devolve a cor original da barra": not data["desativada"]["barraPreta"],
-    "desativar remove as formas do Isle": data["desativada"]["superficies"] == 0,
+    "desativar remove as formas de vidro": data["desativada"]["superficies"] == 0,
     "desativar mostra o ícone de bateria do GNOME": data["desativada"]["bateriaGnomeVisivel"],
     "desativar devolve o OSD original": data["desativada"]["osdOriginal"],
-    "bloquear remove o relógio do Aero": data["bloqueada"]["ilhas"] == 0,
-    "desbloquear recria 1 relógio do Aero": data["desbloqueada"]["ilhas"] == 1,
+    "bloquear remove o relógio do Aero": data["bloqueada"]["farois"] == 0,
+    "desbloquear recria 1 relógio do Aero": data["desbloqueada"]["farois"] == 1,
     "atalho da Prateleira registrado": d["atalhoPrateleira"],
     "desativar remove o atalho da Prateleira": not data["desativada"]["atalhoPrateleira"],
     "a bandeja de arquivos abre": data["comBandeja"]["bandejas"] == 1,

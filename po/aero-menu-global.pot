@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Aero Menu Global 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/aero-menu-global/"
 "issues\n"
-"POT-Creation-Date: 2026-11-15 10:46-0300\n"
+"POT-Creation-Date: 2026-11-15 14:44-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "More Info…"
 msgstr ""
 
-#: lib/aboutDialog.js:78 lib/island/strings.js:68
+#: lib/aboutDialog.js:78 lib/farol/strings.js:68
 msgid "Close"
 msgstr ""
 
@@ -96,19 +96,39 @@ msgstr ""
 msgid "Show All"
 msgstr ""
 
-#: lib/fallbackMenus.js:179 prefs.js:733
+#: lib/controlCenter/controlCenter.js:116
+msgid "Display"
+msgstr ""
+
+#: lib/controlCenter/controlCenter.js:117
+msgid "Sound"
+msgstr ""
+
+#: lib/controlCenter/media.js:190
+msgid "Previous"
+msgstr ""
+
+#: lib/controlCenter/media.js:192
+msgid "Play or Pause"
+msgstr ""
+
+#: lib/controlCenter/media.js:194
+msgid "Next"
+msgstr ""
+
+#: lib/fallbackMenus.js:179 prefs.js:735
 msgid "File"
 msgstr ""
 
-#: lib/fallbackMenus.js:181 prefs.js:734
+#: lib/fallbackMenus.js:181 prefs.js:736
 msgid "Edit"
 msgstr ""
 
-#: lib/fallbackMenus.js:183 prefs.js:735
+#: lib/fallbackMenus.js:183 prefs.js:737
 msgid "View"
 msgstr ""
 
-#: lib/fallbackMenus.js:185 prefs.js:736
+#: lib/fallbackMenus.js:185 prefs.js:738
 msgid "Window"
 msgstr ""
 
@@ -274,9 +294,351 @@ msgstr ""
 msgid "%s Help"
 msgstr ""
 
-#: lib/fallbackMenus.js:414 lib/fallbackMenus.js:417 prefs.js:192
+#: lib/fallbackMenus.js:414 lib/fallbackMenus.js:417 prefs.js:194
 msgid "Keyboard Shortcuts"
 msgstr ""
+
+#: lib/farol/strings.js:25 prefs.js:323
+msgid "Calendar"
+msgstr ""
+
+#: lib/farol/strings.js:28 prefs.js:327
+msgid "Notifications"
+msgstr ""
+
+#: lib/farol/strings.js:31
+msgctxt "farol page"
+msgid "Focus"
+msgstr ""
+
+#: lib/farol/strings.js:34 prefs.js:330
+msgid "Reminders"
+msgstr ""
+
+#: lib/farol/strings.js:39
+msgid "Today"
+msgstr ""
+
+#: lib/farol/strings.js:42
+msgid "Tomorrow"
+msgstr ""
+
+#: lib/farol/strings.js:45
+msgid "Yesterday"
+msgstr ""
+
+#: lib/farol/strings.js:48
+msgid "No Events"
+msgstr ""
+
+#: lib/farol/strings.js:51
+msgctxt "event time"
+msgid "All Day"
+msgstr ""
+
+#: lib/farol/strings.js:54
+msgid "World Clocks"
+msgstr ""
+
+#: lib/farol/strings.js:59
+msgid "No Notifications"
+msgstr ""
+
+#: lib/farol/strings.js:62 tray/tray.js:81
+msgid "Clear"
+msgstr ""
+
+#: lib/farol/strings.js:65
+msgid "Do Not Disturb"
+msgstr ""
+
+#: lib/farol/strings.js:71
+msgid "Only urgent notifications appear while Do Not Disturb is on"
+msgstr ""
+
+#: lib/farol/strings.js:76
+msgctxt "focus phase"
+msgid "Break"
+msgstr ""
+
+#: lib/farol/strings.js:79
+msgid "Start"
+msgstr ""
+
+#: lib/farol/strings.js:82
+msgid "Pause"
+msgstr ""
+
+#: lib/farol/strings.js:85
+msgid "Resume"
+msgstr ""
+
+#: lib/farol/strings.js:88
+msgid "Reset"
+msgstr ""
+
+#: lib/farol/strings.js:91
+msgid "Focus session done"
+msgstr ""
+
+#: lib/farol/strings.js:94
+msgid "Time for a break"
+msgstr ""
+
+#: lib/farol/strings.js:97
+msgid "Start Break"
+msgstr ""
+
+#: lib/farol/strings.js:100
+msgid "Break is over"
+msgstr ""
+
+#: lib/farol/strings.js:103
+msgid "Ready to focus again?"
+msgstr ""
+
+#: lib/farol/strings.js:106
+msgid "Start Focus"
+msgstr ""
+
+#: lib/farol/strings.js:111
+msgid "New reminder…"
+msgstr ""
+
+#: lib/farol/strings.js:114
+msgid "No reminders"
+msgstr ""
+
+#: lib/farol/strings.js:117
+msgid "Done"
+msgstr ""
+
+#: lib/farol/strings.js:122
+msgid "Low Battery"
+msgstr ""
+
+#: lib/farol/strings.js:125
+msgid "Battery Charged"
+msgstr ""
+
+#: lib/farol/strings.js:128 prefs.js:564
+msgid "Caps Lock"
+msgstr ""
+
+#: lib/farol/strings.js:132
+msgid "Turned on"
+msgstr ""
+
+#: lib/farol/strings.js:135
+msgid "Turned off"
+msgstr ""
+
+#: lib/farol/strings.js:138
+msgid "Connected"
+msgstr ""
+
+#: lib/farol/strings.js:141
+msgid "Disconnected"
+msgstr ""
+
+#: lib/farol/strings.js:144
+msgid "Offline"
+msgstr ""
+
+#: lib/farol/strings.js:147
+msgid "The network connection was lost"
+msgstr ""
+
+#: lib/farol/strings.js:150
+msgid "Back Online"
+msgstr ""
+
+#: lib/farol/strings.js:153
+msgid "Join"
+msgstr ""
+
+#: lib/farol/strings.js:158
+msgid "Muted"
+msgstr ""
+
+#: lib/farol/strings.js:163 prefs.js:572
+msgid "Battery"
+msgstr ""
+
+#: lib/farol/strings.js:166
+msgid "Charging"
+msgstr ""
+
+#: lib/farol/strings.js:169
+msgid "Charged"
+msgstr ""
+
+#: lib/farol/strings.js:172
+msgid "Plugged In"
+msgstr ""
+
+#: lib/farol/strings.js:175
+msgid "Power Saver"
+msgstr ""
+
+#: lib/farol/strings.js:180 prefs.js:328 prefs.js:366
+msgid "Shelf"
+msgstr ""
+
+#: lib/farol/strings.js:183
+msgid "Search copied items…"
+msgstr ""
+
+#: lib/farol/strings.js:186
+msgid "Pause history"
+msgstr ""
+
+#: lib/farol/strings.js:189
+msgid "Resume history"
+msgstr ""
+
+#: lib/farol/strings.js:192
+msgid "Paused: nothing new is saved"
+msgstr ""
+
+#: lib/farol/strings.js:195
+msgid "Clear (keeps pinned items)"
+msgstr ""
+
+#: lib/farol/strings.js:198
+msgid "Nothing copied yet"
+msgstr ""
+
+#: lib/farol/strings.js:201
+msgid "Nothing found"
+msgstr ""
+
+#: lib/farol/strings.js:204
+msgid "Pin"
+msgstr ""
+
+#: lib/farol/strings.js:207
+msgid "Unpin"
+msgstr ""
+
+#: lib/farol/strings.js:210 prefs.js:801
+msgid "Remove"
+msgstr ""
+
+#: lib/farol/strings.js:213
+msgid "Image"
+msgstr ""
+
+#: lib/farol/strings.js:216
+msgid "Link"
+msgstr ""
+
+#: lib/farol/strings.js:219 tray/tray.js:70
+msgid "File Tray"
+msgstr ""
+
+#: lib/farol/strings.js:222
+msgid "Drag files onto the clock to keep them at hand"
+msgstr ""
+
+#: lib/farol/strings.js:227
+msgid "Usage"
+msgstr ""
+
+#: lib/farol/strings.js:230
+msgid "7 days"
+msgstr ""
+
+#: lib/farol/strings.js:233
+msgid "Nothing recorded yet"
+msgstr ""
+
+#: lib/farol/strings.js:236
+msgid "Clear history"
+msgstr ""
+
+#. Translators: {time} is a duration, e.g. "5 h 12 min".
+#: lib/farol/strings.js:240
+msgid "Total: {time}"
+msgstr ""
+
+#. Translators: date in the top bar clock, e.g. "Wed, Nov 11". Uses
+#. * GLib.DateTime.format() codes: %a weekday, %-d day, %b month.
+#: lib/farol/strings.js:256
+msgid "%a, %b %-d"
+msgstr ""
+
+#. Translators: time with seconds, 24-hour format (GLib.DateTime.format codes).
+#: lib/farol/strings.js:270
+msgctxt "time format"
+msgid "%H:%M:%S"
+msgstr ""
+
+#. Translators: time with seconds, 12-hour format (GLib.DateTime.format codes).
+#: lib/farol/strings.js:272
+msgctxt "time format"
+msgid "%-l:%M:%S %p"
+msgstr ""
+
+#. Translators: time in 24-hour format (GLib.DateTime.format codes).
+#: lib/farol/strings.js:276
+msgctxt "time format"
+msgid "%H:%M"
+msgstr ""
+
+#. Translators: time in 12-hour format (GLib.DateTime.format codes).
+#: lib/farol/strings.js:278
+msgctxt "time format"
+msgid "%-l:%M %p"
+msgstr ""
+
+#. Translators: a full date with year, e.g. "Wed, Nov 11, 2027".
+#: lib/farol/strings.js:303
+msgid "%a, %b %-d, %Y"
+msgstr ""
+
+#. Translators: a duration; {h} = hours, {m} = minutes (two digits).
+#: lib/farol/strings.js:346
+msgid "{h} h {m} min"
+msgstr ""
+
+#. Translators: a duration in minutes.
+#. Translators: a duration in minutes, e.g. "25 min".
+#: lib/farol/strings.js:349 lib/farol/strings.js:401
+msgid "{m} min"
+msgstr ""
+
+#. Translators: battery, e.g. "1 h 05 min until full".
+#: lib/farol/strings.js:365
+msgid "{time} until full"
+msgstr ""
+
+#. Translators: battery, e.g. "3 h 20 min left".
+#: lib/farol/strings.js:373
+msgid "{time} left"
+msgstr ""
+
+#. Translators: low battery alert, {p} = "20%".
+#: lib/farol/strings.js:426
+msgid "{p} left · plug in the charger"
+msgstr ""
+
+#. Translators: an event starting now, {title} = its name.
+#: lib/farol/strings.js:439
+msgid "{title} is starting"
+msgstr ""
+
+#. Translators: an event about to start, e.g. "Weekly sync in 5 min".
+#: lib/farol/strings.js:442
+msgid "{title} in {n} min"
+msgstr ""
+
+#. Translators: number of files copied, e.g. "3 files".
+#: lib/farol/strings.js:453
+msgid "{n} file"
+msgid_plural "{n} files"
+msgstr[0] ""
+msgstr[1] ""
 
 #: lib/forceQuitDialog.js:39
 msgid "Force Quit Applications"
@@ -291,7 +653,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: lib/forceQuitDialog.js:67 lib/forceQuitDialog.js:148 prefs.js:195
+#: lib/forceQuitDialog.js:67 lib/forceQuitDialog.js:148 prefs.js:197
 msgid "Force Quit"
 msgstr ""
 
@@ -304,348 +666,6 @@ msgstr ""
 msgid "You will lose any unsaved changes."
 msgstr ""
 
-#: lib/island/strings.js:25 prefs.js:321
-msgid "Calendar"
-msgstr ""
-
-#: lib/island/strings.js:28 prefs.js:325
-msgid "Notifications"
-msgstr ""
-
-#: lib/island/strings.js:31
-msgctxt "island page"
-msgid "Focus"
-msgstr ""
-
-#: lib/island/strings.js:34 prefs.js:328
-msgid "Reminders"
-msgstr ""
-
-#: lib/island/strings.js:39
-msgid "Today"
-msgstr ""
-
-#: lib/island/strings.js:42
-msgid "Tomorrow"
-msgstr ""
-
-#: lib/island/strings.js:45
-msgid "Yesterday"
-msgstr ""
-
-#: lib/island/strings.js:48
-msgid "No Events"
-msgstr ""
-
-#: lib/island/strings.js:51
-msgctxt "event time"
-msgid "All Day"
-msgstr ""
-
-#: lib/island/strings.js:54
-msgid "World Clocks"
-msgstr ""
-
-#: lib/island/strings.js:59
-msgid "No Notifications"
-msgstr ""
-
-#: lib/island/strings.js:62 tray/tray.js:82
-msgid "Clear"
-msgstr ""
-
-#: lib/island/strings.js:65
-msgid "Do Not Disturb"
-msgstr ""
-
-#: lib/island/strings.js:71
-msgid "Only urgent notifications appear while Do Not Disturb is on"
-msgstr ""
-
-#: lib/island/strings.js:76
-msgctxt "focus phase"
-msgid "Break"
-msgstr ""
-
-#: lib/island/strings.js:79
-msgid "Start"
-msgstr ""
-
-#: lib/island/strings.js:82
-msgid "Pause"
-msgstr ""
-
-#: lib/island/strings.js:85
-msgid "Resume"
-msgstr ""
-
-#: lib/island/strings.js:88
-msgid "Reset"
-msgstr ""
-
-#: lib/island/strings.js:91
-msgid "Focus session done"
-msgstr ""
-
-#: lib/island/strings.js:94
-msgid "Time for a break"
-msgstr ""
-
-#: lib/island/strings.js:97
-msgid "Start Break"
-msgstr ""
-
-#: lib/island/strings.js:100
-msgid "Break is over"
-msgstr ""
-
-#: lib/island/strings.js:103
-msgid "Ready to focus again?"
-msgstr ""
-
-#: lib/island/strings.js:106
-msgid "Start Focus"
-msgstr ""
-
-#: lib/island/strings.js:111
-msgid "New reminder…"
-msgstr ""
-
-#: lib/island/strings.js:114
-msgid "No reminders"
-msgstr ""
-
-#: lib/island/strings.js:117
-msgid "Done"
-msgstr ""
-
-#: lib/island/strings.js:122
-msgid "Low Battery"
-msgstr ""
-
-#: lib/island/strings.js:125
-msgid "Battery Charged"
-msgstr ""
-
-#: lib/island/strings.js:128 prefs.js:562
-msgid "Caps Lock"
-msgstr ""
-
-#: lib/island/strings.js:132
-msgid "Turned on"
-msgstr ""
-
-#: lib/island/strings.js:135
-msgid "Turned off"
-msgstr ""
-
-#: lib/island/strings.js:138
-msgid "Connected"
-msgstr ""
-
-#: lib/island/strings.js:141
-msgid "Disconnected"
-msgstr ""
-
-#: lib/island/strings.js:144
-msgid "Offline"
-msgstr ""
-
-#: lib/island/strings.js:147
-msgid "The network connection was lost"
-msgstr ""
-
-#: lib/island/strings.js:150
-msgid "Back Online"
-msgstr ""
-
-#: lib/island/strings.js:153
-msgid "Join"
-msgstr ""
-
-#: lib/island/strings.js:158
-msgid "Muted"
-msgstr ""
-
-#: lib/island/strings.js:163 prefs.js:570
-msgid "Battery"
-msgstr ""
-
-#: lib/island/strings.js:166
-msgid "Charging"
-msgstr ""
-
-#: lib/island/strings.js:169
-msgid "Charged"
-msgstr ""
-
-#: lib/island/strings.js:172
-msgid "Plugged In"
-msgstr ""
-
-#: lib/island/strings.js:175
-msgid "Power Saver"
-msgstr ""
-
-#: lib/island/strings.js:180 prefs.js:326 prefs.js:364
-msgid "Shelf"
-msgstr ""
-
-#: lib/island/strings.js:183
-msgid "Search copied items…"
-msgstr ""
-
-#: lib/island/strings.js:186
-msgid "Pause history"
-msgstr ""
-
-#: lib/island/strings.js:189
-msgid "Resume history"
-msgstr ""
-
-#: lib/island/strings.js:192
-msgid "Paused: nothing new is saved"
-msgstr ""
-
-#: lib/island/strings.js:195
-msgid "Clear (keeps pinned items)"
-msgstr ""
-
-#: lib/island/strings.js:198
-msgid "Nothing copied yet"
-msgstr ""
-
-#: lib/island/strings.js:201
-msgid "Nothing found"
-msgstr ""
-
-#: lib/island/strings.js:204
-msgid "Pin"
-msgstr ""
-
-#: lib/island/strings.js:207
-msgid "Unpin"
-msgstr ""
-
-#: lib/island/strings.js:210 prefs.js:799
-msgid "Remove"
-msgstr ""
-
-#: lib/island/strings.js:213
-msgid "Image"
-msgstr ""
-
-#: lib/island/strings.js:216
-msgid "Link"
-msgstr ""
-
-#: lib/island/strings.js:219 tray/tray.js:71
-msgid "File Tray"
-msgstr ""
-
-#: lib/island/strings.js:222
-msgid "Drag files onto the clock to keep them at hand"
-msgstr ""
-
-#: lib/island/strings.js:227
-msgid "Usage"
-msgstr ""
-
-#: lib/island/strings.js:230
-msgid "7 days"
-msgstr ""
-
-#: lib/island/strings.js:233
-msgid "Nothing recorded yet"
-msgstr ""
-
-#: lib/island/strings.js:236
-msgid "Clear history"
-msgstr ""
-
-#. Translators: {time} is a duration, e.g. "5 h 12 min".
-#: lib/island/strings.js:240
-msgid "Total: {time}"
-msgstr ""
-
-#. Translators: date in the top bar clock, e.g. "Wed, Nov 11". Uses
-#. * GLib.DateTime.format() codes: %a weekday, %-d day, %b month.
-#: lib/island/strings.js:256
-msgid "%a, %b %-d"
-msgstr ""
-
-#. Translators: time with seconds, 24-hour format (GLib.DateTime.format codes).
-#: lib/island/strings.js:270
-msgctxt "time format"
-msgid "%H:%M:%S"
-msgstr ""
-
-#. Translators: time with seconds, 12-hour format (GLib.DateTime.format codes).
-#: lib/island/strings.js:272
-msgctxt "time format"
-msgid "%-l:%M:%S %p"
-msgstr ""
-
-#. Translators: time in 24-hour format (GLib.DateTime.format codes).
-#: lib/island/strings.js:276
-msgctxt "time format"
-msgid "%H:%M"
-msgstr ""
-
-#. Translators: time in 12-hour format (GLib.DateTime.format codes).
-#: lib/island/strings.js:278
-msgctxt "time format"
-msgid "%-l:%M %p"
-msgstr ""
-
-#. Translators: a full date with year, e.g. "Wed, Nov 11, 2027".
-#: lib/island/strings.js:303
-msgid "%a, %b %-d, %Y"
-msgstr ""
-
-#. Translators: a duration; {h} = hours, {m} = minutes (two digits).
-#: lib/island/strings.js:346
-msgid "{h} h {m} min"
-msgstr ""
-
-#. Translators: a duration in minutes.
-#. Translators: a duration in minutes, e.g. "25 min".
-#: lib/island/strings.js:349 lib/island/strings.js:401
-msgid "{m} min"
-msgstr ""
-
-#. Translators: battery, e.g. "1 h 05 min until full".
-#: lib/island/strings.js:365
-msgid "{time} until full"
-msgstr ""
-
-#. Translators: battery, e.g. "3 h 20 min left".
-#: lib/island/strings.js:373
-msgid "{time} left"
-msgstr ""
-
-#. Translators: low battery alert, {p} = "20%".
-#: lib/island/strings.js:426
-msgid "{p} left · plug in the charger"
-msgstr ""
-
-#. Translators: an event starting now, {title} = its name.
-#: lib/island/strings.js:439
-msgid "{title} is starting"
-msgstr ""
-
-#. Translators: an event about to start, e.g. "Weekly sync in 5 min".
-#: lib/island/strings.js:442
-msgid "{title} in {n} min"
-msgstr ""
-
-#. Translators: number of files copied, e.g. "3 files".
-#: lib/island/strings.js:453
-msgid "{n} file"
-msgid_plural "{n} files"
-msgstr[0] ""
-msgstr[1] ""
-
 #: lib/keepAwake.js:92
 msgid "Keeping the screen on"
 msgstr ""
@@ -654,7 +674,7 @@ msgstr ""
 msgid "Keep Screen On"
 msgstr ""
 
-#: lib/menuBar.js:285 lib/menuBar.js:294 prefs.js:737
+#: lib/menuBar.js:285 lib/menuBar.js:294 prefs.js:739
 msgid "Help"
 msgstr ""
 
@@ -670,7 +690,7 @@ msgstr ""
 msgid "Space"
 msgstr ""
 
-#: lib/systemMenu.js:54 prefs.js:742
+#: lib/systemMenu.js:54 prefs.js:744
 msgid "System Menu"
 msgstr ""
 
@@ -682,15 +702,15 @@ msgstr ""
 msgid "System Settings…"
 msgstr ""
 
-#: lib/systemMenu.js:80 prefs.js:743
+#: lib/systemMenu.js:80 prefs.js:745
 msgid "Software Center…"
 msgstr ""
 
-#: lib/systemMenu.js:87 prefs.js:744
+#: lib/systemMenu.js:87 prefs.js:746
 msgid "Recent Items"
 msgstr ""
 
-#: lib/systemMenu.js:93 prefs.js:745
+#: lib/systemMenu.js:93 prefs.js:747
 msgid "Force Quit…"
 msgstr ""
 
@@ -755,7 +775,7 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: prefs.js:165 prefs.js:621
+#: prefs.js:165 prefs.js:623
 msgid "Menu Bar"
 msgstr ""
 
@@ -772,624 +792,633 @@ msgid "Hide the Activities button"
 msgstr ""
 
 #: prefs.js:169
-msgid "Floating bar"
+msgid "macOS-style Control Center"
 msgstr ""
 
 #: prefs.js:170
+msgid ""
+"Quick Settings in blocks: connectivity, Focus, Display, Sound and Now Playing"
+msgstr ""
+
+#: prefs.js:171
+msgid "Floating bar"
+msgstr ""
+
+#: prefs.js:172
 msgid ""
 "Rounded corners and a small margin from the screen edges; it touches the "
 "edges while a window is maximized"
 msgstr ""
 
-#: prefs.js:171
+#: prefs.js:173
 msgid "Black bar"
 msgstr ""
 
-#: prefs.js:172
-msgid "Like Isle: the bar, the menus and the clock panel look like one piece"
+#: prefs.js:174
+msgid "The bar, the menus and the clock panel look like one piece"
 msgstr ""
 
-#: prefs.js:173
+#: prefs.js:175
 msgid "Black bar opacity (%)"
 msgstr ""
 
-#: prefs.js:174
+#: prefs.js:176
 msgid "Below 100, the Blur my Shell blur shows through"
 msgstr ""
 
-#: prefs.js:177
-msgid "Isle-style menus"
-msgstr ""
-
-#: prefs.js:178
-msgid "Menus come out of the bar as smoked glass, with a spring animation"
-msgstr ""
-
 #: prefs.js:179
-msgid "Clock position"
+msgid "Farol-style menus"
 msgstr ""
 
 #: prefs.js:180
-msgid "Center"
+msgid "Menus come out of the bar as smoked glass, with a spring animation"
 msgstr ""
 
 #: prefs.js:181
-msgid "Right (like macOS)"
+msgid "Clock position"
 msgstr ""
 
 #: prefs.js:182
+msgid "Center"
+msgstr ""
+
+#: prefs.js:183
+msgid "Right (like macOS)"
+msgstr ""
+
+#: prefs.js:184
 msgid "Used with the GNOME clock"
 msgstr ""
 
-#: prefs.js:193
+#: prefs.js:195
 msgid "Focus the menu bar"
 msgstr ""
 
-#: prefs.js:194
+#: prefs.js:196
 msgid "Opens the app menu; use the arrow keys to navigate"
 msgstr ""
 
-#: prefs.js:198
+#: prefs.js:200
 msgid "Multiple Monitors"
 msgstr ""
 
-#: prefs.js:200
+#: prefs.js:202
 msgid "The menu bar is shown on the primary monitor"
 msgstr ""
 
-#: prefs.js:201
+#: prefs.js:203
 msgid ""
 "GNOME has a single top bar, on the primary monitor. Showing the menus on "
 "every monitor would need a second bar, which this extension does not create."
 msgstr ""
 
-#: prefs.js:212
+#: prefs.js:214
 msgid "Program Icons"
 msgstr ""
 
-#: prefs.js:213
+#: prefs.js:215
 msgid ""
 "Tray icons of programs such as Discord, Steam and Telegram (AppIndicator and "
 "StatusNotifierItem), with the menu of each program. Monochrome uses the "
 "symbolic icon when the theme has one; otherwise, grayscale."
 msgstr ""
 
-#: prefs.js:220
+#: prefs.js:222
 msgid "The “AppIndicator and KStatusNotifierItem Support” extension is active"
 msgstr ""
 
-#: prefs.js:221
+#: prefs.js:223
 msgid ""
 "It takes priority. Disable it in the Extensions app to use the icons of Aero "
 "Menu Global."
 msgstr ""
 
-#: prefs.js:234
+#: prefs.js:236
 msgid "Show program icons in the bar"
 msgstr ""
 
-#: prefs.js:235 prefs.js:615
+#: prefs.js:237 prefs.js:617
 msgid "Icon style"
 msgstr ""
 
-#: prefs.js:236
+#: prefs.js:238
 msgid "Monochrome (like macOS)"
 msgstr ""
 
-#: prefs.js:237
+#: prefs.js:239
 msgid "Original colors"
 msgstr ""
 
-#: prefs.js:244
+#: prefs.js:246
 msgid "Programs"
 msgstr ""
 
-#: prefs.js:245
+#: prefs.js:247
 msgid "Choose which icons appear; programs show up here after they run once"
 msgstr ""
 
-#: prefs.js:255
+#: prefs.js:257
 msgid "No program seen yet"
 msgstr ""
 
-#: prefs.js:287 prefs.js:292
+#: prefs.js:289 prefs.js:294
 msgid "Clock"
 msgstr ""
 
-#: prefs.js:293
+#: prefs.js:295
 msgid ""
 "A macOS-style clock in the right corner; click it for the calendar, "
 "notifications, copied items, focus and reminders"
 msgstr ""
 
-#: prefs.js:295
+#: prefs.js:297
 msgid "Use the Aero Menu Global clock"
 msgstr ""
 
-#: prefs.js:296
+#: prefs.js:298
 msgid "Replaces the GNOME clock"
 msgstr ""
 
-#: prefs.js:301
+#: prefs.js:303
 msgid "Time format"
 msgstr ""
 
-#: prefs.js:302
+#: prefs.js:304
 msgid "24-hour (13:30)"
 msgstr ""
 
-#: prefs.js:303
+#: prefs.js:305
 msgid "12-hour (1:30 PM)"
 msgstr ""
 
-#: prefs.js:304
+#: prefs.js:306
 msgid "The same option as in GNOME Settings"
 msgstr ""
 
-#: prefs.js:305
+#: prefs.js:307
 msgid "Show seconds"
 msgstr ""
 
-#: prefs.js:308
+#: prefs.js:310
 msgid "Show the date beside the time"
 msgstr ""
 
-#: prefs.js:318
+#: prefs.js:320
 msgid "Pages"
 msgstr ""
 
-#: prefs.js:319
+#: prefs.js:321
 msgid "What appears when you click the clock"
 msgstr ""
 
-#: prefs.js:322
+#: prefs.js:324
 msgid "World clocks on the Calendar page"
 msgstr ""
 
-#: prefs.js:323
+#: prefs.js:325
 msgid "The cities from the Clocks app"
 msgstr ""
 
-#: prefs.js:326
+#: prefs.js:328
 msgid "Clipboard history and the file tray"
 msgstr ""
 
-#: prefs.js:327 prefs.js:377
+#: prefs.js:329 prefs.js:379
 msgid "Focus"
 msgstr ""
 
-#: prefs.js:329
+#: prefs.js:331
 msgid "App usage"
 msgstr ""
 
-#: prefs.js:330
+#: prefs.js:332
 msgid "Records how long each app is in use; stored only on this computer"
 msgstr ""
 
-#: prefs.js:339
+#: prefs.js:341
 msgid "Temperature"
 msgstr ""
 
-#: prefs.js:340
+#: prefs.js:342
 msgid ""
 "From GNOME’s weather service (MET Norway); only the city’s approximate "
 "position is sent. “Automatic” uses the location of the GNOME Weather "
 "settings."
 msgstr ""
 
-#: prefs.js:342
+#: prefs.js:344
 msgid "Show the temperature beside the clock"
 msgstr ""
 
-#: prefs.js:344
+#: prefs.js:346
 msgid "Unit"
 msgstr ""
 
-#: prefs.js:345
+#: prefs.js:347
 msgid "Celsius (°C)"
 msgstr ""
 
-#: prefs.js:346
+#: prefs.js:348
 msgid "Fahrenheit (°F)"
 msgstr ""
 
-#: prefs.js:348
+#: prefs.js:350
 msgid "Location"
 msgstr ""
 
-#: prefs.js:351
+#: prefs.js:353
 msgctxt "weather location"
 msgid "Automatic"
 msgstr ""
 
-#: prefs.js:352
+#: prefs.js:354
 msgid "Chosen city"
 msgstr ""
 
-#: prefs.js:365
+#: prefs.js:367
 msgid ""
 "Copied texts, links, images and files. Passwords copied from password "
 "managers are never saved."
 msgstr ""
 
-#: prefs.js:367
+#: prefs.js:369
 msgid "Open the clipboard history"
 msgstr ""
 
-#: prefs.js:368
+#: prefs.js:370
 msgid "Paste right away"
 msgstr ""
 
-#: prefs.js:369
+#: prefs.js:371
 msgid ""
 "Choosing an item also pastes it into the app (Ctrl+Shift+V in terminals)"
 msgstr ""
 
-#: prefs.js:370
+#: prefs.js:372
 msgid "Items to keep"
 msgstr ""
 
-#: prefs.js:371
+#: prefs.js:373
 msgid "Pinned items are not counted"
 msgstr ""
 
-#: prefs.js:372
+#: prefs.js:374
 msgid "Keep between sessions"
 msgstr ""
 
-#: prefs.js:373
+#: prefs.js:375
 msgid ""
 "Turned off, the history lives only in memory and is gone when you log out"
 msgstr ""
 
-#: prefs.js:378
+#: prefs.js:380
 msgid "Also adjustable on the Focus page, with − and +"
 msgstr ""
 
-#: prefs.js:380
+#: prefs.js:382
 msgid "Focus length"
 msgstr ""
 
-#: prefs.js:380 prefs.js:381 prefs.js:595
+#: prefs.js:382 prefs.js:383 prefs.js:597
 msgid "In minutes"
 msgstr ""
 
-#: prefs.js:381
+#: prefs.js:383
 msgid "Break length"
 msgstr ""
 
-#: prefs.js:382
+#: prefs.js:384
 msgid "Do Not Disturb while focusing"
 msgstr ""
 
-#: prefs.js:383
+#: prefs.js:385
 msgid "Turned off again at the end, if it was the focus that turned it on"
 msgstr ""
 
-#: prefs.js:414
+#: prefs.js:416
 msgid "City"
 msgstr ""
 
-#: prefs.js:417
+#: prefs.js:419
 msgid "None chosen"
 msgstr ""
 
-#: prefs.js:432
+#: prefs.js:434
 msgid "Search for a city…"
 msgstr ""
 
-#: prefs.js:441 prefs.js:481
+#: prefs.js:443 prefs.js:483
 msgid "Type at least two letters"
 msgstr ""
 
-#: prefs.js:465
+#: prefs.js:467
 msgid "Choose a City"
 msgstr ""
 
-#: prefs.js:481
+#: prefs.js:483
 msgid "No city found"
 msgstr ""
 
-#: prefs.js:544
+#: prefs.js:546
 msgid "Alerts"
 msgstr ""
 
-#: prefs.js:556
+#: prefs.js:558
 msgid "Center of the Screen"
 msgstr ""
 
-#: prefs.js:557
+#: prefs.js:559
 msgid ""
 "A macOS-style HUD in place of GNOME’s pop-up. Volume and brightness show for "
 "any change (keys, the Quick Settings controls, apps…)"
 msgstr ""
 
-#: prefs.js:559
+#: prefs.js:561
 msgid "Volume"
 msgstr ""
 
-#: prefs.js:560
+#: prefs.js:562
 msgid "Brightness"
 msgstr ""
 
-#: prefs.js:561
+#: prefs.js:563
 msgid "Screen and keyboard backlight"
 msgstr ""
 
-#: prefs.js:563
+#: prefs.js:565
 msgid "Quick Settings Buttons"
 msgstr ""
 
-#: prefs.js:564
+#: prefs.js:566
 msgid "Wi-Fi, Bluetooth, Power Mode, Night Light, Keep Screen On…"
 msgstr ""
 
-#: prefs.js:565
+#: prefs.js:567
 msgid "Show the percentage"
 msgstr ""
 
-#: prefs.js:566
+#: prefs.js:568
 msgid "“65%” below the volume and brightness bar"
 msgstr ""
 
-#: prefs.js:571
+#: prefs.js:573
 msgid "MacBook-style battery icon"
 msgstr ""
 
-#: prefs.js:572
+#: prefs.js:574
 msgid "Replaces the GNOME battery icon in the top bar"
 msgstr ""
 
-#: prefs.js:573
+#: prefs.js:575
 msgid "Show the battery percentage"
 msgstr ""
 
-#: prefs.js:578
+#: prefs.js:580
 msgid "Battery Alerts"
 msgstr ""
 
-#: prefs.js:579
+#: prefs.js:581
 msgid "Low battery"
 msgstr ""
 
-#: prefs.js:580
+#: prefs.js:582
 msgid "Once at 20% and once at 10%; the 10% alert shows even in Do Not Disturb"
 msgstr ""
 
-#: prefs.js:581
+#: prefs.js:583
 msgid "Battery charged"
 msgstr ""
 
-#: prefs.js:585
+#: prefs.js:587
 msgid "Other Alerts"
 msgstr ""
 
-#: prefs.js:586
+#: prefs.js:588
 msgid ""
 "Only important alerts: they wait for full screen to end and are held back in "
 "Do Not Disturb"
 msgstr ""
 
-#: prefs.js:588
+#: prefs.js:590
 msgid "Bluetooth devices"
 msgstr ""
 
-#: prefs.js:589
+#: prefs.js:591
 msgid "When a device connects or disconnects"
 msgstr ""
 
-#: prefs.js:590
+#: prefs.js:592
 msgid "No internet connection"
 msgstr ""
 
-#: prefs.js:591
+#: prefs.js:593
 msgid "After 5 seconds offline, and again when it comes back"
 msgstr ""
 
-#: prefs.js:592
+#: prefs.js:594
 msgid "Calendar events"
 msgstr ""
 
-#: prefs.js:593
+#: prefs.js:595
 msgid "With a “Join” button for Meet, Zoom, Teams and Webex"
 msgstr ""
 
-#: prefs.js:594
+#: prefs.js:596
 msgid "Remind me before the event"
 msgstr ""
 
-#: prefs.js:604
+#: prefs.js:606
 msgid "Appearance"
 msgstr ""
 
-#: prefs.js:610
+#: prefs.js:612
 msgid "System Icon"
 msgstr ""
 
-#: prefs.js:611
+#: prefs.js:613
 msgid "The logo shown in place of the Apple menu"
 msgstr ""
 
-#: prefs.js:614
+#: prefs.js:616
 msgid "Icon size"
 msgstr ""
 
-#: prefs.js:614 prefs.js:633
+#: prefs.js:616 prefs.js:635
 msgid "In pixels"
 msgstr ""
 
-#: prefs.js:616
+#: prefs.js:618
 msgid "Symbolic (follows the theme color)"
 msgstr ""
 
-#: prefs.js:617
+#: prefs.js:619
 msgid "Color"
 msgstr ""
 
-#: prefs.js:622
+#: prefs.js:624
 msgid "App name in bold"
 msgstr ""
 
-#: prefs.js:623
+#: prefs.js:625
 msgid "Title spacing"
 msgstr ""
 
-#: prefs.js:624
+#: prefs.js:626
 msgid "Space on each side of a menu title, in pixels"
 msgstr ""
 
-#: prefs.js:627
+#: prefs.js:629
 msgid "Drop-down Menus"
 msgstr ""
 
-#: prefs.js:628
+#: prefs.js:630
 msgid "Shortcut style"
 msgstr ""
 
-#: prefs.js:629
+#: prefs.js:631
 msgid "Text (Ctrl+C)"
 msgstr ""
 
-#: prefs.js:630
+#: prefs.js:632
 msgid "Mac symbols (⌃C)"
 msgstr ""
 
-#: prefs.js:632
+#: prefs.js:634
 msgid "Opacity"
 msgstr ""
 
-#: prefs.js:632
+#: prefs.js:634
 msgid "In percent"
 msgstr ""
 
-#: prefs.js:633
+#: prefs.js:635
 msgid "Corner radius"
 msgstr ""
 
-#: prefs.js:683
+#: prefs.js:685
 msgid "Automatic"
 msgstr ""
 
-#: prefs.js:686
+#: prefs.js:688
 msgid "Custom…"
 msgstr ""
 
-#: prefs.js:703
+#: prefs.js:705
 msgid "Images (SVG, PNG)"
 msgstr ""
 
-#: prefs.js:709
+#: prefs.js:711
 msgid "Choose an Icon"
 msgstr ""
 
-#: prefs.js:725
+#: prefs.js:727
 msgid "Menus"
 msgstr ""
 
-#: prefs.js:730
+#: prefs.js:732
 msgid "Standard Menus"
 msgstr ""
 
-#: prefs.js:731
+#: prefs.js:733
 msgid "Used when the app does not export menus of its own"
 msgstr ""
 
-#: prefs.js:738
+#: prefs.js:740
 msgid "Search field in the Help menu"
 msgstr ""
 
-#: prefs.js:739
+#: prefs.js:741
 msgid "Searches every menu item of the current app"
 msgstr ""
 
-#: prefs.js:746
+#: prefs.js:748
 msgid "Suspend, Restart and Shut Down"
 msgstr ""
 
-#: prefs.js:753
+#: prefs.js:755
 msgid "Compatibility"
 msgstr ""
 
-#: prefs.js:757
+#: prefs.js:759
 msgid "Apps That Use DBusMenu"
 msgstr ""
 
-#: prefs.js:758
+#: prefs.js:760
 msgid "Read menus from Qt, Electron and similar apps"
 msgstr ""
 
-#: prefs.js:759
+#: prefs.js:761
 msgid ""
 "Provides the com.canonical.AppMenu.Registrar service. Works with apps "
 "running through XWayland; apps that were already open need to be restarted."
 msgstr ""
 
-#: prefs.js:764
+#: prefs.js:766
 msgid "Troubleshooting"
 msgstr ""
 
-#: prefs.js:765
+#: prefs.js:767
 msgid "Debug mode"
 msgstr ""
 
-#: prefs.js:766
+#: prefs.js:768
 msgid "Writes details to the system journal (journalctl)"
 msgstr ""
 
-#: prefs.js:774
+#: prefs.js:776
 msgid "Ignored Apps"
 msgstr ""
 
-#: prefs.js:775
+#: prefs.js:777
 msgid ""
 "These apps always use the standard menus. Use the app ID (e.g. "
 "org.gnome.TextEditor) or the window class (WM_CLASS)."
 msgstr ""
 
-#: prefs.js:779
+#: prefs.js:781
 msgid "Add app"
 msgstr ""
 
-#: prefs.js:819
+#: prefs.js:821
 msgid "About"
 msgstr ""
 
-#: prefs.js:836
+#: prefs.js:838
 msgid "A macOS-style global menu bar for GNOME"
 msgstr ""
 
-#: prefs.js:844
+#: prefs.js:846
 msgid "Version"
 msgstr ""
 
-#: prefs.js:847
+#: prefs.js:849
 msgid "Author"
 msgstr ""
 
-#: prefs.js:849
+#: prefs.js:851
 msgid "Source code"
 msgstr ""
 
-#: prefs.js:859
+#: prefs.js:861
 msgid "License"
 msgstr ""
 
-#: prefs.js:860
+#: prefs.js:862
 msgid "GNU General Public License, version 3 or later"
 msgstr ""
 
-#: tray/tray.js:90
+#: tray/tray.js:89
 msgid "Drag all files from here"
 msgstr ""
 
-#: tray/tray.js:97
+#: tray/tray.js:96
 msgid "Drop Files Here"
 msgstr ""
 
-#: tray/tray.js:98
+#: tray/tray.js:97
 msgid "They stay here until you drag them somewhere else"
 msgstr ""
 
-#: tray/tray.js:237
+#: tray/tray.js:236
 msgid "Remove from the tray"
 msgstr ""
