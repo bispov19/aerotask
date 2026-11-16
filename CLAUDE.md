@@ -399,6 +399,18 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   filho no BinLayout foi ignorado. MPRIS próprio (`media.js`): o `MprisSource` do Shell não tem
   destroy. Testes: `dev/test-apps/mpris-test.js` (player falso). CSS da barra:
   `-barlevel-height`, `-barlevel-(active-)background-color`, `-slider-handle-radius`, `color`.
+- **Largura FIXA do centro de controle (2026-11-16)**: `CONTROL_CENTER_WIDTH = 416` (px lógicos ×
+  `scale_factor`) em `lib/controlCenter/layout.js`. Antes a largura era a maior largura NATURAL
+  dos itens — a natural de um St.Label é a do texto inteiro (as reticências só agem quando falta
+  espaço) → título longo no "Tocando agora" alargava o painel. Submenus herdam a largura (overlay
+  preso à grade). Teste: `mpris-test.js [nome] [--longo]` (dois players = dois nomes).
+- **Pílula "Caps Lock ativada" (2026-11-16)**: NÃO é do GNOME — vem do **OpenLogi** (pacote
+  `openlogi`, app Logitech HID++; `openlogi-overlay`, textos embutidos no binário Rust, por isso
+  não aparecem em .mo). Desligada na origem: `~/.config/openlogi/config.toml`
+  `[app_settings] lock_key_notifications = false` (cópia em `config.toml.antes-caps-lock`;
+  serviço `systemctl --user restart openlogi-agent`). O Shell 51 não tem aviso próprio de Caps
+  Lock (só chama `osdWindowManager.show*` para volume, brilho, janela e `ShowOSD` do D-Bus).
+  `gresource list /usr/lib64/gnome-shell/libshell-51.so` FUNCIONA (no `/usr/bin/gnome-shell` não).
 - **Sombra do centro de controle**: vinha do TEMA (Brisa: `.popup-menu-content { box-shadow }`);
   neutralizada só em `.popup-menu-content.quick-settings`.
 - **Bateria sumindo no login (causa)**: `_setupIndicators` (panel.js:336) cria `qs._system` e só

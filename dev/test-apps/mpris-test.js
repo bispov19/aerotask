@@ -5,7 +5,10 @@
 // (imprime cada comando) e troca de faixa no Next/Previous.
 //
 //   DBUS_SESSION_BUS_ADDRESS="$(cut -d# -f1 ~/.local/state/aero-menu-global/nested-bus)" \
-//       gjs -m dev/test-apps/mpris-test.js
+//       gjs -m dev/test-apps/mpris-test.js [nome] [--longo]
+//
+// [nome]: sufixo do nome no barramento (para rodar dois players juntos);
+// --longo: começa numa faixa com título e artista bem longos.
 
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
@@ -28,11 +31,15 @@ const IFACE = `
   </interface>
 </node>`;
 
+const args = ARGV.filter(a => !a.startsWith('--'));
+const busSuffix = args[0] ?? 'aerotest';
 const tracks = [
     ['Música de Teste', ['Artista Exemplo']],
     ['Segunda Faixa', ['Outra Banda', 'Participação']],
+    ['SINAL DE ALERTA PRA ESPANHA? DEBATEMOS VITÓRIA DA INGLATERRA NA NATIONS! E MUITO MAIS NESTE PROGRAMA',
+        ['Canal Com Um Nome Bem Comprido Para Testar', 'Convidado Especial Também Com Nome Longo']],
 ];
-let index = 0;
+let index = ARGV.includes('--longo') ? 2 : 0;
 let playing = true;
 
 const nodeInfo = Gio.DBusNodeInfo.new_for_xml(IFACE);
@@ -87,7 +94,7 @@ const vtable = {
 };
 
 const loop = new GLib.MainLoop(null, false);
-Gio.bus_own_name(Gio.BusType.SESSION, 'org.mpris.MediaPlayer2.aerotest',
+Gio.bus_own_name(Gio.BusType.SESSION, `org.mpris.MediaPlayer2.${busSuffix}`,
     Gio.BusNameOwnerFlags.NONE,
     conn => {
         connection = conn;
@@ -96,6 +103,6 @@ Gio.bus_own_name(Gio.BusType.SESSION, 'org.mpris.MediaPlayer2.aerotest',
                 vtable.method_call, vtable.get_property, null);
         }
     },
-    () => print('pronto: org.mpris.MediaPlayer2.aerotest'),
+    () => print(`pronto: org.mpris.MediaPlayer2.${busSuffix}`),
     () => loop.quit());
 loop.run();
