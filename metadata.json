@@ -1,13 +1,13 @@
 {
-  "uuid": "aero-menu-global@viniciusbispo19",
-  "name": "Aero Menu Global",
-  "description": "Barra de menus global no estilo do macOS: ícone do sistema, nome do aplicativo em negrito e os menus Arquivo, Editar, Visualizar, Janela e Ajuda.",
+  "uuid": "aerotask@viniciusbispo19",
+  "name": "AeroTask",
+  "description": "Barra superior completa no estilo do macOS: menus globais (ícone do sistema, app em negrito, Arquivo, Editar, Visualizar, Janela e Ajuda ou os menus reais do app), relógio com calendário, notificações e prateleira, centro de controle em blocos, avisos no centro da tela, ícones de bandeja e barra flutuante.",
   "shell-version": [
     "51"
   ],
-  "url": "https://github.com/viniciusbispo19/aero-menu-global",
-  "gettext-domain": "aero-menu-global",
-  "settings-schema": "org.gnome.shell.extensions.aero-menu-global",
+  "url": "https://github.com/viniciusbispo19/aerotask",
+  "gettext-domain": "aerotask",
+  "settings-schema": "org.gnome.shell.extensions.aerotask",
   "session-modes": [
     "user",
     "unlock-dialog"

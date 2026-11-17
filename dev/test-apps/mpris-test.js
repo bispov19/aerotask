@@ -4,7 +4,7 @@
 // controle sem abrir um player de verdade. Responde a PlayPause/Next/Previous
 // (imprime cada comando) e troca de faixa no Next/Previous.
 //
-//   DBUS_SESSION_BUS_ADDRESS="$(cut -d# -f1 ~/.local/state/aero-menu-global/nested-bus)" \
+//   DBUS_SESSION_BUS_ADDRESS="$(cut -d# -f1 ~/.local/state/aerotask/nested-bus)" \
 //       gjs -m dev/test-apps/mpris-test.js [nome] [--longo]
 //
 // [nome]: sufixo do nome no barramento (para rodar dois players juntos);

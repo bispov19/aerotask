@@ -65,7 +65,7 @@ const item = {
         return 'ApplicationStatus';
     },
     get Id() {
-        return 'aero-sni-test';
+        return 'aerotask-sni-test';
     },
     get Title() {
         return title;

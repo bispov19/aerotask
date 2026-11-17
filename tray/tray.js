@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Bandeja de arquivos do Aero Menu Global: você solta arquivos aqui e depois os
+// Bandeja de arquivos do AeroTask: você solta arquivos aqui e depois os
 // arrasta para onde quiser (outra pasta, um e-mail, um chat…).
 //
 // Por que uma JANELA separada, e não algo dentro do GNOME Shell?
@@ -10,7 +10,7 @@
 //
 // Não é um serviço em segundo plano: a extensão abre esta janela quando você
 // arrasta um arquivo até o relógio (ou pelo botão da prateleira) e ela fecha
-// quando você a fecha. A lista fica salva em ~/.local/share/aero-menu-global/tray.json
+// quando você a fecha. A lista fica salva em ~/.local/share/aerotask/tray.json
 // (só os CAMINHOS: os arquivos continuam onde estão).
 //
 // Uso: gjs -m tray.js <pasta-de-traduções>
@@ -25,8 +25,8 @@ import Pango from 'gi://Pango';
 import Gettext from 'gettext';
 import {programArgs} from 'system';
 
-const APP_ID = 'io.github.viniciusbispo19.AeroMenuGlobal.Tray';
-const DOMAIN = 'aero-menu-global';
+const APP_ID = 'io.github.viniciusbispo19.AeroTask.Tray';
+const DOMAIN = 'aerotask';
 
 if (programArgs[0])
     Gettext.bindtextdomain(DOMAIN, programArgs[0]);
@@ -38,14 +38,14 @@ Gio._promisify(Gio.File.prototype, 'query_info_async');
 Gio._promisify(Gio.File.prototype, 'make_directory_async');
 
 const LIST_FILE = Gio.File.new_for_path(
-    GLib.build_filenamev([GLib.get_user_data_dir(), 'aero-menu-global', 'tray.json']));
+    GLib.build_filenamev([GLib.get_user_data_dir(), 'aerotask', 'tray.json']));
 
 const CSS = `
-.aero-tray-drop { border-radius: 12px; transition: background 150ms; }
-.aero-tray-drop.hover { background: alpha(@accent_bg_color, 0.18); }
-.aero-tray-tile { padding: 8px 4px; border-radius: 10px; }
-.aero-tray-tile:hover { background: alpha(currentColor, 0.08); }
-.aero-tray-tile .remove { min-width: 20px; min-height: 20px; padding: 0; }
+.aerotask-tray-drop { border-radius: 12px; transition: background 150ms; }
+.aerotask-tray-drop.hover { background: alpha(@accent_bg_color, 0.18); }
+.aerotask-tray-tile { padding: 8px 4px; border-radius: 10px; }
+.aerotask-tray-tile:hover { background: alpha(currentColor, 0.08); }
+.aerotask-tray-tile .remove { min-width: 20px; min-height: 20px; padding: 0; }
 `;
 
 /**
@@ -119,7 +119,7 @@ class TrayWindow extends Adw.ApplicationWindow {
             hscrollbar_policy: Gtk.PolicyType.NEVER,
         }), 'files');
 
-        const dropArea = new Gtk.Box({css_classes: ['aero-tray-drop'], margin_start: 6, margin_end: 6, margin_bottom: 6});
+        const dropArea = new Gtk.Box({css_classes: ['aerotask-tray-drop'], margin_start: 6, margin_end: 6, margin_bottom: 6});
         this._stack.hexpand = true;
         dropArea.append(this._stack);
         const target = Gtk.DropTarget.new(Gdk.FileList.$gtype, Gdk.DragAction.COPY);
@@ -152,7 +152,7 @@ class TrayWindow extends Adw.ApplicationWindow {
             this._setFiles([...files, ...this._files], false);
         } catch (e) {
             if (!e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.NOT_FOUND))
-                logError(e, 'Aero Menu Global (bandeja): lendo a lista');
+                logError(e, 'AeroTask (bandeja): lendo a lista');
             this._setFiles(this._files, false);
         }
     }
@@ -164,7 +164,7 @@ class TrayWindow extends Adw.ApplicationWindow {
             await LIST_FILE.replace_contents_async(new TextEncoder().encode(data), null, false,
                 Gio.FileCreateFlags.REPLACE_DESTINATION | Gio.FileCreateFlags.PRIVATE, null);
         } catch (e) {
-            logError(e, 'Aero Menu Global (bandeja): gravando a lista');
+            logError(e, 'AeroTask (bandeja): gravando a lista');
         }
     }
 
@@ -220,7 +220,7 @@ class TrayWindow extends Adw.ApplicationWindow {
         const box = new Gtk.Box({
             orientation: Gtk.Orientation.VERTICAL,
             spacing: 4,
-            css_classes: ['aero-tray-tile'],
+            css_classes: ['aerotask-tray-tile'],
             tooltip_text: file.get_path() ?? file.get_uri(),
         });
         const image = new Gtk.Image({icon_name: 'text-x-generic', pixel_size: 48});

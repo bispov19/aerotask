@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Abre um GNOME Shell 51 "aninhado" (dentro de uma janela) usando o mutter-devkit,
-# já com o Aero Menu Global instalado e ativado.
+# já com o AeroTask instalado e ativado.
 #
 # Por que isso existe: no Wayland não dá para reiniciar o Shell da sua sessão
 # (Alt+F2 → r só funcionava no X11). Para testar mudanças na extensão sem
@@ -12,10 +12,10 @@
 #
 # Isolamento de configurações (dconf):
 #   O GNOME guarda as configurações em ~/.config/dconf/user. Se o Shell aninhado
-#   usasse esse arquivo, ativar o Aero Menu Global lá dentro o ativaria também na sua
-#   sessão real. Então copiamos o arquivo para ~/.config/dconf/aero_menu_global_dev e
+#   usasse esse arquivo, ativar o AeroTask lá dentro o ativaria também na sua
+#   sessão real. Então copiamos o arquivo para ~/.config/dconf/aerotask_dev e
 #   apontamos o Shell aninhado para a cópia (variável DCONF_PROFILE). Resultado:
-#   mesmo tema e mesmas extensões (ótimo para testar compatibilidade com Aero
+#   mesmo tema e mesmas extensões (ótimo para testar compatibilidade com Luma
 #   Dock, Blur my Shell…), mas nada do que muda lá dentro vaza para cá.
 #   A cópia é refeita a cada execução.
 
@@ -23,18 +23,23 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 SIZE="${1:-1600x1000}"
-UUID=aero-menu-global@viniciusbispo19
-DEVTOOLS_UUID=aero-menu-global-devtools@viniciusbispo19
-DEV_DB=aero_menu_global_dev  # sem hífen: o nome vira parte de um caminho D-Bus (/ca/desrt/dconf/Writer/<nome>)
+UUID=aerotask@viniciusbispo19
+DEVTOOLS_UUID=aerotask-devtools@viniciusbispo19
+DEV_DB=aerotask_dev  # sem hífen: o nome vira parte de um caminho D-Bus (/ca/desrt/dconf/Writer/<nome>)
 
-STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/aero-menu-global"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/aerotask"
 mkdir -p "$STATE_DIR"
 LOG="$STATE_DIR/nested-$(date +%Y%m%d-%H%M%S).log"
 BUS_FILE="$STATE_DIR/nested-bus"   # endereço do D-Bus da sessão aninhada
 DCONF_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/dconf"
 
 # 1. Empacota e instala a versão atual do código (e a extensão auxiliar).
-./scripts/install.sh
+# Só empacota e instala: a migração do install.sh (remover a versão antiga,
+# mexer na lista de extensões da sessão REAL) não deve rodar a cada teste.
+./scripts/build.sh
+gnome-extensions install --force "build/$UUID.shell-extension.zip"
+# Versões antigas: desligadas só no banco de teste (abaixo).
+source scripts/legacy-names.sh
 gnome-extensions pack --force --out-dir=build "dev/$DEVTOOLS_UUID" >/dev/null
 gnome-extensions install --force "build/$DEVTOOLS_UUID.shell-extension.zip"
 
@@ -47,9 +52,11 @@ gnome-extensions install --force "build/$DEVTOOLS_UUID.shell-extension.zip"
 # a cópia e as escritas acontecem DENTRO do barramento aninhado, antes do Shell.
 printf 'user-db:%s\n' "$DEV_DB" > "$STATE_DIR/dconf-profile"
 export DCONF_PROFILE="$STATE_DIR/dconf-profile"
-export DCONF_DIR DEV_DB UUID DEVTOOLS_UUID
-# AERO_MENU_DEV=1: avisa a extensão auxiliar que ela pode ligar o modo inseguro.
-export AERO_MENU_DEV=1
+# Arrays do bash não passam para o "bash -c" abaixo: vai como texto.
+OLD_UUIDS_LIST="${OLD_UUIDS[*]}"
+export DCONF_DIR DEV_DB UUID DEVTOOLS_UUID OLD_UUIDS_LIST
+# AEROTASK_DEV=1: avisa a extensão auxiliar que ela pode ligar o modo inseguro.
+export AEROTASK_DEV=1
 # SHELL_DEBUG=backtrace-warnings: cada aviso/CRITICAL no log vem acompanhado
 # da pilha de chamadas JavaScript — mostra QUAL código causou o problema.
 export SHELL_DEBUG=backtrace-warnings
@@ -71,7 +78,7 @@ trap 'grep -q -- "#$RUN_ID\$" "$BUS_FILE" 2>/dev/null && rm -f "$BUS_FILE"' EXIT
 dbus-run-session -- bash -c '
     set -e
     cp "$DCONF_DIR/user" "$DCONF_DIR/$DEV_DB"
-    python3 -I scripts/dconf-enable-extensions.py "$UUID" "$DEVTOOLS_UUID"
+    python3 -I scripts/dconf-enable-extensions.py "$UUID" "$DEVTOOLS_UUID" --disable $OLD_UUIDS_LIST
     echo "$DBUS_SESSION_BUS_ADDRESS#$3" > "$1"
     exec gnome-shell --devkit --wayland --devkit-args="--monitor-size=$2"
 ' _ "$BUS_FILE" "$SIZE" "$RUN_ID" 2>&1 | tee "$LOG"

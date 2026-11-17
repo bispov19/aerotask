@@ -1,15 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Aero Menu Global package.
+# This file is distributed under the same license as the AeroTask package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Aero Menu Global 0.1.0\n"
-"Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/aero-menu-global/"
-"issues\n"
-"POT-Creation-Date: 2026-11-15 14:44-0300\n"
+"Project-Id-Version: AeroTask 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/aerotask/issues\n"
+"POT-Creation-Date: 2026-11-16 19:52-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,25 +73,25 @@ msgstr ""
 msgid "About %s"
 msgstr ""
 
-#: lib/appMenu.js:44 lib/appMenu.js:47 lib/appMenu.js:48
+#: lib/appMenu.js:45 lib/appMenu.js:49 lib/appMenu.js:50
 msgid "Settings…"
 msgstr ""
 
-#: lib/appMenu.js:53 lib/appMenu.js:54 lib/appMenu.js:55
+#: lib/appMenu.js:55 lib/appMenu.js:56 lib/appMenu.js:57
 #, javascript-format
 msgid "Quit %s"
 msgstr ""
 
-#: lib/appMenu.js:66
+#: lib/appMenu.js:68
 #, javascript-format
 msgid "Hide %s"
 msgstr ""
 
-#: lib/appMenu.js:72
+#: lib/appMenu.js:74
 msgid "Hide Others"
 msgstr ""
 
-#: lib/appMenu.js:77
+#: lib/appMenu.js:79
 msgid "Show All"
 msgstr ""
 
@@ -116,185 +115,185 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: lib/fallbackMenus.js:179 prefs.js:735
+#: lib/fallbackMenus.js:182 prefs.js:735
 msgid "File"
 msgstr ""
 
-#: lib/fallbackMenus.js:181 prefs.js:736
+#: lib/fallbackMenus.js:184 prefs.js:736
 msgid "Edit"
 msgstr ""
 
-#: lib/fallbackMenus.js:183 prefs.js:737
+#: lib/fallbackMenus.js:186 prefs.js:737
 msgid "View"
 msgstr ""
 
-#: lib/fallbackMenus.js:185 prefs.js:738
+#: lib/fallbackMenus.js:188 prefs.js:738
 msgid "Window"
 msgstr ""
 
-#: lib/fallbackMenus.js:193 lib/fallbackMenus.js:196 lib/fallbackMenus.js:201
+#: lib/fallbackMenus.js:197 lib/fallbackMenus.js:203 lib/fallbackMenus.js:209
 msgid "New Window"
 msgstr ""
 
-#: lib/fallbackMenus.js:205
+#: lib/fallbackMenus.js:213
 msgid "New Tab"
 msgstr ""
 
-#: lib/fallbackMenus.js:206
+#: lib/fallbackMenus.js:214
 msgid "Open…"
 msgstr ""
 
-#: lib/fallbackMenus.js:208
+#: lib/fallbackMenus.js:216
 msgid "Open Recent"
 msgstr ""
 
-#: lib/fallbackMenus.js:214
+#: lib/fallbackMenus.js:223
 msgid "Close Window"
 msgstr ""
 
-#: lib/fallbackMenus.js:220
+#: lib/fallbackMenus.js:230
 msgid "Close All"
 msgstr ""
 
-#: lib/fallbackMenus.js:225
+#: lib/fallbackMenus.js:235
 msgid "Save"
 msgstr ""
 
-#: lib/fallbackMenus.js:226
+#: lib/fallbackMenus.js:236
 msgid "Save As…"
 msgstr ""
 
-#: lib/fallbackMenus.js:228
+#: lib/fallbackMenus.js:238
 msgid "Print…"
 msgstr ""
 
-#: lib/fallbackMenus.js:236 lib/systemMenu.js:166
+#: lib/fallbackMenus.js:246 lib/systemMenu.js:170
 msgid "No recent documents"
 msgstr ""
 
-#: lib/fallbackMenus.js:251 lib/fallbackMenus.js:254
+#: lib/fallbackMenus.js:261 lib/fallbackMenus.js:264
 msgid "Emoji & Symbols"
 msgstr ""
 
-#: lib/fallbackMenus.js:261
+#: lib/fallbackMenus.js:272
 msgid "Undo"
 msgstr ""
 
-#: lib/fallbackMenus.js:262
+#: lib/fallbackMenus.js:273
 msgid "Redo"
 msgstr ""
 
-#: lib/fallbackMenus.js:264
+#: lib/fallbackMenus.js:275
 msgid "Cut"
 msgstr ""
 
-#: lib/fallbackMenus.js:265
+#: lib/fallbackMenus.js:276
 msgid "Copy"
 msgstr ""
 
-#: lib/fallbackMenus.js:266
+#: lib/fallbackMenus.js:277
 msgid "Paste"
 msgstr ""
 
-#: lib/fallbackMenus.js:267
+#: lib/fallbackMenus.js:278
 msgid "Paste Without Formatting"
 msgstr ""
 
-#: lib/fallbackMenus.js:268
+#: lib/fallbackMenus.js:279
 msgid "Delete"
 msgstr ""
 
-#: lib/fallbackMenus.js:269
+#: lib/fallbackMenus.js:280
 msgid "Select All"
 msgstr ""
 
-#: lib/fallbackMenus.js:272
+#: lib/fallbackMenus.js:283
 msgid "Find"
 msgstr ""
 
-#: lib/fallbackMenus.js:275
+#: lib/fallbackMenus.js:287
 msgid "Find…"
 msgstr ""
 
-#: lib/fallbackMenus.js:276
+#: lib/fallbackMenus.js:288
 msgid "Find Next"
 msgstr ""
 
-#: lib/fallbackMenus.js:277
+#: lib/fallbackMenus.js:289
 msgid "Find Previous"
 msgstr ""
 
-#: lib/fallbackMenus.js:278
+#: lib/fallbackMenus.js:290
 msgid "Find and Replace…"
 msgstr ""
 
-#: lib/fallbackMenus.js:289
+#: lib/fallbackMenus.js:301
 msgid "Exit Full Screen"
 msgstr ""
 
-#: lib/fallbackMenus.js:289
+#: lib/fallbackMenus.js:301
 msgid "Enter Full Screen"
 msgstr ""
 
-#: lib/fallbackMenus.js:305
+#: lib/fallbackMenus.js:319
 msgid "Show/Hide Sidebar"
 msgstr ""
 
-#: lib/fallbackMenus.js:307
+#: lib/fallbackMenus.js:321
 msgid "Zoom In"
 msgstr ""
 
-#: lib/fallbackMenus.js:308
+#: lib/fallbackMenus.js:322
 msgid "Zoom Out"
 msgstr ""
 
-#: lib/fallbackMenus.js:309
+#: lib/fallbackMenus.js:323
 msgid "Actual Size"
 msgstr ""
 
-#: lib/fallbackMenus.js:325
+#: lib/fallbackMenus.js:339
 #, javascript-format
 msgid "Workspace %d"
 msgstr ""
 
-#: lib/fallbackMenus.js:341
+#: lib/fallbackMenus.js:355
 msgid "Minimize"
 msgstr ""
 
-#: lib/fallbackMenus.js:347
+#: lib/fallbackMenus.js:362
 msgid "Zoom"
 msgstr ""
 
-#: lib/fallbackMenus.js:353
+#: lib/fallbackMenus.js:369
 msgid "Move Window to Left Side of Screen"
 msgstr ""
 
-#: lib/fallbackMenus.js:359
+#: lib/fallbackMenus.js:376
 msgid "Move Window to Right Side of Screen"
 msgstr ""
 
-#: lib/fallbackMenus.js:365
+#: lib/fallbackMenus.js:383
 msgid "Move to Next Display"
 msgstr ""
 
-#: lib/fallbackMenus.js:371
+#: lib/fallbackMenus.js:390
 msgid "Move to Workspace"
 msgstr ""
 
-#: lib/fallbackMenus.js:376
+#: lib/fallbackMenus.js:396
 msgid "Always on Top"
 msgstr ""
 
-#: lib/fallbackMenus.js:383
+#: lib/fallbackMenus.js:404
 msgid "Bring All to Front"
 msgstr ""
 
-#: lib/fallbackMenus.js:401 lib/fallbackMenus.js:407 lib/fallbackMenus.js:410
+#: lib/fallbackMenus.js:424 lib/fallbackMenus.js:433 lib/fallbackMenus.js:437
 #, javascript-format
 msgid "%s Help"
 msgstr ""
 
-#: lib/fallbackMenus.js:414 lib/fallbackMenus.js:417 prefs.js:194
+#: lib/fallbackMenus.js:441 lib/fallbackMenus.js:445 prefs.js:194
 msgid "Keyboard Shortcuts"
 msgstr ""
 
@@ -694,64 +693,64 @@ msgstr ""
 msgid "System Menu"
 msgstr ""
 
-#: lib/systemMenu.js:73
+#: lib/systemMenu.js:75
 msgid "About This Computer"
 msgstr ""
 
-#: lib/systemMenu.js:76
+#: lib/systemMenu.js:78
 msgid "System Settings…"
 msgstr ""
 
-#: lib/systemMenu.js:80 prefs.js:745
+#: lib/systemMenu.js:83 prefs.js:745
 msgid "Software Center…"
 msgstr ""
 
-#: lib/systemMenu.js:87 prefs.js:746
+#: lib/systemMenu.js:91 prefs.js:746
 msgid "Recent Items"
 msgstr ""
 
-#: lib/systemMenu.js:93 prefs.js:747
+#: lib/systemMenu.js:97 prefs.js:747
 msgid "Force Quit…"
 msgstr ""
 
-#: lib/systemMenu.js:100
+#: lib/systemMenu.js:104
 msgid "Suspend"
 msgstr ""
 
-#: lib/systemMenu.js:106
+#: lib/systemMenu.js:110
 msgid "Restart…"
 msgstr ""
 
-#: lib/systemMenu.js:112
+#: lib/systemMenu.js:116
 msgid "Shut Down…"
 msgstr ""
 
-#: lib/systemMenu.js:119
+#: lib/systemMenu.js:123
 msgid "Lock Screen"
 msgstr ""
 
-#: lib/systemMenu.js:125
+#: lib/systemMenu.js:129
 #, javascript-format
 msgid "Log Out “%s”…"
 msgstr ""
 
-#: lib/systemMenu.js:135
+#: lib/systemMenu.js:139
 msgid "Applications"
 msgstr ""
 
-#: lib/systemMenu.js:149
+#: lib/systemMenu.js:153
 msgid "No recent applications"
 msgstr ""
 
-#: lib/systemMenu.js:152
+#: lib/systemMenu.js:156
 msgid "Documents"
 msgstr ""
 
-#: lib/systemMenu.js:154
+#: lib/systemMenu.js:158
 msgid "File history is turned off in Privacy settings"
 msgstr ""
 
-#: lib/systemMenu.js:171
+#: lib/systemMenu.js:175
 msgid "Clear Menu"
 msgstr ""
 
@@ -889,8 +888,8 @@ msgstr ""
 
 #: prefs.js:223
 msgid ""
-"It takes priority. Disable it in the Extensions app to use the icons of Aero "
-"Menu Global."
+"It takes priority. Disable it in the Extensions app to use the icons of "
+"AeroTask."
 msgstr ""
 
 #: prefs.js:236
@@ -932,7 +931,7 @@ msgid ""
 msgstr ""
 
 #: prefs.js:297
-msgid "Use the Aero Menu Global clock"
+msgid "Use the AeroTask clock"
 msgstr ""
 
 #: prefs.js:298

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Aero Menu Global — ponto de entrada da extensão.
+// AeroTask — ponto de entrada da extensão.
 //
 // O GNOME Shell importa este arquivo e cria UMA instância da classe exportada
 // como `default`. Depois ele chama enable() e disable() quantas vezes quiser.
@@ -38,12 +38,13 @@ import {OsdHud} from './lib/osdHud.js';
 import {KeepAwake, KeepAwakeIndicator} from './lib/keepAwake.js';
 import {QuickSettingsHud} from './lib/quickSettingsHud.js';
 import {ControlCenter} from './lib/controlCenter/controlCenter.js';
+import {clearMenuIcons} from './lib/menuIcons.js';
 import {logError, setDebug} from './lib/util.js';
 
 /** A extensão "AppIndicator and KStatusNotifierItem Support". */
 const APPINDICATOR_UUID = 'appindicatorsupport@rgcjonas.gmail.com';
 
-export default class AeroMenuGlobalExtension extends Extension {
+export default class AeroTaskExtension extends Extension {
     enable() {
         this._settings = this.getSettings();
         setDebug(this._settings.get_boolean('debug'));
@@ -100,6 +101,8 @@ export default class AeroMenuGlobalExtension extends Extension {
     disable() {
         Main.sessionMode.disconnectObject(this);
         this._destroyUi();
+        // Ícones dos menus resolvidos em cache (o tema pode mudar até a próxima vez).
+        clearMenuIcons();
         this._registrar?.destroy();
         this._registrar = null;
         Main.extensionManager.disconnectObject(this);

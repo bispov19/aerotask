@@ -1,7 +1,7 @@
 {
-  "name": "aero-menu-global",
+  "name": "aerotask",
   "private": true,
-  "description": "Ferramentas de desenvolvimento do Aero Menu Global (não fazem parte da extensão instalada)",
+  "description": "Ferramentas de desenvolvimento do AeroTask (não fazem parte da extensão instalada)",
   "license": "GPL-3.0-or-later",
   "type": "module",
   "scripts": {

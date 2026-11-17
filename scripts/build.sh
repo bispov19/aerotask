@@ -15,7 +15,7 @@ ARGS=(
     --force
     --out-dir=build
     --podir=po
-    --gettext-domain=aero-menu-global
+    --gettext-domain=aerotask
     --extra-source=lib
     --extra-source=icons
     --extra-source=tray
@@ -23,8 +23,8 @@ ARGS=(
 )
 
 # O schema de configurações só existirá a partir da fase em que criarmos opções.
-SCHEMA=schemas/org.gnome.shell.extensions.aero-menu-global.gschema.xml
+SCHEMA=schemas/org.gnome.shell.extensions.aerotask.gschema.xml
 [ -f "$SCHEMA" ] && ARGS+=(--schema="$SCHEMA")
 
 gnome-extensions pack "${ARGS[@]}" .
-echo "Pacote: build/aero-menu-global@viniciusbispo19.shell-extension.zip"
+echo "Pacote: build/aerotask@viniciusbispo19.shell-extension.zip"

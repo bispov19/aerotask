@@ -14,55 +14,55 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 CYCLES="${1:-10}"
-LOG=$(ls -t "${XDG_STATE_HOME:-$HOME/.local/state}"/aero-menu-global/nested-*.log | head -1)
+LOG=$(ls -t "${XDG_STATE_HOME:-$HOME/.local/state}"/aerotask/nested-*.log | head -1)
 BEFORE=$(wc -l < "$LOG")
 
 ./scripts/nested-eval.sh "(async () => {
-  const uuid = 'aero-menu-global@viniciusbispo19', m = Main.extensionManager;
+  const uuid = 'aerotask@viniciusbispo19', m = Main.extensionManager;
   const wait = ms => new Promise(r => setTimeout(r, ms));
   const snap = () => ({
     estado: m.lookup(uuid).state,
     erro: m.lookup(uuid).error || null,
-    barras: Main.panel._leftBox.get_children().filter(c => c.name === 'aeroMenuBar').length,
+    barras: Main.panel._leftBox.get_children().filter(c => c.name === 'aeroTaskMenuBar').length,
     atividadesVisivel: Main.panel.statusArea.activities.container.visible,
     menusNoGerenciador: Main.panel.menuManager._menus.length,
     atoresNoUiGroup: Main.layoutManager.uiGroup.get_n_children(),
     atoresAeroNoPalco: countOurs(global.stage),
-    // Relógio do Aero (Farol): quantos existem, se o relógio do GNOME está visível, se o
+    // Relógio do AeroTask (Farol): quantos existem, se o relógio do GNOME está visível, se o
     // calendário dele está em casa e se o Super+V voltou ao original.
-    farois: Main.panel._rightBox.get_children().filter(c => c.get_first_child()?.constructor.name === 'AeroMenuFarolClock').length,
+    farois: Main.panel._rightBox.get_children().filter(c => c.get_first_child()?.constructor.name === 'AeroTaskFarolClock').length,
     relogioVisivel: Main.panel.statusArea.dateMenu.container.visible,
-    calendarioEmCasa: !Main.panel.statusArea.dateMenu._calendar.get_parent()?.has_style_class_name?.('aero-farol-calendar-month'),
+    calendarioEmCasa: !Main.panel.statusArea.dateMenu._calendar.get_parent()?.has_style_class_name?.('aerotask-farol-calendar-month'),
     barraPreta: (Main.panel.style ?? '').includes('rgba(0, 0, 0,'),
     barraPretaPref: m.lookup(uuid).stateObj?._settings?.get_boolean('black-bar') ?? null,
     // Bateria: o ícone do GNOME volta ao desativar; o OSD volta ao original.
     bateriaGnomeVisivel: Main.panel.statusArea.quickSettings._system?.visible ?? true,
     osdOriginal: !Object.prototype.hasOwnProperty.call(Main.osdWindowManager, 'showAll') ||
       Main.osdWindowManager.showAll === Object.getPrototypeOf(Main.osdWindowManager).showAll,
-    superficies: Main.layoutManager.uiGroup.get_children().filter(c => c.constructor.name === 'AeroMenuFarolSurface').length,
+    superficies: Main.layoutManager.uiGroup.get_children().filter(c => c.constructor.name === 'AeroTaskFarolSurface').length,
     superVOriginal: !Object.prototype.hasOwnProperty.call(Main.panel, 'toggleCalendar') ||
       Main.panel.toggleCalendar === Object.getPrototypeOf(Main.panel).toggleCalendar,
-    // Prateleira: o atalho Super+Shift+V só existe com o relógio do Aero; a
+    // Prateleira: o atalho Super+Shift+V só existe com o relógio do AeroTask; a
     // bandeja de arquivos (janela GTK) fecha junto com a extensão.
     // (removeKeybinding não apaga a entrada: deixa o modo em NONE = 0.)
     atalhoPrateleira: (Main.wm._allowedKeybindings['clipboard-shortcut'] ?? 0) !== 0,
     // Barra flutuante: ao desativar, nada de máscara/estilo/deslocamento sobrando.
-    mascaraBarra: !!Main.layoutManager.panelBox.get_effect('aero-menu-floating-mask'),
+    mascaraBarra: !!Main.layoutManager.panelBox.get_effect('aerotask-menu-floating-mask'),
     estiloPanelBox: Main.layoutManager.panelBox.style ?? null,
     barraTransformada: Main.panel.translation_y !== 0 || Main.panel.scale_x !== 1,
     // Ícones de bandeja (rodar com um programa de bandeja aberto, ex.:
     // dev/test-apps/sni-test.js): ao desativar, nenhum botão sobra.
     iconesBandeja: Main.panel._rightBox.get_children()
-      .filter(c => c.get_first_child()?.constructor.name === 'AeroMenuTrayButton').length,
-    bandejas: global.get_window_actors().filter(a => a.meta_window.get_wm_class() === 'io.github.viniciusbispo19.AeroMenuGlobal.Tray').length,
+      .filter(c => c.get_first_child()?.constructor.name === 'AeroTaskTrayButton').length,
+    bandejas: global.get_window_actors().filter(a => a.meta_window.get_wm_class() === 'io.github.viniciusbispo19.AeroTask.Tray').length,
   });
   // Conta, no palco inteiro, os atores ESTRUTURAIS das nossas classes
-  // (barra, títulos, raízes de menu, diálogos — GTypes AeroMenu*). Itens de
+  // (barra, títulos, raízes de menu, diálogos — GTypes AeroTaskMenu*). Itens de
   // menu ficam de fora: eles são criados sob demanda quando um menu abre.
   // Se algum ator estrutural sobrar após os ciclos, é vazamento nosso.
   function countOurs(actor) {
     const name = actor.constructor.name;
-    let n = name.startsWith('AeroMenu') && !name.endsWith('Item') ? 1 : 0;
+    let n = name.startsWith('AeroTaskMenu') && !name.endsWith('Item') ? 1 : 0;
     for (const child of actor.get_children())
       n += countOurs(child);
     return n;
@@ -85,7 +85,7 @@ BEFORE=$(wc -l < "$LOG")
     else if (i % 2 === 0) { Main.panel.toggleCalendar(); await wait(150); }
     // E com um menu da barra aberto (a forma de vidro atrás dele).
     else {
-      const bar = Main.panel._leftBox.get_children().find(c => c.name === 'aeroMenuBar');
+      const bar = Main.panel._leftBox.get_children().find(c => c.name === 'aeroTaskMenuBar');
       bar?._menuButtons[1]?.menu.open(); await wait(150);
     }
   }
@@ -123,9 +123,9 @@ checks = {
     "bloquear remove a barra (só o Registrar fica)": data["bloqueada"]["barras"] == 0
         and data["bloqueada"]["atoresAeroNoPalco"] == 0,
     "desbloquear recria 1 barra": data["desbloqueada"]["barras"] == 1,
-    "exatamente 1 relógio do Aero após os ciclos": d["farois"] == 1,
-    "relógio do Aero esconde o do GNOME": not d["relogioVisivel"],
-    "desativar remove o relógio do Aero": data["desativada"]["farois"] == 0,
+    "exatamente 1 relógio do AeroTask após os ciclos": d["farois"] == 1,
+    "relógio do AeroTask esconde o do GNOME": not d["relogioVisivel"],
+    "desativar remove o relógio do AeroTask": data["desativada"]["farois"] == 0,
     "desativar mostra o relógio do GNOME": data["desativada"]["relogioVisivel"],
     "desativar devolve o calendário ao relógio": data["desativada"]["calendarioEmCasa"],
     "desativar restaura o Super+V": data["desativada"]["superVOriginal"],
@@ -134,8 +134,8 @@ checks = {
     "desativar remove as formas de vidro": data["desativada"]["superficies"] == 0,
     "desativar mostra o ícone de bateria do GNOME": data["desativada"]["bateriaGnomeVisivel"],
     "desativar devolve o OSD original": data["desativada"]["osdOriginal"],
-    "bloquear remove o relógio do Aero": data["bloqueada"]["farois"] == 0,
-    "desbloquear recria 1 relógio do Aero": data["desbloqueada"]["farois"] == 1,
+    "bloquear remove o relógio do AeroTask": data["bloqueada"]["farois"] == 0,
+    "desbloquear recria 1 relógio do AeroTask": data["desbloqueada"]["farois"] == 1,
     "atalho da Prateleira registrado": d["atalhoPrateleira"],
     "desativar remove o atalho da Prateleira": not data["desativada"]["atalhoPrateleira"],
     "a bandeja de arquivos abre": data["comBandeja"]["bandejas"] == 1,
@@ -153,7 +153,7 @@ for name, ok in checks.items():
 print("RESULTADO:", "OK" if all(checks.values()) else "FALHOU")
 '
 
-echo "--- avisos novos no log causados pelo Aero Menu Global:"
+echo "--- avisos novos no log causados pelo AeroTask:"
 tail -n +$((BEFORE + 1)) "$LOG" | python3 -I -c '
 import re, sys
 blocks, cur = [], []
@@ -168,11 +168,11 @@ for line in sys.stdin.read().splitlines():
 if cur: blocks.append(cur)
 def first_frame(b):
     return next((l for l in b if l.lstrip().startswith("#0")), "")
-# Nosso: a pilha passa pelo aero-menu-global@ — exceto quando o erro nasce no código
+# Nosso: a pilha passa pelo aerotask@ — exceto quando o erro nasce no código
 # de OUTRA extensão (#0 nela), só disparado por algo nosso (ex.: o gnome-mosaic
 # reage a toda janela que se move).
-ours = [b for b in blocks if any("aero-menu-global@" in l for l in b)
-        and not ("/gnome-shell/extensions/" in first_frame(b) and "aero-menu-global@" not in first_frame(b))]
+ours = [b for b in blocks if any("aerotask@" in l for l in b)
+        and not ("/gnome-shell/extensions/" in first_frame(b) and "aerotask@" not in first_frame(b))]
 other = [b for b in blocks if not any("@file://" in l or "@resource://" in l for l in b[1:])]
 for b in ours:
     print("\n".join(b)); print()

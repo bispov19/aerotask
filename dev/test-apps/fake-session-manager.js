@@ -5,7 +5,7 @@
 // Inhibit/Uninhibit e a propriedade InhibitedActions, e imprime cada
 // chamada. Rodar no barramento da sessão aninhada:
 //
-//   DBUS_SESSION_BUS_ADDRESS="$(cut -d# -f1 ~/.local/state/aero-menu-global/nested-bus)" \
+//   DBUS_SESSION_BUS_ADDRESS="$(cut -d# -f1 ~/.local/state/aerotask/nested-bus)" \
 //       gjs -m dev/test-apps/fake-session-manager.js
 
 import Gio from 'gi://Gio';

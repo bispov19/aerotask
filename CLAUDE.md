@@ -1,4 +1,4 @@
-# Aero Menu Global — contexto do projeto
+# AeroTask — contexto do projeto
 
 > Este arquivo é carregado automaticamente pelo Claude Code em toda sessão.
 > A seção "Achados verificados" é mantida atualizada a cada fase; abaixo dela
@@ -10,17 +10,18 @@ Fases 0–9 concluídas em 2026-11-10 (ver `git log`). Testado e aprovado pelo u
 sessão REAL. Pendências: Firefox não testado, envio ao extensions.gnome.org.
 Fluxo de teste: `./scripts/nested-restart.sh && ./scripts/nested-test.sh 10`.
 
-**Renomeado em 2026-11-14 (Missão 2): Luma Menu → Aero Menu Global.** UUID
-`aero-menu-global@viniciusbispo19`, schema `org.gnome.shell.extensions.aero-menu-global`
-(caminho `/org/gnome/shell/extensions/aero-menu-global/`), domínio gettext
-`aero-menu-global`, classes CSS `aero-*`, GTypes `AeroMenu*`, dados em
-`~/.local/share/aero-menu-global/` (o `storage.js` renomeia a pasta antiga UMA vez:
-`LEGACY_DATA_DIR = 'luma-menu'` é a única referência ao nome antigo no código).
-"Luma" que DEVE ficar: Luma Dock (outra extensão do usuário). O repositório no GitHub
-foi renomeado para `aero-menu-global` em 2026-11-15 (o GitHub redireciona o nome antigo).
-Instalada e ativa na sessão REAL em 2026-11-15 (a Luma Menu foi desativada e removida;
-configurações copiadas com `dconf dump … | dconf load …`).
-Se o Registrar já existir no processo (ex.: a extensão antiga ainda ativa), a extensão
+**Nome: AeroTask (2026-11-16; o projeto já teve outros nomes).** UUID
+`aerotask@viniciusbispo19`, schema `org.gnome.shell.extensions.aerotask`
+(caminho `/org/gnome/shell/extensions/aerotask/`), domínio gettext `aerotask`,
+classes CSS `aerotask-*`, GTypes `AeroTask*` (a classe do menu é `AeroTaskMenu`),
+dados em `~/.local/share/aerotask/`, repositório `github.com/viniciusbispo19/aerotask`.
+Os nomes anteriores existem SÓ na migração: `scripts/legacy-names.sh` (UUIDs e caminhos
+do dconf; `install.sh` copia as configurações se o caminho novo estiver vazio, desativa e
+apaga as versões antigas e liga a nova em `enabled-extensions`) e
+`lib/farol/services/storage.js` (`LEGACY_DATA_DIRS`: move a pasta de dados antiga uma vez).
+`scripts/dev-nested.sh` NÃO roda o `install.sh` (não mexe na sessão real); desliga as versões
+antigas só no dconf isolado. "Luma" que DEVE ficar: Luma Dock (outra extensão do usuário).
+Se o Registrar já existir no processo (ex.: uma versão antiga ainda ativa), a extensão
 segue sem a camada B em vez de falhar.
 
 ## Achados verificados no sistema (atualizar a cada fase)
@@ -117,7 +118,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   sobrescreve `vfunc_allocate` para transbordar até o 1º item visível do centro/direita
   (`clip_to_allocation` evita desenhar por cima dos ícones).
 - `PanelMenu.ButtonBox` calcula a largura em JS: `min-width`/`max-width` no BOTÃO são
-  ignorados — aplicar no rótulo (`.aero-menu-app-label`).
+  ignorados — aplicar no rótulo (`.aerotask-menu-app-label`).
 - Just Perfection move o relógio ao iniciar (e tem guarda `child-added` nas caixas);
   o PanelLayout reaplica (máx. 3 em 10 s) e confere de novo após 3 s.
 - Ao desbloquear, o painel mostra o botão Atividades de novo: re-esconder em `notify::visible`.
@@ -139,7 +140,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   `dontCreateMenu=true` o menu é um `PopupDummyMenu` (não registrar no menuManager).
 - `PopupMenuManager.addMenu()` remove o menu sozinho no `destroy` dele.
 - Padding dos botões: propriedades CSS `-natural-hpadding` / `-minimum-hpadding`.
-  O tema usa `#panel .panel-button`; para vencer: `#panel .panel-button.aero-menu-…`.
+  O tema usa `#panel .panel-button`; para vencer: `#panel .panel-button.aerotask-menu-…`.
 - St recolore como simbólico arquivos que terminam em `-symbolic.svg` (confirmado no libst).
 - `ExtensionBase` chama `initTranslations()` no construtor (usa `gettext-domain` do
   metadata.json e a pasta `locale/`). `gettext` importado de `extension.js` acha a
@@ -153,24 +154,24 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 ### Sessão aninhada (mutter-devkit) — fluxo de desenvolvimento
 - `./scripts/dev-nested.sh`: empacota, instala, cria dconf isolado e abre o Shell aninhado.
   Comando base: `dbus-run-session -- gnome-shell --devkit --wayland --devkit-args="--monitor-size=1600x1000"`.
-- dconf isolado: copia `~/.config/dconf/user` → `~/.config/dconf/aero_menu_global_dev` e usa
-  `DCONF_PROFILE` (arquivo com `user-db:aero_menu_global_dev`). O nome do banco **não pode ter
+- dconf isolado: copia `~/.config/dconf/user` → `~/.config/dconf/aerotask_dev` e usa
+  `DCONF_PROFILE` (arquivo com `user-db:aerotask_dev`). O nome do banco **não pode ter
   hífen** (vira caminho D-Bus `/ca/desrt/dconf/Writer/<nome>`; com hífen o `gsettings set` trava).
-- `dev/aero-menu-global-devtools@viniciusbispo19`: liga `global.context.unsafe_mode` só com
-  `AERO_MENU_DEV=1`. Isso libera `org.gnome.Shell.Eval` e `org.gnome.Shell.Screenshot`.
+- `dev/aerotask-devtools@viniciusbispo19`: liga `global.context.unsafe_mode` só com
+  `AEROTASK_DEV=1`. Isso libera `org.gnome.Shell.Eval` e `org.gnome.Shell.Screenshot`.
 - `./scripts/nested-eval.sh '<js>'` e `./scripts/nested-screenshot.sh [png]` falam com o
-  Shell aninhado pelo endereço salvo em `~/.local/state/aero-menu-global/nested-bus`.
+  Shell aninhado pelo endereço salvo em `~/.local/state/aerotask/nested-bus`.
   No escopo do Eval existem `Main`, `global`, `Shell`, `Meta`, mas NÃO `Clutter` nem `St`
   (para criar um ator: `new (Main.panel._centerBox.constructor)({...})` = St.BoxLayout).
 - `./scripts/nested-test.sh [ciclos]`: ativa/desativa N vezes + bloqueio simulado e
-  só acusa avisos cuja pilha JS passa pelo `aero-menu-global@` (usa `SHELL_DEBUG=backtrace-warnings`).
+  só acusa avisos cuja pilha JS passa pelo `aerotask@` (usa `SHELL_DEBUG=backtrace-warnings`).
 - `./scripts/nested-stop.sh`: encerra só o Shell aninhado. NUNCA usar
   `pkill -f 'gnome-shell --devkit'` (o padrão casa com o próprio shell e o mata).
 - dconf: cada barramento tem seu `dconf-service` com o banco em memória; por isso a
   cópia e as escritas no banco isolado são feitas DENTRO do barramento aninhado.
-- Logs da sessão aninhada: `~/.local/state/aero-menu-global/nested-*.log`.
+- Logs da sessão aninhada: `~/.local/state/aerotask/nested-*.log`.
 - `MUTTER_DEBUG_DUMMY_MODE_SPECS` **não existe mais** no Mutter 51 (tutoriais antigos).
-- Ruído pré-existente no log (não é culpa do Aero Menu Global): `copyous@boerdereinar.dev` falha
+- Ruído pré-existente no log (não é culpa do AeroTask): `copyous@boerdereinar.dev` falha
   ao importar `highlight.min.js` e gera `No object to track signals`; `dynamic-calendar…`
   gera `setSourceSurface … Not an object`; `hiragana-clock` gera
   `meta_workspace_get_work_area_for_monitor` CRITICAL; Luma Dock gera
@@ -178,21 +179,21 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 
 ### Farol: relógio + painel na barra do macOS (projeto 2)
 - **Nome (2026-11-16, pedido do usuário)**: o relógio + painel e as formas de vidro se chamam **Farol**
-  (`lib/farol/`, `Farol`, `FarolSurface`, `AeroMenuFarol*`, CSS `aero-farol-*`, chaves `farol-*`).
+  (`lib/farol/`, `Farol`, `FarolSurface`, `AeroTaskFarol*`, CSS `aerotask-farol-*`, chaves `farol-*`).
   O usuário quer o projeto com identidade própria: NÃO citar o projeto que inspirou o visual
   (nem em código, comentários, textos, README ou commits novos).
 - **ATUAL (2026-11-11, decisão final do usuário)**: menus da barra E relógio abrem o
-  POP-UP padrão do GNOME (balão, `AeroMenu`; o relógio usa `alignment 1.0`), com o desfoque
+  POP-UP padrão do GNOME (balão, `AeroTaskMenu`; o relógio usa `alignment 1.0`), com o desfoque
   do Blur my Shell. `farol-menus` agora é `false` por padrão (código da forma ainda existe
   como opção). A forma de vidro (`FarolSurface`) continua só nos ALERTAS. Abaixo, histórico.
 - **Integração com o Blur my Shell nos pop-ups**: o BMS escreve na caixa do menu
   (`set_style`) um `border-radius` igual ao do vidro dele (`menu-corner-radius` 20) e pinta o
-  fundo pela classe (`rgba(30,30,33,.5) !important`). `AeroMenu._applyAppearance` NÃO toca
+  fundo pela classe (`rgba(30,30,33,.5) !important`). `AeroTaskMenu._applyAppearance` NÃO toca
   no estilo de caixas com `bms-popup-blurred` (antes apagava o raio e cobria o vidro).
   Sem sombra e sem a margem do WhiteSur (`.popup-menu-content` margin 4/12/17px) — viravam
   uma "moldura" escura. `-boxpointer-gap: 0` (encostado na barra).
 - Margem dos pop-ups = a do centro de controle (medida: caixa `.quick-settings` com margin
-  8/12/17/12 → 8 px abaixo da barra, 12 px da borda): `.aero-menu-content { margin: 8px 12px 0 12px }`.
+  8/12/17/12 → 8 px abaixo da barra, 12 px da borda): `.aerotask-menu-content { margin: 8px 12px 0 12px }`.
 - Pop-up do relógio no canto direito: `boxPointer.setSourceAlignment(1.0)` (o balão mirava o
   CENTRO do botão). Perto da borda o `_reposition` puxa o balão de volta até a "mira" (borda
   direita do CONTEÚDO do relógio, 3 px antes da tela): `translation_x = borda − mira`,
@@ -201,8 +202,8 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 - Bateria MONOCROMÁTICA (pedido do usuário): raio recortado no preenchimento.
 - **Layout decidido pelo usuário (2026-11-11)**: NADA no centro da barra. **Barra preta
   sólida** (chave `black-bar`, padrão ligado; `PanelLayout` acrescenta só a sua declaração
-  ao `Main.panel.style` e a tira no destroy). Relógio do Aero no CANTO DIREITO (último
-  item de `_rightBox`, `addToStatusArea('aero-menu-clock')`, peso normal). **Clique**
+  ao `Main.panel.style` e a tira no destroy). Relógio do AeroTask no CANTO DIREITO (último
+  item de `_rightBox`, `addToStatusArea('aerotask-menu-clock')`, peso normal). **Clique**
   faz a forma PRETA do Farol sair de baixo do relógio (`farolShape.js`: chrome desenhado
   com Cairo — corpo, cantos 28 px, ombros côncavos na borda de baixo da barra —, mola,
   borda direita presa ao relógio, cresce para baixo/esquerda). Cabeçalho na altura da
@@ -228,7 +229,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   do BMS para outras extensões: classe `bms-popup-blur-target`.
 - O BMS reescreve `Main.panel.style` (tira o `;` final): remover a nossa regra por regex.
 - `get_transformed_position()` de ator sem alocação devolve NaN; menu aberto antes do título
-  ter alocação faz o BoxPointer alocar NaN → `AeroMenu.open` recusa sem `has_allocation()`.
+  ter alocação faz o BoxPointer alocar NaN → `AeroTaskMenu.open` recusa sem `has_allocation()`.
 - **Fase 2a concluída (2026-11-11)**: `alerts.js` (AlertPresenter: FarolSurface que sai do
   relógio; reaproveita `BarLevel` de `ui/barLevel.js`, com `overdrive` acima de 100%),
   `services/osdOverride.js` (InjectionManager em `Main.osdWindowManager.show/showAll/showOne`;
@@ -302,14 +303,14 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 - Em `St.Widget` com `Clutter.BinLayout`, o filho fica CENTRALIZADO mesmo com
   `x_align: START`: para barra de progresso use `St.BoxLayout`.
 - `Intl.RelativeTimeFormat(undefined, {numeric: 'auto'})` já sai em pt-BR ("há 5 minutos").
-- **Sessão aninhada usa o MESMO `$HOME`**: testes gravam em `~/.local/share/aero-menu-global/`
+- **Sessão aninhada usa o MESMO `$HOME`**: testes gravam em `~/.local/share/aerotask/`
   (clipboard.json, usage.json, tray.json…) — apagar depois de testar (com o aninhado parado).
 - Arrastar com o mouse virtual: mandar os movimentos de DENTRO do Shell
   (`GLib.timeout_add` de 30 ms percorrendo um caminho de passos pequenos); saltos grandes via
   vários Evals não iniciam o arraste do GTK. O ponteiro do aninhado parado em (0,0) "passa"
   sobre o logo e troca o menu aberto para o menu do sistema.
 - **Missão 1 (2026-11-14)**: alertas (brilho, bateria, Caps Lock, Bluetooth, rede, foco,
-  eventos) agora usam o POP-UP PADRÃO (um `AeroMenu` anclado no relógio, alinhamento 1.0,
+  eventos) agora usam o POP-UP PADRÃO (um `AeroTaskMenu` anclado no relógio, alinhamento 1.0,
   `clock.alignToEdge(menu)`), aberto SEM o menuManager (sem grab: não prende teclado/mouse).
   A forma de vidro saiu dos alertas (`FarolSurface` só resta na opção `farol-menus`).
   Desligar `menu._onKeyPress` (o PopupMenu liga Espaço/Enter/↓ no ator de origem = relógio).
@@ -411,6 +412,22 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   serviço `systemctl --user restart openlogi-agent`). O Shell 51 não tem aviso próprio de Caps
   Lock (só chama `osdWindowManager.show*` para volume, brilho, janela e `ShowOSD` do D-Bus).
   `gresource list /usr/lib64/gnome-shell/libshell-51.so` FUNCIONA (no `/usr/bin/gnome-shell` não).
+- **Ícones nos itens dos menus (2026-11-16)**: nó com `iconName` (ou `icon` = Gio.Icon). 
+  `lib/menuIcons.js` resolve: `icons/menu/<nome>-symbolic.svg` próprio → simbólico do tema
+  (`St.IconTheme().lookup_icon`) → nenhum; cache limpo no `disable()`. `COMMAND_ICONS` = ícone de
+  cada comando dos menus padrão (`_cmd` usa). Alinhamento POR GRUPO no `fillMenu` (lib/popup.js):
+  grupo = trecho entre separadores/títulos; se algum item tem ícone, os sem ícone ganham um
+  espaçador (`.aerotask-menu-item-icon-space`, 16 px). Ícones próprios gerados por
+  `scripts/make-menu-icons.py` (35, contorno 1,5 px). **St recolore -symbolic.svg SÓ pelo FILL**
+  (`rect,path,ellipse,circle,polygon { fill: … !important }` embutido no libst): traço vira forma
+  preenchida (cápsulas; anéis com `fill-rule="evenodd"`); arcos das pontas com sweep-flag 0
+  (com 1 a ponta curva para dentro e "come" segmentos curtos). Vitral-icons NÃO tem simbólicos
+  (herda do Adwaita: traço ~2 px, vários preenchidos → destoam; por isso a família própria).
+  Renderizar SVG para conferir: GJS `GdkPixbuf.Pixbuf.new_from_file_at_size` (não há rsvg-convert).
+- **Teste aninhado e dados**: o aninhado usa o MESMO `$HOME` → uma extensão nova com migração de
+  pasta de dados (`storage.js`) MOVE a pasta real na hora do teste, enquanto a versão antiga
+  ainda roda na sessão real e recria a pasta antiga. Na troca para AeroTask: juntar depois do
+  `install.sh` (o `clipboard.json` mais novo estava na pasta antiga).
 - **Sombra do centro de controle**: vinha do TEMA (Brisa: `.popup-menu-content { box-shadow }`);
   neutralizada só em `.popup-menu-content.quick-settings`.
 - **Bateria sumindo no login (causa)**: `_setupIndicators` (panel.js:336) cria `qs._system` e só
@@ -426,7 +443,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   (`org.kde.StatusNotifierWatcher` em `/StatusNotifierWatcher`; registro por NOME → caminho
   `/StatusNotifierItem`, ou por CAMINHO → nome = quem chamou (libayatana); `bus_watch_name`
   tira o ícone quando o programa sai) vive na EXTENSÃO (sobrevive ao bloqueio: ao desbloquear os
-  ícones voltam sem re-registro). `lib/tray/trayButton.js` (PanelMenu.Button + AeroMenu; menu =
+  ícones voltam sem re-registro). `lib/tray/trayButton.js` (PanelMenu.Button + AeroTaskMenu; menu =
   `DBusMenuSource.getRootNodes()`; ícone: `-symbolic` do tema via `new St.IconTheme().
   lookup_icon(nome, 16, 0)` = "template"; senão `Clutter.DesaturateEffect` (estilo
   monochrome); IconPixmap ARGB32 big-endian → `St.ImageContent` (é um Gio.Icon) com
@@ -464,7 +481,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 - **Fase 2c concluída (2026-11-11)**: Foco (`services/focus.js` FocusTimer: guarda a HORA do
   fim e agenda UM timeout; Não Perturbe só no foco rodando e só desliga o que ligou; som
   `get_sound_player().play_from_theme('complete')`), Lembretes (`services/reminders.js` +
-  `services/storage.js`: JSON atômico em `~/.local/share/aero-menu-global/`), lembrete de eventos
+  `services/storage.js`: JSON atômico em `~/.local/share/aerotask/`), lembrete de eventos
   (`services/eventReminders.js`: `Calendar.DBusEventSource` PRÓPRIA — tem `destroy()` — e
   ECal sob demanda via `await import('gi://ECal?version=2.0')`; id do CalendarServer =
   `agenda\nevento\nrecorrência`; testado em execução: conecta na agenda e devolve "objeto não
@@ -556,7 +573,7 @@ Você é um desenvolvedor sênior de extensões do GNOME Shell (GJS, ES Modules,
 
 ## 2. Objetivo
 
-Criar do zero a extensão **Aero Menu Global** (UUID `aero-menu-global@viniciusbispo19`, schema `org.gnome.shell.extensions.aero-menu-global`, licença GPL-3.0), que transforma o lado esquerdo do painel superior do GNOME em uma **barra de menus global praticamente idêntica à do macOS**, com:
+Criar do zero a extensão **AeroTask** (UUID `aerotask@viniciusbispo19`, schema `org.gnome.shell.extensions.aerotask`, licença GPL-3.0), que transforma o lado esquerdo do painel superior do GNOME em uma **barra de menus global praticamente idêntica à do macOS**, com:
 
 1. Um **ícone de sistema Linux** no lugar da maçã (logo do Fedora por padrão, configurável).
 2. O **nome do app ativo em negrito**, com o menu do aplicativo.
@@ -569,7 +586,7 @@ Criar do zero a extensão **Aero Menu Global** (UUID `aero-menu-global@viniciusb
 - Notebook Lenovo Yoga Slim 6i, tela 14" de alta resolução (escala fracionária possível — a barra tem que ficar nítida em qualquer escala).
 - Tema GTK + Shell: **WhiteSur-Dark** (via extensão User Themes).
 - Extensões que precisam continuar funcionando junto: **Luma Dock** (meu fork do Dhruva), Blur my Shell, Just Perfection, AppIndicator and KStatusNotifierItem Support, Caffeine, Astra Monitor.
-- Tenho a extensão **Global Menu for GNOME** instalada: o Aero Menu Global vai substituí-la. No início, me mostre como desativá-la para não haver conflito.
+- Tenho a extensão **Global Menu for GNOME** instalada: o AeroTask vai substituí-la. No início, me mostre como desativá-la para não haver conflito.
 
 ## 4. Realidade técnica (leia antes de projetar)
 
@@ -714,18 +731,18 @@ Páginas organizadas, tudo em pt-BR:
 - **Compatibilidade**: ativar o Registrar DBusMenu (camada B), lista de apps ignorados (por `app_id`/`WM_CLASS`), modo de depuração com logs.
 - **Sobre**: versão, autor, link do GitHub (`github.com/viniciusbispo19`), licença.
 
-Todas as opções salvas em GSettings (`schemas/org.gnome.shell.extensions.aero-menu-global.gschema.xml`) e aplicadas **ao vivo**, sem precisar reiniciar a sessão.
+Todas as opções salvas em GSettings (`schemas/org.gnome.shell.extensions.aerotask.gschema.xml`) e aplicadas **ao vivo**, sem precisar reiniciar a sessão.
 
 ## 10. Tradução
 
-- Todas as strings visíveis com `gettext` (`_()`), domínio `aero-menu-global`.
-- Arquivo `po/pt_BR.po` completo + `po/aero-menu-global.pot`.
+- Todas as strings visíveis com `gettext` (`_()`), domínio `aerotask`.
+- Arquivo `po/pt_BR.po` completo + `po/aerotask.pot`.
 - Script para compilar as traduções e empacotar com `gnome-extensions pack`.
 
 ## 11. Estrutura de arquivos esperada
 
 ```
-aero-menu-global/
+aerotask/
 ├── metadata.json            # shell-version: ["51"] (e "50" se for compatível de verdade)
 ├── extension.js             # enable()/disable(), monta a barra
 ├── prefs.js                 # janela de preferências (Adw)

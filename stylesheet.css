@@ -1,12 +1,12 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later
- * Aero Menu Global — estilos.
+ * AeroTask — estilos.
  *
- * Toda classe começa com "aero-" para nunca colidir com o tema (WhiteSur)
+ * Toda classe começa com "aerotask-" para nunca colidir com o tema (WhiteSur)
  * nem com outras extensões.
  *
  * Sobre especificidade: o tema estiliza os botões com "#panel .panel-button"
  * (1 id + 1 classe). Para o nosso valor ganhar, o seletor precisa ser mais
- * específico: "#panel .panel-button.aero-…" (1 id + 2 classes).
+ * específico: "#panel .panel-button.aerotask-…" (1 id + 2 classes).
  *
  * Cores: usamos cinzas semitransparentes, que funcionam tanto em tema escuro
  * quanto claro, e a cor de destaque do sistema (-st-accent-color, a mesma
@@ -16,20 +16,20 @@
 
 /* ============================== Barra ============================== */
 
-.aero-menu-bar {
+.aerotask-menu-bar {
     spacing: 0;
 }
 
 /* Espaçamento lateral dos títulos (sobrescrito ao vivo pela preferência
  * "Espaçamento"). -natural-hpadding / -minimum-hpadding são propriedades do
  * GNOME Shell lidas pelo PanelMenu.ButtonBox (não são CSS padrão da web). */
-#panel .panel-button.aero-menu-title {
+#panel .panel-button.aerotask-menu-title {
     -natural-hpadding: 6px;
     -minimum-hpadding: 3px;
     font-weight: normal;
 }
 
-#panel .panel-button.aero-menu-system-button {
+#panel .panel-button.aerotask-menu-system-button {
     -natural-hpadding: 12px;
     -minimum-hpadding: 8px;
 }
@@ -37,7 +37,7 @@
 /* Nome do app em negrito (preferência "Nome do app em negrito").
  * Precisa ser MAIS específico que a regra acima (que deixa os títulos em peso
  * normal): 1 id + 3 classes vence 1 id + 2 classes. */
-#panel .aero-menu-bold-app .panel-button.aero-menu-app-title {
+#panel .aerotask-menu-bold-app .panel-button.aerotask-menu-app-title {
     font-weight: bold;
 }
 
@@ -45,21 +45,21 @@
  * nome nunca some por completo. Atenção: a regra vai no RÓTULO, não no botão
  * — o PanelMenu.ButtonBox calcula a própria largura em JS e ignora
  * min-width/max-width aplicados a ele. */
-.aero-menu-app-label {
+.aerotask-menu-app-label {
     max-width: 240px;
     min-width: 64px;
 }
 
 /* Tamanho do logo em pixels LÓGICOS: com escala 1,5× o Shell desenha o SVG a
  * 24 px físicos — por isso ele fica nítido em qualquer escala. */
-.aero-menu-system-icon {
+.aerotask-menu-system-icon {
     icon-size: 16px;
 }
 
 /* ========================== Menus suspensos ========================== */
 
 /* Sem "setinha" apontando para o título, como no macOS. */
-.aero-menu-boxpointer {
+.aerotask-menu-boxpointer {
     -arrow-rise: 0px;
     -arrow-base: 0px;
     -arrow-border-radius: 10px;
@@ -71,7 +71,7 @@
 
 /* Vidro fumê: o menu "sai" da barra, então encosta nela (sem vão). O
  * fundo é a forma de vidro fumê desenhada atrás (lib/farol/surface.js). */
-.aero-menu-boxpointer.aero-menu-farol-look {
+.aerotask-menu-boxpointer.aerotask-menu-farol-look {
     -boxpointer-gap: 0px;
 }
 
@@ -82,8 +82,8 @@
  * (medida no menu de status: 8 px abaixo da barra, 12 px das bordas da
  * tela), para todos os pop-ups ficarem padronizados. Seletor com duas
  * classes para vencer o ".popup-menu-content" do tema. */
-.popup-menu-content.aero-menu-content,
-.aero-menu-content {
+.popup-menu-content.aerotask-menu-content,
+.aerotask-menu-content {
     min-width: 200px;
     padding: 5px;
     margin: 8px 12px 0 12px;
@@ -92,7 +92,7 @@
     box-shadow: none;
 }
 
-.aero-menu-item {
+.aerotask-menu-item {
     padding: 3px 10px 3px 4px;
     margin: 0;
     border-radius: 5px;
@@ -101,150 +101,162 @@
 }
 
 /* Item sob o mouse / foco do teclado: destaque com a cor do sistema. */
-.aero-menu-item:selected,
-.aero-menu-item:checked {
+.aerotask-menu-item:selected,
+.aerotask-menu-item:checked {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
 /* Item desabilitado (cinza), como no macOS. */
-.aero-menu-item:insensitive {
+.aerotask-menu-item:insensitive {
     color: rgba(128, 128, 128, 0.85);
 }
 
 /* Coluna do ✓ (sempre ocupa espaço, para alinhar os rótulos). */
-.aero-menu-check {
+.aerotask-menu-check {
     min-width: 14px;
     text-align: center;
 }
 
-.aero-menu-item-icon {
+/* Ícone pequeno à esquerda do texto (lib/menuIcons.js): 16 px, com a cor do
+ * texto do item (os ícones são simbólicos) — cinza quando o item está
+ * desabilitado, a cor de destaque quando selecionado. ~8 px até o texto
+ * (6 px do "spacing" do item + 2 px aqui). */
+.aerotask-menu-item-icon {
     icon-size: 16px;
+    margin-right: 2px;
+}
+
+/* Item sem ícone num grupo COM ícones: guarda o espaço, para os textos do
+ * grupo ficarem na mesma coluna (como o "Google Drive" no menu Ir do macOS). */
+.aerotask-menu-item-icon-space {
+    width: 16px;
+    margin-right: 2px;
 }
 
 /* Atalho à direita, em cinza. */
-.aero-menu-accel {
+.aerotask-menu-accel {
     padding-left: 24px;
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-menu-item:selected .aero-menu-accel {
+.aerotask-menu-item:selected .aerotask-menu-accel {
     color: inherit;
 }
 
-.aero-menu-arrow {
+.aerotask-menu-arrow {
     padding-left: 24px;
     font-weight: bold;
 }
 
 /* Títulos de seção ("Aplicativos", "Documentos"): pequenos e cinza. */
-.aero-menu-header {
+.aerotask-menu-header {
     font-size: 0.85em;
     font-weight: bold;
     color: rgba(140, 140, 140, 1);
 }
 
 /* Separador fino. */
-.aero-menu-separator {
+.aerotask-menu-separator {
     padding: 4px 8px;
 }
 
-.aero-menu-separator .popup-separator-menu-item-separator {
+.aerotask-menu-separator .popup-separator-menu-item-separator {
     height: 1px;
     background-color: rgba(128, 128, 128, 0.32);
 }
 
 /* ===================== Busca do menu Ajuda ===================== */
 
-.aero-menu-search-item {
+.aerotask-menu-search-item {
     padding: 4px 6px 6px;
 }
 
-.aero-menu-search-entry {
+.aerotask-menu-search-entry {
     min-width: 260px;
     padding: 4px 8px;
     border-radius: 6px;
 }
 
-.aero-menu-search-icon {
+.aerotask-menu-search-icon {
     icon-size: 14px;
     padding-right: 6px;
 }
 
 /* ======================= Sobre Este Computador ======================= */
 
-.aero-about-box {
+.aerotask-about-box {
     spacing: 6px;
     padding: 12px 24px 4px;
     min-width: 380px;
 }
 
-.aero-about-logo {
+.aerotask-about-logo {
     margin-bottom: 8px;
 }
 
-.aero-about-title {
+.aerotask-about-title {
     font-size: 1.6em;
     font-weight: bold;
 }
 
-.aero-about-version {
+.aerotask-about-version {
     color: rgba(150, 150, 150, 1);
     margin-bottom: 14px;
 }
 
-.aero-about-grid {
+.aerotask-about-grid {
     spacing-rows: 6px;
     spacing-columns: 12px;
 }
 
-.aero-about-key {
+.aerotask-about-key {
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-about-value {
+.aerotask-about-value {
     max-width: 300px;
 }
 
 /* ======================= Forçar Encerramento ======================= */
 
-.aero-force-quit-box {
+.aerotask-force-quit-box {
     spacing: 10px;
     min-width: 420px;
 }
 
-.aero-force-quit-title {
+.aerotask-force-quit-title {
     font-size: 1.2em;
     font-weight: bold;
 }
 
-.aero-force-quit-hint {
+.aerotask-force-quit-hint {
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-force-quit-scroll {
+.aerotask-force-quit-scroll {
     max-height: 320px;
     border-radius: 8px;
     border: 1px solid rgba(128, 128, 128, 0.28);
     padding: 4px;
 }
 
-.aero-force-quit-row {
+.aerotask-force-quit-row {
     padding: 4px 8px;
     border-radius: 6px;
 }
 
-.aero-force-quit-row:hover {
+.aerotask-force-quit-row:hover {
     background-color: rgba(128, 128, 128, 0.18);
 }
 
-.aero-force-quit-row:checked,
-.aero-force-quit-row:focus:checked {
+.aerotask-force-quit-row:checked,
+.aerotask-force-quit-row:focus:checked {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.aero-force-quit-row-box {
+.aerotask-force-quit-row-box {
     spacing: 10px;
 }
 
@@ -256,146 +268,146 @@
 
 /* Mesmo peso dos títulos "Arquivo", "Editar"… (o tema põe negrito nos
  * botões do painel; no macOS o relógio tem peso normal). */
-#panel .panel-button.aero-farol-clock {
+#panel .panel-button.aerotask-farol-clock {
     -natural-hpadding: 10px;
     -minimum-hpadding: 6px;
     font-weight: normal;
 }
 
-.aero-farol-clock-box,
-.aero-farol-activities {
+.aerotask-farol-clock-box,
+.aerotask-farol-activities {
     spacing: 7px;
 }
 
-.aero-farol-time,
-.aero-farol-date {
+.aerotask-farol-time,
+.aerotask-farol-date {
     font-feature-settings: "tnum";
 }
 
 /* ---------- Pop-up do relógio (abas do Farol) ----------
- * O pop-up é um menu do Aero (.aero-menu-content: mesma cor, opacidade e
+ * O pop-up é um menu do AeroTask (.aerotask-menu-content: mesma cor, opacidade e
  * cantos dos outros menus). O conteúdo inteiro é um único item, sem destaque
  * nem recuo. */
-.aero-farol-panel {
+.aerotask-farol-panel {
     padding: 0;
     margin: 0;
 }
 
-.aero-farol-content {
+.aerotask-farol-content {
     min-width: 540px;
     padding: 4px 6px 6px;
     spacing: 10px;
 }
 
-.aero-farol-header {
+.aerotask-farol-header {
     spacing: 8px;
 }
 
-.aero-farol-tabs {
+.aerotask-farol-tabs {
     spacing: 4px;
 }
 
 /* Abas: como os itens dos menus — cinza no hover, cor de destaque na ativa. */
-.aero-farol-tab {
+.aerotask-farol-tab {
     padding: 3px 10px;
     border-radius: 99px;
     color: inherit;
 }
 
-.aero-farol-tab:hover {
+.aerotask-farol-tab:hover {
     background-color: rgba(128, 128, 128, 0.18);
 }
 
-.aero-farol-tab:checked {
+.aerotask-farol-tab:checked {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.aero-farol-page {
+.aerotask-farol-page {
     padding: 4px 8px 6px;
 }
 
-.aero-farol-calendar {
+.aerotask-farol-calendar {
     spacing: 18px;
 }
 
-.aero-farol-events {
+.aerotask-farol-events {
     spacing: 8px;
     min-width: 230px;
 }
 
-.aero-farol-events-title {
+.aerotask-farol-events-title {
     font-weight: bold;
 }
 
-.aero-farol-events-scroll {
+.aerotask-farol-events-scroll {
     max-height: 190px;
 }
 
-.aero-farol-events-list {
+.aerotask-farol-events-list {
     spacing: 6px;
 }
 
-.aero-farol-event {
+.aerotask-farol-event {
     spacing: 10px;
     padding: 5px 8px;
     border-radius: 6px;
     background-color: rgba(128, 128, 128, 0.12);
 }
 
-.aero-farol-event-time {
+.aerotask-farol-event-time {
     color: rgba(150, 150, 150, 1);
     font-feature-settings: "tnum";
 }
 
-.aero-farol-placeholder {
+.aerotask-farol-placeholder {
     color: rgba(150, 150, 150, 1);
     padding: 4px 0;
 }
 
-.aero-farol-world-clocks {
+.aerotask-farol-world-clocks {
     margin-top: 4px;
 }
 
 /* ---------- Temperatura ao lado do relógio ---------- */
-.aero-farol-weather {
+.aerotask-farol-weather {
     spacing: 4px;
 }
 
-.aero-farol-weather-icon {
+.aerotask-farol-weather-icon {
     icon-size: 16px;
 }
 
 /* Largura mínima + dígitos tabulares: "9°" → "10°" não empurra o relógio. */
-.aero-farol-weather-temp {
+.aerotask-farol-weather-temp {
     min-width: 2.2em;
     font-feature-settings: "tnum";
 }
 
-.aero-farol-weather-condition {
+.aerotask-farol-weather-condition {
     color: rgba(150, 150, 150, 1);
 }
 
 /* ---------- Bateria estilo MacBook ---------- */
-.aero-battery {
+.aerotask-battery {
     spacing: 5px;
     padding: 0 2px;
 }
 
 /* Proporção ~2:1, altura alinhada aos outros ícones (16 px). */
-.aero-battery-icon {
+.aerotask-battery-icon {
     width: 26px;
     height: 12px;
 }
 
-.aero-battery-label {
+.aerotask-battery-label {
     font-feature-settings: "tnum";
     min-width: 2.6em;
     text-align: right;
 }
 
-/* Dica ao passar o ponteiro: como os menus do Aero (vidro escuro). */
-.aero-battery-tooltip {
+/* Dica ao passar o ponteiro: como os menus do AeroTask (vidro escuro). */
+.aerotask-battery-tooltip {
     background-color: rgba(20, 20, 22, 0.94);
     color: #ffffff;
     border-radius: 8px;
@@ -404,7 +416,7 @@
 }
 
 /* ---------- Banners de notificação no canto direito ----------
- * O relógio do Aero alinha os banners pela direita (embaixo dele). O tema
+ * O relógio do AeroTask alinha os banners pela direita (embaixo dele). O tema
  * (WhiteSur) dá 8 px de margem; os pop-ups usam 12 px da borda, como o
  * centro de controle: a margem direita igual deixa notificação, relógio e
  * calendário na mesma linha. (Duas classes para vencer a do tema.) */
@@ -413,54 +425,54 @@
 }
 
 /* ---------- Página Notificações ---------- */
-.aero-farol-unseen {
+.aerotask-farol-unseen {
     icon-size: 16px;
 }
 
-.aero-notifications {
+.aerotask-notifications {
     spacing: 8px;
     min-width: 420px;
 }
 
-.aero-notifications-bar {
+.aerotask-notifications-bar {
     spacing: 8px;
 }
 
 /* Botões em "pílula" (Não Perturbe, Limpar, ações): cinza translúcido, como
  * os botões das notificações do GNOME. Ligado = cor de destaque. */
-.aero-farol-pill {
+.aerotask-farol-pill {
     padding: 4px 12px;
     border-radius: 99px;
     background-color: rgba(128, 128, 128, 0.18);
     color: inherit;
 }
 
-.aero-farol-pill:hover {
+.aerotask-farol-pill:hover {
     background-color: rgba(128, 128, 128, 0.28);
 }
 
-.aero-farol-pill:checked {
+.aerotask-farol-pill:checked {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.aero-farol-pill-box {
+.aerotask-farol-pill-box {
     spacing: 6px;
 }
 
-.aero-farol-pill-icon {
+.aerotask-farol-pill-icon {
     icon-size: 14px;
 }
 
-.aero-notifications-scroll {
+.aerotask-notifications-scroll {
     max-height: 320px;
 }
 
-.aero-notifications-list {
+.aerotask-notifications-list {
     spacing: 6px;
 }
 
-.aero-notification {
+.aerotask-notification {
     padding: 8px 10px;
     border-radius: 10px;
     background-color: rgba(128, 128, 128, 0.12);
@@ -468,65 +480,65 @@
     text-align: left;
 }
 
-.aero-notification:hover {
+.aerotask-notification:hover {
     background-color: rgba(128, 128, 128, 0.2);
 }
 
-.aero-notification-box {
+.aerotask-notification-box {
     spacing: 4px;
 }
 
-.aero-notification-header {
+.aerotask-notification-header {
     spacing: 6px;
 }
 
-.aero-notification-app-icon {
+.aerotask-notification-app-icon {
     icon-size: 16px;
 }
 
-.aero-notification-meta {
+.aerotask-notification-meta {
     font-size: 0.9em;
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-notification-close {
+.aerotask-notification-close {
     padding: 2px;
     border-radius: 99px;
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-notification-close:hover {
+.aerotask-notification-close:hover {
     background-color: rgba(128, 128, 128, 0.25);
     color: inherit;
 }
 
-.aero-notification-close StIcon {
+.aerotask-notification-close StIcon {
     icon-size: 12px;
 }
 
-.aero-notification-content {
+.aerotask-notification-content {
     spacing: 10px;
 }
 
-.aero-notification-image {
+.aerotask-notification-image {
     icon-size: 32px;
 }
 
-.aero-notification-title {
+.aerotask-notification-title {
     font-weight: bold;
 }
 
-.aero-notification-actions {
+.aerotask-notification-actions {
     spacing: 6px;
     padding-top: 4px;
 }
 
-.aero-notifications-empty {
+.aerotask-notifications-empty {
     spacing: 6px;
     padding: 30px 0;
 }
 
-.aero-notifications-empty-icon {
+.aerotask-notifications-empty-icon {
     icon-size: 32px;
     color: rgba(150, 150, 150, 1);
 }
@@ -534,159 +546,159 @@
 /* ---------- Alertas (brilho, bateria, Caps Lock, rede, foco, eventos) ----------
  * O pop-up é o mesmo dos menus (classes do GNOME: popup-menu, popup-menu-item,
  * slider, button, icon-button). Aqui só o arranjo interno da linha. */
-.aero-alert {
+.aerotask-alert {
     min-width: 260px;
 }
 
-.aero-alert-row {
+.aerotask-alert-row {
     spacing: 12px;
 }
 
-.aero-alert-icon {
+.aerotask-alert-icon {
     icon-size: 20px;
 }
 
-.aero-alert-text {
+.aerotask-alert-text {
     spacing: 6px;
 }
 
-.aero-alert-title {
+.aerotask-alert-title {
     font-weight: bold;
 }
 
 /* Cinza dos atalhos dos menus. */
-.aero-alert-subtitle {
+.aerotask-alert-subtitle {
     font-size: 0.9em;
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-alert-close {
+.aerotask-alert-close {
     padding: 4px;
     border-radius: 99px;
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-alert-close:hover {
+.aerotask-alert-close:hover {
     background-color: rgba(128, 128, 128, 0.2);
     color: inherit;
 }
 
-.aero-alert-close StIcon {
+.aerotask-alert-close StIcon {
     icon-size: 12px;
 }
 
 /* ---------- Timer de foco ao lado do relógio ---------- */
-.aero-farol-focus-activity {
+.aerotask-farol-focus-activity {
     spacing: 4px;
 }
 
-.aero-farol-focus-icon {
+.aerotask-farol-focus-icon {
     icon-size: 14px;
 }
 
-.aero-farol-focus-time {
+.aerotask-farol-focus-time {
     font-feature-settings: "tnum";
 }
 
 /* Na pausa, o tom da cor de destaque. */
-.aero-farol-focus-break {
+.aerotask-farol-focus-break {
     color: -st-accent-color;
 }
 
 /* ---------- Página Foco ---------- */
-.aero-focus {
+.aerotask-focus {
     spacing: 24px;
     padding: 6px 4px;
 }
 
-.aero-focus-ring {
+.aerotask-focus-ring {
     width: 150px;
     height: 150px;
-    -aero-ring-color: -st-accent-color;
+    -aerotask-ring-color: -st-accent-color;
 }
 
-.aero-focus-time {
+.aerotask-focus-time {
     font-size: 2em;
     font-weight: bold;
     font-feature-settings: "tnum";
 }
 
-.aero-focus-phase {
+.aerotask-focus-phase {
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-focus-side {
+.aerotask-focus-side {
     spacing: 10px;
     min-width: 230px;
 }
 
-.aero-focus-stepper {
+.aerotask-focus-stepper {
     spacing: 8px;
 }
 
-.aero-focus-step {
+.aerotask-focus-step {
     padding: 4px;
     border-radius: 99px;
     background-color: rgba(128, 128, 128, 0.18);
     color: inherit;
 }
 
-.aero-focus-step:hover {
+.aerotask-focus-step:hover {
     background-color: rgba(128, 128, 128, 0.28);
 }
 
-.aero-focus-step StIcon {
+.aerotask-focus-step StIcon {
     icon-size: 12px;
 }
 
-.aero-focus-step-value {
+.aerotask-focus-step-value {
     min-width: 4.5em;
     text-align: center;
     font-feature-settings: "tnum";
 }
 
-.aero-focus-buttons {
+.aerotask-focus-buttons {
     spacing: 8px;
     padding-top: 6px;
 }
 
-.aero-focus-main {
+.aerotask-focus-main {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
     font-weight: bold;
 }
 
 /* ---------- Página Lembretes ---------- */
-.aero-reminders {
+.aerotask-reminders {
     spacing: 8px;
     min-width: 420px;
 }
 
-.aero-reminders-entry {
+.aerotask-reminders-entry {
     border-radius: 8px;
     padding: 6px 10px;
 }
 
-.aero-reminders-scroll {
+.aerotask-reminders-scroll {
     max-height: 300px;
 }
 
-.aero-reminders-list {
+.aerotask-reminders-list {
     spacing: 2px;
 }
 
-.aero-reminder {
+.aerotask-reminder {
     spacing: 10px;
     padding: 3px 4px;
     border-radius: 8px;
 }
 
-.aero-reminder:hover {
+.aerotask-reminder:hover {
     background-color: rgba(128, 128, 128, 0.12);
 }
 
 /* O círculo de "feito". */
-.aero-reminder-check {
+.aerotask-reminder-check {
     width: 18px;
     height: 18px;
     border-radius: 99px;
@@ -694,138 +706,138 @@
     padding: 0;
 }
 
-.aero-reminder-check:checked {
+.aerotask-reminder-check:checked {
     background-color: -st-accent-color;
     border-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.aero-reminder-check StIcon {
+.aerotask-reminder-check StIcon {
     icon-size: 12px;
 }
 
-.aero-reminder-text {
+.aerotask-reminder-text {
     color: inherit;
     padding: 4px 2px;
     text-align: left;
 }
 
 /* O St não passa text-decoration do botão para o rótulo: vai no rótulo. */
-.aero-reminder-done .aero-reminder-text,
-.aero-reminder-done .aero-reminder-text StLabel {
+.aerotask-reminder-done .aerotask-reminder-text,
+.aerotask-reminder-done .aerotask-reminder-text StLabel {
     text-decoration: line-through;
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-reminders-empty {
+.aerotask-reminders-empty {
     padding: 24px 0;
 }
 
 /* ---------- Página Prateleira (área de transferência) ---------- */
-.aero-shelf {
+.aerotask-shelf {
     spacing: 8px;
     min-width: 440px;
 }
 
-.aero-shelf-top {
+.aerotask-shelf-top {
     spacing: 6px;
 }
 
-.aero-shelf-search-icon {
+.aerotask-shelf-search-icon {
     icon-size: 14px;
     color: rgba(150, 150, 150, 1);
     padding-right: 4px;
 }
 
-.aero-shelf-icon-button {
+.aerotask-shelf-icon-button {
     padding: 5px;
     border-radius: 99px;
     color: inherit;
 }
 
-.aero-shelf-icon-button:hover,
-.aero-shelf-icon-button:focus {
+.aerotask-shelf-icon-button:hover,
+.aerotask-shelf-icon-button:focus {
     background-color: rgba(128, 128, 128, 0.18);
 }
 
-.aero-shelf-icon-button StIcon {
+.aerotask-shelf-icon-button StIcon {
     icon-size: 14px;
 }
 
-.aero-shelf-note {
+.aerotask-shelf-note {
     color: rgba(150, 150, 150, 1);
     font-size: 0.9em;
 }
 
-.aero-shelf-scroll {
+.aerotask-shelf-scroll {
     max-height: 320px;
 }
 
-.aero-shelf-list {
+.aerotask-shelf-list {
     spacing: 2px;
 }
 
-.aero-shelf-row {
+.aerotask-shelf-row {
     spacing: 2px;
     border-radius: 8px;
 }
 
-.aero-shelf-row:hover {
+.aerotask-shelf-row:hover {
     background-color: rgba(128, 128, 128, 0.12);
 }
 
 /* Os botões de fixar/apagar só aparecem fortes no item sob o mouse. */
-.aero-shelf-row .aero-shelf-icon-button {
+.aerotask-shelf-row .aerotask-shelf-icon-button {
     color: rgba(150, 150, 150, 0.6);
 }
 
-.aero-shelf-row:hover .aero-shelf-icon-button {
+.aerotask-shelf-row:hover .aerotask-shelf-icon-button {
     color: inherit;
 }
 
-.aero-shelf-row .aero-shelf-pin:checked {
+.aerotask-shelf-row .aerotask-shelf-pin:checked {
     color: -st-accent-color;
 }
 
-.aero-shelf-item {
+.aerotask-shelf-item {
     padding: 4px 6px;
     border-radius: 8px;
     color: inherit;
     text-align: left;
 }
 
-.aero-shelf-item:focus {
+.aerotask-shelf-item:focus {
     background-color: -st-accent-color;
     color: -st-accent-fg-color;
 }
 
-.aero-shelf-item > StBoxLayout {
+.aerotask-shelf-item > StBoxLayout {
     spacing: 10px;
 }
 
-.aero-shelf-item-icon {
+.aerotask-shelf-item-icon {
     icon-size: 16px;
 }
 
-.aero-shelf-item-title {
+.aerotask-shelf-item-title {
     max-width: 300px;
 }
 
-.aero-shelf-item-subtitle {
+.aerotask-shelf-item-subtitle {
     font-size: 0.85em;
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-shelf-item:focus .aero-shelf-item-subtitle {
+.aerotask-shelf-item:focus .aerotask-shelf-item-subtitle {
     color: inherit;
 }
 
-.aero-shelf-thumb {
+.aerotask-shelf-thumb {
     border-radius: 6px;
 }
 
 /* Atalho para a bandeja de arquivos, no rodapé. */
-.aero-shelf-tray {
+.aerotask-shelf-tray {
     padding: 8px 10px;
     border-radius: 10px;
     background-color: rgba(128, 128, 128, 0.12);
@@ -833,67 +845,67 @@
     text-align: left;
 }
 
-.aero-shelf-tray:hover,
-.aero-shelf-tray:focus {
+.aerotask-shelf-tray:hover,
+.aerotask-shelf-tray:focus {
     background-color: rgba(128, 128, 128, 0.22);
 }
 
-.aero-shelf-tray > StBoxLayout {
+.aerotask-shelf-tray > StBoxLayout {
     spacing: 10px;
 }
 
-.aero-shelf-tray-icon {
+.aerotask-shelf-tray-icon {
     icon-size: 20px;
 }
 
-.aero-shelf-tray-title {
+.aerotask-shelf-tray-title {
     font-weight: bold;
 }
 
-.aero-shelf-tray-hint {
+.aerotask-shelf-tray-hint {
     font-size: 0.85em;
     color: rgba(150, 150, 150, 1);
 }
 
 /* ---------- Página Uso de apps ---------- */
-.aero-usage {
+.aerotask-usage {
     spacing: 10px;
     min-width: 440px;
 }
 
-.aero-usage-top {
+.aerotask-usage-top {
     spacing: 4px;
 }
 
-.aero-usage-total {
+.aerotask-usage-total {
     color: rgba(150, 150, 150, 1);
     font-feature-settings: "tnum";
 }
 
-.aero-usage-list {
+.aerotask-usage-list {
     spacing: 8px;
 }
 
-.aero-usage-row {
+.aerotask-usage-row {
     spacing: 10px;
 }
 
-.aero-usage-name {
+.aerotask-usage-name {
     width: 130px;
 }
 
-.aero-usage-track {
+.aerotask-usage-track {
     height: 6px;
     border-radius: 99px;
     background-color: rgba(128, 128, 128, 0.18);
 }
 
-.aero-usage-bar {
+.aerotask-usage-bar {
     border-radius: 99px;
     background-color: -st-accent-color;
 }
 
-.aero-usage-time {
+.aerotask-usage-time {
     color: rgba(150, 150, 150, 1);
     font-feature-settings: "tnum";
 }
@@ -901,8 +913,8 @@
 
 /* ---------- HUD no centro da tela, estilo macOS (lib/osdHud.js) ----------
  * Um só para tudo: volume, brilho, luz do teclado, Caps Lock, Manter Tela
- * Ligada e os outros avisos do GNOME. .aero-hud = a caixa (lib/centerHud.js). */
-.aero-hud {
+ * Ligada e os outros avisos do GNOME. .aerotask-hud = a caixa (lib/centerHud.js). */
+.aerotask-hud {
     /* Mesmo tamanho para todos os avisos (o do aviso com barra). */
     min-width: 200px;
     min-height: 142px;
@@ -913,59 +925,59 @@
     color: #ffffff;
 }
 
-.aero-osd-hud-content {
+.aerotask-osd-hud-content {
     spacing: 18px;
 }
 
-.aero-osd-hud-icon {
+.aerotask-osd-hud-icon {
     icon-size: 80px;
 }
 
 /* Texto embaixo do ícone: "Caps Lock ativado", "Tela sempre ligada"… */
-.aero-osd-hud-caption {
+.aerotask-osd-hud-caption {
     font-weight: bold;
 }
 
 /* Nome + estado, colados (o espaço maior fica entre ícone, texto e barra). */
-.aero-osd-hud-text {
+.aerotask-osd-hud-text {
     spacing: 2px;
 }
 
 /* Estado embaixo do nome: "Ativado", "Desempenho"… */
-.aero-osd-hud-detail {
+.aerotask-osd-hud-detail {
     color: rgba(255, 255, 255, 0.7);
 }
 
-.aero-osd-hud-bar {
+.aerotask-osd-hud-bar {
     spacing: 2px;
 }
 
 /* Os 16 quadradinhos: apagados; cheios (":checked") em branco. */
-.aero-osd-hud-segment {
+.aerotask-osd-hud-segment {
     width: 8px;
     height: 7px;
     border-radius: 1px;
     background-color: rgba(255, 255, 255, 0.18);
 }
 
-.aero-osd-hud-segment:checked {
+.aerotask-osd-hud-segment:checked {
     background-color: #ffffff;
 }
 
-.aero-osd-hud-value {
+.aerotask-osd-hud-value {
     font-weight: bold;
     font-feature-settings: "tnum";
 }
 
 /* Acima de 100% (volume amplificado): a cor de "overdrive" do GNOME. */
-.aero-osd-hud-over {
+.aerotask-osd-hud-over {
     color: #ed5f5d;
 }
 
 /* ---------- Ícones de bandeja (AppIndicator / StatusNotifierItem) ----------
  * Mesmo tamanho dos outros ícones da barra (system-status-icon) e o mesmo
  * destaque arredondado ao passar o mouse (o do tema nos botões da barra). */
-#panel .panel-button.aero-tray-button {
+#panel .panel-button.aerotask-tray-button {
     -natural-hpadding: 7px;
     -minimum-hpadding: 4px;
     border-radius: 6px;
@@ -982,12 +994,12 @@
 /* ----- Estilo do macOS (lib/controlCenter/, opção "macos-control-center") -----
  * Cores neutras translúcidas (cinza a 16–35%): funcionam no modo claro e no
  * escuro, por cima do desfoque do Blur my Shell. */
-.aero-control-center .aero-cc-block {
+.aerotask-control-center .aerotask-cc-block {
     background-color: rgba(128, 128, 128, 0.16);
     border-radius: 18px;
 }
 
-.aero-control-center .aero-cc-block-title {
+.aerotask-control-center .aerotask-cc-block-title {
     font-weight: bold;
     padding: 2px 6px 4px;
 }
@@ -999,7 +1011,7 @@
 
 /* O círculo do ícone: neutro desligado, cor de destaque ligado (com
  * transição suave). */
-.aero-control-center .aero-cc-toggle .quick-toggle-icon {
+.aerotask-control-center .aerotask-cc-toggle .quick-toggle-icon {
     icon-size: 16px;
     padding: 8px;
     border-radius: 99px;
@@ -1008,23 +1020,23 @@
     transition-duration: 200ms;
 }
 
-.aero-control-center .aero-cc-toggle:checked .quick-toggle-icon {
+.aerotask-control-center .aerotask-cc-toggle:checked .quick-toggle-icon {
     background-color: -st-accent-color !important;
     color: -st-accent-fg-color !important;
 }
 
-.aero-control-center .aero-cc-toggle .quick-toggle-title {
+.aerotask-control-center .aerotask-cc-toggle .quick-toggle-title {
     font-weight: bold;
 }
 
 /* Controles deslizantes grossos e arredondados, com o ícone dentro. */
-.aero-control-center .aero-cc-slider,
-.aero-control-center .aero-cc-slider:hover {
+.aerotask-control-center .aerotask-cc-slider,
+.aerotask-control-center .aerotask-cc-slider:hover {
     background-color: transparent;
     box-shadow: none;
 }
 
-.aero-control-center .aero-cc-slider .slider {
+.aerotask-control-center .aerotask-cc-slider .slider {
     height: 26px;
     -barlevel-height: 26px;
     -slider-handle-radius: 12px;
@@ -1035,63 +1047,63 @@
     color: #ffffff;
 }
 
-.aero-control-center .aero-cc-slider-icon-button {
+.aerotask-control-center .aerotask-cc-slider-icon-button {
     padding: 0;
     /* No meio da "tampa" redonda da esquerda: (26 - 14) / 2. */
     margin-left: 6px;
 }
 
 /* Cinza escuro: legível por cima do preenchimento claro (como no macOS). */
-.aero-control-center .aero-cc-slider-icon {
+.aerotask-control-center .aerotask-cc-slider-icon {
     icon-size: 14px;
     color: rgba(0, 0, 0, 0.62);
 }
 
 /* Tocando agora. */
-.aero-control-center .aero-cc-media {
+.aerotask-control-center .aerotask-cc-media {
     background-color: rgba(128, 128, 128, 0.16);
     border-radius: 18px;
     padding: 10px 12px;
     spacing: 12px;
 }
 
-.aero-control-center .aero-cc-media-cover {
+.aerotask-control-center .aerotask-cc-media-cover {
     icon-size: 44px;
     border-radius: 8px;
 }
 
 /* Sem capa: um ícone de música menor, num quadrado neutro. */
-.aero-control-center .aero-cc-media-cover-empty {
+.aerotask-control-center .aerotask-cc-media-cover-empty {
     icon-size: 22px;
     padding: 11px;
     background-color: rgba(128, 128, 128, 0.3);
 }
 
-.aero-control-center .aero-cc-media-text {
+.aerotask-control-center .aerotask-cc-media-text {
     spacing: 1px;
 }
 
-.aero-control-center .aero-cc-media-title {
+.aerotask-control-center .aerotask-cc-media-title {
     font-weight: bold;
 }
 
-.aero-control-center .aero-cc-media-artist {
+.aerotask-control-center .aerotask-cc-media-artist {
     color: rgba(150, 150, 150, 1);
 }
 
-.aero-control-center .aero-cc-media-button {
+.aerotask-control-center .aerotask-cc-media-button {
     padding: 8px;
     border-radius: 99px;
 }
 
-.aero-control-center .aero-cc-media-icon {
+.aerotask-control-center .aerotask-cc-media-icon {
     icon-size: 18px;
 }
 
-.aero-control-center .aero-cc-media-button:hover {
+.aerotask-control-center .aerotask-cc-media-button:hover {
     background-color: rgba(128, 128, 128, 0.22);
 }
 
-.aero-control-center .aero-cc-media-button:insensitive {
+.aerotask-control-center .aerotask-cc-media-button:insensitive {
     color: rgba(150, 150, 150, 0.6);
 }

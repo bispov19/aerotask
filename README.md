@@ -1,9 +1,11 @@
-# Aero Menu Global
+# AeroTask
 
-Barra de menus global no estilo do macOS para o **GNOME Shell 51**: o logo da sua
-distro no lugar da maçã, o nome do aplicativo em negrito e os menus **Arquivo,
-Editar, Visualizar, Janela e Ajuda** — ou os menus reais do app, quando ele os
-exporta. Interface em português do Brasil.
+A barra superior completa no estilo do macOS para o **GNOME Shell 51**: menus
+globais (o logo da sua distro no lugar da maçã, o nome do aplicativo em negrito e
+os menus **Arquivo, Editar, Visualizar, Janela e Ajuda** — ou os menus reais do
+app, quando ele os exporta), relógio com calendário e notificações, centro de
+controle em blocos, avisos no centro da tela, ícones de bandeja e barra
+flutuante. Interface em português do Brasil.
 
 ![Menus padrão no Editor de Texto, com submenu em cascata](docs/screenshots/menus-padrao-editar.png)
 
@@ -35,6 +37,14 @@ exporta. Interface em português do Brasil.
   troca de menu; submenus abrem ao lado (em cascata); `F10` abre o menu do app para
   navegar pelo teclado; sem janela em foco, a barra mostra o **Arquivos** (como o
   Finder).
+- **Relógio** no canto direito, com um painel de abas (Calendário, Notificações,
+  Prateleira da área de transferência, Foco, Lembretes) e a temperatura ao lado.
+- **Centro de controle** em blocos (conectividade, Foco, Tela, Som, Tocando
+  agora), sobre os próprios controles do GNOME.
+- **Avisos no centro da tela** com um só visual: volume, brilho, Caps Lock e os
+  botões do centro de controle.
+- **Ícones de bandeja** (AppIndicator/StatusNotifierItem), **Manter Tela
+  Ligada**, ícone de bateria e **barra flutuante** com cantos arredondados.
 - Visual: cantos arredondados, fundo translúcido que respeita o tema (claro ou
   escuro), destaque com a cor de destaque do sistema, atalhos alinhados à
   direita, `✓` e `›`; animação curta que respeita "Reduzir animação".
@@ -58,30 +68,33 @@ Requisitos: GNOME Shell 51 (testado no Fedora 45, Wayland).
 2. Clone e instale:
 
    ```bash
-   git clone https://github.com/viniciusbispo19/aero-menu-global.git
-   cd aero-menu-global
+   git clone https://github.com/viniciusbispo19/aerotask.git
+   cd aerotask
    ./scripts/install.sh
    ```
+
+   Se você tinha uma versão com um nome anterior do projeto, o instalador copia
+   as configurações dela, desativa e remove a versão antiga.
 
 3. No Wayland o Shell não carrega extensões novas sem uma nova sessão. Encerre a
    sessão, entre de novo e ative:
 
    ```bash
-   gnome-extensions enable aero-menu-global@viniciusbispo19
+   gnome-extensions enable aerotask@viniciusbispo19
    ```
 
 4. Abra as preferências:
 
    ```bash
-   gnome-extensions prefs aero-menu-global@viniciusbispo19
+   gnome-extensions prefs aerotask@viniciusbispo19
    ```
 
 ## Como funciona: as quatro camadas
 
 No macOS todo app entrega o seu menu ao sistema. No Linux não existe um padrão
-único, então o Aero Menu Global escolhe, para cada janela, a melhor fonte disponível:
+único, então o AeroTask escolhe, para cada janela, a melhor fonte disponível:
 
-| Camada | Fonte | Quem usa | Como o Aero Menu Global lê |
+| Camada | Fonte | Quem usa | Como o AeroTask lê |
 |---|---|---|---|
 | **A** | Menus GTK exportados (`org.gtk.Menus` + `org.gtk.Actions`) | Apps GTK com `GtkApplication` e barra de menus (ex.: LibreOffice) | O Mutter informa o nome D-Bus e os caminhos de cada janela; `Gio.DBusMenuModel` e `Gio.DBusActionGroup` leem o menu e as ações |
 | **B** | DBusMenu (`com.canonical.dbusmenu`) registrado em `com.canonical.AppMenu.Registrar` | Apps Qt, Electron/Chromium — **via XWayland** | A extensão oferece o serviço Registrar; o app registra a janela (pelo id X11) e a extensão lê o menu |
@@ -124,8 +137,8 @@ Sem promessas falsas — o que **não** dá (ou ainda não dá) para fazer:
 
 - **Wayland nativo × XWayland**: Qt e Electron só exportam menus DBusMenu no X11.
   Em Wayland nativo, esses apps ficam com os menus padrão.
-- **Apps já abertos**: apps Qt/Electron registram o menu quando abrem. Se o Aero
-  Menu (ou a opção "Ler menus de apps Qt, Electron…") for ativado com eles abertos,
+- **Apps já abertos**: apps Qt/Electron registram o menu quando abrem. Se o AeroTask
+  (ou a opção "Ler menus de apps Qt, Electron…") for ativado com eles abertos,
   reabra-os. Bloquear a tela não perde os menus (veja abaixo); desativar e reativar
   a extensão perde.
 - **Apps GTK 4/libadwaita** só exportam ações de aplicativo (`app.*`). As ações de
@@ -133,7 +146,7 @@ Sem promessas falsas — o que **não** dá (ou ainda não dá) para fazer:
   atalhos de teclado simulados — funcionam na grande maioria dos apps, mas cada
   app escolhe seus atalhos.
 - **"Metade esquerda/direita da tela"**: o GNOME 51 não oferece API pública de
-  "lado a lado"; o Aero Menu Global aciona o seu atalho configurado
+  "lado a lado"; o AeroTask aciona o seu atalho configurado
   (`Super+←`/`Super+→` por padrão).
 - **Vários monitores**: o GNOME tem uma única barra superior, no monitor
   principal. A barra de menus aparece só nela.
@@ -143,7 +156,7 @@ Sem promessas falsas — o que **não** dá (ou ainda não dá) para fazer:
   há como saber o gênero do nome de cada app ("Sobre o Calculadora").
 - **Mnemônicos** (letras sublinhadas) não são exibidos.
 - **Just Perfection**: se ela estiver controlando a posição do relógio, escolha a
-  posição em um lugar só (o Aero Menu Global reaplica a dele poucas vezes, para não
+  posição em um lugar só (o AeroTask reaplica a dele poucas vezes, para não
   "brigar").
 
 ### Por que a extensão continua ativa na tela de bloqueio
@@ -173,7 +186,7 @@ Tudo é aplicado na hora, sem reiniciar a sessão.
 ## Desenvolvimento
 
 ```
-aero-menu-global/
+aerotask/
 ├── extension.js            enable()/disable() e ciclo de vida (bloqueio de tela)
 ├── prefs.js                preferências (GTK 4 + libadwaita, outro processo)
 ├── stylesheet.css
@@ -215,8 +228,8 @@ Com a sessão aninhada aberta, em outro terminal:
 ./scripts/nested-stop.sh
 ```
 
-A extensão auxiliar `dev/aero-menu-devtools@…` liga o "modo inseguro" do Shell
-(necessário para Eval e prints) **somente** quando `AERO_MENU_DEV=1`, variável que
+A extensão auxiliar `dev/aerotask-menu-devtools@…` liga o "modo inseguro" do Shell
+(necessário para Eval e prints) **somente** quando `AEROTASK_DEV=1`, variável que
 só o `dev-nested.sh` define.
 
 ### Outras tarefas
@@ -226,7 +239,8 @@ npm install                        # ESLint (uma vez)
 npm run lint
 ./scripts/update-po.sh             # extrai strings novas para po/
 ./scripts/compile-translations.sh  # confere e compila as traduções
-./scripts/build.sh                 # gera build/aero-menu-global@viniciusbispo19.shell-extension.zip
+./scripts/build.sh                 # gera build/aerotask@viniciusbispo19.shell-extension.zip
+./scripts/uninstall.sh             # remove (com --limpar: também configurações e dados)
 ```
 
 ### Checklist para publicar no extensions.gnome.org
@@ -259,13 +273,13 @@ npm run lint
   só à camada D. Não lê menus reais, os itens nunca ficam cinza e parte do código
   usa D-Bus síncrono.
 
-O Aero Menu Global junta as duas ideias: menus reais quando existem (A/B/C), menus padrão
+O AeroTask junta as duas ideias: menus reais quando existem (A/B/C), menus padrão
 como rede de segurança (D), tudo assíncrono e dentro do próprio Shell. Nenhum
 código desses projetos foi copiado.
 
 ## Licença e créditos
 
-Aero Menu Global é software livre, sob a [GNU GPL versão 3 ou posterior](LICENSE).
+AeroTask é software livre, sob a [GNU GPL versão 3 ou posterior](LICENSE).
 
 Os logos vêm do [Simple Icons](https://simpleicons.org); origem, licença e
 diretrizes de marca de cada um estão em [icons/CREDITS.md](icons/CREDITS.md).

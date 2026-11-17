@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Janela de preferências do Aero Menu Global (libadwaita).
+// Janela de preferências do AeroTask (libadwaita).
 //
 // Importante: este arquivo NÃO roda dentro do GNOME Shell. Ele roda num
 // processo separado (o app "Extensões"/gnome-extensions-app), com GTK 4 e
@@ -23,13 +23,13 @@ import {
 
 import {SYSTEM_ICONS} from './lib/icons.js';
 
-const GITHUB_URL = 'https://github.com/viniciusbispo19/aero-menu-global';
+const GITHUB_URL = 'https://github.com/viniciusbispo19/aerotask';
 /** Páginas do pop-up do relógio, na ordem em que aparecem. */
 const CLOCK_PAGES = ['calendar', 'notifications', 'shelf', 'focus', 'reminders'];
 /** Quantas cidades mostrar na busca (o resto: digite mais). */
 const MAX_CITY_RESULTS = 40;
 
-export default class AeroMenuPreferences extends ExtensionPreferences {
+export default class AeroTaskPreferences extends ExtensionPreferences {
     fillPreferencesWindow(window) {
         this._settings = this.getSettings();
         window.set_default_size(720, 760);
@@ -182,7 +182,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             ['center', _('Center')],
             ['right', _('Right (like macOS)')],
         ], _('Used with the GNOME clock'));
-        // Com o relógio do Aero ligado, ele fica sempre no canto direito
+        // Com o relógio do AeroTask ligado, ele fica sempre no canto direito
         // (como no macOS): a opção fica cinza.
         this._settings.bind('farol-enabled', clockRow, 'sensitive',
             Gio.SettingsBindFlags.GET | Gio.SettingsBindFlags.INVERT_BOOLEAN);
@@ -220,7 +220,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         const shell = new Gio.Settings({schema_id: 'org.gnome.shell'});
         const conflict = new Adw.ActionRow({
             title: _('The “AppIndicator and KStatusNotifierItem Support” extension is active'),
-            subtitle: _('It takes priority. Disable it in the Extensions app to use the icons of Aero Menu Global.'),
+            subtitle: _('It takes priority. Disable it in the Extensions app to use the icons of AeroTask.'),
             css_classes: ['warning'],
         });
         conflict.add_prefix(new Gtk.Image({icon_name: 'dialog-warning-symbolic'}));
@@ -294,7 +294,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             title: _('Clock'),
             description: _('A macOS-style clock in the right corner; click it for the calendar, notifications, copied items, focus and reminders'),
         });
-        clock.add(this._switch('farol-enabled', _('Use the Aero Menu Global clock'),
+        clock.add(this._switch('farol-enabled', _('Use the AeroTask clock'),
             _('Replaces the GNOME clock')));
 
         // Formato da hora: é a MESMA chave das Configurações do GNOME
@@ -310,7 +310,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
         clock.add(this._switch('farol-show-date', _('Show the date beside the time')));
         page.add(clock);
 
-        // O resto só existe com o relógio do Aero ligado.
+        // O resto só existe com o relógio do AeroTask ligado.
         const needsClock = group => {
             this._settings.bind('farol-enabled', group, 'sensitive', Gio.SettingsBindFlags.GET);
             page.add(group);
@@ -546,7 +546,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             title: _('Alerts'),
             icon_name: 'preferences-system-notifications-symbolic',
         });
-        // Os alertas saem do relógio do Aero: sem ele, ficam cinza.
+        // Os alertas saem do relógio do AeroTask: sem ele, ficam cinza.
         const needsClock = group => {
             this._settings.bind('farol-enabled', group, 'sensitive', Gio.SettingsBindFlags.GET);
             page.add(group);
@@ -568,7 +568,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             _('“65%” below the volume and brightness bar')));
         page.add(hud);
 
-        // O ícone da bateria NÃO depende do relógio do Aero.
+        // O ícone da bateria NÃO depende do relógio do AeroTask.
         const battery = new Adw.PreferencesGroup({title: _('Battery')});
         battery.add(this._switch('battery-icon-enabled', _('MacBook-style battery icon'),
             _('Replaces the GNOME battery icon in the top bar')));
@@ -718,7 +718,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             this._settings.set_string('system-icon', 'custom');
         } catch (e) {
             if (!e.matches?.(Gtk.DialogError, Gtk.DialogError.DISMISSED))
-                console.warn(`[Aero Menu Global] escolhendo ícone: ${e.message}`);
+                console.warn(`[AeroTask] escolhendo ícone: ${e.message}`);
         }
     }
 
@@ -833,7 +833,7 @@ export default class AeroMenuPreferences extends ExtensionPreferences {
             gicon: new Gio.FileIcon({file: this.dir.get_child('icons').get_child('fedora-symbolic.svg')}),
             pixel_size: 64,
         }));
-        box.append(new Gtk.Label({label: 'Aero Menu Global', css_classes: ['title-1']}));
+        box.append(new Gtk.Label({label: 'AeroTask', css_classes: ['title-1']}));
         box.append(new Gtk.Label({
             label: _('A macOS-style global menu bar for GNOME'),
             css_classes: ['dim-label'],
