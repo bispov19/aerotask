@@ -399,6 +399,32 @@
     background-color: rgba(128, 128, 128, 0.18);
 }
 
+/* Versão compacta do resumo no cabeçalho do pop-up: menor que as abas para
+ * não competir com elas (é um complemento, não um título). As regras de cima
+ * continuam valendo para a temperatura ao lado do relógio, na barra. */
+.aerotask-farol-weather-button {
+    padding: 2px 8px;
+    font-size: 0.85em;
+}
+
+.aerotask-farol-weather-button .aerotask-farol-weather {
+    spacing: 3px;
+}
+
+.aerotask-farol-weather-button .aerotask-farol-weather-icon {
+    icon-size: 14px;
+}
+
+/* Na barra a largura mínima evita que o relógio "pule"; aqui não precisa. */
+.aerotask-farol-weather-button .aerotask-farol-weather-temp {
+    min-width: 0;
+}
+
+/* Condições longas ("Chuva fraca com trovoada") terminam em reticências. */
+.aerotask-farol-weather-button .aerotask-farol-weather-condition {
+    max-width: 12em;
+}
+
 /* ---------- Página Clima ---------- */
 .aerotask-weather {
     spacing: 12px;
