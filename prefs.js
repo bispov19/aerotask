@@ -25,7 +25,7 @@ import {SYSTEM_ICONS} from './lib/icons.js';
 
 const GITHUB_URL = 'https://github.com/viniciusbispo19/aerotask';
 /** Páginas do pop-up do relógio, na ordem em que aparecem. */
-const CLOCK_PAGES = ['calendar', 'notifications', 'shelf', 'focus', 'reminders'];
+const CLOCK_PAGES = ['calendar', 'weather', 'notifications', 'shelf', 'focus', 'reminders'];
 /** Quantas cidades mostrar na busca (o resto: digite mais). */
 const MAX_CITY_RESULTS = 40;
 
@@ -338,7 +338,7 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
         needsClock(pages);
 
         const weather = new Adw.PreferencesGroup({
-            title: _('Temperature'),
+            title: _('Weather'),
             description: _('From GNOME’s weather service (MET Norway); only the city’s approximate position is sent. “Automatic” uses the location of the GNOME Weather settings.'),
         });
         weather.add(this._switch('weather-enabled', _('Show the temperature beside the clock')));
@@ -360,6 +360,29 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
             this._settings.bind('weather-enabled', row, 'sensitive', Gio.SettingsBindFlags.GET);
             weather.add(row);
         });
+
+        // Previsão: a página Clima do pop-up (aba própria, aberta quando você
+        // quiser — também clicando no tempo no topo do pop-up).
+        weather.add(this._pageSwitch('weather', _('Weather page'),
+            _('Today’s forecast and the next days, in the clock pop-up'), 'weather-enabled'));
+        const hourly = this._switch('weather-show-hourly', _('Today, hour by hour'));
+        const showDays = this._switch('weather-show-days', _('Next days'),
+            _('Highest and lowest temperature and the weather of each day'));
+        const dayCount = this._spin('weather-forecast-days', _('How many days'),
+            _('The forecast reaches about 9 days ahead'), 2, 9);
+        weather.add(hourly);
+        weather.add(showDays);
+        weather.add(dayCount);
+        const syncForecast = () => {
+            const on = this._settings.get_boolean('weather-enabled') &&
+                this._settings.get_strv('farol-pages').includes('weather');
+            hourly.sensitive = on;
+            showDays.sensitive = on;
+            dayCount.sensitive = on && this._settings.get_boolean('weather-show-days');
+        };
+        syncForecast();
+        for (const key of ['weather-enabled', 'farol-pages', 'weather-show-days'])
+            this._settings.connect(`changed::${key}`, syncForecast);
         needsClock(weather);
 
         const shelf = new Adw.PreferencesGroup({
@@ -392,12 +415,13 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
      * fica sempre na ordem de CLOCK_PAGES. A última página ligada não pode ser
      * desligada (senão o clique no relógio abriria um balão vazio).
      */
-    _pageSwitch(id, title, subtitle = '') {
+    _pageSwitch(id, title, subtitle = '', requires = null) {
         const row = new Adw.SwitchRow({title, subtitle});
         const sync = () => {
             const pages = this._settings.get_strv('farol-pages');
             row.active = pages.includes(id);
-            row.sensitive = !(row.active && pages.length === 1);
+            row.sensitive = !(row.active && pages.length === 1) &&
+                (!requires || this._settings.get_boolean(requires));
         };
         row.connect('notify::active', () => {
             const pages = this._settings.get_strv('farol-pages');
@@ -408,6 +432,8 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
         });
         sync();
         this._settings.connect('changed::farol-pages', sync);
+        if (requires)
+            this._settings.connect(`changed::${requires}`, sync);
         return row;
     }
 
@@ -572,7 +598,8 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
         const battery = new Adw.PreferencesGroup({title: _('Battery')});
         battery.add(this._switch('battery-icon-enabled', _('MacBook-style battery icon'),
             _('Replaces the GNOME battery icon in the top bar')));
-        const percent = this._switch('battery-show-percentage', _('Show the battery percentage'));
+        const percent = this._switch('battery-show-percentage', _('Show the battery percentage'),
+            _('Inside the battery icon'));
         this._settings.bind('battery-icon-enabled', percent, 'sensitive', Gio.SettingsBindFlags.GET);
         battery.add(percent);
         page.add(battery);

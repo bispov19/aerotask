@@ -388,22 +388,108 @@
     color: rgba(150, 150, 150, 1);
 }
 
+/* O resumo do tempo no cabeçalho do pop-up é um botão (abre a página Clima). */
+.aerotask-farol-weather-button {
+    padding: 3px 10px;
+    border-radius: 99px;
+    color: inherit;
+}
+
+.aerotask-farol-weather-button:hover {
+    background-color: rgba(128, 128, 128, 0.18);
+}
+
+/* ---------- Página Clima ---------- */
+.aerotask-weather {
+    spacing: 12px;
+    min-width: 500px;
+}
+
+.aerotask-weather-dim {
+    color: rgba(150, 150, 150, 1);
+}
+
+.aerotask-weather-temp,
+.aerotask-weather-day-temp {
+    font-feature-settings: "tnum";
+}
+
+.aerotask-weather-now {
+    spacing: 10px;
+}
+
+.aerotask-weather-now-icon {
+    icon-size: 40px;
+}
+
+.aerotask-weather-now-temp {
+    font-size: 26px;
+    font-weight: 300;
+    font-feature-settings: "tnum";
+}
+
+.aerotask-weather-now-condition {
+    font-weight: bold;
+}
+
+/* Faixa hora a hora e lista dos dias: o mesmo fundo dos eventos. */
+.aerotask-weather-hours,
+.aerotask-weather-days {
+    padding: 8px 10px;
+    border-radius: 10px;
+    background-color: rgba(128, 128, 128, 0.12);
+}
+
+.aerotask-weather-hour {
+    spacing: 4px;
+}
+
+.aerotask-weather-hour-icon {
+    icon-size: 18px;
+}
+
+.aerotask-weather-days {
+    spacing: 6px;
+}
+
+.aerotask-weather-day {
+    spacing: 10px;
+}
+
+.aerotask-weather-day-name {
+    min-width: 8.5em;
+}
+
+.aerotask-weather-day-icon {
+    icon-size: 16px;
+}
+
+.aerotask-weather-day-temp {
+    min-width: 2.2em;
+    text-align: right;
+}
+
+.aerotask-weather-bar {
+    width: 96px;
+    height: 5px;
+}
+
+.aerotask-weather-updated {
+    font-size: 0.85em;
+    color: rgba(150, 150, 150, 1);
+}
+
 /* ---------- Bateria estilo MacBook ---------- */
 .aerotask-battery {
     spacing: 5px;
     padding: 0 2px;
 }
 
-/* Proporção ~2:1, altura alinhada aos outros ícones (16 px). */
+/* Proporção ~2:1, alto o bastante para o número caber dentro (o maior,
+ * "100" com o raio da tomada). */
 .aerotask-battery-icon {
-    width: 26px;
-    height: 12px;
-}
-
-.aerotask-battery-label {
-    font-feature-settings: "tnum";
-    min-width: 2.6em;
-    text-align: right;
+    width: 30px;
+    height: 14px;
 }
 
 /* Dica ao passar o ponteiro: como os menus do AeroTask (vidro escuro). */

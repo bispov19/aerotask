@@ -182,8 +182,8 @@
     <key name="farol-pages" type="as">
       <!-- Sem "música": o wavebar-music do usuário já cuida disso. A página
            "uso" não entra aqui: ela aparece quando app-usage-enabled liga. -->
-      <default>['calendar', 'notifications', 'shelf', 'focus', 'reminders']</default>
-      <summary>Clock panel pages, in order (calendar, notifications, shelf, focus, reminders)</summary>
+      <default>['calendar', 'weather', 'notifications', 'shelf', 'focus', 'reminders']</default>
+      <summary>Clock panel pages, in order (calendar, weather, notifications, shelf, focus, reminders)</summary>
     </key>
     <key name="farol-world-clocks" type="b">
       <default>true</default>
@@ -211,6 +211,20 @@
       <default>(0.0, 0.0)</default>
       <summary>Latitude and longitude (degrees) of the city chosen for the weather</summary>
     </key>
+    <!-- Página Clima do pop-up do relógio (2026-11-17) -->
+    <key name="weather-show-hourly" type="b">
+      <default>true</default>
+      <summary>Show today’s forecast hour by hour on the Weather page</summary>
+    </key>
+    <key name="weather-show-days" type="b">
+      <default>true</default>
+      <summary>Show the forecast for the next days on the Weather page</summary>
+    </key>
+    <key name="weather-forecast-days" type="i">
+      <range min="2" max="9"/>
+      <default>7</default>
+      <summary>How many of the next days to show on the Weather page</summary>
+    </key>
 
     <!-- Volume, brilho e bateria (Fase 2) -->
     <key name="alert-volume" type="b">
@@ -234,8 +248,8 @@
       <summary>Replace the battery icon with a MacBook-style one</summary>
     </key>
     <key name="battery-show-percentage" type="b">
-      <default>false</default>
-      <summary>Show the battery percentage beside the icon</summary>
+      <default>true</default>
+      <summary>Show the battery percentage inside the icon</summary>
     </key>
 
     <!-- Alertas (Fase 2) -->

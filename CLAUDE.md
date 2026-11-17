@@ -424,6 +424,16 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   (com 1 a ponta curva para dentro e "come" segmentos curtos). Vitral-icons NÃO tem simbólicos
   (herda do Adwaita: traço ~2 px, vários preenchidos → destoam; por isso a família própria).
   Renderizar SVG para conferir: GJS `GdkPixbuf.Pixbuf.new_from_file_at_size` (não há rsvg-convert).
+- **Página Clima + bateria com número (2026-11-17)**: `pages/weatherPage.js` (aba "Clima" em
+  `farol-pages`, depois do Calendário; some com `weather-enabled` desligado; clicar no resumo do
+  tempo no topo do pop-up abre a página). Chaves `weather-show-hourly`, `weather-show-days`,
+  `weather-forecast-days` (2–9). `GWeather.Info.get_forecast_list()` (MET Norway): de hora em hora
+  nos ~3 primeiros dias, depois de 6 em 6 h até ~10 dias, começando na hora atual;
+  `get_value_temp_min/max` devolvem **false** → mín./máx. calculadas juntando as previsões do dia
+  (`readForecast` em `services/weather.js`; vai junto no `weather-cache`). `%A` do GLib em pt-BR dá
+  "quarta" (sem "-feira"). Bateria: corpo maciço (parte vazia a 38%) com o número VAZADO
+  (`Cairo.Operator.CLEAR` + `PangoCairo.layout_path`, fonte do tema em negrito, `tnum`); "100"+raio
+  encolhe para caber. `battery-show-percentage` agora = número dentro (padrão true).
 - **Teste aninhado e dados**: o aninhado usa o MESMO `$HOME` → uma extensão nova com migração de
   pasta de dados (`storage.js`) MOVE a pasta real na hora do teste, enquanto a versão antiga
   ainda roda na sessão real e recria a pasta antiga. Na troca para AeroTask: juntar depois do
