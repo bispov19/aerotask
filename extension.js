@@ -35,6 +35,7 @@ import {Registrar} from './lib/sources/registrar.js';
 import {TrayIcons} from './lib/tray/trayIcons.js';
 import {StatusNotifierWatcher} from './lib/tray/watcher.js';
 import {OsdHud} from './lib/osdHud.js';
+import {IndicatorSpacing} from './lib/indicatorSpacing.js';
 import {KeepAwake, KeepAwakeIndicator} from './lib/keepAwake.js';
 import {QuickSettingsHud} from './lib/quickSettingsHud.js';
 import {ControlCenter} from './lib/controlCenter/controlCenter.js';
@@ -224,6 +225,9 @@ export default class AeroTaskExtension extends Extension {
 
         // Botão "Manter Tela Ligada" nas Configurações Rápidas.
         this._keepAwakeIndicator = new KeepAwakeIndicator(this._keepAwake, iconsDir);
+        // Mesmo espaço entre todos os ícones das Configurações Rápidas na barra
+        // (esconde ícones vazios de outras extensões, que viravam "buracos").
+        this._indicatorSpacing = new IndicatorSpacing();
         // Usar QUALQUER botão das Configurações Rápidas também mostra o HUD.
         this._quickSettingsHud = new QuickSettingsHud(this._settings, this._hud);
         // O menu de Configurações Rápidas no layout do centro de controle do macOS.
@@ -277,6 +281,8 @@ export default class AeroTaskExtension extends Extension {
         this._controlCenter = null;
         this._quickSettingsHud?.destroy();
         this._quickSettingsHud = null;
+        this._indicatorSpacing?.destroy();
+        this._indicatorSpacing = null;
         this._keepAwakeIndicator?.destroy();
         this._keepAwakeIndicator = null;
         this._hud?.destroy();

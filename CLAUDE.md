@@ -446,6 +446,15 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   pasta de dados (`storage.js`) MOVE a pasta real na hora do teste, enquanto a versão antiga
   ainda roda na sessão real e recria a pasta antiga. Na troca para AeroTask: juntar depois do
   `install.sh` (o `clipboard.json` mais novo estava na pasta antiga).
+- **Espaço igual entre os ícones de status (2026-11-17)**: o gnome-mosaic cria o ícone do
+  indicador VAZIO e visível (só o esconde no 1º `set_active`) → largura 0, mas margens (4+4 px)
+  + `spacing` da caixa = buraco de ~12 px. `lib/indicatorSpacing.js` esconde todo `St.Icon`
+  visível sem `gicon`/`icon_name` nas caixas `panel-status-indicators-box` de
+  `quickSettings._indicators` e mostra de novo quando ganha imagem. A CAIXA do indicador volta a
+  aparecer depois do login sem passar pelo `_syncIndicatorsVisible` (provável `show-on-set-parent`
+  numa reordenação): por isso vigiamos também o `notify::visible` da caixa. Tema padrão:
+  `#panel .panel-button .system-status-icon { margin: 0 4px }` → bateria com `padding: 0 4px`.
+  Medido: 12 px entre todos os ícones.
 - **Sombra do centro de controle**: vinha do TEMA (Brisa: `.popup-menu-content { box-shadow }`);
   neutralizada só em `.popup-menu-content.quick-settings`.
 - **Bateria sumindo no login (causa)**: `_setupIndicators` (panel.js:336) cria `qs._system` e só

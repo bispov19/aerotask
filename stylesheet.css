@@ -506,9 +506,13 @@
 }
 
 /* ---------- Bateria estilo MacBook ---------- */
+/* 4 px de cada lado = a margem que o tema padrão do GNOME dá a cada ícone de
+ * status (`#panel .panel-button .system-status-icon { margin: 0 4px }`):
+ * assim a bateria fica à mesma distância do volume que os outros ícones
+ * ficam entre si. */
 .aerotask-battery {
     spacing: 5px;
-    padding: 0 2px;
+    padding: 0 4px;
 }
 
 /* Proporção ~2:1, alto o bastante para o número caber dentro (o maior,
