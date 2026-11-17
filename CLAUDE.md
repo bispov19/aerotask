@@ -24,6 +24,14 @@ antigas só no dconf isolado. "Luma" que DEVE ficar: Luma Dock (outra extensão 
 Se o Registrar já existir no processo (ex.: uma versão antiga ainda ativa), a extensão
 segue sem a camada B em vez de falhar.
 
+**Publicação (2026-11-17, versão 1.0.0)**: textos de publicação em INGLÊS; autor/sobre = só
+"Web Developer". `README.md` (inglês) + `docs/README.pt-BR.md` (documentação antiga em pt-BR).
+`assets/icon.svg`/`icon-512.png` (vidro Aero azul/ciano, barra + menu), `assets/screenshots/`
+(`raw/` = capturas puras para o campo de screenshot do site; as outras = molde de página, geradas
+por `gjs -m scripts/store-images.js` a partir de `captions.json`). Capturas limpas em inglês:
+`scripts/store-session.sh` (HOME temporário, LANGUAGE=en_US, clima fixo em San Francisco para não
+usar o Geoclue). O zip do `build.sh` leva só o XML do schema (o install/site compila).
+
 ## Achados verificados no sistema (atualizar a cada fase)
 
 Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 1.90.1, Wayland.

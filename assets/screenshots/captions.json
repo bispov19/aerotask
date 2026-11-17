@@ -1,0 +1,17 @@
+[
+  {
+    "file": "01-menu-bar.png",
+    "caption": "Global menu bar",
+    "description": "The focused app's name in bold and its menus: the app's own menus when it exports them, or a standard File, Edit, View, Window and Help set with shortcuts and icons."
+  },
+  {
+    "file": "02-clock-panel.png",
+    "caption": "Clock panel",
+    "description": "Click the clock for calendar, weather forecast, notifications, clipboard history, a focus timer and reminders."
+  },
+  {
+    "file": "03-settings.png",
+    "caption": "Settings",
+    "description": "Choose the system logo, the bar style, the menus and the clock pages. Every change applies instantly."
+  }
+]
