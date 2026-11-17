@@ -37,6 +37,7 @@ import {StatusNotifierWatcher} from './lib/tray/watcher.js';
 import {OsdHud} from './lib/osdHud.js';
 import {IndicatorSpacing} from './lib/indicatorSpacing.js';
 import {KeepAwake, KeepAwakeIndicator} from './lib/keepAwake.js';
+import {StatusBar} from './lib/statusBar/statusBar.js';
 import {QuickSettingsHud} from './lib/quickSettingsHud.js';
 import {ControlCenter} from './lib/controlCenter/controlCenter.js';
 import {clearMenuIcons} from './lib/menuIcons.js';
@@ -228,6 +229,13 @@ export default class AeroTaskExtension extends Extension {
         // Mesmo espaço entre todos os ícones das Configurações Rápidas na barra
         // (esconde ícones vazios de outras extensões, que viravam "buracos").
         this._indicatorSpacing = new IndicatorSpacing();
+        // Wi-Fi e Bluetooth com pop-ups próprios, botão do centro de controle
+        // e volume fora da barra, como no macOS. Criado antes do relógio:
+        // os botões ficam entre o menu de status e o relógio.
+        this._statusBar = new StatusBar(this._settings, {
+            getAppearance: () => this._menuBar.getAppearance(),
+            iconsDir,
+        });
         // Usar QUALQUER botão das Configurações Rápidas também mostra o HUD.
         this._quickSettingsHud = new QuickSettingsHud(this._settings, this._hud);
         // O menu de Configurações Rápidas no layout do centro de controle do macOS.
@@ -281,6 +289,8 @@ export default class AeroTaskExtension extends Extension {
         this._controlCenter = null;
         this._quickSettingsHud?.destroy();
         this._quickSettingsHud = null;
+        this._statusBar?.destroy();
+        this._statusBar = null;
         this._indicatorSpacing?.destroy();
         this._indicatorSpacing = null;
         this._keepAwakeIndicator?.destroy();

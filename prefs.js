@@ -189,6 +189,16 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
         bar.add(clockRow);
         page.add(bar);
 
+        // Os ícones à direita da barra, como no macOS.
+        const status = new Adw.PreferencesGroup({title: _('Status Icons')});
+        status.add(this._switch('status-control-center-button', _('Control Center button'),
+            _('Two switches next to the clock; a click opens the Control Center')));
+        status.add(this._switch('status-wifi-bluetooth-menus', _('Wi-Fi and Bluetooth menus'),
+            _('Each icon opens its own menu with networks or devices')));
+        status.add(this._switch('status-show-volume', _('Volume icon in the bar'),
+            _('When off, sound is controlled from the Control Center')));
+        page.add(status);
+
         page.add(this._trayGroup());
 
         const keys = new Adw.PreferencesGroup({title: _('Keyboard Shortcuts')});

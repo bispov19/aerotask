@@ -455,6 +455,29 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   numa reordenação): por isso vigiamos também o `notify::visible` da caixa. Tema padrão:
   `#panel .panel-button .system-status-icon { margin: 0 4px }` → bateria com `padding: 0 4px`.
   Medido: 12 px entre todos os ícones.
+- **Ícones de status no estilo do macOS (2026-11-17)**: `lib/statusBar/` (chaves
+  `status-control-center-button`, `status-wifi-bluetooth-menus`, `status-show-volume` = false).
+  Ordem na `_rightBox`: [quickSettings][Bluetooth][Wi-Fi][centro de controle][relógio]
+  (`_insertIndex`: logo depois do `quickSettings.container`). **Centro de controle**: botão sem menu
+  que faz `qs.menu.toggle()`; `qs.menu.sourceActor`/`focusActor` apontam para ele (o
+  `PopupMenu.open` posiciona o BoxPointer pelo `sourceActor` e o `_findMenuForSource` do
+  menuManager troca de menu ao passar o mouse pelo `sourceActor`) e voltam no destroy; o
+  PanelMenu.Button acende o `qs` (`:active`) → apagar lá no `open-state-changed`. **Wi-Fi**: lista =
+  `wirelessToggle._createDeviceMenuItem(device)` (NMWirelessDeviceItem do GNOME, cópia nossa:
+  conecta, pede senha, ordena), `single_device_mode` com 1 placa; ícone/visível ligados ao
+  `NMWirelessToggle`; alternar = `toggle.activate()`; busca `request_scan_async` (promisificado
+  pelo network.js) a cada 15 s só com o pop-up aberto, fim = `last_scan` mudou. **Bluetooth**:
+  `qs._bluetooth._client` (BtClient: `getDevices()`, `toggleDevice()`, `toggleActive()`, sinais
+  `devices-changed`/`device-removed`); o indicador do GNOME só aparece com aparelho conectado → o
+  nosso segue o BOTÃO do GNOME (visível = adaptador existe). Na sessão aninhada o rfkill não existe
+  (`available` null): forçar `visible` para testar. NUNCA clicar em rede/aparelho/interruptor nos
+  testes (NetworkManager e BlueZ são os REAIS). Ícones do GNOME escondidos por `VisibilityGuard`
+  (re-esconde no `notify::visible`; ao soltar, `_syncIndicatorsVisible()`/`network._updateIcon()`
+  recalculam). Espaçamento: classe `aerotask-status-button` (qs, nossos botões, bandeja):
+  `-natural-hpadding: 2px` + ícone `margin: 0 4px` → 12 px entre ícones, no mesmo botão ou não.
+  Conteúdo dos pop-ups montado no construtor: montado na 1ª abertura, o Blur my Shell media o
+  desfoque menor que o menu (ele refaz no `notify::size` num later IDLE, mas a 1ª medida saía
+  errada). `PopupSwitchMenuItem.activate` fecha o menu → `SwitchHeaderItem` sem `super.activate`.
 - **Sombra do centro de controle**: vinha do TEMA (Brisa: `.popup-menu-content { box-shadow }`);
   neutralizada só em `.popup-menu-content.quick-settings`.
 - **Bateria sumindo no login (causa)**: `_setupIndicators` (panel.js:336) cria `qs._system` e só

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!-- Centro de controle: dois interruptores (o de cima ligado, o de baixo
+       desligado). Simbólico: só preenchimento — o St recolore pelo "fill".
+       Os contornos são anéis (fill-rule evenodd). -->
+  <path fill="#bebebe" fill-rule="evenodd" d="M3.75 0.75H12.25A3.25 3.25 0 0 1 12.25 7.25H3.75A3.25 3.25 0 0 1 3.75 0.75ZM3.75 2.25A1.75 1.75 0 0 0 3.75 5.75H12.25A1.75 1.75 0 0 0 12.25 2.25Z"/>
+  <circle fill="#bebebe" cx="12.25" cy="4" r="1.75"/>
+  <path fill="#bebebe" fill-rule="evenodd" d="M3.75 8.75H12.25A3.25 3.25 0 0 1 12.25 15.25H3.75A3.25 3.25 0 0 1 3.75 8.75ZM3.75 10.25A1.75 1.75 0 0 0 3.75 13.75H12.25A1.75 1.75 0 0 0 12.25 10.25Z"/>
+  <circle fill="#bebebe" cx="3.75" cy="12" r="1.75"/>
+</svg>

@@ -1090,14 +1090,76 @@
     color: #ed5f5d;
 }
 
-/* ---------- Ícones de bandeja (AppIndicator / StatusNotifierItem) ----------
- * Mesmo tamanho dos outros ícones da barra (system-status-icon) e o mesmo
- * destaque arredondado ao passar o mouse (o do tema nos botões da barra). */
-#panel .panel-button.aerotask-tray-button {
-    -natural-hpadding: 7px;
-    -minimum-hpadding: 4px;
+/* ---------- Ícones de status da barra: MESMO espaço entre todos ----------
+ * Vale para o menu de status do GNOME (localização, bateria…), os nossos
+ * botões (Bluetooth, Wi-Fi, centro de controle) e os ícones de bandeja.
+ *
+ * Conta: cada ícone tem 4 px de margem de cada lado (a do tema padrão:
+ * `.system-status-icon { margin: 0 4px }`) e cada botão 2 px de folga nas
+ * bordas. Entre dois ícones no MESMO botão: 4 + 4 (spacing da caixa) + 4 =
+ * 12 px; entre botões VIZINHOS: 4 + 2 + 2 + 4 = 12 px. Fica tudo igual. */
+#panel .panel-button.aerotask-status-button {
+    -natural-hpadding: 2px;
+    -minimum-hpadding: 2px;
     border-radius: 6px;
 }
+
+/* Ícone sozinho num botão: o tema põe 6 px de padding nele (além da margem);
+ * aqui fica igual aos ícones de dentro do menu de status. */
+#panel .panel-button.aerotask-status-button > .system-status-icon {
+    padding: 0;
+    margin: 0 4px;
+}
+
+/* ---------- Pop-ups do Wi-Fi e do Bluetooth ---------- */
+.aerotask-status-menu {
+    min-width: 260px;
+}
+
+/* "Wi-Fi [interruptor]": o título do pop-up, em negrito. */
+.aerotask-status-switch {
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+/* O título não fica azul ao passar o mouse (só o interruptor reage). */
+.aerotask-status-switch:hover,
+.aerotask-status-switch:selected {
+    background-color: transparent;
+    color: inherit;
+}
+
+/* Textos dos pop-ups de status começam na mesma coluna do título. */
+.aerotask-status-menu .aerotask-menu-item {
+    padding-left: 10px;
+}
+
+/* Aviso "Nenhum dispositivo…": cinza e pode quebrar linha. */
+.aerotask-status-placeholder {
+    color: rgba(150, 150, 150, 1);
+}
+
+/* Aparelho Bluetooth: ícone dentro de um círculo, azul quando conectado
+ * (como no macOS). */
+.aerotask-status-device {
+    spacing: 10px;
+}
+
+.aerotask-status-device-icon {
+    icon-size: 16px;
+    padding: 5px;
+    border-radius: 99px;
+    background-color: rgba(128, 128, 128, 0.32);
+}
+
+.aerotask-status-device-icon:checked {
+    background-color: -st-accent-color;
+    color: -st-accent-fg-color;
+}
+
+/* ---------- Ícones de bandeja (AppIndicator / StatusNotifierItem) ----------
+ * Mesmo tamanho dos outros ícones da barra (system-status-icon). O espaço
+ * entre eles vem da regra .aerotask-status-button acima. */
 
 /* ---------- Centro de controle (Configurações Rápidas) ----------
  * SEM SOMBRA: o tema (ex.: Brisa) põe "box-shadow" em todo .popup-menu-content,
