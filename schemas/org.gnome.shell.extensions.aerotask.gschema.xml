@@ -55,6 +55,10 @@
       <default>true</default>
       <summary>Quick Settings with the macOS Control Center layout (connectivity block, Focus, Display and Sound sliders, Now Playing)</summary>
     </key>
+    <key name="status-classic-layout" type="b">
+      <default>false</default>
+      <summary>Classic GNOME layout for the status icons: all of them in one button with the volume icon, without the Control Center button and without the Wi-Fi and Bluetooth menus (the three options below are ignored)</summary>
+    </key>
     <key name="status-control-center-button" type="b">
       <default>true</default>
       <summary>Control Center button (two switches) next to the clock; it opens Quick Settings</summary>

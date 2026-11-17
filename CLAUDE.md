@@ -456,7 +456,9 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   `#panel .panel-button .system-status-icon { margin: 0 4px }` → bateria com `padding: 0 4px`.
   Medido: 12 px entre todos os ícones.
 - **Ícones de status no estilo do macOS (2026-11-17)**: `lib/statusBar/` (chaves
-  `status-control-center-button`, `status-wifi-bluetooth-menus`, `status-show-volume` = false).
+  `status-control-center-button`, `status-wifi-bluetooth-menus`, `status-show-volume` = false;
+  `status-classic-layout` = false desliga as três de uma vez — "layout antigo" pedido pelo usuário;
+  no prefs as três ficam cinza e guardam o valor). O espaçamento de 12 px vale nos dois layouts.
   Ordem na `_rightBox`: [quickSettings][Bluetooth][Wi-Fi][centro de controle][relógio]
   (`_insertIndex`: logo depois do `quickSettings.container`). **Centro de controle**: botão sem menu
   que faz `qs.menu.toggle()`; `qs.menu.sourceActor`/`focusActor` apontam para ele (o

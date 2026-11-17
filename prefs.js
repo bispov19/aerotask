@@ -191,12 +191,23 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
 
         // Os ícones à direita da barra, como no macOS.
         const status = new Adw.PreferencesGroup({title: _('Status Icons')});
-        status.add(this._switch('status-control-center-button', _('Control Center button'),
-            _('Two switches next to the clock; a click opens the Control Center')));
-        status.add(this._switch('status-wifi-bluetooth-menus', _('Wi-Fi and Bluetooth menus'),
-            _('Each icon opens its own menu with networks or devices')));
-        status.add(this._switch('status-show-volume', _('Volume icon in the bar'),
-            _('When off, sound is controlled from the Control Center')));
+        status.add(this._switch('status-classic-layout', _('Classic GNOME layout'),
+            _('All icons in one button, with the volume icon, as before: no Control Center button and no Wi-Fi or Bluetooth menus')));
+        const statusRows = [
+            this._switch('status-control-center-button', _('Control Center button'),
+                _('Two switches next to the clock; a click opens the Control Center')),
+            this._switch('status-wifi-bluetooth-menus', _('Wi-Fi and Bluetooth menus'),
+                _('Each icon opens its own menu with networks or devices')),
+            this._switch('status-show-volume', _('Volume icon in the bar'),
+                _('When off, sound is controlled from the Control Center')),
+        ];
+        // Com o layout clássico, as três opções não valem: ficam cinza (mas
+        // guardam a escolha, para quando o layout do macOS voltar).
+        for (const row of statusRows) {
+            this._settings.bind('status-classic-layout', row, 'sensitive',
+                Gio.SettingsBindFlags.GET | Gio.SettingsBindFlags.INVERT_BOOLEAN);
+            status.add(row);
+        }
         page.add(status);
 
         page.add(this._trayGroup());

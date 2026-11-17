@@ -23,7 +23,7 @@ AeroTask turns the GNOME top bar into one complete, glassy menu bar. On the left
 - **Search in the Help menu**: finds any menu item of the current app and runs it with Enter.
 - **Clock panel**: calendar with world clocks, weather with an hourly and multi-day forecast, notifications, clipboard history (Shelf) with a file tray, focus timer and reminders.
 - **Tile-style control center** built on GNOME's own Quick Settings, with a Now Playing tile and a Keep Screen On toggle.
-- **Status icons with their own menus**: Wi-Fi and Bluetooth open a menu of networks or devices, a Control Center button next to the clock opens Quick Settings, and the volume icon can stay out of the bar. Every icon sits at the same distance from its neighbours.
+- **Status icons with their own menus**: Wi-Fi and Bluetooth open a menu of networks or devices, a Control Center button next to the clock opens Quick Settings, and the volume icon can stay out of the bar (or switch back to GNOME's classic layout). Every icon sits at the same distance from its neighbours.
 - **One on-screen HUD** in the center of the screen for volume, brightness, keyboard backlight, Caps Lock and Quick Settings toggles.
 - **Clean tray**: native tray icons (AppIndicator / StatusNotifierItem), shown monochrome to match the bar, and a battery icon with the percentage inside.
 - **Glass look**: a translucent black bar (Blur my Shell's blur shows through) and an optional floating bar with rounded corners that touches the screen edges while a window is maximized.

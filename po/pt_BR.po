@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AeroTask 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/aerotask/issues\n"
-"POT-Creation-Date: 2026-11-17 18:25-0300\n"
+"POT-Creation-Date: 2026-11-17 19:00-0300\n"
 "PO-Revision-Date: 2026-11-10 15:56-0300\n"
 "Last-Translator: Vinicius Bispo\n"
 "Language-Team: none\n"
@@ -115,19 +115,19 @@ msgstr "Reproduzir ou Pausar"
 msgid "Next"
 msgstr "Próxima"
 
-#: lib/fallbackMenus.js:182 prefs.js:772
+#: lib/fallbackMenus.js:182 prefs.js:783
 msgid "File"
 msgstr "Arquivo"
 
-#: lib/fallbackMenus.js:184 prefs.js:773
+#: lib/fallbackMenus.js:184 prefs.js:784
 msgid "Edit"
 msgstr "Editar"
 
-#: lib/fallbackMenus.js:186 prefs.js:774
+#: lib/fallbackMenus.js:186 prefs.js:785
 msgid "View"
 msgstr "Visualizar"
 
-#: lib/fallbackMenus.js:188 prefs.js:775
+#: lib/fallbackMenus.js:188 prefs.js:786
 msgid "Window"
 msgstr "Janela"
 
@@ -293,15 +293,15 @@ msgstr "Trazer Tudo para a Frente"
 msgid "%s Help"
 msgstr "Ajuda do %s"
 
-#: lib/fallbackMenus.js:441 lib/fallbackMenus.js:445 prefs.js:204
+#: lib/fallbackMenus.js:441 lib/fallbackMenus.js:445 prefs.js:215
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de Teclado"
 
-#: lib/farol/strings.js:25 prefs.js:333
+#: lib/farol/strings.js:25 prefs.js:344
 msgid "Calendar"
 msgstr "Calendário"
 
-#: lib/farol/strings.js:28 prefs.js:337
+#: lib/farol/strings.js:28 prefs.js:348
 msgid "Notifications"
 msgstr "Notificações"
 
@@ -310,11 +310,11 @@ msgctxt "farol page"
 msgid "Focus"
 msgstr "Foco"
 
-#: lib/farol/strings.js:34 prefs.js:340
+#: lib/farol/strings.js:34 prefs.js:351
 msgid "Reminders"
 msgstr "Lembretes"
 
-#: lib/farol/strings.js:37 prefs.js:351
+#: lib/farol/strings.js:37 prefs.js:362
 msgid "Weather"
 msgstr "Clima"
 
@@ -444,7 +444,7 @@ msgstr "Bateria fraca"
 msgid "Battery Charged"
 msgstr "Bateria carregada"
 
-#: lib/farol/strings.js:148 prefs.js:600
+#: lib/farol/strings.js:148 prefs.js:611
 msgid "Caps Lock"
 msgstr "Caps Lock"
 
@@ -484,7 +484,7 @@ msgstr "Entrar"
 msgid "Muted"
 msgstr "Mudo"
 
-#: lib/farol/strings.js:183 prefs.js:608
+#: lib/farol/strings.js:183 prefs.js:619
 msgid "Battery"
 msgstr "Bateria"
 
@@ -504,7 +504,7 @@ msgstr "Na tomada"
 msgid "Power Saver"
 msgstr "Modo de economia"
 
-#: lib/farol/strings.js:200 prefs.js:338 prefs.js:399
+#: lib/farol/strings.js:200 prefs.js:349 prefs.js:410
 msgid "Shelf"
 msgstr "Prateleira"
 
@@ -544,7 +544,7 @@ msgstr "Fixar"
 msgid "Unpin"
 msgstr "Desafixar"
 
-#: lib/farol/strings.js:230 prefs.js:838
+#: lib/farol/strings.js:230 prefs.js:849
 msgid "Remove"
 msgstr "Remover"
 
@@ -684,7 +684,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: lib/forceQuitDialog.js:67 lib/forceQuitDialog.js:148 prefs.js:207
+#: lib/forceQuitDialog.js:67 lib/forceQuitDialog.js:148 prefs.js:218
 msgid "Force Quit"
 msgstr "Forçar Encerramento"
 
@@ -705,7 +705,7 @@ msgstr "Mantendo a tela ligada"
 msgid "Keep Screen On"
 msgstr "Manter Tela Ligada"
 
-#: lib/menuBar.js:285 lib/menuBar.js:294 prefs.js:776
+#: lib/menuBar.js:285 lib/menuBar.js:294 prefs.js:787
 msgid "Help"
 msgstr "Ajuda"
 
@@ -767,7 +767,7 @@ msgstr "Redes"
 msgid "Wi-Fi Settings…"
 msgstr "Configurações de Wi-Fi…"
 
-#: lib/systemMenu.js:54 prefs.js:781
+#: lib/systemMenu.js:54 prefs.js:792
 msgid "System Menu"
 msgstr "Menu do Sistema"
 
@@ -779,15 +779,15 @@ msgstr "Sobre Este Computador"
 msgid "System Settings…"
 msgstr "Configurações do Sistema…"
 
-#: lib/systemMenu.js:83 prefs.js:782
+#: lib/systemMenu.js:83 prefs.js:793
 msgid "Software Center…"
 msgstr "Central de Programas…"
 
-#: lib/systemMenu.js:91 prefs.js:783
+#: lib/systemMenu.js:91 prefs.js:794
 msgid "Recent Items"
 msgstr "Itens Recentes"
 
-#: lib/systemMenu.js:97 prefs.js:784
+#: lib/systemMenu.js:97 prefs.js:795
 msgid "Force Quit…"
 msgstr "Forçar Encerramento…"
 
@@ -853,7 +853,7 @@ msgstr "Definir Atalho"
 msgid "General"
 msgstr "Geral"
 
-#: prefs.js:165 prefs.js:660
+#: prefs.js:165 prefs.js:671
 msgid "Menu Bar"
 msgstr "Barra de Menus"
 
@@ -939,46 +939,59 @@ msgid "Status Icons"
 msgstr "Ícones de Status"
 
 #: prefs.js:194
+msgid "Classic GNOME layout"
+msgstr "Layout clássico do GNOME"
+
+#: prefs.js:195
+msgid ""
+"All icons in one button, with the volume icon, as before: no Control Center "
+"button and no Wi-Fi or Bluetooth menus"
+msgstr ""
+"Todos os ícones num botão só, com o ícone de volume, como antes: sem o botão "
+"do centro de controle e sem os menus do Wi-Fi e do Bluetooth"
+
+#: prefs.js:197
 msgid "Control Center button"
 msgstr "Botão do centro de controle"
 
-#: prefs.js:195
+#: prefs.js:198
 msgid "Two switches next to the clock; a click opens the Control Center"
-msgstr "Dois interruptores ao lado do relógio; um clique abre o centro de controle"
+msgstr ""
+"Dois interruptores ao lado do relógio; um clique abre o centro de controle"
 
-#: prefs.js:196
+#: prefs.js:199
 msgid "Wi-Fi and Bluetooth menus"
 msgstr "Menus do Wi-Fi e do Bluetooth"
 
-#: prefs.js:197
+#: prefs.js:200
 msgid "Each icon opens its own menu with networks or devices"
 msgstr "Cada ícone abre o próprio menu, com as redes ou os dispositivos"
 
-#: prefs.js:198
+#: prefs.js:201
 msgid "Volume icon in the bar"
 msgstr "Ícone de volume na barra"
 
-#: prefs.js:199
+#: prefs.js:202
 msgid "When off, sound is controlled from the Control Center"
 msgstr "Desligado, o som fica no centro de controle"
 
-#: prefs.js:205
+#: prefs.js:216
 msgid "Focus the menu bar"
 msgstr "Focar a barra de menus"
 
-#: prefs.js:206
+#: prefs.js:217
 msgid "Opens the app menu; use the arrow keys to navigate"
 msgstr "Abre o menu do app; use as setas para navegar"
 
-#: prefs.js:210
+#: prefs.js:221
 msgid "Multiple Monitors"
 msgstr "Vários Monitores"
 
-#: prefs.js:212
+#: prefs.js:223
 msgid "The menu bar is shown on the primary monitor"
 msgstr "A barra de menus aparece no monitor principal"
 
-#: prefs.js:213
+#: prefs.js:224
 msgid ""
 "GNOME has a single top bar, on the primary monitor. Showing the menus on "
 "every monitor would need a second bar, which this extension does not create."
@@ -986,11 +999,11 @@ msgstr ""
 "O GNOME tem uma única barra superior, no monitor principal. Mostrar os menus "
 "em todos os monitores exigiria uma segunda barra, que esta extensão não cria."
 
-#: prefs.js:224
+#: prefs.js:235
 msgid "Program Icons"
 msgstr "Ícones de Programas"
 
-#: prefs.js:225
+#: prefs.js:236
 msgid ""
 "Tray icons of programs such as Discord, Steam and Telegram (AppIndicator and "
 "StatusNotifierItem), with the menu of each program. Monochrome uses the "
@@ -1000,11 +1013,11 @@ msgstr ""
 "e StatusNotifierItem), com o menu de cada programa. Monocromático usa o "
 "ícone simbólico quando o tema tem um; senão, tons de cinza."
 
-#: prefs.js:232
+#: prefs.js:243
 msgid "The “AppIndicator and KStatusNotifierItem Support” extension is active"
 msgstr "A extensão “AppIndicator and KStatusNotifierItem Support” está ativa"
 
-#: prefs.js:233
+#: prefs.js:244
 msgid ""
 "It takes priority. Disable it in the Extensions app to use the icons of "
 "AeroTask."
@@ -1012,41 +1025,41 @@ msgstr ""
 "Ela tem prioridade. Desative-a no app Extensões para usar os ícones do "
 "AeroTask."
 
-#: prefs.js:246
+#: prefs.js:257
 msgid "Show program icons in the bar"
 msgstr "Mostrar ícones de programas na barra"
 
-#: prefs.js:247 prefs.js:654
+#: prefs.js:258 prefs.js:665
 msgid "Icon style"
 msgstr "Estilo do ícone"
 
-#: prefs.js:248
+#: prefs.js:259
 msgid "Monochrome (like macOS)"
 msgstr "Monocromático (como no macOS)"
 
-#: prefs.js:249
+#: prefs.js:260
 msgid "Original colors"
 msgstr "Cores originais"
 
-#: prefs.js:256
+#: prefs.js:267
 msgid "Programs"
 msgstr "Programas"
 
-#: prefs.js:257
+#: prefs.js:268
 msgid "Choose which icons appear; programs show up here after they run once"
 msgstr ""
 "Escolha quais ícones aparecem; os programas entram nesta lista depois de "
 "abertos uma vez"
 
-#: prefs.js:267
+#: prefs.js:278
 msgid "No program seen yet"
 msgstr "Nenhum programa visto ainda"
 
-#: prefs.js:299 prefs.js:304
+#: prefs.js:310 prefs.js:315
 msgid "Clock"
 msgstr "Relógio"
 
-#: prefs.js:305
+#: prefs.js:316
 msgid ""
 "A macOS-style clock in the right corner; click it for the calendar, "
 "notifications, copied items, focus and reminders"
@@ -1054,73 +1067,73 @@ msgstr ""
 "Relógio no canto direito, como no macOS; clique nele para o calendário, as "
 "notificações, os itens copiados, o foco e os lembretes"
 
-#: prefs.js:307
+#: prefs.js:318
 msgid "Use the AeroTask clock"
 msgstr "Usar o relógio do AeroTask"
 
-#: prefs.js:308
+#: prefs.js:319
 msgid "Replaces the GNOME clock"
 msgstr "Substitui o relógio do GNOME"
 
-#: prefs.js:313
+#: prefs.js:324
 msgid "Time format"
 msgstr "Formato da hora"
 
-#: prefs.js:314
+#: prefs.js:325
 msgid "24-hour (13:30)"
 msgstr "24 horas (13:30)"
 
-#: prefs.js:315
+#: prefs.js:326
 msgid "12-hour (1:30 PM)"
 msgstr "12 horas (1:30 PM)"
 
-#: prefs.js:316
+#: prefs.js:327
 msgid "The same option as in GNOME Settings"
 msgstr "A mesma opção das Configurações do GNOME"
 
-#: prefs.js:317
+#: prefs.js:328
 msgid "Show seconds"
 msgstr "Mostrar os segundos"
 
-#: prefs.js:320
+#: prefs.js:331
 msgid "Show the date beside the time"
 msgstr "Mostrar a data ao lado da hora"
 
-#: prefs.js:330
+#: prefs.js:341
 msgid "Pages"
 msgstr "Páginas"
 
-#: prefs.js:331
+#: prefs.js:342
 msgid "What appears when you click the clock"
 msgstr "O que aparece quando você clica no relógio"
 
-#: prefs.js:334
+#: prefs.js:345
 msgid "World clocks on the Calendar page"
 msgstr "Relógios mundiais na página Calendário"
 
-#: prefs.js:335
+#: prefs.js:346
 msgid "The cities from the Clocks app"
 msgstr "As cidades do app Relógios"
 
-#: prefs.js:338
+#: prefs.js:349
 msgid "Clipboard history and the file tray"
 msgstr "Histórico da área de transferência e a bandeja de arquivos"
 
-#: prefs.js:339 prefs.js:412
+#: prefs.js:350 prefs.js:423
 msgid "Focus"
 msgstr "Foco"
 
-#: prefs.js:341
+#: prefs.js:352
 msgid "App usage"
 msgstr "Uso de apps"
 
-#: prefs.js:342
+#: prefs.js:353
 msgid "Records how long each app is in use; stored only on this computer"
 msgstr ""
 "Registra quanto tempo cada app fica em uso; os dados ficam só neste "
 "computador"
 
-#: prefs.js:352
+#: prefs.js:363
 msgid ""
 "From GNOME’s weather service (MET Norway); only the city’s approximate "
 "position is sent. “Automatic” uses the location of the GNOME Weather "
@@ -1130,64 +1143,64 @@ msgstr ""
 "é enviada. “Automática” usa a localização das configurações de Clima do "
 "GNOME."
 
-#: prefs.js:354
+#: prefs.js:365
 msgid "Show the temperature beside the clock"
 msgstr "Mostrar a temperatura ao lado do relógio"
 
-#: prefs.js:356
+#: prefs.js:367
 msgid "Unit"
 msgstr "Unidade"
 
-#: prefs.js:357
+#: prefs.js:368
 msgid "Celsius (°C)"
 msgstr "Celsius (°C)"
 
-#: prefs.js:358
+#: prefs.js:369
 msgid "Fahrenheit (°F)"
 msgstr "Fahrenheit (°F)"
 
-#: prefs.js:360
+#: prefs.js:371
 msgid "Location"
 msgstr "Localização"
 
-#: prefs.js:363
+#: prefs.js:374
 msgctxt "weather location"
 msgid "Automatic"
 msgstr "Automática"
 
-#: prefs.js:364
+#: prefs.js:375
 msgid "Chosen city"
 msgstr "Cidade escolhida"
 
-#: prefs.js:376
+#: prefs.js:387
 msgid "Weather page"
 msgstr "Página Clima"
 
-#: prefs.js:377
+#: prefs.js:388
 msgid "Today’s forecast and the next days, in the clock pop-up"
 msgstr "A previsão de hoje e dos próximos dias, no pop-up do relógio"
 
-#: prefs.js:378
+#: prefs.js:389
 msgid "Today, hour by hour"
 msgstr "Hoje, hora a hora"
 
-#: prefs.js:379
+#: prefs.js:390
 msgid "Next days"
 msgstr "Próximos dias"
 
-#: prefs.js:380
+#: prefs.js:391
 msgid "Highest and lowest temperature and the weather of each day"
 msgstr "Temperatura máxima e mínima e o tempo de cada dia"
 
-#: prefs.js:381
+#: prefs.js:392
 msgid "How many days"
 msgstr "Quantos dias"
 
-#: prefs.js:382
+#: prefs.js:393
 msgid "The forecast reaches about 9 days ahead"
 msgstr "A previsão vai até uns 9 dias à frente"
 
-#: prefs.js:400
+#: prefs.js:411
 msgid ""
 "Copied texts, links, images and files. Passwords copied from password "
 "managers are never saved."
@@ -1195,94 +1208,94 @@ msgstr ""
 "Textos, links, imagens e arquivos copiados. Senhas copiadas de gerenciadores "
 "de senha nunca são guardadas."
 
-#: prefs.js:402
+#: prefs.js:413
 msgid "Open the clipboard history"
 msgstr "Abrir o histórico da área de transferência"
 
-#: prefs.js:403
+#: prefs.js:414
 msgid "Paste right away"
 msgstr "Colar na hora"
 
-#: prefs.js:404
+#: prefs.js:415
 msgid ""
 "Choosing an item also pastes it into the app (Ctrl+Shift+V in terminals)"
 msgstr "Escolher um item também cola no app (Ctrl+Shift+V nos terminais)"
 
-#: prefs.js:405
+#: prefs.js:416
 msgid "Items to keep"
 msgstr "Itens guardados"
 
-#: prefs.js:406
+#: prefs.js:417
 msgid "Pinned items are not counted"
 msgstr "Os fixados não entram na conta"
 
-#: prefs.js:407
+#: prefs.js:418
 msgid "Keep between sessions"
 msgstr "Guardar entre sessões"
 
-#: prefs.js:408
+#: prefs.js:419
 msgid ""
 "Turned off, the history lives only in memory and is gone when you log out"
 msgstr ""
 "Desligado, o histórico fica só na memória e some quando você sai da sessão"
 
-#: prefs.js:413
+#: prefs.js:424
 msgid "Also adjustable on the Focus page, with − and +"
 msgstr "Também dá para ajustar na página Foco, com − e +"
 
-#: prefs.js:415
+#: prefs.js:426
 msgid "Focus length"
 msgstr "Duração do foco"
 
-#: prefs.js:415 prefs.js:416 prefs.js:634
+#: prefs.js:426 prefs.js:427 prefs.js:645
 msgid "In minutes"
 msgstr "Em minutos"
 
-#: prefs.js:416
+#: prefs.js:427
 msgid "Break length"
 msgstr "Duração da pausa"
 
-#: prefs.js:417
+#: prefs.js:428
 msgid "Do Not Disturb while focusing"
 msgstr "Não Perturbe durante o foco"
 
-#: prefs.js:418
+#: prefs.js:429
 msgid "Turned off again at the end, if it was the focus that turned it on"
 msgstr "Desligado de novo no fim, se foi o foco que o ligou"
 
-#: prefs.js:452
+#: prefs.js:463
 msgid "City"
 msgstr "Cidade"
 
-#: prefs.js:455
+#: prefs.js:466
 msgid "None chosen"
 msgstr "Nenhuma escolhida"
 
-#: prefs.js:470
+#: prefs.js:481
 msgid "Search for a city…"
 msgstr "Buscar uma cidade…"
 
-#: prefs.js:479 prefs.js:519
+#: prefs.js:490 prefs.js:530
 msgid "Type at least two letters"
 msgstr "Digite pelo menos duas letras"
 
-#: prefs.js:503
+#: prefs.js:514
 msgid "Choose a City"
 msgstr "Escolha uma Cidade"
 
-#: prefs.js:519
+#: prefs.js:530
 msgid "No city found"
 msgstr "Nenhuma cidade encontrada"
 
-#: prefs.js:582
+#: prefs.js:593
 msgid "Alerts"
 msgstr "Alertas"
 
-#: prefs.js:594
+#: prefs.js:605
 msgid "Center of the Screen"
 msgstr "Centro da Tela"
 
-#: prefs.js:595
+#: prefs.js:606
 msgid ""
 "A macOS-style HUD in place of GNOME’s pop-up. Volume and brightness show for "
 "any change (keys, the Quick Settings controls, apps…)"
@@ -1291,71 +1304,71 @@ msgstr ""
 "aparecem em qualquer mudança (teclas, controles das Configurações Rápidas, "
 "apps…)"
 
-#: prefs.js:597
+#: prefs.js:608
 msgid "Volume"
 msgstr "Volume"
 
-#: prefs.js:598
+#: prefs.js:609
 msgid "Brightness"
 msgstr "Brilho"
 
-#: prefs.js:599
+#: prefs.js:610
 msgid "Screen and keyboard backlight"
 msgstr "Da tela e da luz do teclado"
 
-#: prefs.js:601
+#: prefs.js:612
 msgid "Quick Settings Buttons"
 msgstr "Botões das Configurações Rápidas"
 
-#: prefs.js:602
+#: prefs.js:613
 msgid "Wi-Fi, Bluetooth, Power Mode, Night Light, Keep Screen On…"
 msgstr "Wi-Fi, Bluetooth, Modo de energia, Luz noturna, Manter Tela Ligada…"
 
-#: prefs.js:603
+#: prefs.js:614
 msgid "Show the percentage"
 msgstr "Mostrar a porcentagem"
 
-#: prefs.js:604
+#: prefs.js:615
 msgid "“65%” below the volume and brightness bar"
 msgstr "“65%” embaixo da barra de volume e brilho"
 
-#: prefs.js:609
+#: prefs.js:620
 msgid "MacBook-style battery icon"
 msgstr "Ícone de bateria estilo MacBook"
 
-#: prefs.js:610
+#: prefs.js:621
 msgid "Replaces the GNOME battery icon in the top bar"
 msgstr "Substitui o ícone de bateria do GNOME na barra superior"
 
-#: prefs.js:611
+#: prefs.js:622
 msgid "Show the battery percentage"
 msgstr "Mostrar a porcentagem da bateria"
 
-#: prefs.js:612
+#: prefs.js:623
 msgid "Inside the battery icon"
 msgstr "Dentro do ícone da bateria"
 
-#: prefs.js:617
+#: prefs.js:628
 msgid "Battery Alerts"
 msgstr "Alertas da Bateria"
 
-#: prefs.js:618
+#: prefs.js:629
 msgid "Low battery"
 msgstr "Bateria fraca"
 
-#: prefs.js:619
+#: prefs.js:630
 msgid "Once at 20% and once at 10%; the 10% alert shows even in Do Not Disturb"
 msgstr "Uma vez em 20% e outra em 10%; o de 10% aparece mesmo no Não Perturbe"
 
-#: prefs.js:620
+#: prefs.js:631
 msgid "Battery charged"
 msgstr "Bateria carregada"
 
-#: prefs.js:624
+#: prefs.js:635
 msgid "Other Alerts"
 msgstr "Outros Alertas"
 
-#: prefs.js:625
+#: prefs.js:636
 msgid ""
 "Only important alerts: they wait for full screen to end and are held back in "
 "Do Not Disturb"
@@ -1363,155 +1376,155 @@ msgstr ""
 "Só os importantes: esperam a tela cheia acabar e ficam retidos no Não "
 "Perturbe"
 
-#: prefs.js:627
+#: prefs.js:638
 msgid "Bluetooth devices"
 msgstr "Dispositivos Bluetooth"
 
-#: prefs.js:628
+#: prefs.js:639
 msgid "When a device connects or disconnects"
 msgstr "Quando um dispositivo conecta ou desconecta"
 
-#: prefs.js:629
+#: prefs.js:640
 msgid "No internet connection"
 msgstr "Sem conexão com a internet"
 
-#: prefs.js:630
+#: prefs.js:641
 msgid "After 5 seconds offline, and again when it comes back"
 msgstr "Depois de 5 segundos sem conexão, e de novo quando ela volta"
 
-#: prefs.js:631
+#: prefs.js:642
 msgid "Calendar events"
 msgstr "Eventos da agenda"
 
-#: prefs.js:632
+#: prefs.js:643
 msgid "With a “Join” button for Meet, Zoom, Teams and Webex"
 msgstr "Com o botão “Entrar” para Meet, Zoom, Teams e Webex"
 
-#: prefs.js:633
+#: prefs.js:644
 msgid "Remind me before the event"
 msgstr "Avisar antes do evento"
 
-#: prefs.js:643
+#: prefs.js:654
 msgid "Appearance"
 msgstr "Aparência"
 
-#: prefs.js:649
+#: prefs.js:660
 msgid "System Icon"
 msgstr "Ícone do Sistema"
 
-#: prefs.js:650
+#: prefs.js:661
 msgid "The logo shown in place of the Apple menu"
 msgstr "O logo mostrado no lugar da maçã"
 
-#: prefs.js:653
+#: prefs.js:664
 msgid "Icon size"
 msgstr "Tamanho do ícone"
 
-#: prefs.js:653 prefs.js:672
+#: prefs.js:664 prefs.js:683
 msgid "In pixels"
 msgstr "Em pixels"
 
-#: prefs.js:655
+#: prefs.js:666
 msgid "Symbolic (follows the theme color)"
 msgstr "Simbólico (segue a cor do tema)"
 
-#: prefs.js:656
+#: prefs.js:667
 msgid "Color"
 msgstr "Colorido"
 
-#: prefs.js:661
+#: prefs.js:672
 msgid "App name in bold"
 msgstr "Nome do app em negrito"
 
-#: prefs.js:662
+#: prefs.js:673
 msgid "Title spacing"
 msgstr "Espaçamento dos títulos"
 
-#: prefs.js:663
+#: prefs.js:674
 msgid "Space on each side of a menu title, in pixels"
 msgstr "Espaço de cada lado de um título de menu, em pixels"
 
-#: prefs.js:666
+#: prefs.js:677
 msgid "Drop-down Menus"
 msgstr "Menus Suspensos"
 
-#: prefs.js:667
+#: prefs.js:678
 msgid "Shortcut style"
 msgstr "Estilo dos atalhos"
 
-#: prefs.js:668
+#: prefs.js:679
 msgid "Text (Ctrl+C)"
 msgstr "Texto (Ctrl+C)"
 
-#: prefs.js:669
+#: prefs.js:680
 msgid "Mac symbols (⌃C)"
 msgstr "Símbolos do Mac (⌃C)"
 
-#: prefs.js:671
+#: prefs.js:682
 msgid "Opacity"
 msgstr "Opacidade"
 
-#: prefs.js:671
+#: prefs.js:682
 msgid "In percent"
 msgstr "Em porcentagem"
 
-#: prefs.js:672
+#: prefs.js:683
 msgid "Corner radius"
 msgstr "Arredondamento dos cantos"
 
-#: prefs.js:722
+#: prefs.js:733
 msgid "Automatic"
 msgstr "Automático"
 
-#: prefs.js:725
+#: prefs.js:736
 msgid "Custom…"
 msgstr "Personalizado…"
 
-#: prefs.js:742
+#: prefs.js:753
 msgid "Images (SVG, PNG)"
 msgstr "Imagens (SVG, PNG)"
 
-#: prefs.js:748
+#: prefs.js:759
 msgid "Choose an Icon"
 msgstr "Escolha um Ícone"
 
-#: prefs.js:764
+#: prefs.js:775
 msgid "Menus"
 msgstr "Menus"
 
-#: prefs.js:769
+#: prefs.js:780
 msgid "Standard Menus"
 msgstr "Menus Padrão"
 
-#: prefs.js:770
+#: prefs.js:781
 msgid "Used when the app does not export menus of its own"
 msgstr "Usados quando o app não exporta menus próprios"
 
-#: prefs.js:777
+#: prefs.js:788
 msgid "Search field in the Help menu"
 msgstr "Campo de busca no menu Ajuda"
 
-#: prefs.js:778
+#: prefs.js:789
 msgid "Searches every menu item of the current app"
 msgstr "Procura em todos os itens de menu do app atual"
 
-#: prefs.js:785
+#: prefs.js:796
 msgid "Suspend, Restart and Shut Down"
 msgstr "Suspender, Reiniciar e Desligar"
 
-#: prefs.js:792
+#: prefs.js:803
 msgid "Compatibility"
 msgstr "Compatibilidade"
 
-#: prefs.js:796
+#: prefs.js:807
 msgid "Apps That Use DBusMenu"
 msgstr "Apps que Usam DBusMenu"
 
-#: prefs.js:797
+#: prefs.js:808
 msgid "Read menus from Qt, Electron and similar apps"
 msgstr "Ler menus de apps Qt, Electron e semelhantes"
 
-#: prefs.js:798
+#: prefs.js:809
 msgid ""
 "Provides the com.canonical.AppMenu.Registrar service. Works with apps "
 "running through XWayland; apps that were already open need to be restarted."
@@ -1519,23 +1532,23 @@ msgstr ""
 "Oferece o serviço com.canonical.AppMenu.Registrar. Funciona com apps rodando "
 "pelo XWayland; apps que já estavam abertos precisam ser reiniciados."
 
-#: prefs.js:803
+#: prefs.js:814
 msgid "Troubleshooting"
 msgstr "Solução de Problemas"
 
-#: prefs.js:804
+#: prefs.js:815
 msgid "Debug mode"
 msgstr "Modo de depuração"
 
-#: prefs.js:805
+#: prefs.js:816
 msgid "Writes details to the system journal (journalctl)"
 msgstr "Grava detalhes no registro do sistema (journalctl)"
 
-#: prefs.js:813
+#: prefs.js:824
 msgid "Ignored Apps"
 msgstr "Apps Ignorados"
 
-#: prefs.js:814
+#: prefs.js:825
 msgid ""
 "These apps always use the standard menus. Use the app ID (e.g. "
 "org.gnome.TextEditor) or the window class (WM_CLASS)."
@@ -1543,35 +1556,35 @@ msgstr ""
 "Estes apps sempre usam os menus padrão. Use o ID do app (ex.: "
 "org.gnome.TextEditor) ou a classe da janela (WM_CLASS)."
 
-#: prefs.js:818
+#: prefs.js:829
 msgid "Add app"
 msgstr "Adicionar app"
 
-#: prefs.js:858
+#: prefs.js:869
 msgid "About"
 msgstr "Sobre"
 
-#: prefs.js:875
+#: prefs.js:886
 msgid "A macOS-style global menu bar for GNOME"
 msgstr "Barra de menus global no estilo do macOS para o GNOME"
 
-#: prefs.js:883
+#: prefs.js:894
 msgid "Version"
 msgstr "Versão"
 
-#: prefs.js:886
+#: prefs.js:897
 msgid "Author"
 msgstr "Autor"
 
-#: prefs.js:888
+#: prefs.js:899
 msgid "Source code"
 msgstr "Código-fonte"
 
-#: prefs.js:898
+#: prefs.js:909
 msgid "License"
 msgstr "Licença"
 
-#: prefs.js:899
+#: prefs.js:910
 msgid "GNU General Public License, version 3 or later"
 msgstr "GNU General Public License, versão 3 ou posterior"
 
