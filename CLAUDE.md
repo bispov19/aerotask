@@ -466,6 +466,16 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   Na resposta de método com `wrapJSObject`, devolver valores comuns (só os "v" como Variant).
   Limitação do GNOME: a caixa da direita da barra fica limitada a METADE da largura
   (`Panel.vfunc_allocate`); com muitos ícones numa tela estreita, os itens se espremem.
+- **Ícones de bandeja monocromáticos de verdade (2026-11-17)**: `DesaturateEffect` deixava ícones
+  coloridos escuros ("apagados": Deezer = coração roxo em `IconThemePath`
+  `/run/user/1000/app/dev.aunetx.deezer/…/status_icon_0.png`; AB Download Manager = só
+  `IconPixmap` 16…128 px). Agora: `lib/tray/templateEffect.js` (ShaderEffect: alfa × cor do texto,
+  alfa pré-multiplicado) + `lib/tray/iconShape.js` (JS puro): FORMA (cobertura < 80%) → template;
+  LADRILHO de fundo de uma cor (todos os ícones de app do tema **Vitral** têm cobertura 0,85 e fundo
+  degradê escuro 32→45) → fundo removido (moda da faixa de fora + amostras a < 0,12 dela), bordinha
+  descartada, detalhes de outra cor viram furo, desenho recortado/centralizado → `St.ImageContent`
+  branco + template; fundo de várias cores → tons de cinza. Arquivo analisado assíncrono (cache por
+  botão). Simular na CPU: GJS importa `file:///…/iconShape.js` (caminho absoluto sem `file://` falha).
 - Maximizar uma janela NO MEIO da animação de abertura dela pode deixá-la com opacidade 0
   (visto no app de preferências na sessão aninhada) — esperar a janela assentar nos testes.
 - **ShaderEffect + desfoque estático do BMS**: o fundo do BMS no panelBox é o papel de parede do
