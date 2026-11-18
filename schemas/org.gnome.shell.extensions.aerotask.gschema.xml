@@ -57,7 +57,7 @@
     </key>
     <key name="status-classic-layout" type="b">
       <default>false</default>
-      <summary>Classic GNOME layout for the status icons: all of them in one button with the volume icon, without the Control Center button and without the Wi-Fi and Bluetooth menus (the three options below are ignored)</summary>
+      <summary>Classic GNOME layout for the status icons: all of them in one button with the volume icon, without the Control Center button and without the Wi-Fi, Bluetooth and battery menus (the options below are ignored)</summary>
     </key>
     <key name="status-control-center-button" type="b">
       <default>true</default>
@@ -66,6 +66,10 @@
     <key name="status-wifi-bluetooth-menus" type="b">
       <default>true</default>
       <summary>Wi-Fi and Bluetooth as their own top bar icons, each with its own menu of networks or devices</summary>
+    </key>
+    <key name="status-battery-menu" type="b">
+      <default>true</default>
+      <summary>Battery as its own top bar icon with a menu (power source, power mode, apps using significant energy)</summary>
     </key>
     <key name="status-show-volume" type="b">
       <default>false</default>

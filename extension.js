@@ -235,6 +235,8 @@ export default class AeroTaskExtension extends Extension {
         this._statusBar = new StatusBar(this._settings, {
             getAppearance: () => this._menuBar.getAppearance(),
             iconsDir,
+            // O ícone da bateria muda para um botão próprio (com pop-up).
+            battery: this._battery,
         });
         // Usar QUALQUER botão das Configurações Rápidas também mostra o HUD.
         this._quickSettingsHud = new QuickSettingsHud(this._settings, this._hud);

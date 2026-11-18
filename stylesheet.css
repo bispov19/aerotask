@@ -1157,6 +1157,24 @@
     color: -st-accent-fg-color;
 }
 
+/* ---------- Pop-up da bateria ---------- */
+
+/* "Bateria            75%": título em negrito, porcentagem cinza à direita. */
+.aerotask-battery-menu-title {
+    font-weight: bold;
+}
+
+.aerotask-battery-menu-percent {
+    font-weight: normal;
+    color: rgba(150, 150, 150, 1);
+    padding-left: 24px;
+}
+
+/* App usando muita energia: ícone colorido do app + nome. */
+.aerotask-battery-app {
+    spacing: 10px;
+}
+
 /* ---------- Ícones de bandeja (AppIndicator / StatusNotifierItem) ----------
  * Mesmo tamanho dos outros ícones da barra (system-status-icon). O espaço
  * entre eles vem da regra .aerotask-status-button acima. */

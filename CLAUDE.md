@@ -480,6 +480,18 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   Conteúdo dos pop-ups montado no construtor: montado na 1ª abertura, o Blur my Shell media o
   desfoque menor que o menu (ele refaz no `notify::size` num later IDLE, mas a 1ª medida saía
   errada). `PopupSwitchMenuItem.activate` fecha o menu → `SwitchHeaderItem` sem `super.activate`.
+- **Pop-up da bateria (2026-11-18)**: `lib/statusBar/batteryButton.js` (chave `status-battery-menu`,
+  desligada pelo layout clássico). O ÍCONE continua sendo o `BatteryIndicator` (`lib/farol/batteryIcon.js`):
+  `setContainer(botão)` o move para o botão próprio (1º da ordem: bateria, Bluetooth, Wi-Fi…) e
+  `setContainer(null)` o devolve ao menu de status. Terminar a animação (`finishTransition`) antes de
+  mudar o ator de pai (senão "Timelines with detached actors"). Na tomada = `OnBattery` do objeto raiz
+  do UPower (XML escrito no código; o Shell não traz): com limite de carga a bateria fica `State 2`
+  (descarregando ~0,2 W) e o `TimeToEmpty` vira "321 h". Modos: `PowerService.profiles/activeProfile/
+  setProfile` (nomes do macOS: Pouca Energia/Automático/Alto Desempenho). "Apps Usando Muita Energia" =
+  CPU por app pelo `/proc/<pid>/stat` (utime+stime, 100 tiques/s) somando os FILHOS
+  (`lib/statusBar/energyUsage.js`); fotos só com o pop-up aberto (+1 ao passar o ponteiro); processo novo
+  entre fotos conta inteiro. Teste: app GTK que cria filho com `DO_NOT_REAP_CHILD` (sem essa flag o
+  `GLib.spawn_async` faz duplo fork e o filho vira filho do systemd).
 - **Sombra do centro de controle**: vinha do TEMA (Brisa: `.popup-menu-content { box-shadow }`);
   neutralizada só em `.popup-menu-content.quick-settings`.
 - **Bateria sumindo no login (causa)**: `_setupIndicators` (panel.js:336) cria `qs._system` e só
