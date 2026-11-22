@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Asa: o contorno do traço original (largura 1,8, pontas e cantos redondos) já
+       convertido em forma preenchida, porque GTK e St recolorem ícones simbólicos
+       só pelo "fill" (um traço viraria um triângulo cheio). -->
+  <path d="M2.245 10.010 L7.245 2.310 A0.9 0.9 0 0 1 8.755 2.310 L13.755 10.010 A0.9 0.9 0 0 1 12.245 10.990 L8 4.453 L3.755 10.990 A0.9 0.9 0 0 1 2.245 10.010 Z" fill="currentColor"/>
+  <rect x="4.6" y="12.6" width="6.8" height="1.6" rx="0.8" fill="currentColor"/>
+</svg>

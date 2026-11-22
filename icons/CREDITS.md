@@ -33,3 +33,4 @@ cor oficial da marca na versão colorida).
 |---|---|---|
 | `keep-awake-symbolic.svg`, `keep-awake-off-symbolic.svg` | Xícara (com e sem fumaça) desenhada para o AeroTask — usada em "Manter Tela Ligada" | GPL-3.0-or-later (a mesma do projeto) |
 | `caps-lock-symbolic.svg`, `caps-lock-on-symbolic.svg` | Símbolo ⇪ (contorno = desligado, cheio = ligado) desenhado para o AeroTask — usado no aviso do Caps Lock | GPL-3.0-or-later (a mesma do projeto) |
+| `aerotask-logo.svg`, `aerotask-symbolic.svg` (e `assets/aerotask-mark.svg`) | Logo do AeroTask (asa + barra), feito para o projeto. Na versão simbólica a asa foi convertida de traço para contorno preenchido (GTK/St recolorem só o `fill`) | GPL-3.0-or-later (a mesma do projeto) |

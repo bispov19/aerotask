@@ -23,7 +23,6 @@ import {
 
 import {SYSTEM_ICONS} from './lib/icons.js';
 
-const GITHUB_URL = 'https://github.com/viniciusbispo19/aerotask';
 /** Páginas do pop-up do relógio, na ordem em que aparecem. */
 const CLOCK_PAGES = ['calendar', 'weather', 'notifications', 'shelf', 'focus', 'reminders'];
 /** Quantas cidades mostrar na busca (o resto: digite mais). */
@@ -42,6 +41,21 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
         window.add(this._menusPage());
         window.add(this._compatibilityPage());
         window.add(this._aboutPage());
+    }
+
+    /**
+     * Deixa os ícones da pasta icons/ da extensão disponíveis por NOME no tema
+     * do GTK (ex.: 'aerotask-symbolic'). Só assim um ícone de aba
+     * (`icon_name`) é recolorido como simbólico no tema claro/escuro — o GTK
+     * reconhece pelo sufixo "-symbolic" do arquivo. O caminho vem de
+     * `this.dir` (onde a extensão está instalada), nunca de um caminho fixo.
+     * Fazemos uma vez por display: o tema é compartilhado pelo processo.
+     */
+    _registerIcons() {
+        const theme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
+        const iconsPath = this.dir.get_child('icons').get_path();
+        if (!theme.get_search_path().includes(iconsPath))
+            theme.add_search_path(iconsPath);
     }
 
     // ----------------------------------------------------------------------
@@ -866,52 +880,37 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
         return group;
     }
 
+    /**
+     * Aba "Sobre" minimalista: só o logo e "Web Developer", centralizados.
+     * É uma PreferencesPage comum (e não um Adw.AboutDialog) porque o diálogo
+     * sempre traz campos extras (versão, créditos, licença…).
+     */
     _aboutPage() {
+        this._registerIcons();
         const page = new Adw.PreferencesPage({
             title: _('About'),
-            icon_name: 'help-about-symbolic',
+            icon_name: 'aerotask-symbolic',
         });
 
-        const header = new Adw.PreferencesGroup();
+        // A página rola dentro de um ScrolledWindow; com vexpand o grupo ocupa
+        // a altura toda e o valign CENTER põe o conteúdo no meio da tela.
+        const group = new Adw.PreferencesGroup({vexpand: true, valign: Gtk.Align.CENTER});
         const box = new Gtk.Box({
             orientation: Gtk.Orientation.VERTICAL,
-            spacing: 6,
-            margin_top: 12,
-            margin_bottom: 12,
+            spacing: 18,
+            halign: Gtk.Align.CENTER,
+            margin_top: 24,
+            margin_bottom: 24,
         });
         box.append(new Gtk.Image({
-            gicon: new Gio.FileIcon({file: this.dir.get_child('icons').get_child('fedora-symbolic.svg')}),
-            pixel_size: 64,
+            // Logo completo (com fundo escuro próprio): fica bom nos dois temas.
+            gicon: new Gio.FileIcon({file: this.dir.get_child('icons').get_child('aerotask-logo.svg')}),
+            pixel_size: 128,
         }));
-        box.append(new Gtk.Label({label: 'AeroTask', css_classes: ['title-1']}));
-        box.append(new Gtk.Label({
-            label: _('A macOS-style global menu bar for GNOME'),
-            css_classes: ['dim-label'],
-        }));
-        header.add(box);
-        page.add(header);
-
-        const info = new Adw.PreferencesGroup();
-        info.add(new Adw.ActionRow({
-            title: _('Version'),
-            subtitle: String(this.metadata['version-name'] ?? this.metadata.version ?? '—'),
-        }));
-        info.add(new Adw.ActionRow({title: _('Author'), subtitle: 'Vinicius Bispo'}));
-        const link = new Adw.ActionRow({
-            title: _('Source code'),
-            subtitle: GITHUB_URL,
-            activatable: true,
-        });
-        link.add_suffix(new Gtk.Image({icon_name: 'adw-external-link-symbolic'}));
-        link.connect('activated', () => {
-            new Gtk.UriLauncher({uri: GITHUB_URL}).launch(link.get_root(), null, null);
-        });
-        info.add(link);
-        info.add(new Adw.ActionRow({
-            title: _('License'),
-            subtitle: _('GNU General Public License, version 3 or later'),
-        }));
-        page.add(info);
+        // Nome/função: não é traduzido (é o mesmo em qualquer idioma).
+        box.append(new Gtk.Label({label: 'Web Developer', css_classes: ['dim-label']}));
+        group.add(box);
+        page.add(group);
 
         return page;
     }
