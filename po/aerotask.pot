@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AeroTask 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/aerotask/issues\n"
-"POT-Creation-Date: 2026-11-18 10:14-0300\n"
+"POT-Creation-Date: 2026-11-22 12:02-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: lib/aboutDialog.js:121
+#: lib/aboutDialog.js:121 prefs/aboutPage.js:101
 #, javascript-format
 msgid "Version %s"
 msgstr ""
@@ -115,19 +115,19 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: lib/fallbackMenus.js:182 prefs.js:799
+#: lib/fallbackMenus.js:182 prefs.js:800
 msgid "File"
 msgstr ""
 
-#: lib/fallbackMenus.js:184 prefs.js:800
+#: lib/fallbackMenus.js:184 prefs.js:801
 msgid "Edit"
 msgstr ""
 
-#: lib/fallbackMenus.js:186 prefs.js:801
+#: lib/fallbackMenus.js:186 prefs.js:802
 msgid "View"
 msgstr ""
 
-#: lib/fallbackMenus.js:188 prefs.js:802
+#: lib/fallbackMenus.js:188 prefs.js:803
 msgid "Window"
 msgstr ""
 
@@ -293,15 +293,15 @@ msgstr ""
 msgid "%s Help"
 msgstr ""
 
-#: lib/fallbackMenus.js:441 lib/fallbackMenus.js:445 prefs.js:231
+#: lib/fallbackMenus.js:441 lib/fallbackMenus.js:445 prefs.js:232
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: lib/farol/strings.js:25 prefs.js:360
+#: lib/farol/strings.js:25 prefs.js:361
 msgid "Calendar"
 msgstr ""
 
-#: lib/farol/strings.js:28 prefs.js:364
+#: lib/farol/strings.js:28 prefs.js:365
 msgid "Notifications"
 msgstr ""
 
@@ -310,11 +310,11 @@ msgctxt "farol page"
 msgid "Focus"
 msgstr ""
 
-#: lib/farol/strings.js:34 prefs.js:367
+#: lib/farol/strings.js:34 prefs.js:368
 msgid "Reminders"
 msgstr ""
 
-#: lib/farol/strings.js:37 prefs.js:378
+#: lib/farol/strings.js:37 prefs.js:379
 msgid "Weather"
 msgstr ""
 
@@ -444,7 +444,7 @@ msgstr ""
 msgid "Battery Charged"
 msgstr ""
 
-#: lib/farol/strings.js:148 prefs.js:627
+#: lib/farol/strings.js:148 prefs.js:628
 msgid "Caps Lock"
 msgstr ""
 
@@ -485,7 +485,7 @@ msgid "Muted"
 msgstr ""
 
 #: lib/farol/strings.js:183 lib/statusBar/batteryButton.js:165
-#: lib/statusBar/batteryButton.js:194 prefs.js:635
+#: lib/statusBar/batteryButton.js:194 prefs.js:636
 msgid "Battery"
 msgstr ""
 
@@ -505,7 +505,7 @@ msgstr ""
 msgid "Power Saver"
 msgstr ""
 
-#: lib/farol/strings.js:200 prefs.js:365 prefs.js:426
+#: lib/farol/strings.js:200 prefs.js:366 prefs.js:427
 msgid "Shelf"
 msgstr ""
 
@@ -545,7 +545,7 @@ msgstr ""
 msgid "Unpin"
 msgstr ""
 
-#: lib/farol/strings.js:230 prefs.js:865
+#: lib/farol/strings.js:230 prefs.js:866
 msgid "Remove"
 msgstr ""
 
@@ -683,7 +683,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: lib/forceQuitDialog.js:67 lib/forceQuitDialog.js:148 prefs.js:234
+#: lib/forceQuitDialog.js:67 lib/forceQuitDialog.js:148 prefs.js:235
 msgid "Force Quit"
 msgstr ""
 
@@ -704,7 +704,7 @@ msgstr ""
 msgid "Keep Screen On"
 msgstr ""
 
-#: lib/menuBar.js:285 lib/menuBar.js:294 prefs.js:803
+#: lib/menuBar.js:285 lib/menuBar.js:294 prefs.js:804
 msgid "Help"
 msgstr ""
 
@@ -809,7 +809,7 @@ msgstr ""
 msgid "Wi-Fi Settings…"
 msgstr ""
 
-#: lib/systemMenu.js:54 prefs.js:808
+#: lib/systemMenu.js:54 prefs.js:809
 msgid "System Menu"
 msgstr ""
 
@@ -821,15 +821,15 @@ msgstr ""
 msgid "System Settings…"
 msgstr ""
 
-#: lib/systemMenu.js:83 prefs.js:809
+#: lib/systemMenu.js:83 prefs.js:810
 msgid "Software Center…"
 msgstr ""
 
-#: lib/systemMenu.js:91 prefs.js:810
+#: lib/systemMenu.js:91 prefs.js:811
 msgid "Recent Items"
 msgstr ""
 
-#: lib/systemMenu.js:97 prefs.js:811
+#: lib/systemMenu.js:97 prefs.js:812
 msgid "Force Quit…"
 msgstr ""
 
@@ -874,708 +874,754 @@ msgstr ""
 msgid "Clear Menu"
 msgstr ""
 
-#: prefs.js:118
+#: prefs/aboutPage.js:73
+msgid "About"
+msgstr ""
+
+#: prefs/aboutPage.js:108
+msgid "Links"
+msgstr ""
+
+#: prefs/aboutPage.js:110
+msgid "GitHub repository"
+msgstr ""
+
+#: prefs/aboutPage.js:126
+msgid "Credits"
+msgstr ""
+
+#: prefs/aboutPage.js:128
+msgid "Features"
+msgstr ""
+
+#: prefs/aboutPage.js:129
+msgid "Notice"
+msgstr ""
+
+#: prefs.js:119
 msgid "Disabled"
 msgstr ""
 
-#: prefs.js:136
+#: prefs.js:137
 msgid "Press the new shortcut"
 msgstr ""
 
-#: prefs.js:137
+#: prefs.js:138
 msgid "Esc cancels · Backspace disables the shortcut"
 msgstr ""
 
-#: prefs.js:140
+#: prefs.js:141
 msgid "Set Shortcut"
 msgstr ""
 
-#: prefs.js:175
+#: prefs.js:176
 msgid "General"
 msgstr ""
 
-#: prefs.js:179 prefs.js:687
+#: prefs.js:180 prefs.js:688
 msgid "Menu Bar"
 msgstr ""
 
-#: prefs.js:180
+#: prefs.js:181
 msgid "Standard menus"
 msgstr ""
 
-#: prefs.js:181
+#: prefs.js:182
 msgid "Show File, Edit, View and Window when the app has no menus of its own"
 msgstr ""
 
-#: prefs.js:182
+#: prefs.js:183
 msgid "Hide the Activities button"
 msgstr ""
 
-#: prefs.js:183
+#: prefs.js:184
 msgid "macOS-style Control Center"
 msgstr ""
 
-#: prefs.js:184
+#: prefs.js:185
 msgid ""
 "Quick Settings in blocks: connectivity, Focus, Display, Sound and Now Playing"
 msgstr ""
 
-#: prefs.js:185
+#: prefs.js:186
 msgid "Floating bar"
 msgstr ""
 
-#: prefs.js:186
+#: prefs.js:187
 msgid ""
 "Rounded corners and a small margin from the screen edges; it touches the "
 "edges while a window is maximized"
 msgstr ""
 
-#: prefs.js:187
+#: prefs.js:188
 msgid "Black bar"
 msgstr ""
 
-#: prefs.js:188
+#: prefs.js:189
 msgid "The bar, the menus and the clock panel look like one piece"
 msgstr ""
 
-#: prefs.js:189
+#: prefs.js:190
 msgid "Black bar opacity (%)"
 msgstr ""
 
-#: prefs.js:190
+#: prefs.js:191
 msgid "Below 100, the Blur my Shell blur shows through"
 msgstr ""
 
-#: prefs.js:193
+#: prefs.js:194
 msgid "Farol-style menus"
 msgstr ""
 
-#: prefs.js:194
+#: prefs.js:195
 msgid "Menus come out of the bar as smoked glass, with a spring animation"
 msgstr ""
 
-#: prefs.js:195
+#: prefs.js:196
 msgid "Clock position"
 msgstr ""
 
-#: prefs.js:196
+#: prefs.js:197
 msgid "Center"
 msgstr ""
 
-#: prefs.js:197
+#: prefs.js:198
 msgid "Right (like macOS)"
 msgstr ""
 
-#: prefs.js:198
+#: prefs.js:199
 msgid "Used with the GNOME clock"
 msgstr ""
 
-#: prefs.js:207
+#: prefs.js:208
 msgid "Status Icons"
 msgstr ""
 
-#: prefs.js:208
+#: prefs.js:209
 msgid "Classic GNOME layout"
 msgstr ""
 
-#: prefs.js:209
+#: prefs.js:210
 msgid ""
 "All icons in one button, with the volume icon, as before: no Control Center "
 "button and no Wi-Fi, Bluetooth or battery menus"
 msgstr ""
 
-#: prefs.js:211
+#: prefs.js:212
 msgid "Control Center button"
 msgstr ""
 
-#: prefs.js:212
+#: prefs.js:213
 msgid "Two switches next to the clock; a click opens the Control Center"
 msgstr ""
 
-#: prefs.js:213
+#: prefs.js:214
 msgid "Wi-Fi and Bluetooth menus"
 msgstr ""
 
-#: prefs.js:214
+#: prefs.js:215
 msgid "Each icon opens its own menu with networks or devices"
 msgstr ""
 
-#: prefs.js:215
+#: prefs.js:216
 msgid "Battery menu"
 msgstr ""
 
-#: prefs.js:216
+#: prefs.js:217
 msgid ""
 "The battery icon opens its own menu with the power source, power mode and "
 "apps using significant energy"
 msgstr ""
 
-#: prefs.js:217
+#: prefs.js:218
 msgid "Volume icon in the bar"
 msgstr ""
 
-#: prefs.js:218
+#: prefs.js:219
 msgid "When off, sound is controlled from the Control Center"
 msgstr ""
 
-#: prefs.js:232
+#: prefs.js:233
 msgid "Focus the menu bar"
 msgstr ""
 
-#: prefs.js:233
+#: prefs.js:234
 msgid "Opens the app menu; use the arrow keys to navigate"
 msgstr ""
 
-#: prefs.js:237
+#: prefs.js:238
 msgid "Multiple Monitors"
 msgstr ""
 
-#: prefs.js:239
+#: prefs.js:240
 msgid "The menu bar is shown on the primary monitor"
 msgstr ""
 
-#: prefs.js:240
+#: prefs.js:241
 msgid ""
 "GNOME has a single top bar, on the primary monitor. Showing the menus on "
 "every monitor would need a second bar, which this extension does not create."
 msgstr ""
 
-#: prefs.js:251
+#: prefs.js:252
 msgid "Program Icons"
 msgstr ""
 
-#: prefs.js:252
+#: prefs.js:253
 msgid ""
 "Tray icons of programs such as Discord, Steam and Telegram (AppIndicator and "
 "StatusNotifierItem), with the menu of each program. Monochrome uses the "
 "symbolic icon when the theme has one; otherwise, grayscale."
 msgstr ""
 
-#: prefs.js:259
+#: prefs.js:260
 msgid "The “AppIndicator and KStatusNotifierItem Support” extension is active"
 msgstr ""
 
-#: prefs.js:260
+#: prefs.js:261
 msgid ""
 "It takes priority. Disable it in the Extensions app to use the icons of "
 "AeroTask."
 msgstr ""
 
-#: prefs.js:273
+#: prefs.js:274
 msgid "Show program icons in the bar"
 msgstr ""
 
-#: prefs.js:274 prefs.js:681
+#: prefs.js:275 prefs.js:682
 msgid "Icon style"
 msgstr ""
 
-#: prefs.js:275
+#: prefs.js:276
 msgid "Monochrome (like macOS)"
 msgstr ""
 
-#: prefs.js:276
+#: prefs.js:277
 msgid "Original colors"
 msgstr ""
 
-#: prefs.js:283
+#: prefs.js:284
 msgid "Programs"
 msgstr ""
 
-#: prefs.js:284
+#: prefs.js:285
 msgid "Choose which icons appear; programs show up here after they run once"
 msgstr ""
 
-#: prefs.js:294
+#: prefs.js:295
 msgid "No program seen yet"
 msgstr ""
 
-#: prefs.js:326 prefs.js:331
+#: prefs.js:327 prefs.js:332
 msgid "Clock"
 msgstr ""
 
-#: prefs.js:332
+#: prefs.js:333
 msgid ""
 "A macOS-style clock in the right corner; click it for the calendar, "
 "notifications, copied items, focus and reminders"
 msgstr ""
 
-#: prefs.js:334
+#: prefs.js:335
 msgid "Use the AeroTask clock"
 msgstr ""
 
-#: prefs.js:335
+#: prefs.js:336
 msgid "Replaces the GNOME clock"
 msgstr ""
 
-#: prefs.js:340
+#: prefs.js:341
 msgid "Time format"
 msgstr ""
 
-#: prefs.js:341
+#: prefs.js:342
 msgid "24-hour (13:30)"
 msgstr ""
 
-#: prefs.js:342
+#: prefs.js:343
 msgid "12-hour (1:30 PM)"
 msgstr ""
 
-#: prefs.js:343
+#: prefs.js:344
 msgid "The same option as in GNOME Settings"
 msgstr ""
 
-#: prefs.js:344
+#: prefs.js:345
 msgid "Show seconds"
 msgstr ""
 
-#: prefs.js:347
+#: prefs.js:348
 msgid "Show the date beside the time"
 msgstr ""
 
-#: prefs.js:357
+#: prefs.js:358
 msgid "Pages"
 msgstr ""
 
-#: prefs.js:358
+#: prefs.js:359
 msgid "What appears when you click the clock"
 msgstr ""
 
-#: prefs.js:361
+#: prefs.js:362
 msgid "World clocks on the Calendar page"
 msgstr ""
 
-#: prefs.js:362
+#: prefs.js:363
 msgid "The cities from the Clocks app"
 msgstr ""
 
-#: prefs.js:365
+#: prefs.js:366
 msgid "Clipboard history and the file tray"
 msgstr ""
 
-#: prefs.js:366 prefs.js:439
+#: prefs.js:367 prefs.js:440
 msgid "Focus"
 msgstr ""
 
-#: prefs.js:368
+#: prefs.js:369
 msgid "App usage"
 msgstr ""
 
-#: prefs.js:369
+#: prefs.js:370
 msgid "Records how long each app is in use; stored only on this computer"
 msgstr ""
 
-#: prefs.js:379
+#: prefs.js:380
 msgid ""
 "From GNOME’s weather service (MET Norway); only the city’s approximate "
 "position is sent. “Automatic” uses the location of the GNOME Weather "
 "settings."
 msgstr ""
 
-#: prefs.js:381
+#: prefs.js:382
 msgid "Show the temperature beside the clock"
 msgstr ""
 
-#: prefs.js:383
+#: prefs.js:384
 msgid "Unit"
 msgstr ""
 
-#: prefs.js:384
+#: prefs.js:385
 msgid "Celsius (°C)"
 msgstr ""
 
-#: prefs.js:385
+#: prefs.js:386
 msgid "Fahrenheit (°F)"
 msgstr ""
 
-#: prefs.js:387
+#: prefs.js:388
 msgid "Location"
 msgstr ""
 
-#: prefs.js:390
+#: prefs.js:391
 msgctxt "weather location"
 msgid "Automatic"
 msgstr ""
 
-#: prefs.js:391
+#: prefs.js:392
 msgid "Chosen city"
 msgstr ""
 
-#: prefs.js:403
+#: prefs.js:404
 msgid "Weather page"
 msgstr ""
 
-#: prefs.js:404
+#: prefs.js:405
 msgid "Today’s forecast and the next days, in the clock pop-up"
 msgstr ""
 
-#: prefs.js:405
+#: prefs.js:406
 msgid "Today, hour by hour"
 msgstr ""
 
-#: prefs.js:406
+#: prefs.js:407
 msgid "Next days"
 msgstr ""
 
-#: prefs.js:407
+#: prefs.js:408
 msgid "Highest and lowest temperature and the weather of each day"
 msgstr ""
 
-#: prefs.js:408
+#: prefs.js:409
 msgid "How many days"
 msgstr ""
 
-#: prefs.js:409
+#: prefs.js:410
 msgid "The forecast reaches about 9 days ahead"
 msgstr ""
 
-#: prefs.js:427
+#: prefs.js:428
 msgid ""
 "Copied texts, links, images and files. Passwords copied from password "
 "managers are never saved."
 msgstr ""
 
-#: prefs.js:429
+#: prefs.js:430
 msgid "Open the clipboard history"
 msgstr ""
 
-#: prefs.js:430
+#: prefs.js:431
 msgid "Paste right away"
 msgstr ""
 
-#: prefs.js:431
+#: prefs.js:432
 msgid ""
 "Choosing an item also pastes it into the app (Ctrl+Shift+V in terminals)"
 msgstr ""
 
-#: prefs.js:432
+#: prefs.js:433
 msgid "Items to keep"
 msgstr ""
 
-#: prefs.js:433
+#: prefs.js:434
 msgid "Pinned items are not counted"
 msgstr ""
 
-#: prefs.js:434
+#: prefs.js:435
 msgid "Keep between sessions"
 msgstr ""
 
-#: prefs.js:435
+#: prefs.js:436
 msgid ""
 "Turned off, the history lives only in memory and is gone when you log out"
 msgstr ""
 
-#: prefs.js:440
+#: prefs.js:441
 msgid "Also adjustable on the Focus page, with − and +"
 msgstr ""
 
-#: prefs.js:442
+#: prefs.js:443
 msgid "Focus length"
 msgstr ""
 
-#: prefs.js:442 prefs.js:443 prefs.js:661
+#: prefs.js:443 prefs.js:444 prefs.js:662
 msgid "In minutes"
 msgstr ""
 
-#: prefs.js:443
+#: prefs.js:444
 msgid "Break length"
 msgstr ""
 
-#: prefs.js:444
+#: prefs.js:445
 msgid "Do Not Disturb while focusing"
 msgstr ""
 
-#: prefs.js:445
+#: prefs.js:446
 msgid "Turned off again at the end, if it was the focus that turned it on"
 msgstr ""
 
-#: prefs.js:479
+#: prefs.js:480
 msgid "City"
 msgstr ""
 
-#: prefs.js:482
+#: prefs.js:483
 msgid "None chosen"
 msgstr ""
 
-#: prefs.js:497
+#: prefs.js:498
 msgid "Search for a city…"
 msgstr ""
 
-#: prefs.js:506 prefs.js:546
+#: prefs.js:507 prefs.js:547
 msgid "Type at least two letters"
 msgstr ""
 
-#: prefs.js:530
+#: prefs.js:531
 msgid "Choose a City"
 msgstr ""
 
-#: prefs.js:546
+#: prefs.js:547
 msgid "No city found"
 msgstr ""
 
-#: prefs.js:609
+#: prefs.js:610
 msgid "Alerts"
 msgstr ""
 
-#: prefs.js:621
+#: prefs.js:622
 msgid "Center of the Screen"
 msgstr ""
 
-#: prefs.js:622
+#: prefs.js:623
 msgid ""
 "A macOS-style HUD in place of GNOME’s pop-up. Volume and brightness show for "
 "any change (keys, the Quick Settings controls, apps…)"
 msgstr ""
 
-#: prefs.js:624
+#: prefs.js:625
 msgid "Volume"
 msgstr ""
 
-#: prefs.js:625
+#: prefs.js:626
 msgid "Brightness"
 msgstr ""
 
-#: prefs.js:626
+#: prefs.js:627
 msgid "Screen and keyboard backlight"
 msgstr ""
 
-#: prefs.js:628
+#: prefs.js:629
 msgid "Quick Settings Buttons"
 msgstr ""
 
-#: prefs.js:629
+#: prefs.js:630
 msgid "Wi-Fi, Bluetooth, Power Mode, Night Light, Keep Screen On…"
 msgstr ""
 
-#: prefs.js:630
+#: prefs.js:631
 msgid "Show the percentage"
 msgstr ""
 
-#: prefs.js:631
+#: prefs.js:632
 msgid "“65%” below the volume and brightness bar"
 msgstr ""
 
-#: prefs.js:636
+#: prefs.js:637
 msgid "MacBook-style battery icon"
 msgstr ""
 
-#: prefs.js:637
+#: prefs.js:638
 msgid "Replaces the GNOME battery icon in the top bar"
 msgstr ""
 
-#: prefs.js:638
+#: prefs.js:639
 msgid "Show the battery percentage"
 msgstr ""
 
-#: prefs.js:639
+#: prefs.js:640
 msgid "Inside the battery icon"
 msgstr ""
 
-#: prefs.js:644
+#: prefs.js:645
 msgid "Battery Alerts"
 msgstr ""
 
-#: prefs.js:645
+#: prefs.js:646
 msgid "Low battery"
 msgstr ""
 
-#: prefs.js:646
+#: prefs.js:647
 msgid "Once at 20% and once at 10%; the 10% alert shows even in Do Not Disturb"
 msgstr ""
 
-#: prefs.js:647
+#: prefs.js:648
 msgid "Battery charged"
 msgstr ""
 
-#: prefs.js:651
+#: prefs.js:652
 msgid "Other Alerts"
 msgstr ""
 
-#: prefs.js:652
+#: prefs.js:653
 msgid ""
 "Only important alerts: they wait for full screen to end and are held back in "
 "Do Not Disturb"
 msgstr ""
 
-#: prefs.js:654
+#: prefs.js:655
 msgid "Bluetooth devices"
 msgstr ""
 
-#: prefs.js:655
+#: prefs.js:656
 msgid "When a device connects or disconnects"
 msgstr ""
 
-#: prefs.js:656
+#: prefs.js:657
 msgid "No internet connection"
 msgstr ""
 
-#: prefs.js:657
+#: prefs.js:658
 msgid "After 5 seconds offline, and again when it comes back"
 msgstr ""
 
-#: prefs.js:658
+#: prefs.js:659
 msgid "Calendar events"
 msgstr ""
 
-#: prefs.js:659
+#: prefs.js:660
 msgid "With a “Join” button for Meet, Zoom, Teams and Webex"
 msgstr ""
 
-#: prefs.js:660
+#: prefs.js:661
 msgid "Remind me before the event"
 msgstr ""
 
-#: prefs.js:670
+#: prefs.js:671
 msgid "Appearance"
 msgstr ""
 
-#: prefs.js:676
+#: prefs.js:677
 msgid "System Icon"
 msgstr ""
 
-#: prefs.js:677
+#: prefs.js:678
 msgid "The logo shown in place of the Apple menu"
 msgstr ""
 
-#: prefs.js:680
+#: prefs.js:681
 msgid "Icon size"
 msgstr ""
 
-#: prefs.js:680 prefs.js:699
+#: prefs.js:681 prefs.js:700
 msgid "In pixels"
 msgstr ""
 
-#: prefs.js:682
+#: prefs.js:683
 msgid "Symbolic (follows the theme color)"
 msgstr ""
 
-#: prefs.js:683
+#: prefs.js:684
 msgid "Color"
 msgstr ""
 
-#: prefs.js:688
+#: prefs.js:689
 msgid "App name in bold"
 msgstr ""
 
-#: prefs.js:689
+#: prefs.js:690
 msgid "Title spacing"
 msgstr ""
 
-#: prefs.js:690
+#: prefs.js:691
 msgid "Space on each side of a menu title, in pixels"
 msgstr ""
 
-#: prefs.js:693
+#: prefs.js:694
 msgid "Drop-down Menus"
 msgstr ""
 
-#: prefs.js:694
+#: prefs.js:695
 msgid "Shortcut style"
 msgstr ""
 
-#: prefs.js:695
+#: prefs.js:696
 msgid "Text (Ctrl+C)"
 msgstr ""
 
-#: prefs.js:696
+#: prefs.js:697
 msgid "Mac symbols (⌃C)"
 msgstr ""
 
-#: prefs.js:698
+#: prefs.js:699
 msgid "Opacity"
 msgstr ""
 
-#: prefs.js:698
+#: prefs.js:699
 msgid "In percent"
 msgstr ""
 
-#: prefs.js:699
+#: prefs.js:700
 msgid "Corner radius"
 msgstr ""
 
-#: prefs.js:749
+#: prefs.js:750
 msgid "Automatic"
 msgstr ""
 
-#: prefs.js:752
+#: prefs.js:753
 msgid "Custom…"
 msgstr ""
 
-#: prefs.js:769
+#: prefs.js:770
 msgid "Images (SVG, PNG)"
 msgstr ""
 
-#: prefs.js:775
+#: prefs.js:776
 msgid "Choose an Icon"
 msgstr ""
 
-#: prefs.js:791
+#: prefs.js:792
 msgid "Menus"
 msgstr ""
 
-#: prefs.js:796
+#: prefs.js:797
 msgid "Standard Menus"
 msgstr ""
 
-#: prefs.js:797
+#: prefs.js:798
 msgid "Used when the app does not export menus of its own"
 msgstr ""
 
-#: prefs.js:804
+#: prefs.js:805
 msgid "Search field in the Help menu"
 msgstr ""
 
-#: prefs.js:805
+#: prefs.js:806
 msgid "Searches every menu item of the current app"
 msgstr ""
 
-#: prefs.js:812
+#: prefs.js:813
 msgid "Suspend, Restart and Shut Down"
 msgstr ""
 
-#: prefs.js:819
+#: prefs.js:820
 msgid "Compatibility"
 msgstr ""
 
-#: prefs.js:823
+#: prefs.js:824
 msgid "Apps That Use DBusMenu"
 msgstr ""
 
-#: prefs.js:824
+#: prefs.js:825
 msgid "Read menus from Qt, Electron and similar apps"
 msgstr ""
 
-#: prefs.js:825
+#: prefs.js:826
 msgid ""
 "Provides the com.canonical.AppMenu.Registrar service. Works with apps "
 "running through XWayland; apps that were already open need to be restarted."
 msgstr ""
 
-#: prefs.js:830
+#: prefs.js:831
 msgid "Troubleshooting"
 msgstr ""
 
-#: prefs.js:831
+#: prefs.js:832
 msgid "Debug mode"
 msgstr ""
 
-#: prefs.js:832
+#: prefs.js:833
 msgid "Writes details to the system journal (journalctl)"
 msgstr ""
 
-#: prefs.js:840
+#: prefs.js:841
 msgid "Ignored Apps"
 msgstr ""
 
-#: prefs.js:841
+#: prefs.js:842
 msgid ""
 "These apps always use the standard menus. Use the app ID (e.g. "
 "org.gnome.TextEditor) or the window class (WM_CLASS)."
 msgstr ""
 
-#: prefs.js:845
+#: prefs.js:846
 msgid "Add app"
 msgstr ""
 
-#: prefs.js:891
-msgid "About"
+#: prefs.js:895
+msgid ""
+"A glassy top bar for GNOME with global app menus, a clock panel, a tile-"
+"style control center and a clean tray."
+msgstr ""
+
+#: prefs.js:898
+msgid "GPL-3.0 or later"
+msgstr ""
+
+#: prefs.js:901
+msgid "Web Developer · Author and maintainer"
+msgstr ""
+
+#: prefs.js:902
+msgid ""
+"Global menu bar with the app’s own menus · Menu search in Help · System menu "
+"· Clock panel with calendar, weather, notifications, Shelf, focus timer and "
+"reminders · Tile-style control center · Status icons with their own menus · "
+"On-screen HUD · Monochrome tray icons · Floating glass bar"
+msgstr ""
+
+#: prefs.js:903
+msgid "AeroTask is an independent, open-source project."
 msgstr ""
 
 #: tray/tray.js:89

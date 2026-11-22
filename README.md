@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/aerotask-mark.svg" width="128" alt="AeroTask logo">
+  <img src="icons/aerotask-mark.svg" width="128" alt="AeroTask logo">
 </p>
 
 # AeroTask — version 1.0.0

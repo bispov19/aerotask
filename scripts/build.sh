@@ -19,6 +19,7 @@ ARGS=(
     --extra-source=lib
     --extra-source=icons
     --extra-source=tray
+    --extra-source=prefs
     --extra-source=LICENSE
 )
 

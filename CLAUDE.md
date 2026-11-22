@@ -24,12 +24,15 @@ antigas só no dconf isolado. "Luma" que DEVE ficar: Luma Dock (outra extensão 
 Se o Registrar já existir no processo (ex.: uma versão antiga ainda ativa), a extensão
 segue sem a camada B em vez de falhar.
 
-**Publicação (2026-11-17, versão 1.0.0)**: textos de publicação em INGLÊS; autor/sobre = só
-"Web Developer". `README.md` (inglês) + `docs/README.pt-BR.md` (documentação antiga em pt-BR).
-logo (2026-11-22): `icons/aerotask-logo.svg` (completo, fundo escuro: aba Sobre), `icons/aerotask-symbolic.svg`
+**Publicação (2026-11-17, versão 1.0.0)**: textos de publicação em INGLÊS; autor nos textos de publicação = "Web Developer". `README.md` (inglês) + `docs/README.pt-BR.md` (documentação antiga em pt-BR).
+logo (2026-11-22): `icons/aerotask-mark.svg` (símbolo sem fundo: aba Sobre e README), `icons/aerotask-symbolic.svg`
 (ícone da aba Sobre via `IconTheme.add_search_path`; asa já convertida de traço para contorno — o GTK 4.24
-TAMBÉM preenche traços de -symbolic, testado: virava triângulo cheio), `assets/aerotask-mark.svg` (README);
-`assets/icon-512.png` = render do aerotask-logo.svg (GdkPixbuf). Aba Sobre = só logo 128 px + "Web Developer". `assets/screenshots/`
+TAMBÉM preenche traços de -symbolic, testado: virava triângulo cheio), `assets/aerotask-logo.svg` (completo, fundo
+escuro; fonte do `assets/icon-512.png`, render por GdkPixbuf). **Aba Sobre (2026-11-22)**: `prefs/aboutPage.js`
+(`buildAboutPage(dados)`; dados no `_aboutPage` do prefs.js, versão/url do metadata) + `prefs/prefs.css` (card
+`.about-hero`, `var(--card-bg-color)` + borda #ff6b57; `Gtk.CssProvider` por display, retirado no `close-request`).
+Autor "Vini" (Web Developer · Autor e mantenedor). `build.sh` inclui `--extra-source=prefs`. Link: Gtk.UriLauncher →
+portal OpenURI (conferido com dbus-monitor no aninhado; o endereço em `nested-bus` tem sufixo `#pid`: cortar). `assets/screenshots/`
 (`raw/` = capturas puras para o campo de screenshot do site; as outras = molde de página, geradas
 por `gjs -m scripts/store-images.js` a partir de `captions.json`). Capturas limpas em inglês:
 `scripts/store-session.sh` (HOME temporário, LANGUAGE=en_US, clima fixo em San Francisco para não
@@ -620,8 +623,9 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 
 ### Ferramentas
 - Presentes: git, gh (logado como viniciusbispo19, protocolo ssh), glib-compile-schemas,
-  gettext (msgfmt/xgettext/msginit/msgmerge), node/npm, gnome-extensions, gdbus, busctl,
+  gettext (msgfmt/xgettext/msginit/msgmerge), gnome-extensions, gdbus, busctl,
   dbus-monitor.
+- **node/npm NÃO estão instalados (conferido 2026-11-22)**: `sudo dnf install nodejs` antes do lint.
 - ESLint **não existe no dnf** do Fedora 45 → `npm install` (eslint 10.14.0 fixo no
   package.json). Rodar com `npm run lint`. Config em `eslint.config.js` (estilo GNOME).
 - Build/instalação: `scripts/build.sh` (`gnome-extensions pack`, compila po/ → .mo),

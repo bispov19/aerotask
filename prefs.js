@@ -22,6 +22,7 @@ import {
 } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
 import {SYSTEM_ICONS} from './lib/icons.js';
+import {buildAboutPage, loadPrefsCss} from './prefs/aboutPage.js';
 
 /** Páginas do pop-up do relógio, na ordem em que aparecem. */
 const CLOCK_PAGES = ['calendar', 'weather', 'notifications', 'shelf', 'focus', 'reminders'];
@@ -40,7 +41,7 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
         window.add(this._appearancePage());
         window.add(this._menusPage());
         window.add(this._compatibilityPage());
-        window.add(this._aboutPage());
+        window.add(this._aboutPage(window));
     }
 
     /**
@@ -881,38 +882,26 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
     }
 
     /**
-     * Aba "Sobre" minimalista: só o logo e "Web Developer", centralizados.
-     * É uma PreferencesPage comum (e não um Adw.AboutDialog) porque o diálogo
-     * sempre traz campos extras (versão, créditos, licença…).
+     * Aba "Sobre". O layout fica em prefs/aboutPage.js; aqui só os DADOS.
+     * Versão e endereço vêm do metadata.json (a mesma fonte que o site de
+     * extensões usa): atualizar a versão lá já atualiza esta tela.
      */
-    _aboutPage() {
+    _aboutPage(window) {
         this._registerIcons();
-        const page = new Adw.PreferencesPage({
-            title: _('About'),
-            icon_name: 'aerotask-symbolic',
+        loadPrefsCss(this.dir, window);
+        return buildAboutPage({
+            logo: this.dir.get_child('icons').get_child('aerotask-mark.svg'),
+            name: 'AeroTask',
+            description: _('A glassy top bar for GNOME with global app menus, a clock panel, a tile-style control center and a clean tray.'),
+            version: String(this.metadata['version-name'] ?? this.metadata.version ?? '—'),
+            // O arquivo LICENSE é a GPL v3; os arquivos dizem "or-later".
+            license: _('GPL-3.0 or later'),
+            url: this.metadata.url ?? 'https://github.com/viniciusbispo19',
+            author: 'Vini',
+            authorRole: _('Web Developer · Author and maintainer'),
+            features: _('Global menu bar with the app’s own menus · Menu search in Help · System menu · Clock panel with calendar, weather, notifications, Shelf, focus timer and reminders · Tile-style control center · Status icons with their own menus · On-screen HUD · Monochrome tray icons · Floating glass bar'),
+            notice: _('AeroTask is an independent, open-source project.'),
         });
-
-        // A página rola dentro de um ScrolledWindow; com vexpand o grupo ocupa
-        // a altura toda e o valign CENTER põe o conteúdo no meio da tela.
-        const group = new Adw.PreferencesGroup({vexpand: true, valign: Gtk.Align.CENTER});
-        const box = new Gtk.Box({
-            orientation: Gtk.Orientation.VERTICAL,
-            spacing: 18,
-            halign: Gtk.Align.CENTER,
-            margin_top: 24,
-            margin_bottom: 24,
-        });
-        box.append(new Gtk.Image({
-            // Logo completo (com fundo escuro próprio): fica bom nos dois temas.
-            gicon: new Gio.FileIcon({file: this.dir.get_child('icons').get_child('aerotask-logo.svg')}),
-            pixel_size: 128,
-        }));
-        // Nome/função: não é traduzido (é o mesmo em qualquer idioma).
-        box.append(new Gtk.Label({label: 'Web Developer', css_classes: ['dim-label']}));
-        group.add(box);
-        page.add(group);
-
-        return page;
     }
 }
 

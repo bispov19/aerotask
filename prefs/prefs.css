@@ -1,0 +1,15 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later
+ * Estilo da janela de PREFERÊNCIAS (GTK 4 + libadwaita).
+ * O stylesheet.css da raiz vale só dentro do GNOME Shell (St); este arquivo é
+ * carregado pelo prefs/aboutPage.js com um Gtk.CssProvider. */
+
+/* Card principal da aba "Sobre".
+ * --card-bg-color é a variável do libadwaita para o fundo de cards: fica um
+ * pouco mais clara que a janela no tema escuro e branca no claro — por isso o
+ * card acompanha os dois temas sem regras separadas. */
+.about-hero {
+    background-color: var(--card-bg-color);
+    border: 1.5px solid #ff6b57;
+    border-radius: 16px;
+    padding: 36px 24px 28px 24px;
+}
