@@ -14,7 +14,7 @@ Fluxo de teste: `./scripts/nested-restart.sh && ./scripts/nested-test.sh 10`.
 `aerotask@viniciusbispo19`, schema `org.gnome.shell.extensions.aerotask`
 (caminho `/org/gnome/shell/extensions/aerotask/`), domínio gettext `aerotask`,
 classes CSS `aerotask-*`, GTypes `AeroTask*` (a classe do menu é `AeroTaskMenu`),
-dados em `~/.local/share/aerotask/`, repositório `github.com/viniciusbispo19/aerotask`.
+dados em `~/.local/share/aerotask/`, repositório `github.com/bispov19/aerotask`.
 Os nomes anteriores existem SÓ na migração: `scripts/legacy-names.sh` (UUIDs e caminhos
 do dconf; `install.sh` copia as configurações se o caminho novo estiver vazio, desativa e
 apaga as versões antigas e liga a nova em `enabled-extensions`) e
@@ -622,7 +622,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   reais dos apps; usa `Gio.DBusProxy.new_for_bus_sync` (síncrono) no painel de informações.
 
 ### Ferramentas
-- Presentes: git, gh (logado como viniciusbispo19, protocolo ssh), glib-compile-schemas,
+- Presentes: git, gh (logado como bispov19; remoto https `github.com/bispov19/aerotask`, o OFICIAL desde 2026-11-22 — `viniciusbispo19` é a conta antiga, só resta no UUID e nos IDs de app), glib-compile-schemas,
   gettext (msgfmt/xgettext/msginit/msgmerge), gnome-extensions, gdbus, busctl,
   dbus-monitor.
 - **node/npm NÃO estão instalados (conferido 2026-11-22)**: `sudo dnf install nodejs` antes do lint.
@@ -810,7 +810,7 @@ Páginas organizadas, tudo em pt-BR:
 - **Aparência**: ícone do sistema (com prévia), tamanho do ícone, simbólico/colorido, estilo dos atalhos (texto ou símbolos ⌃⇧⌥), negrito no nome do app, espaçamento, opacidade/arredondamento dos menus.
 - **Menus**: ligar/desligar cada menu (Arquivo, Editar, Visualizar, Janela, Ajuda), busca no menu Ajuda, itens do menu do sistema.
 - **Compatibilidade**: ativar o Registrar DBusMenu (camada B), lista de apps ignorados (por `app_id`/`WM_CLASS`), modo de depuração com logs.
-- **Sobre**: versão, autor, link do GitHub (`github.com/viniciusbispo19`), licença.
+- **Sobre**: versão, autor, link do GitHub (`github.com/bispov19`), licença.
 
 Todas as opções salvas em GSettings (`schemas/org.gnome.shell.extensions.aerotask.gschema.xml`) e aplicadas **ao vivo**, sem precisar reiniciar a sessão.
 

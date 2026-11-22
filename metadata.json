@@ -5,7 +5,7 @@
   "shell-version": [
     "51"
   ],
-  "url": "https://github.com/viniciusbispo19/aerotask",
+  "url": "https://github.com/bispov19/aerotask",
   "gettext-domain": "aerotask",
   "settings-schema": "org.gnome.shell.extensions.aerotask",
   "session-modes": [

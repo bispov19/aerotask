@@ -32,7 +32,7 @@ xgettext \
     --add-comments=Translators \
     --package-name="AeroTask" \
     --package-version="$VERSION" \
-    --msgid-bugs-address="https://github.com/viniciusbispo19/aerotask/issues" \
+    --msgid-bugs-address="https://github.com/bispov19/aerotask/issues" \
     --output="po/$DOMAIN.pot" \
     "${SOURCES[@]}"
 

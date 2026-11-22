@@ -70,7 +70,7 @@ Requisitos: GNOME Shell 51 (testado no Fedora 45, Wayland).
 2. Clone e instale:
 
    ```bash
-   git clone https://github.com/viniciusbispo19/aerotask.git
+   git clone https://github.com/bispov19/aerotask.git
    cd aerotask
    ./scripts/install.sh
    ```

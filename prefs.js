@@ -896,7 +896,7 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
             version: String(this.metadata['version-name'] ?? this.metadata.version ?? '—'),
             // O arquivo LICENSE é a GPL v3; os arquivos dizem "or-later".
             license: _('GPL-3.0 or later'),
-            url: this.metadata.url ?? 'https://github.com/viniciusbispo19',
+            url: this.metadata.url ?? 'https://github.com/bispov19',
             author: 'Vini',
             authorRole: _('Web Developer · Author and maintainer'),
             features: _('Global menu bar with the app’s own menus · Menu search in Help · System menu · Clock panel with calendar, weather, notifications, Shelf, focus timer and reminders · Tile-style control center · Status icons with their own menus · On-screen HUD · Monochrome tray icons · Floating glass bar'),

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AeroTask 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/viniciusbispo19/aerotask/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/bispov19/aerotask/issues\n"
 "POT-Creation-Date: 2026-11-22 12:02-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"

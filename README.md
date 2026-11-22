@@ -44,7 +44,7 @@ AeroTask turns the GNOME top bar into one complete, glassy menu bar. On the left
 From [extensions.gnome.org](https://extensions.gnome.org), or from source:
 
 ```bash
-git clone https://github.com/viniciusbispo19/aerotask.git
+git clone https://github.com/bispov19/aerotask.git
 cd aerotask
 ./scripts/install.sh
 ```
@@ -59,7 +59,7 @@ Detailed documentation (in Portuguese) is in [docs/README.pt-BR.md](docs/README.
 
 ## Feedback
 
-Found a bug or have an idea? Please [open an issue](https://github.com/viniciusbispo19/aerotask/issues) on the project page.
+Found a bug or have an idea? Please [open an issue](https://github.com/bispov19/aerotask/issues) on the project page.
 
 ## License
 
