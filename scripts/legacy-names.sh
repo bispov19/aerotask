@@ -1,7 +1,10 @@
 # shellcheck shell=bash
-# MIGRAÇÃO: os nomes anteriores do projeto (o único lugar com eles, junto
-# da pasta de dados em lib/farol/services/storage.js). Usado por:
-#   - scripts/install.sh: copia as configurações e remove as versões antigas;
-#   - scripts/dev-nested.sh: desliga as versões antigas na sessão de teste.
-OLD_UUIDS=(aero-menu-global@viniciusbispo19 aero-menu-global-devtools@viniciusbispo19 luma-menu@viniciusbispo19)
-OLD_PATHS=(/org/gnome/shell/extensions/aero-menu-global/ /org/gnome/shell/extensions/luma-menu/)
+# MIGRAÇÃO: o UUID anterior do AeroTask (com o nome de usuário antigo do
+# GitHub). As configurações NÃO mudam de lugar: o caminho no dconf
+# (/org/gnome/shell/extensions/aerotask/) não tem o nome de usuário. Usado por:
+#   - scripts/install.sh: desativa e remove a versão com o UUID antigo e a
+#     troca pela nova na lista de extensões ativas;
+#   - scripts/dev-nested.sh: desliga a versão antiga na sessão de teste.
+OLD_UUIDS=(aerotask@viniciusbispo19 aerotask-devtools@viniciusbispo19)
+# Caminhos antigos de configurações (nenhum: o caminho continua o mesmo).
+OLD_PATHS=()

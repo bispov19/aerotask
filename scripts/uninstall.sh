@@ -8,7 +8,7 @@
 
 set -euo pipefail
 
-UUID=aerotask@viniciusbispo19
+UUID=aerotask@bispov19
 EXT_DIR="$HOME/.local/share/gnome-shell/extensions"
 
 gnome-extensions disable "$UUID" 2>/dev/null || true

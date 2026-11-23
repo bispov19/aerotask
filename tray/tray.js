@@ -25,7 +25,7 @@ import Pango from 'gi://Pango';
 import Gettext from 'gettext';
 import {programArgs} from 'system';
 
-const APP_ID = 'io.github.viniciusbispo19.AeroTask.Tray';
+const APP_ID = 'io.github.bispov19.AeroTask.Tray';
 const DOMAIN = 'aerotask';
 
 if (programArgs[0])
@@ -63,7 +63,7 @@ function fileListContent(files) {
 }
 
 const TrayWindow = GObject.registerClass(
-class TrayWindow extends Adw.ApplicationWindow {
+class AeroTaskTrayWindow extends Adw.ApplicationWindow {
     _init(app) {
         super._init({
             application: app,

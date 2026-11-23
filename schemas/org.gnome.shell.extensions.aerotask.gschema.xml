@@ -212,7 +212,7 @@
       <summary>Show the date beside the time in the clock</summary>
     </key>
     <key name="farol-pages" type="as">
-      <!-- Sem "música": o wavebar-music do usuário já cuida disso. A página
+      <!-- Sem página de música (fora do escopo do AeroTask). A página
            "uso" não entra aqui: ela aparece quando app-usage-enabled liga. -->
       <default>['calendar', 'weather', 'notifications', 'shelf', 'focus', 'reminders']</default>
       <summary>Clock panel pages, in order (calendar, weather, notifications, shelf, focus, reminders)</summary>

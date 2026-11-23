@@ -21,8 +21,8 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 ROOT="$(realpath -m "${1:-/tmp/aerotask-store}")"
-UUID=aerotask@viniciusbispo19
-DEVTOOLS_UUID=aerotask-devtools@viniciusbispo19
+UUID=aerotask@bispov19
+DEVTOOLS_UUID=aerotask-devtools@bispov19
 
 ./scripts/build.sh >/dev/null
 gnome-extensions pack --force --out-dir=build "dev/$DEVTOOLS_UUID" >/dev/null

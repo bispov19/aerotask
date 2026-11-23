@@ -15,7 +15,7 @@ import GLib from 'gi://GLib';
 import Gtk from 'gi://Gtk?version=4.0';
 
 const app = new Gtk.Application({
-    application_id: 'io.github.viniciusbispo19.AeroTaskTest',
+    application_id: 'io.github.bispov19.AeroTaskTest',
     flags: Gio.ApplicationFlags.NON_UNIQUE,
 });
 

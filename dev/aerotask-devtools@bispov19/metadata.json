@@ -1,5 +1,5 @@
 {
-  "uuid": "aerotask-devtools@viniciusbispo19",
+  "uuid": "aerotask-devtools@bispov19",
   "name": "AeroTask — ferramentas de desenvolvimento",
   "description": "Uso interno do desenvolvimento do AeroTask. Liga o modo inseguro do Shell APENAS na sessão aninhada de testes (variável AEROTASK_DEV=1). Não faz nada na sessão normal.",
   "shell-version": [

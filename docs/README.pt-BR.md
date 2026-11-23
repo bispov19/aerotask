@@ -82,13 +82,13 @@ Requisitos: GNOME Shell 51 (testado no Fedora 45, Wayland).
    sessão, entre de novo e ative:
 
    ```bash
-   gnome-extensions enable aerotask@viniciusbispo19
+   gnome-extensions enable aerotask@bispov19
    ```
 
 4. Abra as preferências:
 
    ```bash
-   gnome-extensions prefs aerotask@viniciusbispo19
+   gnome-extensions prefs aerotask@bispov19
    ```
 
 ## Como funciona: as quatro camadas
@@ -241,7 +241,7 @@ npm install                        # ESLint (uma vez)
 npm run lint
 ./scripts/update-po.sh             # extrai strings novas para po/
 ./scripts/compile-translations.sh  # confere e compila as traduções
-./scripts/build.sh                 # gera build/aerotask@viniciusbispo19.shell-extension.zip
+./scripts/build.sh                 # gera build/aerotask@bispov19.shell-extension.zip
 ./scripts/uninstall.sh             # remove (com --limpar: também configurações e dados)
 ```
 

@@ -52,7 +52,7 @@ cd aerotask
 Then log out and back in (on Wayland, GNOME loads new extensions at login) and enable it:
 
 ```bash
-gnome-extensions enable aerotask@viniciusbispo19
+gnome-extensions enable aerotask@bispov19
 ```
 
 Detailed documentation (in Portuguese) is in [docs/README.pt-BR.md](docs/README.pt-BR.md).

@@ -85,7 +85,7 @@ export default class AeroTaskExtension extends Extension {
         // da barra é destruída ao bloquear a tela, mas o Pomodoro continua
         // contando e a lista continua a mesma.
         this._focusTimer = new FocusTimer(this._settings);
-        // "Manter Tela Ligada" (como o Caffeine): também vive na extensão —
+        // "Manter Tela Ligada": também vive na extensão —
         // bloquear a tela não pode desligar a função.
         this._keepAwake = new KeepAwake(this.uuid);
         this._reminders = new ReminderStore();

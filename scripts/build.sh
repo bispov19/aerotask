@@ -28,4 +28,4 @@ SCHEMA=schemas/org.gnome.shell.extensions.aerotask.gschema.xml
 [ -f "$SCHEMA" ] && ARGS+=(--schema="$SCHEMA")
 
 gnome-extensions pack "${ARGS[@]}" .
-echo "Pacote: build/aerotask@viniciusbispo19.shell-extension.zip"
+echo "Pacote: build/aerotask@bispov19.shell-extension.zip"

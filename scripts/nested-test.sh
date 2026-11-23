@@ -18,7 +18,7 @@ LOG=$(ls -t "${XDG_STATE_HOME:-$HOME/.local/state}"/aerotask/nested-*.log | head
 BEFORE=$(wc -l < "$LOG")
 
 ./scripts/nested-eval.sh "(async () => {
-  const uuid = 'aerotask@viniciusbispo19', m = Main.extensionManager;
+  const uuid = 'aerotask@bispov19', m = Main.extensionManager;
   const wait = ms => new Promise(r => setTimeout(r, ms));
   const snap = () => ({
     estado: m.lookup(uuid).state,
@@ -56,7 +56,7 @@ BEFORE=$(wc -l < "$LOG")
     // dev/test-apps/sni-test.js): ao desativar, nenhum botão sobra.
     iconesBandeja: Main.panel._rightBox.get_children()
       .filter(c => c.get_first_child()?.constructor.name === 'AeroTaskTrayButton').length,
-    bandejas: global.get_window_actors().filter(a => a.meta_window.get_wm_class() === 'io.github.viniciusbispo19.AeroTask.Tray').length,
+    bandejas: global.get_window_actors().filter(a => a.meta_window.get_wm_class() === 'io.github.bispov19.AeroTask.Tray').length,
   });
   // Conta, no palco inteiro, os atores ESTRUTURAIS das nossas classes
   // (barra, títulos, raízes de menu, diálogos — GTypes AeroTaskMenu*). Itens de

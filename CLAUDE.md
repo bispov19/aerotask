@@ -10,15 +10,17 @@ Fases 0–9 concluídas em 2026-11-10 (ver `git log`). Testado e aprovado pelo u
 sessão REAL. Pendências: Firefox não testado, envio ao extensions.gnome.org.
 Fluxo de teste: `./scripts/nested-restart.sh && ./scripts/nested-test.sh 10`.
 
-**Nome: AeroTask (2026-11-16; o projeto já teve outros nomes).** UUID
-`aerotask@viniciusbispo19`, schema `org.gnome.shell.extensions.aerotask`
+**Nome: AeroTask (2026-11-16).** **Identidade (2026-11-23): conta `bispov19`** (`viniciusbispo19` é o nick
+ANTIGO do usuário no GitHub). UUID `aerotask@bispov19` (devtools `aerotask-devtools@bispov19`, IDs de app
+`io.github.bispov19.AeroTask.Tray`/`.AeroTaskTest`), schema `org.gnome.shell.extensions.aerotask`
 (caminho `/org/gnome/shell/extensions/aerotask/`), domínio gettext `aerotask`,
 classes CSS `aerotask-*`, GTypes `AeroTask*` (a classe do menu é `AeroTaskMenu`),
 dados em `~/.local/share/aerotask/`, repositório `github.com/bispov19/aerotask`.
-Os nomes anteriores existem SÓ na migração: `scripts/legacy-names.sh` (UUIDs e caminhos
-do dconf; `install.sh` copia as configurações se o caminho novo estiver vazio, desativa e
-apaga as versões antigas e liga a nova em `enabled-extensions`) e
-`lib/farol/services/storage.js` (`LEGACY_DATA_DIRS`: move a pasta de dados antiga uma vez).
+O UUID antigo (`aerotask@viniciusbispo19` + devtools) existe SÓ em `scripts/legacy-names.sh` (`install.sh`
+desativa e apaga a versão antiga e liga a nova em `enabled-extensions`; as configurações NÃO migram porque o
+caminho do dconf não tem o nome de usuário). Os nomes mais antigos do projeto e a migração da pasta de dados
+foram REMOVIDOS em 2026-11-23 (conferido: sem pastas nem dconf deles no sistema). Outras extensões do usuário
+com `@viniciusbispo19` (miralight, orla-dock, soft-corners) NÃO são deste projeto: não mexer.
 `scripts/dev-nested.sh` NÃO roda o `install.sh` (não mexe na sessão real); desliga as versões
 antigas só no dconf isolado. "Luma" que DEVE ficar: Luma Dock (outra extensão do usuário).
 Se o Registrar já existir no processo (ex.: uma versão antiga ainda ativa), a extensão
@@ -171,7 +173,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 - dconf isolado: copia `~/.config/dconf/user` → `~/.config/dconf/aerotask_dev` e usa
   `DCONF_PROFILE` (arquivo com `user-db:aerotask_dev`). O nome do banco **não pode ter
   hífen** (vira caminho D-Bus `/ca/desrt/dconf/Writer/<nome>`; com hífen o `gsettings set` trava).
-- `dev/aerotask-devtools@viniciusbispo19`: liga `global.context.unsafe_mode` só com
+- `dev/aerotask-devtools@bispov19`: liga `global.context.unsafe_mode` só com
   `AEROTASK_DEV=1`. Isso libera `org.gnome.Shell.Eval` e `org.gnome.Shell.Screenshot`.
 - `./scripts/nested-eval.sh '<js>'` e `./scripts/nested-screenshot.sh [png]` falam com o
   Shell aninhado pelo endereço salvo em `~/.local/state/aerotask/nested-bus`.
@@ -640,7 +642,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   reais dos apps; usa `Gio.DBusProxy.new_for_bus_sync` (síncrono) no painel de informações.
 
 ### Ferramentas
-- Presentes: git, gh (logado como bispov19; remoto https `github.com/bispov19/aerotask`, o OFICIAL desde 2026-11-22 — `viniciusbispo19` é a conta antiga, só resta no UUID e nos IDs de app), glib-compile-schemas,
+- Presentes: git, gh (logado como bispov19; remoto https `github.com/bispov19/aerotask`, o OFICIAL desde 2026-11-22 — `viniciusbispo19` é a conta antiga; UUID e IDs de app já migrados em 2026-11-23), glib-compile-schemas,
   gettext (msgfmt/xgettext/msginit/msgmerge), gnome-extensions, gdbus, busctl,
   dbus-monitor.
 - **node/npm NÃO estão instalados (conferido 2026-11-22)**: `sudo dnf install nodejs` antes do lint.
@@ -672,7 +674,7 @@ Você é um desenvolvedor sênior de extensões do GNOME Shell (GJS, ES Modules,
 
 ## 2. Objetivo
 
-Criar do zero a extensão **AeroTask** (UUID `aerotask@viniciusbispo19`, schema `org.gnome.shell.extensions.aerotask`, licença GPL-3.0), que transforma o lado esquerdo do painel superior do GNOME em uma **barra de menus global praticamente idêntica à do macOS**, com:
+Criar do zero a extensão **AeroTask** (UUID `aerotask@bispov19`, schema `org.gnome.shell.extensions.aerotask`, licença GPL-3.0), que transforma o lado esquerdo do painel superior do GNOME em uma **barra de menus global praticamente idêntica à do macOS**, com:
 
 1. Um **ícone de sistema Linux** no lugar da maçã (logo do Fedora por padrão, configurável).
 2. O **nome do app ativo em negrito**, com o menu do aplicativo.

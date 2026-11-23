@@ -15,16 +15,16 @@
 #   usasse esse arquivo, ativar o AeroTask lá dentro o ativaria também na sua
 #   sessão real. Então copiamos o arquivo para ~/.config/dconf/aerotask_dev e
 #   apontamos o Shell aninhado para a cópia (variável DCONF_PROFILE). Resultado:
-#   mesmo tema e mesmas extensões (ótimo para testar compatibilidade com Luma
-#   Dock, Blur my Shell…), mas nada do que muda lá dentro vaza para cá.
+#   mesmo tema e mesmas extensões (ótimo para testar a compatibilidade com
+#   as outras extensões instaladas), mas nada do que muda lá dentro vaza para cá.
 #   A cópia é refeita a cada execução.
 
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
 SIZE="${1:-1600x1000}"
-UUID=aerotask@viniciusbispo19
-DEVTOOLS_UUID=aerotask-devtools@viniciusbispo19
+UUID=aerotask@bispov19
+DEVTOOLS_UUID=aerotask-devtools@bispov19
 DEV_DB=aerotask_dev  # sem hífen: o nome vira parte de um caminho D-Bus (/ca/desrt/dconf/Writer/<nome>)
 
 STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/aerotask"

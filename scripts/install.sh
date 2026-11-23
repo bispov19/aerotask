@@ -13,7 +13,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-UUID=aerotask@viniciusbispo19
+UUID=aerotask@bispov19
 SCHEMA=org.gnome.shell.extensions.aerotask
 NEW_PATH=/org/gnome/shell/extensions/aerotask/
 EXT_DIR="$HOME/.local/share/gnome-shell/extensions"
