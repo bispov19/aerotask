@@ -92,15 +92,16 @@
       <summary>Top bar style: GNOME default, absolute black or glass</summary>
     </key>
     <key name="glass-blur-radius" type="i">
-      <range min="10" max="100"/>
-      <default>40</default>
+      <range min="2" max="60"/>
+      <!-- 8 px: o mesmo desfoque do vidro da Orla Dock. -->
+      <default>8</default>
       <summary>Blur radius of the glass bar (px)</summary>
     </key>
     <key name="glass-opacity" type="i">
-      <range min="0" max="90"/>
-      <!-- 45%: texto branco legível mesmo com papel de parede claro. -->
-      <default>45</default>
-      <summary>Opacity of the dark tint over the glass bar (percent)</summary>
+      <range min="0" max="60"/>
+      <!-- 10%: a cor do vidro tinge sem escurecer (igual à Orla Dock). -->
+      <default>10</default>
+      <summary>How much the glass color tints the wallpaper behind the bar (percent; it never darkens)</summary>
     </key>
     <key name="farol-menus" type="b">
       <!-- Desligado: menus e relógio abrem o pop-up ("balão") do GNOME. -->

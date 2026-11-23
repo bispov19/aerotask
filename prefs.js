@@ -193,9 +193,9 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
         // Ajustes do Vidro: só aparecem com o Vidro escolhido.
         const glassRows = [
             this._spin('glass-blur-radius', _('Glass blur'),
-                _('How blurred the wallpaper behind the bar looks'), 10, 100, 5),
+                _('How blurred the wallpaper behind the bar looks'), 2, 60, 1),
             this._spin('glass-opacity', _('Glass tint (%)'),
-                _('Darker keeps the text readable on light wallpapers'), 0, 90, 5),
+                _('How much the glass color tints the colors behind it, without darkening them'), 0, 60, 5),
         ];
         const syncGlassRows = () => {
             const glass = this._settings.get_string('panel-style') === 'glass';

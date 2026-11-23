@@ -527,6 +527,21 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   ainda espera layout, esperar o `after-paint` do palco (um later criado dentro de outro roda na MESMA
   rodada, antes do layout; e o `notify::allocation` não vem se o tamanho final não muda). Na sessão
   aninhada sem quadros o 1º posicionamento só acontece quando algo é desenhado.
+- **Vidro = material da Orla Dock (2026-11-23, pedido do usuário)**: `lib/glass.js` (constantes `GLASS_*` no topo +
+  `GlassEffect`: `Shell.BlurEffect` modo ACTOR cujo resultado vai para um `Clutter.LayerNode` com
+  `Cogl.Pipeline` + GLSL — refração/dispersão, adaptação ao brilho, saturação 1,2, cor `#16202a` em modo
+  "cor", reflexo, granulado; receita copiada da Orla do usuário: `orla-dock@viniciusbispo19/lib/blur.js` e
+  `glassMath.js`, valores do dconf dele: blur 8, tom 0,2, adapt 0,6, vibrancy 1,2, tint 0,10, refraction 1,
+  dispersion 0,7, sheen 0,5, grain 0,2; brilho do blur 1,0; raio SEM multiplicar pela escala, como na Orla).
+  Montagem igual ao vidro estático da Orla: painel do tamanho da barra (`clip_to_allocation`, efeito nele) com o
+  papel de parede do monitor inteiro dentro, deslocado. Fundo da barra no Vidro = `rgba(0,0,0,0)` em linha (nada
+  de camada escura) + `box-shadow: inset 0 -1px 0 rgba(255,255,255,.14)` (borda clara SÓ embaixo; inset não muda
+  o tamanho da barra). Sem o relevo de borda (glow) do shader: numa barra ele acenderia em cima e nas laterais.
+  Texto: `text-shadow`/`icon-shadow` 0 1px 2px preto 35% no `#panel.aerotask-panel-glass .panel-button`.
+  `glass-blur-radius` 2–60 (padrão 8), `glass-opacity` 0–60 (padrão 10; agora = força da COR, não escurece).
+  Os valores 15/15 que o usuário tinha foram resetados (pedido: mesmos valores da Orla).
+  **Captura no aninhado logo após subir** (palco 0×0) derruba o Shell aninhado com SIGSEGV em
+  `write_screenshot_thread` (bug do GNOME, não nosso): esperar `global.stage.width > 0` antes de capturar.
 - No `nested-test.sh` o JS vai por `nested-eval.sh` e as barras invertidas se perdem (`\(` virou `(`):
   evitar regex com barra invertida ali (usar `includes`).
 - **Missão 5 (2026-11-15)**: ícones de bandeja nativos. `lib/tray/watcher.js`

@@ -1312,3 +1312,12 @@
 #panel.aerotask-panel-glass .panel-button {
     color: #ffffff;
 }
+
+/* Vidro: o fundo NÃO é escurecido (o material do vidro, em lib/glass.js,
+ * só puxa o brilho para um tom médio). Para o texto branco continuar
+ * legível sobre papel de parede claro, uma sombra bem sutil logo abaixo de
+ * cada letra e de cada ícone — ela contorna o desenho sem escurecer a barra. */
+#panel.aerotask-panel-glass .panel-button {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    icon-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}

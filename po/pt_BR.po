@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AeroTask 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/bispov19/aerotask/issues\n"
-"POT-Creation-Date: 2026-11-22 13:10-0300\n"
+"POT-Creation-Date: 2026-11-23 09:27-0300\n"
 "PO-Revision-Date: 2026-11-10 15:56-0300\n"
 "Last-Translator: Vinicius Bispo\n"
 "Language-Team: none\n"
@@ -995,8 +995,9 @@ msgid "Glass tint (%)"
 msgstr "Tonalidade do vidro (%)"
 
 #: prefs.js:198
-msgid "Darker keeps the text readable on light wallpapers"
-msgstr "Mais escuro mantém o texto legível em papéis de parede claros"
+msgid ""
+"How much the glass color tints the colors behind it, without darkening them"
+msgstr "Quanto a cor do vidro tinge as cores atrás dele, sem escurecer"
 
 #: prefs.js:207
 msgid "Farol-style menus"
@@ -1708,6 +1709,9 @@ msgstr "Eles ficam aqui até você arrastá-los para outro lugar"
 #: tray/tray.js:236
 msgid "Remove from the tray"
 msgstr "Tirar da bandeja"
+
+#~ msgid "Darker keeps the text readable on light wallpapers"
+#~ msgstr "Mais escuro mantém o texto legível em papéis de parede claros"
 
 #~ msgid "Black bar"
 #~ msgstr "Barra preta"
