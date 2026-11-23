@@ -1303,3 +1303,12 @@
 .aerotask-control-center .aerotask-cc-media-button:insensitive {
     color: rgba(150, 150, 150, 0.6);
 }
+
+/* ======================= Estilo da barra (panelLook.js) =======================
+ * Nos estilos Preto e Vidro o fundo é escuro sempre (o AeroTask pinta), então
+ * texto e ícones ficam brancos mesmo num tema claro. "#panel.aerotask-panel-…
+ * .panel-button" (1 id + 2 classes) vence o "#panel .panel-button" do tema. */
+#panel.aerotask-panel-black .panel-button,
+#panel.aerotask-panel-glass .panel-button {
+    color: #ffffff;
+}

@@ -215,7 +215,7 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   faz `ease({translation_x: 0})`).
 - Bateria MONOCROMÁTICA (pedido do usuário): raio recortado no preenchimento.
 - **Layout decidido pelo usuário (2026-11-11)**: NADA no centro da barra. **Barra preta
-  sólida** (chave `black-bar`, padrão ligado; `PanelLayout` acrescenta só a sua declaração
+  sólida** (chave `black-bar` — SUBSTITUÍDA por `panel-style` em 2026-11-23; `PanelLayout` acrescenta só a sua declaração
   ao `Main.panel.style` e a tira no destroy). Relógio do AeroTask no CANTO DIREITO (último
   item de `_rightBox`, `addToStatusArea('aerotask-menu-clock')`, peso normal). **Clique**
   faz a forma PRETA do Farol sair de baixo do relógio (`farolShape.js`: chrome desenhado
@@ -509,6 +509,24 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
 - **Aninhado sem quadros**: se a janela do mutter-devkit fica escondida, NENHUMA animação avança
   (transição "tocando" com elapsed 0, inclusive `Main.panel.ease`). Para capturas, desligar
   `org.gnome.desktop.interface enable-animations` DENTRO do aninhado (banco isolado).
+- **Estilo da barra (2026-11-23)**: `lib/panelLook.js` (`PanelLook`), chave `panel-style` = `gnome`
+  (padrão, pedido do usuário) | `black` (#000 opaco) | `glass` (+ `glass-blur-radius`, `glass-opacity`);
+  substituiu `black-bar`/`black-bar-opacity` (removidas sem migração: 1.0.0 não publicado). `BarLook`
+  usa `panelTint()`. Em black/glass o `BmsGuard` neutraliza o Blur my Shell SEM tocar no schema dele:
+  esconde o GRUPO `bms-panel-backgroundgroup` (o BMS só mostra/esconde o filho `background`, então não
+  há briga), tira as classes `transparent/light/dark/contrasted/gradient-panel(-reverse)` da barra e
+  `panel-light-text` do panelBox a cada `notify::style-class` e devolve tudo no destroy (testado: volta
+  `dark-panel` e o grupo). Fundo nosso = `background-color: rgba(…)` em linha (vence as classes);
+  texto branco por `#panel.aerotask-panel-{black,glass} .panel-button`. Vidro = cópia do papel de
+  parede do monitor (BackgroundManager) + `Shell.BlurEffect` (GNOME 51: só `radius`/`brightness`/`mode`)
+  + `Clutter.DesaturateEffect` 0,2, `set_clip` no retângulo da barra (receita do BMS estático), dentro
+  de um ator 0×0 no índice 0 do panelBox. O widget nasce ESCONDIDO: sem recorte ele cobriria a tela
+  toda (o panelBox só recorta com a barra flutuante). Posicionar: later BEFORE_REDRAW; se a barra
+  ainda espera layout, esperar o `after-paint` do palco (um later criado dentro de outro roda na MESMA
+  rodada, antes do layout; e o `notify::allocation` não vem se o tamanho final não muda). Na sessão
+  aninhada sem quadros o 1º posicionamento só acontece quando algo é desenhado.
+- No `nested-test.sh` o JS vai por `nested-eval.sh` e as barras invertidas se perdem (`\(` virou `(`):
+  evitar regex com barra invertida ali (usar `includes`).
 - **Missão 5 (2026-11-15)**: ícones de bandeja nativos. `lib/tray/watcher.js`
   (`org.kde.StatusNotifierWatcher` em `/StatusNotifierWatcher`; registro por NOME → caminho
   `/StatusNotifierItem`, ou por CAMINHO → nome = quem chamou (libayatana); `bus_watch_name`

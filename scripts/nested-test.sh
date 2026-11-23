@@ -33,8 +33,10 @@ BEFORE=$(wc -l < "$LOG")
     farois: Main.panel._rightBox.get_children().filter(c => c.get_first_child()?.constructor.name === 'AeroTaskFarolClock').length,
     relogioVisivel: Main.panel.statusArea.dateMenu.container.visible,
     calendarioEmCasa: !Main.panel.statusArea.dateMenu._calendar.get_parent()?.has_style_class_name?.('aerotask-farol-calendar-month'),
-    barraPreta: (Main.panel.style ?? '').includes('rgba(0, 0, 0,'),
-    barraPretaPref: m.lookup(uuid).stateObj?._settings?.get_boolean('black-bar') ?? null,
+    // Fundo pintado pelo AeroTask (estilos Preto e Vidro) e o desfoque próprio do Vidro.
+    fundoNosso: (Main.panel.style ?? '').replace(/ /g, '').includes('background-color:rgba('),
+    vidros: Main.layoutManager.panelBox.get_children().filter(c => c.name === 'aerotask-panel-glass').length,
+    estiloBarra: m.lookup(uuid).stateObj?._settings?.get_string('panel-style') ?? null,
     // Bateria: o ícone do GNOME volta ao desativar; o OSD volta ao original.
     bateriaGnomeVisivel: Main.panel.statusArea.quickSettings._system?.visible ?? true,
     osdOriginal: !Object.prototype.hasOwnProperty.call(Main.osdWindowManager, 'showAll') ||
@@ -129,8 +131,10 @@ checks = {
     "desativar mostra o relógio do GNOME": data["desativada"]["relogioVisivel"],
     "desativar devolve o calendário ao relógio": data["desativada"]["calendarioEmCasa"],
     "desativar restaura o Super+V": data["desativada"]["superVOriginal"],
-    "barra preta conforme a preferência": d["barraPreta"] == bool(d["barraPretaPref"]),
-    "desativar devolve a cor original da barra": not data["desativada"]["barraPreta"],
+    "fundo da barra conforme o estilo": d["fundoNosso"] == (d["estiloBarra"] != "gnome"),
+    "no máximo 1 desfoque de vidro": d["vidros"] == (1 if d["estiloBarra"] == "glass" else 0),
+    "desativar devolve a cor original da barra": not data["desativada"]["fundoNosso"],
+    "desativar remove o desfoque de vidro": data["desativada"]["vidros"] == 0,
     "desativar remove as formas de vidro": data["desativada"]["superficies"] == 0,
     "desativar mostra o ícone de bateria do GNOME": data["desativada"]["bateriaGnomeVisivel"],
     "desativar devolve o OSD original": data["desativada"]["osdOriginal"],

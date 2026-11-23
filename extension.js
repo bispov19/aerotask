@@ -31,6 +31,7 @@ import {FloatingPanel} from './lib/floatingPanel.js';
 import {MenuBar} from './lib/menuBar.js';
 import {OsdOverride} from './lib/osdOverride.js';
 import {PanelLayout} from './lib/panelLayout.js';
+import {PanelLook} from './lib/panelLook.js';
 import {Registrar} from './lib/sources/registrar.js';
 import {TrayIcons} from './lib/tray/trayIcons.js';
 import {StatusNotifierWatcher} from './lib/tray/watcher.js';
@@ -204,6 +205,9 @@ export default class AeroTaskExtension extends Extension {
         // Esconde o botão Atividades / move o relógio (conforme preferências).
         this._panelLayout = new PanelLayout(this._settings);
 
+        // Estilo da barra: Padrão GNOME, Preto absoluto ou Vidro.
+        this._panelLook = new PanelLook(this._settings);
+
         // Bateria no estilo do MacBook, no lugar do ícone do GNOME.
         this._battery = new BatteryIndicator(this._settings);
 
@@ -308,6 +312,8 @@ export default class AeroTaskExtension extends Extension {
         this._floatingPanel = null;
         this._battery?.destroy();
         this._battery = null;
+        this._panelLook?.destroy();
+        this._panelLook = null;
         this._panelLayout?.destroy();
         this._panelLayout = null;
 

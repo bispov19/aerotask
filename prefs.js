@@ -185,12 +185,25 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
             _('Quick Settings in blocks: connectivity, Focus, Display, Sound and Now Playing')));
         bar.add(this._switch('floating-panel', _('Floating bar'),
             _('Rounded corners and a small margin from the screen edges; it touches the edges while a window is maximized')));
-        bar.add(this._switch('black-bar', _('Black bar'),
-            _('The bar, the menus and the clock panel look like one piece')));
-        const opacityRow = this._spin('black-bar-opacity', _('Black bar opacity (%)'),
-            _('Below 100, the Blur my Shell blur shows through'), 50, 100, 5);
-        this._settings.bind('black-bar', opacityRow, 'sensitive', Gio.SettingsBindFlags.GET);
-        bar.add(opacityRow);
+        bar.add(this._combo('panel-style', _('Bar style'), [
+            ['gnome', _('GNOME default')],
+            ['black', _('Absolute black')],
+            ['glass', _('Glass')],
+        ], _('Black and Glass ignore the Blur my Shell effect on the bar')));
+        // Ajustes do Vidro: só aparecem com o Vidro escolhido.
+        const glassRows = [
+            this._spin('glass-blur-radius', _('Glass blur'),
+                _('How blurred the wallpaper behind the bar looks'), 10, 100, 5),
+            this._spin('glass-opacity', _('Glass tint (%)'),
+                _('Darker keeps the text readable on light wallpapers'), 0, 90, 5),
+        ];
+        const syncGlassRows = () => {
+            const glass = this._settings.get_string('panel-style') === 'glass';
+            glassRows.forEach(row => (row.visible = glass));
+        };
+        glassRows.forEach(row => bar.add(row));
+        this._settings.connect('changed::panel-style', syncGlassRows);
+        syncGlassRows();
         bar.add(this._switch('farol-menus', _('Farol-style menus'),
             _('Menus come out of the bar as smoked glass, with a spring animation')));
         const clockRow = this._combo('clock-position', _('Clock position'), [
