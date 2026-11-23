@@ -118,8 +118,9 @@
 
     <!-- ===================== Aparência ===================== -->
     <key name="system-icon" type="s">
-      <default>'fedora'</default>
-      <summary>System icon (fedora, tux, gnome, ubuntu, debian, arch, opensuse, mint, popos, manjaro, nixos, zorin, elementary, auto, custom)</summary>
+      <!-- Padrão: o logo do próprio AeroTask (o usuário troca nas preferências). -->
+      <default>'aerotask'</default>
+      <summary>System icon (aerotask, fedora, tux, gnome, ubuntu, debian, arch, opensuse, mint, popos, manjaro, nixos, zorin, elementary, auto, custom)</summary>
     </key>
     <key name="custom-icon-path" type="s">
       <default>''</default>

@@ -625,6 +625,11 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   `dateMenu.container`) e `wavebar-music` (dele, GPL-3.0-or-later; MPRIS + LRCLIB).
 
 ### Ícones
+- **Logo padrão = AeroTask (2026-11-23, pedido do usuário)**: `system-icon` padrão `'aerotask'`, 1º do
+  `SYSTEM_ICONS` (`lib/icons.js`); valor desconhecido também cai nele. Simbólico = `icons/aerotask-symbolic.svg`;
+  colorido = `icons/aerotask.svg` (MESMO desenho 16×16 do simbólico com as cores do mark — o
+  `aerotask-mark.svg` de 256 px ficava pequeno e fino na barra). Na sessão real do usuário `system-icon` não
+  estava definido → passa a mostrar o AeroTask. O usuário escolheu o estilo Vidro (desfoque 15, tonalidade 15).
 - Fedora: Simple Icons 16.37.0 (`path` copiado por script, nunca à mão). O Simple Icons
   marca a licença do logo como **custom** (regras de marca do Fedora), não CC0 — ver
   `icons/CREDITS.md`. Repetir essa checagem (campo `license` em `data/simple-icons.json`)

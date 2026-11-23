@@ -3,7 +3,7 @@
 > Página principal do projeto, em inglês: [README.md](../README.md).
 
 A barra superior completa no estilo do macOS para o **GNOME Shell 51**: menus
-globais (o logo da sua distro no lugar da maçã, o nome do aplicativo em negrito e
+globais (o logo do AeroTask, ou o da sua distro, no lugar da maçã, o nome do aplicativo em negrito e
 os menus **Arquivo, Editar, Visualizar, Janela e Ajuda** — ou os menus reais do
 app, quando ele os exporta), relógio com calendário e notificações, centro de
 controle em blocos, avisos no centro da tela, ícones de bandeja e barra
@@ -176,9 +176,9 @@ recriados ao desbloquear.
 
 - **Geral**: menus padrão, ocultar Atividades, posição do relógio, atalhos
   (focar a barra, Forçar Encerramento).
-- **Aparência**: logo (Fedora, Tux, GNOME, Ubuntu, Debian, Arch Linux, openSUSE,
-  Linux Mint, Pop!_OS, Manjaro, NixOS, Zorin OS, elementary OS, Automático ou
-  Personalizado), tamanho e estilo (simbólico/colorido), negrito no nome do app,
+- **Aparência**: logo (AeroTask — o padrão —, Fedora, Tux, GNOME, Ubuntu,
+  Debian, Arch Linux, openSUSE, Linux Mint, Pop!_OS, Manjaro, NixOS, Zorin OS,
+  elementary OS, Automático ou Personalizado), tamanho e estilo (simbólico/colorido), negrito no nome do app,
   espaçamento, estilo dos atalhos (`Ctrl+C` ou `⌃C`), opacidade e arredondamento.
 - **Menus**: cada menu padrão, busca no Ajuda, itens do menu do sistema.
 - **Compatibilidade**: Registrar DBusMenu, apps ignorados, modo de depuração.

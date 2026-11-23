@@ -1,7 +1,7 @@
 {
   "uuid": "aerotask@bispov19",
   "name": "AeroTask",
-  "description": "A glassy top bar for GNOME with global app menus, a clock panel, a tile-style control center and a clean tray.\n\nThe left side of the top bar becomes a global menu bar: your distro logo with the system menu, the focused app's name in bold and its menus (File, Edit, View, Window and Help), or the app's own menus when it exports them. The clock opens a panel with calendar, weather forecast, notifications, clipboard history, focus timer and reminders. Also included: a tile-style control center, one on-screen HUD for volume, brightness and toggles, native tray icons, a translucent black or floating bar and a battery icon with the percentage inside.",
+  "description": "A glassy top bar for GNOME with global app menus, a clock panel, a tile-style control center and a clean tray.\n\nThe left side of the top bar becomes a global menu bar: the AeroTask logo (or your distro's) with the system menu, the focused app's name in bold and its menus (File, Edit, View, Window and Help), or the app's own menus when it exports them. The clock opens a panel with calendar, weather forecast, notifications, clipboard history, focus timer and reminders. Also included: a tile-style control center, one on-screen HUD for volume, brightness and toggles, native tray icons, a translucent black or floating bar and a battery icon with the percentage inside.",
   "shell-version": [
     "51"
   ],

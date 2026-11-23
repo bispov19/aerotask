@@ -14,12 +14,12 @@ Web Developer
 
 ## Description
 
-AeroTask turns the GNOME top bar into one complete, glassy menu bar. On the left you get your distro logo with a system menu, the name of the focused app in bold and that app's menus: the app's own menus when it exports them, or a standard File, Edit, View, Window and Help set when it doesn't. On the right, the clock opens a panel with your calendar, the weather forecast, notifications, clipboard history, a focus timer and reminders.
+AeroTask turns the GNOME top bar into one complete, glassy menu bar. On the left you get the AeroTask logo (or your distro's) with a system menu, the name of the focused app in bold and that app's menus: the app's own menus when it exports them, or a standard File, Edit, View, Window and Help set when it doesn't. On the right, the clock opens a panel with your calendar, the weather forecast, notifications, clipboard history, a focus timer and reminders.
 
 ## Features
 
 - **Global menu bar**: the focused app's real menus (GTK apps natively; Qt and Electron apps running through XWayland), or standard menus whose items use the app's own actions, window controls or keyboard shortcuts. Items that can't work are shown greyed out.
-- **System menu** behind your distro logo: About This Computer, settings, software center, recent items, Force Quit, suspend, restart, power off, lock and log out.
+- **System menu** behind the logo (AeroTask by default, or your distro's): About This Computer, settings, software center, recent items, Force Quit, suspend, restart, power off, lock and log out.
 - **Search in the Help menu**: finds any menu item of the current app and runs it with Enter.
 - **Clock panel**: calendar with world clocks, weather with an hourly and multi-day forecast, notifications, clipboard history (Shelf) with a file tray, focus timer and reminders.
 - **Tile-style control center** built on GNOME's own Quick Settings, with a Now Playing tile and a Keep Screen On toggle.
