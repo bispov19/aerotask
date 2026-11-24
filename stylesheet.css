@@ -1308,6 +1308,7 @@
  * Nos estilos Preto e Vidro o fundo é escuro sempre (o AeroTask pinta), então
  * texto e ícones ficam brancos mesmo num tema claro. "#panel.aerotask-panel-…
  * .panel-button" (1 id + 2 classes) vence o "#panel .panel-button" do tema. */
+#panel.aerotask-panel-transparent .panel-button,
 #panel.aerotask-panel-black .panel-button,
 #panel.aerotask-panel-glass .panel-button {
     color: #ffffff;
@@ -1320,4 +1321,24 @@
 #panel.aerotask-panel-glass .panel-button {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     icon-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Transparente: sem fundo nenhum, o texto branco fica direto sobre o papel
+ * de parede. Uma sombra um pouco mais forte que a do Vidro (que já tem o
+ * próprio material por trás) mantém letras e ícones legíveis também sobre
+ * papel de parede claro — como faz o macOS na barra transparente. */
+#panel.aerotask-panel-transparent .panel-button {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    icon-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Transparente sobre papel de parede CLARO (classe posta por panelLook.js,
+ * medida por wallpaperTone.js): texto e ícones escuros, como no macOS. A
+ * sombra vira um leve brilho claro. "#panel.a.b .panel-button" (1 id +
+ * 3 classes) vence a regra do texto branco acima. A bateria e os ícones de
+ * bandeja seguem a cor do texto, então escurecem junto. */
+#panel.aerotask-panel-transparent.aerotask-panel-on-light .panel-button {
+    color: rgba(0, 0, 0, 0.85);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
+    icon-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
 }

@@ -80,16 +80,18 @@
       <summary>Floating top bar with rounded corners; it touches the screen edges while a window is maximized</summary>
     </key>
     <key name="panel-style" type="s">
-      <!-- gnome = visual do tema/Blur my Shell; black = preto opaco;
-           glass = desfoque próprio do AeroTask. Black e glass neutralizam o
-           Blur my Shell na barra (sem mexer nas configurações dele). -->
+      <!-- transparent = sem fundo, como no macOS (padrão); gnome = visual do
+           tema/Blur my Shell; black = preto opaco; glass = desfoque próprio do
+           AeroTask. Transparent, black e glass neutralizam o Blur my Shell na
+           barra (sem mexer nas configurações dele). -->
       <choices>
+        <choice value="transparent"/>
         <choice value="gnome"/>
         <choice value="black"/>
         <choice value="glass"/>
       </choices>
-      <default>'gnome'</default>
-      <summary>Top bar style: GNOME default, absolute black or glass</summary>
+      <default>'transparent'</default>
+      <summary>Top bar style: transparent, GNOME default, absolute black or glass</summary>
     </key>
     <key name="glass-blur-radius" type="i">
       <range min="2" max="60"/>

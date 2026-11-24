@@ -186,10 +186,11 @@ export default class AeroTaskPreferences extends ExtensionPreferences {
         bar.add(this._switch('floating-panel', _('Floating bar'),
             _('Rounded corners and a small margin from the screen edges; it touches the edges while a window is maximized')));
         bar.add(this._combo('panel-style', _('Bar style'), [
+            ['transparent', _('Transparent')],
             ['gnome', _('GNOME default')],
             ['black', _('Absolute black')],
             ['glass', _('Glass')],
-        ], _('Black and Glass ignore the Blur my Shell effect on the bar')));
+        ], _('Transparent, Black and Glass ignore the Blur my Shell effect on the bar')));
         // Ajustes do Vidro: só aparecem com o Vidro escolhido.
         const glassRows = [
             this._spin('glass-blur-radius', _('Glass blur'),

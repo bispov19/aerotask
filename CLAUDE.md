@@ -542,6 +542,14 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   Os valores 15/15 que o usuário tinha foram resetados (pedido: mesmos valores da Orla).
   **Captura no aninhado logo após subir** (palco 0×0) derruba o Shell aninhado com SIGSEGV em
   `write_screenshot_thread` (bug do GNOME, não nosso): esperar `global.stage.width > 0` antes de capturar.
+- **Estilo Transparente = PADRÃO (2026-11-24, pedido do usuário)**: `panel-style` `'transparent'` (1º da lista):
+  `background-color: rgba(0,0,0,0)` em linha + `BmsGuard` (absoluto, como Preto/Vidro). Texto branco com
+  `text-shadow`/`icon-shadow` 0 1px 3px preto 50%; sobre papel de parede CLARO o texto fica ESCURO como no macOS:
+  `lib/wallpaperTone.js` (`WallpaperTone`: imagem de `picture-uri`/`-dark` reduzida a 128 px de largura pelo
+  `GdkPixbuf.Pixbuf.new_from_stream_at_scale_async`, brilho Rec. 709 da faixa de cima = 8% da altura, limite 0,6;
+  `picture-options 'none'` → cor primária/média do degradê; `.xml` → branco) → classe `aerotask-panel-on-light`
+  (CSS: preto 85% + brilho claro sutil). Bateria e bandeja seguem a cor do texto. Testado: fundo `#f2f2f4` → escuro;
+  `curvaturingster-l.jxl` → branco. A escolha do usuário continua `glass` (definida explicitamente).
 - No `nested-test.sh` o JS vai por `nested-eval.sh` e as barras invertidas se perdem (`\(` virou `(`):
   evitar regex com barra invertida ali (usar `includes`).
 - **Missão 5 (2026-11-15)**: ícones de bandeja nativos. `lib/tray/watcher.js`

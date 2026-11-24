@@ -26,7 +26,7 @@ AeroTask turns the GNOME top bar into one complete, glassy menu bar. On the left
 - **Status icons with their own menus**: Wi-Fi and Bluetooth open a menu of networks or devices, a Control Center button next to the clock opens Quick Settings, and the volume icon can stay out of the bar (or switch back to GNOME's classic layout). Every icon sits at the same distance from its neighbours.
 - **One on-screen HUD** in the center of the screen for volume, brightness, keyboard backlight, Caps Lock and Quick Settings toggles.
 - **Clean tray**: native tray icons (AppIndicator / StatusNotifierItem), shown monochrome to match the bar, and a battery icon with the percentage inside.
-- **Bar style**: keep GNOME's own look, switch to absolute black, or use Glass, a translucent bar with AeroTask's own blur of the wallpaper. An optional floating bar with rounded corners touches the screen edges while a window is maximized.
+- **Bar style**: fully transparent like the macOS menu bar (the default), GNOME's own look, absolute black, or Glass, a translucent bar with AeroTask's own blur of the wallpaper. An optional floating bar with rounded corners touches the screen edges while a window is maximized.
 - **Settings** for the logo, icon size, menu opacity and corner radius, bar opacity, clock pages, shortcuts and alerts. Changes apply instantly.
 
 | | |
