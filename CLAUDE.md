@@ -550,6 +550,22 @@ Ambiente conferido em 2026-11-10: Fedora 45, GNOME Shell 51.1, Mutter 51.1, GJS 
   `picture-options 'none'` → cor primária/média do degradê; `.xml` → branco) → classe `aerotask-panel-on-light`
   (CSS: preto 85% + brilho claro sutil). Bateria e bandeja seguem a cor do texto. Testado: fundo `#f2f2f4` → escuro;
   `curvaturingster-l.jxl` → branco. A escolha do usuário continua `glass` (definida explicitamente).
+- **Troca de mês fluida no calendário (2026-11-26)**: `lib/farol/pages/calendarMotion.js` (`CalendarMotion`). O
+  `Calendar` do GNOME 51 (`ui/calendar.js`) troca o mês em `_rebuildCalendar()`, que DESTRÓI os filhos a partir de
+  `_firstDayIndex` (42 dias; SEMPRE 6 semanas → altura fixa, conferido em 24 meses: 313 px) e cria outros. Enquanto
+  emprestado, trocamos `_rebuildCalendar` SÓ na instância (`delete` ao devolver volta ao protótipo): antes do
+  original, os dias antigos vão para um grupo FANTASMA (camada `St.Widget` com classe `calendar` + estilo neutro em
+  linha — o tema usa `.calendar .calendar-day` / `.calendar .calendar-month-header .calendar-month-label`) na posição
+  da propriedade `allocation` (NÃO `has_allocation()`/`get_allocation_box()`: o GNOME troca o texto do título ANTES
+  de recriar os dias e o calendário fica "esperando layout"). Uma animação só no grupo (sai para o lado oposto à
+  seta, fade) + dias novos entrando (`translation_x`/`opacity`, 280 ms, EASE_OUT_CUBIC); título em crossfade.
+  Dia fantasma: `reactive=false` + tirar `:insensitive`. Palco `aerotask-farol-calendar-stage` (BinLayout,
+  `clip_to_allocation`). Recriação do MESMO mês no meio (agenda avisa "changed" na hora) continua do ponto atual
+  (estado por TEMPO, não por sinal `stopped`). Cliques rápidos: 1 fantasma por vez (testado 9 cliques). Painel
+  lateral: crossfade 70+80 ms; recarga de eventos durante o fade-out espera. Não existe `paint_to_content` no
+  Clutter 51 (nada de "foto" do ator). `St.Settings.get().enable_animations` falso → troca seca.
+- `nested-test.sh`: o item da barra flutuante agora compara com a chave `floating-panel` (o usuário a desligou
+  em 2026-11-26; antes o teste exigia a máscara sempre).
 - No `nested-test.sh` o JS vai por `nested-eval.sh` e as barras invertidas se perdem (`\(` virou `(`):
   evitar regex com barra invertida ali (usar `includes`).
 - **Missão 5 (2026-11-15)**: ícones de bandeja nativos. `lib/tray/watcher.js`

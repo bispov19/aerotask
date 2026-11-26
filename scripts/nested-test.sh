@@ -32,7 +32,7 @@ BEFORE=$(wc -l < "$LOG")
     // calendário dele está em casa e se o Super+V voltou ao original.
     farois: Main.panel._rightBox.get_children().filter(c => c.get_first_child()?.constructor.name === 'AeroTaskFarolClock').length,
     relogioVisivel: Main.panel.statusArea.dateMenu.container.visible,
-    calendarioEmCasa: !Main.panel.statusArea.dateMenu._calendar.get_parent()?.has_style_class_name?.('aerotask-farol-calendar-month'),
+    calendarioEmCasa: !Main.panel.statusArea.dateMenu._calendar.get_parent()?.has_style_class_name?.('aerotask-farol-calendar-stage'),
     // Fundo pintado pelo AeroTask (estilos Preto e Vidro) e o desfoque próprio do Vidro.
     fundoNosso: (Main.panel.style ?? '').replace(/ /g, '').includes('background-color:rgba('),
     vidros: Main.layoutManager.panelBox.get_children().filter(c => c.name === 'aerotask-panel-glass').length,
@@ -50,6 +50,7 @@ BEFORE=$(wc -l < "$LOG")
     atalhoPrateleira: (Main.wm._allowedKeybindings['clipboard-shortcut'] ?? 0) !== 0,
     // Barra flutuante: ao desativar, nada de máscara/estilo/deslocamento sobrando.
     mascaraBarra: !!Main.layoutManager.panelBox.get_effect('aerotask-menu-floating-mask'),
+    flutuantePref: m.lookup(uuid).stateObj?._settings?.get_boolean('floating-panel') ?? null,
     estiloPanelBox: Main.layoutManager.panelBox.style ?? null,
     barraTransformada: Main.panel.translation_y !== 0 || Main.panel.scale_x !== 1,
     // Ícones de bandeja (rodar com um programa de bandeja aberto, ex.:
@@ -144,7 +145,7 @@ checks = {
     "desativar remove o atalho da Prateleira": not data["desativada"]["atalhoPrateleira"],
     "a bandeja de arquivos abre": data["comBandeja"]["bandejas"] == 1,
     "desativar fecha a bandeja de arquivos": data["desativada"]["bandejas"] == 0,
-    "barra flutuante conforme a preferência (sem janelas: máscara)": d["mascaraBarra"],
+    "barra flutuante conforme a preferência (sem janelas: máscara)": d["mascaraBarra"] == bool(d["flutuantePref"]),
     "desativar tira a máscara da barra": not data["desativada"]["mascaraBarra"],
     "desativar devolve o estilo do panelBox": data["desativada"]["estiloPanelBox"] is None,
     "desativar devolve a barra sem deslocamento": not data["desativada"]["barraTransformada"],
